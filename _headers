@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────────────────────────────
+# Cloudflare Pages · HTTP Headers do Synkan Management Lab
+# Sintaxe: caminho na primeira linha, headers indentados em sequência.
+# ─────────────────────────────────────────────────────────────────────
+
+# Headers de segurança aplicados a todas as páginas
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Robots-Tag: index, follow
+
+# CSP estrita (ajuste conforme integrações forem sendo adicionadas)
+# Nota: 'unsafe-inline' nas styles é necessário porque o app usa estilos inline.
+# Quando você for migrar pra build com bundler, dá pra remover.
+/*.html
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.synkan.com.br https://billing.synkan.com.br https://api.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com; form-action 'self' https://checkout.stripe.com;
+
+# Cache pra assets estáticos (logo, favicon)
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML não cacheia agressivamente — permite atualização rápida
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Páginas legais não devem ser cacheadas longamente
+/termos
+  Cache-Control: public, max-age=600
+/privacidade
+  Cache-Control: public, max-age=600

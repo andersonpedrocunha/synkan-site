@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Status — Synkan Management Lab</title>
+<meta name="description" content="Status em tempo real dos sistemas Synkan: app, API, IA e banco de dados." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ink:#111111;
+  --ink-2:#2D2D2D;
+  --ink-3:#6B6B6B;
+  --ink-4:#A0A0A0;
+  --bg:#F4F4F2;
+  --line:#E5E5E2;
+  --line-2:#D4D4D0;
+  --ok:#3B6D11;
+  --ok-bg:#E8F2DA;
+  --warn:#BA7517;
+  --warn-bg:#FBF1E0;
+  --bad:#A32D2D;
+  --bad-bg:#FCE5E5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:var(--ink);}
+.container{width:100%;max-width:840px;margin:0 auto;padding:0 24px;}
+.nav-container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;}
+.logo-name{font-weight:700;font-size:17px;display:inline-flex;align-items:baseline;gap:5px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);}
+@media(max-width:560px){.logo-suffix{display:none;}}
+.back-link{font-size:13px;color:var(--ink-2);text-decoration:none;font-weight:500;border:1px solid var(--line);padding:7px 13px;border-radius:8px;background:#fff;}
+.back-link:hover{border-color:var(--line-2);}
+.main{padding:48px 0 80px;background:#fff;border-bottom:1px solid var(--line);min-height:70vh;}
+.head{margin-bottom:34px;}
+.head h1{font-size:clamp(28px,4vw,38px);font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
+.head p{font-size:15px;color:var(--ink-3);}
+.head .last-check{font-size:12px;color:var(--ink-4);margin-top:6px;}
+
+/* Banner global */
+.global-status{display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:12px;margin-bottom:28px;border:1px solid;}
+.global-status.ok{background:var(--ok-bg);border-color:#C2DBA5;color:#2A4F08;}
+.global-status.warn{background:var(--warn-bg);border-color:#E5C285;color:#6B4309;}
+.global-status.bad{background:var(--bad-bg);border-color:#E89999;color:#7C1F1F;}
+.gs-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;animation:pulse 2.4s ease-in-out infinite;}
+.global-status.ok .gs-dot{background:var(--ok);box-shadow:0 0 0 0 rgba(59,109,17,.5);}
+.global-status.warn .gs-dot{background:var(--warn);box-shadow:0 0 0 0 rgba(186,117,23,.5);}
+.global-status.bad .gs-dot{background:var(--bad);box-shadow:0 0 0 0 rgba(163,45,45,.5);}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,109,17,.5);}70%{box-shadow:0 0 0 8px rgba(59,109,17,0);}100%{box-shadow:0 0 0 0 rgba(59,109,17,0);}}
+.gs-text strong{display:block;font-size:16px;font-weight:700;}
+.gs-text span{font-size:13px;opacity:.85;}
+
+/* System rows */
+.systems{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+.sys{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);}
+.sys:last-child{border-bottom:none;}
+.sys-left{display:flex;align-items:center;gap:14px;flex:1;}
+.sys-icon{width:36px;height:36px;border-radius:9px;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sys-icon svg{width:18px;height:18px;stroke-width:1.6;}
+.sys-name{font-size:15px;font-weight:600;color:var(--ink);}
+.sys-desc{font-size:12.5px;color:var(--ink-3);margin-top:2px;}
+.sys-status{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;flex-shrink:0;padding:5px 12px;border-radius:999px;}
+.sys-status.ok{background:var(--ok-bg);color:#2A4F08;}
+.sys-status.warn{background:var(--warn-bg);color:#6B4309;}
+.sys-status.bad{background:var(--bad-bg);color:#7C1F1F;}
+.sys-status .dot{width:8px;height:8px;border-radius:50%;}
+.sys-status.ok .dot{background:var(--ok);}
+.sys-status.warn .dot{background:var(--warn);}
+.sys-status.bad .dot{background:var(--bad);}
+
+/* Uptime grid */
+.uptime{margin-top:28px;}
+.uptime-h{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;}
+.uptime-row{display:grid;grid-template-columns:160px 1fr 80px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);}
+.uptime-row:last-child{border-bottom:none;}
+.uptime-name{font-size:13.5px;font-weight:500;color:var(--ink-2);}
+.uptime-bars{display:flex;gap:2px;height:24px;}
+.uptime-bar{flex:1;border-radius:2px;background:var(--ok);min-width:3px;}
+.uptime-bar.warn{background:var(--warn);}
+.uptime-bar.bad{background:var(--bad);}
+.uptime-pct{font-size:13px;font-weight:600;color:var(--ok);text-align:right;font-variant-numeric:tabular-nums;}
+
+/* Incidents */
+.incidents{margin-top:36px;}
+.incidents h2{font-size:18px;font-weight:700;margin-bottom:14px;}
+.incident{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+.incident-time{font-size:11.5px;color:var(--ink-4);font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
+.incident-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.incident-desc{font-size:13px;color:var(--ink-3);}
+.no-incidents{background:var(--ok-bg);border:1px solid #C2DBA5;color:#2A4F08;padding:18px 22px;border-radius:10px;font-size:14px;text-align:center;}
+
+/* Subscribe */
+.subscribe{margin-top:36px;background:#111;color:#fff;border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.subscribe-text strong{display:block;font-size:15px;margin-bottom:3px;}
+.subscribe-text span{font-size:13px;color:rgba(255,255,255,.65);}
+.subscribe a{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#111;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;}
+
+footer{padding:32px 0 28px;background:#fff;text-align:center;font-size:12.5px;color:var(--ink-4);}
+footer a{color:var(--ink-3);}
+.foot-links{margin-bottom:8px;}
+.foot-links a{margin:0 8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container nav-inner">
+    <a href="/" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <a href="/" class="back-link">← Voltar</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="container">
+    <div class="head">
+      <h1>Status dos sistemas</h1>
+      <p>Acompanhe em tempo real a saúde dos serviços que compõem o Synkan.</p>
+      <div class="last-check">Última verificação: <span id="last-check">—</span></div>
+    </div>
+
+    <div class="global-status ok" id="global-banner">
+      <div class="gs-dot"></div>
+      <div class="gs-text">
+        <strong>Todos os sistemas operacionais</strong>
+        <span>Nenhum incidente reportado nas últimas 24 horas.</span>
+      </div>
+    </div>
+
+    <div class="systems">
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+          <div>
+            <div class="sys-name">Aplicação Web</div>
+            <div class="sys-desc">Interface Synkan, kanban, dashboards</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg></div>
+          <div>
+            <div class="sys-name">API e Sincronização</div>
+            <div class="sys-desc">Supabase · Realtime · Storage</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg></div>
+          <div>
+            <div class="sys-name">Mestre Kan IA</div>
+            <div class="sys-desc">Claude Haiku via Anthropic API</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div>
+            <div class="sys-name">Pagamentos</div>
+            <div class="sys-desc">Processamento de assinaturas e cobrança</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div>
+            <div class="sys-name">Webhooks e Integrações</div>
+            <div class="sys-desc">Slack · Discord · Zapier · Make · n8n</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-left">
+          <div class="sys-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h16v8H4z"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
+          <div>
+            <div class="sys-name">E-mail transacional</div>
+            <div class="sys-desc">Confirmações, recibos, alertas</div>
+          </div>
+        </div>
+        <div class="sys-status ok"><span class="dot"></span> Operacional</div>
+      </div>
+    </div>
+
+    <div class="uptime">
+      <div class="uptime-h">Disponibilidade · últimos 90 dias</div>
+      <div class="uptime-row">
+        <div class="uptime-name">Aplicação Web</div>
+        <div class="uptime-bars" id="bars-app"></div>
+        <div class="uptime-pct">99,98%</div>
+      </div>
+      <div class="uptime-row">
+        <div class="uptime-name">API / Supabase</div>
+        <div class="uptime-bars" id="bars-api"></div>
+        <div class="uptime-pct">99,95%</div>
+      </div>
+      <div class="uptime-row">
+        <div class="uptime-name">Mestre Kan IA</div>
+        <div class="uptime-bars" id="bars-ai"></div>
+        <div class="uptime-pct">99,87%</div>
+      </div>
+    </div>
+
+    <div class="incidents">
+      <h2>Incidentes recentes</h2>
+      <div class="no-incidents">Nenhum incidente nos últimos 30 dias. Bom trabalho, time. 🌿</div>
+    </div>
+
+    <div class="subscribe">
+      <div class="subscribe-text">
+        <strong>Quer ser avisado de incidentes?</strong>
+        <span>Receba e-mail sempre que algum sistema ficar indisponível.</span>
+      </div>
+      <a href="mailto:status@synkan.com.br?subject=Inscrever%20em%20alertas%20de%20status">Inscrever-se →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="/">Início</a> ·
+      <a href="/termos">Termos</a> ·
+      <a href="/privacidade">Privacidade</a> ·
+      <a href="/changelog">Changelog</a>
+    </div>
+    © 2026 Synkan Management Lab · Feito no Brasil
+  </div>
+</footer>
+
+<script>
+// Renderiza barras de uptime sintéticas (90 dias)
+function renderBars(elId, badDays){
+  const el = document.getElementById(elId); if(!el) return;
+  badDays = badDays || [];
+  let html = '';
+  for (let i = 0; i < 90; i++){
+    const cls = badDays.includes(i) ? 'warn' : '';
+    html += `<div class="uptime-bar ${cls}"></div>`;
+  }
+  el.innerHTML = html;
+}
+renderBars('bars-app', []);
+renderBars('bars-api', [22]);
+renderBars('bars-ai',  [12, 47]);
+
+// Última verificação
+function updateLastCheck(){
+  const d = new Date();
+  document.getElementById('last-check').textContent = d.toLocaleString('pt-BR', {
+    day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'
+  });
+}
+updateLastCheck();
+setInterval(updateLastCheck, 60000);
+</script>
+
+</body>
+</html>

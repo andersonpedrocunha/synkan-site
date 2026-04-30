@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Escolha seu plano · Synkan Management Lab</title>
+<meta name="description" content="Compare os planos do Synkan e suba de faixa." />
+<meta name="robots" content="noindex,follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ink:#111111; --ink-2:#2D2D2D; --ink-3:#6B6B6B; --ink-4:#A0A0A0;
+  --bg:#F4F4F2; --bg-soft:#FAFAF8; --line:#E5E5E2; --line-2:#D4D4D0;
+  --ok:#3B6D11; --ok-bg:#E8F2DA;
+  --accent:#3C3489;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:var(--ink);}
+.container{width:100%;max-width:1080px;margin:0 auto;padding:0 24px;}
+.nav-container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;}
+.logo-name{font-weight:700;font-size:17px;display:inline-flex;align-items:baseline;gap:5px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);}
+@media(max-width:560px){.logo-suffix{display:none;}}
+.back-link{font-size:13px;color:var(--ink-2);text-decoration:none;font-weight:500;border:1px solid var(--line);padding:7px 13px;border-radius:8px;background:#fff;}
+.back-link:hover{border-color:var(--line-2);}
+
+.main{padding:48px 0 80px;background:#fff;border-bottom:1px solid var(--line);min-height:80vh;}
+.head{text-align:center;max-width:680px;margin:0 auto 48px;}
+.head-pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:#EEEDFE;padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+.head h1{font-size:clamp(30px,4.5vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:14px;}
+.head p{font-size:16px;color:var(--ink-3);}
+
+.toggle{display:inline-flex;background:var(--bg);border-radius:999px;padding:4px;border:1px solid var(--line);margin:24px 0 8px;}
+.toggle button{background:transparent;border:none;padding:7px 16px;font-size:13px;font-weight:500;color:var(--ink-3);cursor:pointer;border-radius:999px;font-family:inherit;}
+.toggle button.active{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.toggle-meta{font-size:11.5px;color:var(--ink-3);margin-top:5px;}
+.toggle-meta strong{color:var(--ok);font-weight:600;}
+
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;margin-top:32px;}
+@media(max-width:880px){.prices{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;}}
+
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;position:relative;transition:transform .15s,box-shadow .2s;}
+.plan:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.06);}
+.plan.featured{border:2px solid #111;box-shadow:0 6px 18px rgba(0,0,0,.08);}
+.plan.featured::before{content:'Mais popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#111;color:#fff;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 13px;border-radius:999px;}
+.plan.current{background:var(--bg-soft);border-color:var(--ok);}
+.plan.current::after{content:'Plano atual';position:absolute;top:14px;right:14px;background:var(--ok-bg);color:var(--ok);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;}
+
+.belt-tag{font-size:11px;color:var(--ink-4);letter-spacing:.04em;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.belt-name{display:flex;align-items:center;gap:11px;margin-bottom:4px;}
+.belt-vis{width:38px;height:9px;border-radius:2px;border:1px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;}
+.belt-vis::after{content:'';position:absolute;right:5px;top:-2px;bottom:-2px;width:3px;background:#111;border-radius:1px;opacity:.55;}
+.belt-vis.white{background:#FAFAF8;}
+.belt-vis.purple{background:#7F3FBF;}.belt-vis.purple::after{background:#FFD66E;opacity:.85;}
+.belt-vis.black{background:#111;}.belt-vis.black::after{background:#D4AF37;opacity:.9;}
+.belt-name strong{font-size:16px;font-weight:700;letter-spacing:-.005em;}
+
+.tag{display:flex;align-items:baseline;gap:6px;margin:14px 0 6px;}
+.tag .num{font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:1;}
+.tag .per{font-size:13px;color:var(--ink-3);}
+.tag .strike{font-size:14px;color:var(--ink-4);text-decoration:line-through;margin-right:6px;}
+.tag-desc{font-size:13px;color:var(--ink-3);margin-bottom:22px;line-height:1.5;min-height:38px;}
+
+.feats{list-style:none;flex:1;margin-bottom:24px;}
+.feats li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--ink-2);padding:6px 0;line-height:1.45;}
+.feats li::before{content:'✓';color:var(--ok);font-weight:700;flex-shrink:0;width:14px;}
+.feats li.no::before{content:'—';color:var(--ink-4);}
+.feats li.no{color:var(--ink-4);}
+.feats li strong{color:var(--ink);font-weight:600;}
+
+.btn{display:flex;align-items:center;justify-content:center;width:100%;font-family:inherit;font-weight:500;font-size:14.5px;padding:12px 20px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .15s,background .15s;}
+.btn-primary{background:#111;color:#fff;}
+.btn-primary:hover{background:#000;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.18);}
+.btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line);}
+.btn-secondary:hover{border-color:var(--line-2);}
+.btn-ghost{background:transparent;color:var(--ink-3);border:1px dashed var(--line);}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+.guarantee{margin-top:48px;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:24px;}
+.guarantee strong{font-size:15px;color:var(--ink);display:block;margin-bottom:6px;}
+.guarantee p{font-size:13.5px;color:var(--ink-3);max-width:520px;margin:0 auto;line-height:1.55;}
+
+.faq{margin-top:64px;max-width:680px;margin-left:auto;margin-right:auto;}
+.faq h3{font-size:18px;font-weight:700;margin-bottom:18px;text-align:center;}
+.faq-item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 22px;margin-bottom:8px;}
+.faq-item summary{font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;}
+.faq-item summary::after{content:'+';font-size:20px;color:var(--ink-4);}
+.faq-item[open] summary::after{content:'−';}
+.faq-item p{font-size:13.5px;color:var(--ink-3);margin-top:10px;line-height:1.55;}
+
+.error-banner{display:none;background:#FCE5E5;border:1px solid #E89999;color:#7C1F1F;padding:12px 18px;border-radius:10px;font-size:13.5px;margin-bottom:24px;}
+.error-banner.show{display:block;}
+
+footer{padding:32px 0 28px;background:#fff;text-align:center;font-size:12.5px;color:var(--ink-4);}
+footer a{color:var(--ink-3);}
+.foot-links{margin-bottom:8px;}
+.foot-links a{margin:0 8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container nav-inner">
+    <a href="/" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <a href="https://app.synkan.com.br" class="back-link">← Voltar ao app</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="container">
+    <div class="head">
+      <span class="head-pill">⌅ Faça upgrade</span>
+      <h1>Suba de faixa quando estiver pronto.</h1>
+      <p>Como no dojo, todo mundo começa pela faixa branca. Cresça no seu ritmo, cancele quando quiser.</p>
+
+      <div class="toggle" id="cycle-toggle">
+        <button class="active" data-cycle="monthly" onclick="setCycle('monthly')">Mensal</button>
+        <button data-cycle="annual" onclick="setCycle('annual')">Anual</button>
+      </div>
+      <div class="toggle-meta">No anual: <strong>2 meses grátis</strong> em todos os planos.</div>
+    </div>
+
+    <div class="error-banner" id="error-banner"></div>
+
+    <div class="prices">
+
+      <div class="plan" id="plan-branca">
+        <span class="belt-tag">Iniciante</span>
+        <div class="belt-name"><span class="belt-vis white"></span><strong>Faixa Branca</strong></div>
+        <div class="tag"><span class="num">R$ 0</span><span class="per">/ pra sempre</span></div>
+        <div class="tag-desc">Os primeiros passos no dojo.</div>
+        <ul class="feats">
+          <li>1 pessoa</li>
+          <li>1 board ativo</li>
+          <li>1 template à escolha</li>
+          <li>Visões Kanban + Checklist</li>
+          <li>Modo local (offline)</li>
+          <li class="no">Lab / Canvas com IA</li>
+          <li class="no">Synconnect (CRM)</li>
+          <li class="no">Mestre Kan IA</li>
+        </ul>
+        <button class="btn btn-secondary" disabled>Plano gratuito</button>
+      </div>
+
+      <div class="plan featured" id="plan-roxa">
+        <span class="belt-tag">Praticante avançado</span>
+        <div class="belt-name"><span class="belt-vis purple"></span><strong>Faixa Roxa</strong></div>
+        <div class="tag" data-monthly="29,90" data-annual="24,90">
+          <span class="num">R$ <span class="num-val">29,90</span></span>
+          <span class="per">/ usuário / mês</span>
+        </div>
+        <div class="tag-desc">Pra quem treina todo dia no board.</div>
+        <ul class="feats">
+          <li>Até <strong>10 boards</strong></li>
+          <li>Até <strong>5 Lab / Canvas</strong></li>
+          <li><strong>Todas as 5 visões + Tracker</strong></li>
+          <li>Board Unificado</li>
+          <li>Synconnect (CRM completo)</li>
+          <li><strong>200 interações/mês</strong> com Mestre Kan IA</li>
+          <li>OKRs + Dojo + Documentos</li>
+          <li>Webhooks e calendário</li>
+          <li class="no">Captação (formulários)</li>
+        </ul>
+        <button class="btn btn-primary" onclick="checkout('faixa_roxa')">Subir pra Faixa Roxa →</button>
+      </div>
+
+      <div class="plan" id="plan-preta">
+        <span class="belt-tag">Mestre · Sensei</span>
+        <div class="belt-name"><span class="belt-vis black"></span><strong>Faixa Preta</strong></div>
+        <div class="tag" data-monthly="79,90" data-annual="66,60">
+          <span class="num">R$ <span class="num-val">79,90</span></span>
+          <span class="per">/ usuário / mês</span>
+        </div>
+        <div class="tag-desc">Domínio total da operação.</div>
+        <ul class="feats">
+          <li>Tudo da Roxa, mais:</li>
+          <li><strong>Boards ilimitados</strong></li>
+          <li><strong>Lab / Canvas ilimitados</strong></li>
+          <li><strong>1.000 interações/mês</strong> com Mestre Kan IA</li>
+          <li>Captação (formulários públicos)</li>
+          <li>Régua de follow-up automática</li>
+          <li>Convidados externos</li>
+          <li>Audit log completo</li>
+          <li>SSO (SAML / Google Workspace)</li>
+        </ul>
+        <button class="btn btn-primary" onclick="checkout('faixa_preta')">Subir pra Faixa Preta →</button>
+      </div>
+
+    </div>
+
+    <div class="guarantee">
+      <strong>7 dias pra mudar de ideia</strong>
+      <p>Direito de arrependimento garantido pelo Código de Defesa do Consumidor (art. 49). Cancela quando quiser, sem multa, e seus dados ficam disponíveis pra exportação por mais 90 dias.</p>
+    </div>
+
+    <div class="faq">
+      <h3>Perguntas frequentes sobre cobrança</h3>
+      <details class="faq-item">
+        <summary>Como é o pagamento?</summary>
+        <p>Cartão de crédito (Visa, Mastercard, Elo, Amex) ou PIX. Cobrança mensal recorrente — você não precisa fazer nada todo mês. Para o plano anual, é uma cobrança única na contratação.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso cancelar a qualquer momento?</summary>
+        <p>Sim. Em <em>Configurações → Plano</em>, clique em "Gerenciar assinatura" — abre o portal seguro do Stripe pra cancelar, atualizar cartão, baixar recibos, etc. O cancelamento interrompe a renovação; o acesso continua até o fim do ciclo já pago.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Recebo nota fiscal?</summary>
+        <p>Sim. Recibo da assinatura por e-mail e nota fiscal eletrônica emitida automaticamente pela Synkan Management Lab.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O que acontece se eu fizer downgrade?</summary>
+        <p>Seus dados ficam intactos. Boards e canvas que excedem o limite do plano novo ficam arquivados — voltam ativos automaticamente se você fizer upgrade no futuro.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Tem desconto pra equipes maiores?</summary>
+        <p>Sim. A partir de 10 usuários, oferecemos um plano <strong>Faixa Preta 2° dan</strong> com SLA, RBAC avançado, integrações sob medida e interações ilimitadas. Escreva para <a href="mailto:contato@synkan.com.br">contato@synkan.com.br</a>.</p>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="/">Início</a> ·
+      <a href="/termos">Termos</a> ·
+      <a href="/privacidade">Privacidade</a> ·
+      <a href="mailto:contato@synkan.com.br">Contato</a>
+    </div>
+    © 2026 Synkan Management Lab · Feito no Brasil
+  </div>
+</footer>
+
+<script>
+// ── Configuração: substitua pela URL do seu billing_server em produção ──
+const BILLING_API = window.SYNKAN_BILLING_API || 'http://127.0.0.1:9998';
+
+let cycle = 'monthly';
+
+function setCycle(c){
+  cycle = c;
+  document.querySelectorAll('#cycle-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.cycle === c);
+  });
+  // Atualiza preços exibidos
+  document.querySelectorAll('.tag[data-monthly]').forEach(tag => {
+    const val = tag.dataset[cycle];
+    if (val) tag.querySelector('.num-val').textContent = val;
+  });
+}
+
+function showError(msg){
+  const b = document.getElementById('error-banner');
+  b.textContent = msg;
+  b.classList.add('show');
+  b.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+async function checkout(planCode){
+  // Pega user_id e email do usuário logado.
+  // No app real, você vai injetar isso via meta tag ou window.SYNKAN_USER no momento de embed.
+  const user = window.SYNKAN_USER || {};
+  const userId = user.id || localStorage.getItem('synkan_user_id');
+  const userEmail = user.email || localStorage.getItem('synkan_user_email');
+
+  if (!userId) {
+    showError('Você precisa estar logado pra fazer upgrade. Volta ao app, faz login e tenta de novo.');
+    return;
+  }
+
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Abrindo checkout…';
+
+  try {
+    const r = await fetch(BILLING_API + '/api/billing/create-checkout', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        plan_code: planCode,
+        user_id: userId,
+        user_email: userEmail,
+      }),
+    });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.message || 'Falha ao criar sessão de checkout');
+    }
+    const data = await r.json();
+    if (data.checkout_url) {
+      window.location = data.checkout_url;
+    } else {
+      throw new Error('Resposta inesperada do servidor de cobrança');
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = originalText;
+    showError('Não consegui abrir o checkout: ' + e.message + '. Tenta de novo em alguns instantes ou escreva pra contato@synkan.com.br.');
+  }
+}
+
+// Detecta se voltou de checkout cancelado
+const params = new URLSearchParams(window.location.search);
+if (params.get('canceled') === '1') {
+  showError('Checkout cancelado — você pode tentar de novo quando quiser.');
+}
+</script>
+
+</body>
+</html>

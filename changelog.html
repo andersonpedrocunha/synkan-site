@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Changelog — Synkan Management Lab</title>
+<meta name="description" content="Histórico de atualizações, novos recursos e correções do Synkan." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ink:#111111; --ink-2:#2D2D2D; --ink-3:#6B6B6B; --ink-4:#A0A0A0;
+  --bg:#F4F4F2; --line:#E5E5E2; --line-2:#D4D4D0;
+  --new-bg:#E8F2DA; --new:#3B6D11;
+  --imp-bg:#EEEDFE; --imp:#3C3489;
+  --fix-bg:#FBF1E0; --fix:#BA7517;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--ink);}
+.container{width:100%;max-width:780px;margin:0 auto;padding:0 24px;}
+.nav-container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;}
+.logo-name{font-weight:700;font-size:17px;display:inline-flex;align-items:baseline;gap:5px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);}
+@media(max-width:560px){.logo-suffix{display:none;}}
+.back-link{font-size:13px;color:var(--ink-2);text-decoration:none;font-weight:500;border:1px solid var(--line);padding:7px 13px;border-radius:8px;background:#fff;}
+.main{padding:48px 0 80px;background:#fff;border-bottom:1px solid var(--line);min-height:70vh;}
+.head{margin-bottom:36px;}
+.head h1{font-size:clamp(30px,4.5vw,42px);font-weight:700;letter-spacing:-.025em;margin-bottom:8px;}
+.head p{font-size:15px;color:var(--ink-3);}
+.head .rss{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12.5px;color:var(--ink-3);text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:999px;}
+.head .rss:hover{color:var(--ink);border-color:var(--line-2);}
+
+/* Versão */
+.version{margin-bottom:48px;}
+.version-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.version-num{font-size:24px;font-weight:700;letter-spacing:-.015em;color:var(--ink);}
+.version-date{font-size:13px;color:var(--ink-3);font-weight:500;}
+.version-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--ink);color:#fff;}
+.version-tag.beta{background:var(--imp);}
+.version-summary{font-size:14.5px;color:var(--ink-2);margin-bottom:16px;line-height:1.55;}
+.entry{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.entry-tag{flex-shrink:0;display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;font-family:var(--font-sans);min-width:62px;text-align:center;margin-top:1px;}
+.entry-tag.new{background:var(--new-bg);color:var(--new);}
+.entry-tag.imp{background:var(--imp-bg);color:var(--imp);}
+.entry-tag.fix{background:var(--fix-bg);color:var(--fix);}
+.entry-text{font-size:14px;color:var(--ink-2);line-height:1.55;flex:1;}
+.entry-text strong{color:var(--ink);font-weight:600;}
+
+footer{padding:32px 0 28px;background:#fff;text-align:center;font-size:12.5px;color:var(--ink-4);}
+footer a{color:var(--ink-3);}
+.foot-links{margin-bottom:8px;}
+.foot-links a{margin:0 8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container nav-inner">
+    <a href="/" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <a href="/" class="back-link">← Voltar</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="container">
+
+    <div class="head">
+      <h1>Changelog</h1>
+      <p>O que mudou no Synkan, em ordem cronológica reversa.</p>
+    </div>
+
+    <div class="version">
+      <div class="version-head">
+        <span class="version-num">v8.4</span>
+        <span class="version-date">30 de abril de 2026</span>
+        <span class="version-tag">atual</span>
+      </div>
+      <p class="version-summary">Relatórios profissionais, marca personalizada nos PDFs e funil de vendas com forecast.</p>
+
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Dashboard em PDF com a sua marca.</strong> Botão de exportar no topo do Dashboard. O PDF sai com o logo e o nome da empresa do usuário em destaque, e "Gerado por Synkan Management Lab" como assinatura discreta no rodapé.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Funil de Vendas com forecast ponderado.</strong> Pipeline total, forecast (valor × probabilidade por etapa) e taxa de conversão automáticos no Dashboard sempre que o board tem campo de moeda. Probabilidades padrão para etapas conhecidas (lead 5%, qualificado 20%, proposta 45%, negociação 70%, fechado 100%).</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag imp">aprimorado</span>
+        <span class="entry-text"><strong>Tracker → cobrança em 1 clique.</strong> Invoice em PDF com sua marca, valor por hora, período customizável e cliente vinculado ao Synconnect. Relatório de horas pronto pra enviar.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag imp">aprimorado</span>
+        <span class="entry-text"><strong>Identidade visual unificada.</strong> Marca "Synkan Management Lab" aparece de forma discreta em todos os relatórios e na landing. Adequação visual da assinatura nos PDFs.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag fix">correção</span>
+        <span class="entry-text">Removido cabeçalho automático do navegador na exportação do Dashboard em PDF — agora o relatório começa direto com a marca da sua empresa, sem texto extra.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Páginas legais.</strong> Termos de Uso e Política de Privacidade (LGPD-compliant) publicadas.</span>
+      </div>
+    </div>
+
+    <div class="version">
+      <div class="version-head">
+        <span class="version-num">v8.3</span>
+        <span class="version-date">março de 2026</span>
+      </div>
+      <p class="version-summary">Lab/Canvas chega com IA, OKRs ganham vínculo direto.</p>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Lab / Canvas com IA.</strong> Cinco formatos de canvas: branco, mapa de ideias, documento, tabela, plano de ação. Mestre Kan gera o canvas inteiro a partir de um tema. Promoção de nodes/bullets/linhas pra cards do board com 1 clique.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>OKRs com Key Results vinculados ao Canvas.</strong> Acompanhe % de avanço de KRs ligados a nodes do Lab.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag imp">aprimorado</span>
+        <span class="entry-text">Undo/Redo no Lab (Ctrl+Z / Ctrl+Y) e 11 tipos de node disponíveis (sticky, idea, feature, problem, goal, risk, milestone…).</span>
+      </div>
+    </div>
+
+    <div class="version">
+      <div class="version-head">
+        <span class="version-num">v8.2</span>
+        <span class="version-date">fevereiro de 2026</span>
+      </div>
+      <p class="version-summary">Synconnect (CRM), Captação de leads e gamificação Dojo.</p>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Synconnect.</strong> CRM integrado: leads, clientes e fornecedores. CNPJ autocomplete via BrasilAPI. Customer 360 com timeline por contato. Lead Score automático (Hot/Warm/Cold).</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Captação.</strong> Builder de formulários públicos. URL pra colar em site, redes sociais, e-mails. Inbox de leads com pré-preenchimento e conversão pra Synconnect + board em 1 clique.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Dojo (gamificação opcional).</strong> 9 faixas de jiu-jitsu (branca → preta 2° dan), conquistas, missões diárias e semanais. Streak conta dias úteis e tolera 1 falta/semana.</span>
+      </div>
+    </div>
+
+    <div class="version">
+      <div class="version-head">
+        <span class="version-num">v8.1</span>
+        <span class="version-date">janeiro de 2026</span>
+      </div>
+      <p class="version-summary">Board Unificado e modo Cloud com Supabase.</p>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Board Unificado.</strong> Vista virtual que agrega cards de todos os boards numa tela só. Funciona nas 5 visões (Kanban, Checklist, Gantt, Calendário, Dashboard).</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Modo Cloud.</strong> Sincronização em tempo real via Supabase com Row Level Security por board. Modo Local (offline, localStorage + IndexedDB) continua disponível.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Membros e permissões.</strong> Convide pessoas com role Viewer / Editor / Admin.</span>
+      </div>
+    </div>
+
+    <div class="version">
+      <div class="version-head">
+        <span class="version-num">v8.0</span>
+        <span class="version-date">novembro de 2025</span>
+        <span class="version-tag beta">marco</span>
+      </div>
+      <p class="version-summary">Reescrita arquitetural. Nasce o Synkan como o conhecemos hoje.</p>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Cinco visões do mesmo board.</strong> Kanban, Checklist, Gantt, Calendário e Dashboard.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Mestre Kan IA.</strong> Assistente embutido nos cards (Claude Haiku via servidor local). Quebra em subtarefas, redige e-mails de cobrança, resume threads, sugere próxima ação.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Time tracking integrado.</strong> Cronômetro em cada card. Soma horas por pessoa, coluna, board e dia.</span>
+      </div>
+      <div class="entry">
+        <span class="entry-tag new">novo</span>
+        <span class="entry-text"><strong>Templates prontos.</strong> 10 templates de board com colunas, marcadores, campos personalizados e cards de exemplo.</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--ink-3);text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);">Quer sugerir uma melhoria? <a href="mailto:contato@synkan.com.br">Mande um e-mail</a> — leio todas.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="/">Início</a> ·
+      <a href="/status">Status</a> ·
+      <a href="/termos">Termos</a> ·
+      <a href="/privacidade">Privacidade</a>
+    </div>
+    © 2026 Synkan Management Lab · Feito no Brasil
+  </div>
+</footer>
+
+</body>
+</html>

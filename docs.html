@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Documentação — Synkan Management Lab</title>
+<meta name="description" content="Guias, tutoriais e referência completa do Synkan." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ink:#111111; --ink-2:#2D2D2D; --ink-3:#6B6B6B; --ink-4:#A0A0A0;
+  --bg:#F4F4F2; --line:#E5E5E2; --line-2:#D4D4D0; --accent:#3C3489;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--ink);}
+.container{width:100%;max-width:1080px;margin:0 auto;padding:0 24px;}
+.nav-container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;}
+.logo-name{font-weight:700;font-size:17px;display:inline-flex;align-items:baseline;gap:5px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);}
+@media(max-width:560px){.logo-suffix{display:none;}}
+.back-link{font-size:13px;color:var(--ink-2);text-decoration:none;font-weight:500;border:1px solid var(--line);padding:7px 13px;border-radius:8px;background:#fff;}
+.main{padding:48px 0 80px;background:#fff;border-bottom:1px solid var(--line);min-height:70vh;}
+
+.head{text-align:center;max-width:680px;margin:0 auto 48px;}
+.head h1{font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-.025em;margin-bottom:14px;line-height:1.1;}
+.head p{font-size:17px;color:var(--ink-3);}
+
+.search{max-width:600px;margin:0 auto 56px;}
+.search input{width:100%;padding:14px 18px 14px 44px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px;font-family:var(--font-sans);outline:none;transition:border-color .15s,box-shadow .15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.5' y1='16.5' x2='21' y2='21'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:14px center;background-size:18px 18px;}
+.search input:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(17,17,17,.06);}
+.search-empty{font-size:13px;color:var(--ink-3);text-align:center;margin-top:10px;}
+
+.cat-h{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:36px 2px 14px;display:flex;align-items:center;gap:8px;}
+.cat-h::before{content:'';display:inline-block;width:14px;height:1px;background:var(--ink-3);}
+
+.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:880px){.docs-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.docs-grid{grid-template-columns:1fr;}}
+.doc-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s;}
+.doc-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.05);}
+.doc-card-h{display:flex;align-items:center;gap:10px;}
+.doc-card-icon{width:32px;height:32px;border-radius:8px;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-card-icon svg{width:16px;height:16px;stroke-width:1.6;}
+.doc-card h3{font-size:14.5px;font-weight:600;color:var(--ink);}
+.doc-card p{font-size:13px;color:var(--ink-3);line-height:1.5;}
+.doc-card .read-time{font-size:11px;color:var(--ink-4);margin-top:6px;text-transform:uppercase;letter-spacing:.05em;font-weight:500;}
+
+.coming-soon{display:inline-block;font-size:9.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);background:var(--bg);padding:2px 7px;border-radius:999px;margin-left:6px;}
+
+/* Quick start */
+.quick-start{background:#111;color:#fff;border-radius:14px;padding:32px;margin-bottom:48px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;}
+.quick-start-text strong{display:block;font-size:18px;margin-bottom:6px;}
+.quick-start-text p{font-size:14px;color:rgba(255,255,255,.7);max-width:500px;}
+.quick-start a{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#111;padding:11px 18px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;}
+
+footer{padding:32px 0 28px;background:#fff;text-align:center;font-size:12.5px;color:var(--ink-4);}
+footer a{color:var(--ink-3);}
+.foot-links{margin-bottom:8px;}
+.foot-links a{margin:0 8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container nav-inner">
+    <a href="/" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <a href="/" class="back-link">← Voltar</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="container">
+
+    <div class="head">
+      <h1>Documentação</h1>
+      <p>Guias, tutoriais e referência pra você dominar o Synkan.</p>
+    </div>
+
+    <div class="search">
+      <input id="docs-search" type="text" placeholder="Buscar nos guias…" oninput="filterDocs(this.value)" />
+      <div class="search-empty" id="search-empty" style="display:none;">Nenhum guia encontrado. Tenta outra palavra ou <a href="mailto:suporte@synkan.com.br">manda um e-mail</a>.</div>
+    </div>
+
+    <div class="quick-start">
+      <div class="quick-start-text">
+        <strong>Primeira vez no Synkan?</strong>
+        <p>Comece pelo Quick Start: criar conta, montar seu primeiro board e mover seu primeiro card em menos de 5 minutos.</p>
+      </div>
+      <a href="#quick-start">Quick Start →</a>
+    </div>
+
+    <div class="cat-h">Começando</div>
+    <div class="docs-grid" data-cat="comecando">
+      <a class="doc-card" href="#" data-tags="conta cadastro signup login">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg></div>
+          <h3>Criar sua conta <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Como se cadastrar, escolher modo local ou cloud, e configurar seu perfil.</p>
+        <div class="read-time">3 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="primeiro board template kanban">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.2"/><rect x="10" y="4" width="5" height="11" rx="1.2"/><rect x="17" y="4" width="4" height="8" rx="1.2"/></svg></div>
+          <h3>Seu primeiro board <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>A partir de um template ou do zero. Colunas, marcadores e campos customizados.</p>
+        <div class="read-time">5 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="card cards criar editar">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><line x1="3" y1="11" x2="21" y2="11"/></svg></div>
+          <h3>Trabalhando com cards <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Criar, editar, mover, atribuir responsável, deadline e prioridade.</p>
+        <div class="read-time">4 min</div>
+      </a>
+    </div>
+
+    <div class="cat-h">Visões e produtividade</div>
+    <div class="docs-grid" data-cat="visoes">
+      <a class="doc-card" href="#" data-tags="kanban colunas wip drag drop">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.2"/><rect x="10" y="4" width="5" height="11" rx="1.2"/><rect x="17" y="4" width="4" height="8" rx="1.2"/></svg></div>
+          <h3>Kanban e WIP limits <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Configurar colunas, definir limites de WIP e usar drag & drop entre boards.</p>
+        <div class="read-time">4 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="gantt timeline cronograma prazo">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="5" x2="21" y2="5"/><rect x="3" y="9" width="11" height="3" rx=".5"/><rect x="7" y="14" width="13" height="3" rx=".5"/></svg></div>
+          <h3>Gantt: timeline visual <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Escala dia/semana/mês, barras por prazo e dependências entre cards.</p>
+        <div class="read-time">5 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="dashboard kpi exportar pdf forecast">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+          <h3>Dashboard e relatórios em PDF <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Throughput, cycle time, funil de vendas com forecast e exportação com sua marca.</p>
+        <div class="read-time">6 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="board unificado cross visao">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg></div>
+          <h3>Board Unificado <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Vista agregada de todos os seus boards. Como filtrar e mover cards entre boards.</p>
+        <div class="read-time">3 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="checklist calendario calendar">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
+          <h3>Calendário e Checklist <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Cards por deadlines no mês ou semana. Lista pra marcar o que fechou.</p>
+        <div class="read-time">3 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="filtros tags marcadores">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 9 12 9 19 15 19 15 12 21 6 3 6"/></svg></div>
+          <h3>Filtros e marcadores <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Tags, prioridade e datas. Como salvar combinações de filtros frequentes.</p>
+        <div class="read-time">3 min</div>
+      </a>
+    </div>
+
+    <div class="cat-h">Módulos avançados</div>
+    <div class="docs-grid" data-cat="avancados">
+      <a class="doc-card" href="#" data-tags="synconnect crm leads clientes cnpj">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6"/><rect x="3" y="6" width="18" height="14" rx="1.5"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+          <h3>Synconnect (CRM) <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Cadastrar leads, clientes, fornecedores. CNPJ autocomplete e Customer 360.</p>
+        <div class="read-time">7 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="lab canvas ia ideia mapa">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5"/><path d="M10 3v6L6 17a2 2 0 0 0 1.7 3h8.6a2 2 0 0 0 1.7-3L14 9V3"/></svg></div>
+          <h3>Lab / Canvas com IA <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>5 formatos de canvas. Mestre Kan gera o canvas inteiro a partir de um tema.</p>
+        <div class="read-time">8 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="okr objetivos key results">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+          <h3>OKRs e Key Results <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Definir objetivos por trimestre, vincular KRs a cards e nodes do Canvas.</p>
+        <div class="read-time">5 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="tracker tempo cronometro horas cobranca">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/></svg></div>
+          <h3>Tracker e cobrança em PDF <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Cronômetro nos cards. Gerar invoice em PDF com sua marca e valor por hora.</p>
+        <div class="read-time">6 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="captacao formulario lead inbox">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8a2 2 0 1 1-2.8 2.8a1.7 1.7 0 0 0-1.8-.3a1.7 1.7 0 0 0-1 1.5a2 2 0 1 1-4 0a1.7 1.7 0 0 0-1-1.5a1.7 1.7 0 0 0-1.8.3a2 2 0 1 1-2.8-2.8a1.7 1.7 0 0 0 .3-1.8a1.7 1.7 0 0 0-1.5-1a2 2 0 1 1 0-4a1.7 1.7 0 0 0 1.5-1a1.7 1.7 0 0 0-.3-1.8a2 2 0 1 1 2.8-2.8a1.7 1.7 0 0 0 1.8.3a1.7 1.7 0 0 0 1-1.5a2 2 0 1 1 4 0a1.7 1.7 0 0 0 1 1.5a1.7 1.7 0 0 0 1.8-.3a2 2 0 1 1 2.8 2.8a1.7 1.7 0 0 0-.3 1.8a1.7 1.7 0 0 0 1.5 1a2 2 0 1 1 0 4a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+          <h3>Captação por formulários <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Builder de formulário, URL pública e conversão de lead em cadastro + card.</p>
+        <div class="read-time">5 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="dojo gamificacao xp faixa belt">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6q1.4-1.2 2.8 0t2.8 0t2.8 0t2.8 0t2.8 0t2.8 0t2.8 0"/><path d="M5 9 V20 H19 V9"/></svg></div>
+          <h3>Dojo (gamificação opcional) <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>9 faixas, conquistas e missões. Configurar pesos, caps e ativar/desativar.</p>
+        <div class="read-time">4 min</div>
+      </a>
+    </div>
+
+    <div class="cat-h">IA e integrações</div>
+    <div class="docs-grid" data-cat="ia">
+      <a class="doc-card" href="#" data-tags="ia mestre kan claude prompt">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg></div>
+          <h3>Mestre Kan IA <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Como funciona, limites de interações, segurança e privacidade dos dados.</p>
+        <div class="read-time">6 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="webhook slack discord zapier make n8n">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><line x1="9" y1="12" x2="15" y2="6"/><line x1="9" y1="12" x2="15" y2="18"/></svg></div>
+          <h3>Webhooks e integrações <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Slack, Discord, Zapier, Make, n8n e seu próprio servidor. Eventos disponíveis.</p>
+        <div class="read-time">5 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="export import json backup">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          <h3>Exportar e importar dados <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Backup em JSON, importação de outros kanbans e portabilidade de dados.</p>
+        <div class="read-time">4 min</div>
+      </a>
+    </div>
+
+    <div class="cat-h">Conta e cobrança</div>
+    <div class="docs-grid" data-cat="conta">
+      <a class="doc-card" href="#" data-tags="planos preco upgrade faixa">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15 9h-4.5a1.5 1.5 0 0 0 0 3h3a1.5 1.5 0 0 1 0 3H9"/></svg></div>
+          <h3>Planos e mudança de plano <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Diferenças entre Faixa Branca, Roxa e Preta. Como subir ou cancelar.</p>
+        <div class="read-time">4 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="cobranca recibo nota fiscal">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>Recibos e notas fiscais <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Onde encontrar histórico de cobrança e comprovantes da assinatura.</p>
+        <div class="read-time">2 min</div>
+      </a>
+      <a class="doc-card" href="#" data-tags="empresa logo marca branding">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5L11 18"/></svg></div>
+          <h3>Configurar marca da empresa <span class="coming-soon">em breve</span></h3>
+        </div>
+        <p>Logo, nome e dados da sua empresa que aparecem nos PDFs gerados.</p>
+        <div class="read-time">2 min</div>
+      </a>
+    </div>
+
+    <div class="cat-h">Suporte</div>
+    <div class="docs-grid">
+      <a class="doc-card" href="mailto:suporte@synkan.com.br" data-tags="suporte ajuda contato email">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></div>
+          <h3>Falar com o suporte</h3>
+        </div>
+        <p>Resposta em até 24h em dias úteis. suporte@synkan.com.br</p>
+      </a>
+      <a class="doc-card" href="/status" data-tags="status uptime incidente">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg></div>
+          <h3>Status dos sistemas</h3>
+        </div>
+        <p>Acompanhe disponibilidade da app, API, IA e outros serviços.</p>
+      </a>
+      <a class="doc-card" href="/changelog" data-tags="changelog versao novidade">
+        <div class="doc-card-h">
+          <div class="doc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/><path d="M3 12a9 9 0 0 1 9-9"/></svg></div>
+          <h3>Changelog</h3>
+        </div>
+        <p>Tudo que mudou no Synkan, em ordem cronológica reversa.</p>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="/">Início</a> ·
+      <a href="/status">Status</a> ·
+      <a href="/changelog">Changelog</a> ·
+      <a href="/termos">Termos</a> ·
+      <a href="/privacidade">Privacidade</a>
+    </div>
+    © 2026 Synkan Management Lab · Feito no Brasil
+  </div>
+</footer>
+
+<script>
+function filterDocs(q){
+  const term = (q||'').trim().toLowerCase();
+  const cards = document.querySelectorAll('.doc-card');
+  const cats = document.querySelectorAll('.cat-h');
+  const grids = document.querySelectorAll('.docs-grid');
+  let totalVisible = 0;
+
+  cards.forEach(c => {
+    const text = (c.textContent + ' ' + (c.dataset.tags||'')).toLowerCase();
+    const hit = !term || text.includes(term);
+    c.style.display = hit ? '' : 'none';
+    if (hit) totalVisible++;
+  });
+
+  // Esconde categorias vazias
+  grids.forEach((g, i) => {
+    const visibleInGrid = g.querySelectorAll('.doc-card:not([style*="display: none"])').length;
+    g.style.display = visibleInGrid ? 'grid' : 'none';
+    if (cats[i]) cats[i].style.display = visibleInGrid ? '' : 'none';
+  });
+
+  document.getElementById('search-empty').style.display = (term && totalVisible === 0) ? '' : 'none';
+}
+</script>
+
+</body>
+</html>

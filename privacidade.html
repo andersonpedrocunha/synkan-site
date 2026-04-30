@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidade — Synkan Management Lab</title>
+<meta name="description" content="Como o Synkan trata seus dados pessoais, em conformidade com a LGPD." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ink:#111111;
+  --ink-2:#2D2D2D;
+  --ink-3:#6B6B6B;
+  --ink-4:#A0A0A0;
+  --bg:#F4F4F2;
+  --line:#E5E5E2;
+  --line-2:#D4D4D0;
+  --accent:#3C3489;
+  --ok:#3B6D11;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--ink-4);text-underline-offset:2px;}
+a:hover{text-decoration-color:var(--ink);}
+.container{width:100%;max-width:780px;margin:0 auto;padding:0 24px;}
+.nav-container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:5px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);letter-spacing:0;}
+@media(max-width:560px){.logo-suffix{display:none;}}
+.back-link{font-size:13px;color:var(--ink-2);text-decoration:none;font-weight:500;border:1px solid var(--line);padding:7px 13px;border-radius:8px;background:#fff;}
+.back-link:hover{border-color:var(--line-2);}
+.legal{padding:48px 0 80px;background:#fff;border-bottom:1px solid var(--line);min-height:70vh;}
+.legal-head{margin-bottom:36px;border-bottom:1px solid var(--line);padding-bottom:22px;}
+.legal h1{font-size:clamp(30px,4.5vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:8px;}
+.legal .updated{font-size:13px;color:var(--ink-3);}
+.legal h2{font-size:21px;font-weight:700;letter-spacing:-.012em;margin:42px 0 12px;color:var(--ink);scroll-margin-top:80px;}
+.legal h2 .num{color:var(--ink-4);font-weight:600;margin-right:8px;}
+.legal h3{font-size:15px;font-weight:600;margin:22px 0 8px;color:var(--ink);}
+.legal p{font-size:15px;color:var(--ink-2);margin-bottom:14px;}
+.legal ul,.legal ol{padding-left:22px;margin-bottom:14px;font-size:15px;color:var(--ink-2);}
+.legal li{margin-bottom:7px;}
+.legal strong{color:var(--ink);font-weight:600;}
+.legal-lead{font-size:16px;color:var(--ink-2);margin-bottom:18px;}
+.toc{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:36px;}
+.toc-h{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+.toc ol{column-count:2;column-gap:32px;padding-left:18px;font-size:13.5px;}
+@media(max-width:600px){.toc ol{column-count:1;}}
+.toc li{margin-bottom:5px;break-inside:avoid;}
+.toc a{text-decoration:none;color:var(--ink-2);}
+.toc a:hover{color:var(--ink);text-decoration:underline;}
+.data-table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14px;}
+.data-table th,.data-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+.data-table th{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--bg);}
+.data-table td:first-child{font-weight:600;color:var(--ink);width:32%;}
+.data-table td{color:var(--ink-2);}
+.basis-pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--ink-2);margin-right:5px;margin-bottom:3px;border:1px solid var(--line);}
+.partner{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+.partner-name{font-weight:600;color:var(--ink);font-size:14px;margin-bottom:3px;}
+.partner-purpose{font-size:13px;color:var(--ink-3);margin-bottom:4px;}
+.partner-loc{font-size:12px;color:var(--ink-4);}
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 18px;}
+@media(max-width:600px){.rights-grid{grid-template-columns:1fr;}}
+.right-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.right-card strong{font-size:14px;display:block;margin-bottom:4px;}
+.right-card span{font-size:13px;color:var(--ink-3);line-height:1.5;}
+footer{padding:32px 0 28px;background:#fff;text-align:center;font-size:12.5px;color:var(--ink-4);}
+footer a{color:var(--ink-3);}
+.foot-links{margin-bottom:8px;}
+.foot-links a{margin:0 8px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container nav-inner">
+    <a href="/" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <a href="/" class="back-link">← Voltar</a>
+  </div>
+</nav>
+
+<main class="legal">
+  <div class="container">
+
+    <div class="legal-head">
+      <h1>Política de Privacidade</h1>
+      <p class="updated">Última atualização: 30 de abril de 2026 · Vigência a partir desta data</p>
+    </div>
+
+    <p class="legal-lead">A Synkan Management Lab leva sua privacidade a sério. Este documento explica, de forma clara e objetiva, quais dados pessoais tratamos, por que tratamos, com quem compartilhamos e quais são os seus direitos como titular, em conformidade com a <strong>Lei Geral de Proteção de Dados — LGPD (Lei 13.709/2018)</strong>.</p>
+
+    <div class="toc">
+      <div class="toc-h">Sumário</div>
+      <ol>
+        <li><a href="#s1">Quem somos (Controlador)</a></li>
+        <li><a href="#s2">A quem se aplica</a></li>
+        <li><a href="#s3">Dados que coletamos</a></li>
+        <li><a href="#s4">Como coletamos</a></li>
+        <li><a href="#s5">Para que usamos (bases legais)</a></li>
+        <li><a href="#s6">Com quem compartilhamos</a></li>
+        <li><a href="#s7">Transferência internacional</a></li>
+        <li><a href="#s8">Tempo de retenção</a></li>
+        <li><a href="#s9">Seus direitos</a></li>
+        <li><a href="#s10">Como exercer seus direitos</a></li>
+        <li><a href="#s11">Cookies</a></li>
+        <li><a href="#s12">Segurança</a></li>
+        <li><a href="#s13">Crianças e adolescentes</a></li>
+        <li><a href="#s14">Alterações</a></li>
+        <li><a href="#s15">Contato e DPO</a></li>
+      </ol>
+    </div>
+
+    <h2 id="s1"><span class="num">1.</span>Quem somos (Controlador de Dados)</h2>
+    <p>O Controlador dos dados pessoais tratados na plataforma Synkan é:</p>
+    <p><strong>Synkan Management Lab</strong><br/>
+    CNPJ: <strong>[a preencher]</strong><br/>
+    Endereço: <strong>[a preencher]</strong><br/>
+    E-mail: <a href="mailto:contato@synkan.com.br">contato@synkan.com.br</a><br/>
+    Encarregado de Proteção de Dados (DPO): <a href="mailto:dpo@synkan.com.br">dpo@synkan.com.br</a></p>
+
+    <h2 id="s2"><span class="num">2.</span>A quem se aplica esta Política</h2>
+    <p>Esta Política se aplica a todas as pessoas que interagem com o Synkan, incluindo:</p>
+    <ul>
+      <li>Visitantes do site institucional;</li>
+      <li>Usuários que criam conta no plano gratuito ou pago;</li>
+      <li>Membros convidados para participar de boards de outros clientes;</li>
+      <li>Leads e contatos cadastrados no Synconnect (CRM) por nossos clientes — neste caso, o nosso cliente atua como Controlador e a Synkan como Operadora;</li>
+      <li>Pessoas que se inscrevem em formulários de Captação criados por nossos clientes.</li>
+    </ul>
+
+    <h2 id="s3"><span class="num">3.</span>Dados pessoais que coletamos</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Categoria</th><th>Exemplos</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Identificação</td>
+          <td>Nome, e-mail, foto de perfil, idioma preferido</td>
+        </tr>
+        <tr>
+          <td>Conta e autenticação</td>
+          <td>ID de usuário, hash de senha, tokens de sessão, provedor de SSO (Google/Microsoft, quando aplicável)</td>
+        </tr>
+        <tr>
+          <td>Empresa do usuário</td>
+          <td>Razão social, CNPJ, endereço, telefone, e-mail comercial, logotipo (utilizados em relatórios e cobrança)</td>
+        </tr>
+        <tr>
+          <td>Conteúdo da plataforma</td>
+          <td>Cards, comentários, OKRs, documentos, anexos, dados do CRM (leads, clientes, fornecedores) inseridos pelo usuário</td>
+        </tr>
+        <tr>
+          <td>Pagamento</td>
+          <td>Plano contratado, histórico de cobrança, últimos 4 dígitos do cartão (dado de cartão completo é tratado pelo processador de pagamento, nunca por nós)</td>
+        </tr>
+        <tr>
+          <td>Uso e telemetria</td>
+          <td>Endereço IP, identificador de sessão, ações realizadas (auditoria), navegador, sistema operacional, fuso horário</td>
+        </tr>
+        <tr>
+          <td>Comunicação</td>
+          <td>Mensagens trocadas com nosso suporte, respostas a pesquisas, opt-in/opt-out de comunicações</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Não solicitamos nem armazenamos intencionalmente <strong>dados pessoais sensíveis</strong> (origem racial, convicção religiosa, opinião política, filiação sindical, dados de saúde, vida sexual, dado genético ou biométrico). Caso o Usuário insira tais dados voluntariamente em campos livres do produto, ele assume responsabilidade pela legitimidade do tratamento.</p>
+
+    <h2 id="s4"><span class="num">4.</span>Como coletamos</h2>
+    <ul>
+      <li><strong>Diretamente do Usuário</strong> — durante cadastro, edição de perfil, criação de boards, lançamento de leads e demais ações na Plataforma;</li>
+      <li><strong>Automaticamente</strong> — por meio de cookies, logs de servidor e ferramentas de telemetria, conforme descrito na seção 11;</li>
+      <li><strong>De terceiros</strong> — provedores de SSO (Google/Microsoft) quando o Usuário escolhe essa modalidade de login, e BrasilAPI quando há consulta de CNPJ.</li>
+    </ul>
+
+    <h2 id="s5"><span class="num">5.</span>Para que usamos seus dados (bases legais)</h2>
+    <p>Cada finalidade do tratamento se baseia em uma das hipóteses legais previstas no art. 7º da LGPD:</p>
+
+    <h3>Operação do serviço contratado</h3>
+    <p><span class="basis-pill">execução de contrato</span></p>
+    <p>Autenticar o Usuário, sincronizar boards e cards, enviar notificações da plataforma, processar pagamentos e prestar suporte técnico.</p>
+
+    <h3>Cumprimento de obrigações legais e regulatórias</h3>
+    <p><span class="basis-pill">obrigação legal</span></p>
+    <p>Emissão de documentos fiscais, retenção de registros financeiros pelos prazos legais, atendimento a determinações de autoridades competentes.</p>
+
+    <h3>Melhoria do produto e analytics agregado</h3>
+    <p><span class="basis-pill">legítimo interesse</span></p>
+    <p>Análise estatística agregada de uso, identificação de bugs, otimização de performance. Não usamos dados pessoais identificáveis para construir perfis publicitários nem os comercializamos.</p>
+
+    <h3>Comunicações de produto e marketing</h3>
+    <p><span class="basis-pill">consentimento</span> <span class="basis-pill">legítimo interesse</span></p>
+    <p>Envio de novidades, dicas e ofertas. O Usuário pode descadastrar-se a qualquer momento por link nos próprios e-mails ou nas configurações da conta.</p>
+
+    <h3>Segurança e prevenção de fraude</h3>
+    <p><span class="basis-pill">legítimo interesse</span></p>
+    <p>Detecção de tentativas de invasão, abuso de cota, uso compartilhado indevido de credenciais e demais atividades suspeitas.</p>
+
+    <h3>Funcionalidades de Inteligência Artificial</h3>
+    <p><span class="basis-pill">execução de contrato</span></p>
+    <p>Quando o Usuário aciona uma função do Mestre Kan (resumir, dividir em subtarefas, gerar e-mail, etc.), o conteúdo do contexto é enviado à Anthropic para processamento. Detalhes na seção 6.</p>
+
+    <h2 id="s6"><span class="num">6.</span>Com quem compartilhamos seus dados</h2>
+    <p>Não vendemos, alugamos nem comercializamos dados pessoais. Compartilhamos com prestadores de serviço (operadores) estritamente para viabilizar o funcionamento do Synkan:</p>
+
+    <div class="partner">
+      <div class="partner-name">Supabase, Inc.</div>
+      <div class="partner-purpose">Hospedagem do banco de dados, autenticação e armazenamento de arquivos.</div>
+      <div class="partner-loc">Estados Unidos · proteção contratual via DPA do Supabase</div>
+    </div>
+    <div class="partner">
+      <div class="partner-name">Anthropic, PBC</div>
+      <div class="partner-purpose">Processamento das funcionalidades de IA (Claude Haiku) acionadas pelo Usuário.</div>
+      <div class="partner-loc">Estados Unidos · dados não são utilizados para treinamento de modelos por padrão (Anthropic Privacy Policy)</div>
+    </div>
+    <div class="partner">
+      <div class="partner-name">Processador de pagamento</div>
+      <div class="partner-purpose">Cobrança de assinaturas, emissão de recibos, prevenção de fraude.</div>
+      <div class="partner-loc">[a definir conforme contratação] · dados de cartão são tokenizados pelo processador, nunca passam pelos nossos servidores</div>
+    </div>
+    <div class="partner">
+      <div class="partner-name">BrasilAPI</div>
+      <div class="partner-purpose">Consulta pública de dados de CNPJ quando solicitada pelo Usuário.</div>
+      <div class="partner-loc">Brasil · dados públicos da Receita Federal</div>
+    </div>
+    <div class="partner">
+      <div class="partner-name">Provedores de e-mail e SSO</div>
+      <div class="partner-purpose">Envio de e-mails transacionais e autenticação federada (Google, Microsoft).</div>
+      <div class="partner-loc">Estados Unidos · proteção contratual conforme DPAs respectivos</div>
+    </div>
+    <p>Podemos também compartilhar dados quando exigido por <strong>ordem judicial, autoridade competente ou para proteger direitos da Synkan, dos seus usuários ou de terceiros</strong>, sempre nos limites estritos da legislação.</p>
+
+    <h2 id="s7"><span class="num">7.</span>Transferência internacional</h2>
+    <p>Parte dos nossos provedores opera fora do Brasil (principalmente Estados Unidos). A LGPD permite essa transferência quando há garantias adequadas, conforme art. 33. Adotamos cláusulas contratuais com nossos operadores para assegurar nível de proteção compatível com o exigido pela legislação brasileira.</p>
+
+    <h2 id="s8"><span class="num">8.</span>Tempo de retenção</h2>
+    <ul>
+      <li><strong>Dados da conta ativa:</strong> mantidos enquanto a conta estiver em uso.</li>
+      <li><strong>Conta encerrada:</strong> dados pessoais identificáveis são eliminados em até <strong>90 dias</strong> após o encerramento, salvo quando exigido por obrigação legal.</li>
+      <li><strong>Registros fiscais e financeiros:</strong> mantidos pelos prazos legais aplicáveis (em regra, 5 anos para fins tributários).</li>
+      <li><strong>Logs de auditoria e segurança:</strong> mantidos por até <strong>12 meses</strong> para fins de prevenção de fraude e investigação de incidentes.</li>
+      <li><strong>Backups:</strong> rotação automática que sobrescreve os dados completamente em até <strong>35 dias</strong>.</li>
+    </ul>
+
+    <h2 id="s9"><span class="num">9.</span>Seus direitos como titular</h2>
+    <p>A LGPD garante a você os seguintes direitos sobre seus dados pessoais:</p>
+    <div class="rights-grid">
+      <div class="right-card"><strong>Confirmação e acesso</strong><span>Saber se tratamos seus dados e obter cópia.</span></div>
+      <div class="right-card"><strong>Correção</strong><span>Atualizar dados incompletos, inexatos ou desatualizados.</span></div>
+      <div class="right-card"><strong>Anonimização ou eliminação</strong><span>De dados desnecessários ou tratados em desconformidade com a LGPD.</span></div>
+      <div class="right-card"><strong>Portabilidade</strong><span>Receber seus dados em formato estruturado (exportação JSON disponível na própria conta).</span></div>
+      <div class="right-card"><strong>Eliminação dos dados pessoais</strong><span>Tratados com base no consentimento, exceto quando houver outra base legal aplicável.</span></div>
+      <div class="right-card"><strong>Informação sobre compartilhamento</strong><span>Saber com quais entidades públicas e privadas fizemos uso compartilhado.</span></div>
+      <div class="right-card"><strong>Revogação do consentimento</strong><span>A qualquer momento, sem prejuízo dos tratamentos amparados em outras bases legais.</span></div>
+      <div class="right-card"><strong>Oposição</strong><span>A tratamentos baseados em legítimo interesse, mediante manifestação fundamentada.</span></div>
+    </div>
+
+    <h2 id="s10"><span class="num">10.</span>Como exercer seus direitos</h2>
+    <p>Você pode exercer qualquer dos direitos listados acima das seguintes formas:</p>
+    <ul>
+      <li><strong>Diretamente no produto:</strong> em <em>Configurações → Dados &amp; LGPD</em>, é possível exportar todos os seus dados em JSON e excluir a conta com todos os dados associados.</li>
+      <li><strong>Por e-mail:</strong> envie sua solicitação para <a href="mailto:dpo@synkan.com.br">dpo@synkan.com.br</a> com seu pedido e identificação. Responderemos em até <strong>15 dias</strong>.</li>
+    </ul>
+    <p>Em caso de discordância sobre o tratamento dos seus dados, você também pode encaminhar denúncia à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong>, em <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a>.</p>
+
+    <h2 id="s11"><span class="num">11.</span>Cookies e tecnologias similares</h2>
+    <p>Utilizamos cookies e tecnologias equivalentes (localStorage, IndexedDB) para:</p>
+    <ul>
+      <li><strong>Cookies estritamente necessários</strong> — manter você logado e preservar preferências essenciais (tema, idioma, board atual). Não exigem consentimento.</li>
+      <li><strong>Cookies de desempenho e analytics</strong> — entender como o produto é usado, em base agregada e não identificável. Você pode optar por não permitir nas configurações.</li>
+    </ul>
+    <p>Não utilizamos cookies publicitários nem compartilhamos dados com redes de anúncios.</p>
+
+    <h2 id="s12"><span class="num">12.</span>Segurança</h2>
+    <p>Adotamos medidas técnicas e organizacionais razoáveis para proteger seus dados, incluindo:</p>
+    <ul>
+      <li>Criptografia em trânsito (TLS 1.2+) em todas as comunicações;</li>
+      <li>Criptografia em repouso para arquivos armazenados;</li>
+      <li>Row-Level Security no banco de dados — cada cliente só enxerga os próprios dados;</li>
+      <li>Hash de senhas com algoritmos modernos (nunca armazenadas em texto puro);</li>
+      <li>Controle de acesso baseado em papéis (RBAC) para nossa equipe interna;</li>
+      <li>Monitoramento de eventos de segurança e logs de auditoria.</li>
+    </ul>
+    <p>Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, notificaremos a ANPD e os titulares afetados nos prazos exigidos pela LGPD.</p>
+
+    <h2 id="s13"><span class="num">13.</span>Crianças e adolescentes</h2>
+    <p>O Synkan é destinado a maiores de 18 anos no contexto comercial. Não direcionamos o serviço a crianças e adolescentes, nem coletamos conscientemente dados desse público. Caso identifiquemos cadastro de menor sem autorização do responsável, eliminaremos os dados imediatamente.</p>
+
+    <h2 id="s14"><span class="num">14.</span>Alterações nesta Política</h2>
+    <p>Esta Política pode ser atualizada periodicamente. Alterações materiais serão comunicadas com antecedência mínima de <strong>15 dias</strong> via e-mail e/ou aviso na Plataforma. Recomendamos consultar este documento regularmente. A data da última atualização sempre constará no topo da página.</p>
+
+    <h2 id="s15"><span class="num">15.</span>Contato e Encarregado (DPO)</h2>
+    <p>Dúvidas, solicitações ou exercício de direitos:</p>
+    <ul>
+      <li><strong>Encarregado de Proteção de Dados (DPO):</strong> <a href="mailto:dpo@synkan.com.br">dpo@synkan.com.br</a></li>
+      <li><strong>E-mail geral:</strong> <a href="mailto:contato@synkan.com.br">contato@synkan.com.br</a></li>
+      <li><strong>Suporte técnico:</strong> <a href="mailto:suporte@synkan.com.br">suporte@synkan.com.br</a></li>
+    </ul>
+
+    <p style="margin-top:48px;color:var(--ink-3);font-size:13px;">Esta Política foi elaborada em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018), o Marco Civil da Internet (Lei 12.965/2014) e demais normas aplicáveis.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="/">Início</a> ·
+      <a href="/termos">Termos</a> ·
+      <a href="/privacidade">Privacidade</a> ·
+      <a href="mailto:contato@synkan.com.br">Contato</a>
+    </div>
+    © 2026 Synkan Management Lab · Feito no Brasil
+  </div>
+</footer>
+
+</body>
+</html>

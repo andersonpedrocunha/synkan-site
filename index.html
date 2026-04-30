@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Synkan Management Lab — Kanban, CRM, OKRs e IA num só lugar</title>
+<meta name="description" content="Synkan Management Lab une kanban, CRM (Synconnect), Lab de ideias com IA, OKRs, time tracking e gamificação. Tudo num app só, sincronizado em tempo real." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Crect x='6' y='11' width='4' height='14' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.2' fill='%23fff'/%3E%3Crect x='22' y='14' width='4' height='11' rx='1.2' fill='rgba(255,255,255,.55)'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:'SF Mono',ui-monospace,'Cascadia Mono',Menlo,Consolas,monospace;
+  --ink:#111111;
+  --ink-2:#2D2D2D;
+  --ink-3:#6B6B6B;
+  --ink-4:#A0A0A0;
+  --bg:#F4F4F2;
+  --bg-card:#FFFFFF;
+  --bg-soft:#FAFAF8;
+  --line:#E5E5E2;
+  --line-2:#D4D4D0;
+  --accent:#3C3489;
+  --accent-soft:#7F77DD;
+  --accent-bg:#EEEDFE;
+  --ok:#3B6D11;
+  --bad:#A32D2D;
+  --warn:#BA7517;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 14px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 32px rgba(0,0,0,.08);
+  --radius-sm:8px;
+  --radius:12px;
+  --radius-lg:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px;}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.logo{display:inline-flex;align-items:center;gap:9px;}
+.logo-mark{width:34px;height:34px;flex-shrink:0;}
+.logo-name{font-weight:700;font-size:18px;letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:6px;}
+.logo-suffix{font-weight:500;font-size:13px;color:var(--ink-3);letter-spacing:0;}
+@media(max-width:560px){.logo-suffix{display:none;}}
+
+/* ── Bars motif (logo geometric language) ───────────────── */
+.bars{display:inline-flex;align-items:flex-end;gap:2px;}
+.bars span{background:currentColor;border-radius:1px;}
+.bars.sm{height:11px;}.bars.sm span{width:2px;}
+.bars.sm span:nth-child(1){height:5px;opacity:.55;}
+.bars.sm span:nth-child(2){height:9px;}
+.bars.sm span:nth-child(3){height:4px;opacity:.55;}
+.bars.md{height:16px;}.bars.md span{width:3px;border-radius:1.5px;}
+.bars.md span:nth-child(1){height:9px;opacity:.55;}
+.bars.md span:nth-child(2){height:16px;}
+.bars.md span:nth-child(3){height:8px;opacity:.55;}
+.bars.lg{height:32px;}.bars.lg span{width:5px;border-radius:2.5px;}
+.bars.lg span:nth-child(1){height:20px;opacity:.55;}
+.bars.lg span:nth-child(2){height:32px;}
+.bars.lg span:nth-child(3){height:16px;opacity:.55;}
+
+/* ── Header ─────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s;}
+.nav.scrolled{border-bottom-color:var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;color:var(--ink-2);font-weight:500;transition:color .12s;}
+.nav-links a:hover{color:var(--ink);}
+@media(max-width:780px){.nav-links a:not(.btn){display:none;}}
+
+/* ── Buttons ────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-sans);font-weight:500;font-size:14px;padding:9px 18px;border-radius:10px;border:none;cursor:pointer;transition:transform .12s,box-shadow .15s,background .15s;text-decoration:none;}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.btn-primary:hover{box-shadow:0 6px 18px rgba(0,0,0,.25);transform:translateY(-1px);background:#000;}
+.btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line);}
+.btn-secondary:hover{border-color:var(--line-2);box-shadow:var(--shadow-sm);}
+.btn-ghost{background:transparent;color:var(--ink);}
+.btn-ghost:hover{background:var(--bg);}
+.btn-lg{padding:13px 24px;font-size:15px;border-radius:12px;}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero{padding:80px 0 60px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:30px;left:50%;transform:translateX(-50%);width:1200px;height:600px;background:radial-gradient(ellipse at center,rgba(0,0,0,.03) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.hero > .container{position:relative;z-index:1;}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 8px;margin-bottom:24px;box-shadow:var(--shadow-sm);}
+.hero-pill .pill-bars{display:inline-flex;align-items:flex-end;gap:2px;height:14px;padding:2px 4px;background:var(--ink);border-radius:999px;color:#fff;}
+.hero-pill .pill-bars span{width:2px;background:#fff;border-radius:1px;}
+.hero-pill .pill-bars span:nth-child(1){height:6px;opacity:.55;}
+.hero-pill .pill-bars span:nth-child(2){height:10px;}
+.hero-pill .pill-bars span:nth-child(3){height:5px;opacity:.55;}
+.hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:20px;color:var(--ink);}
+.hero h1 .accent{color:var(--ink);font-weight:700;background-image:linear-gradient(transparent 62%,rgba(17,17,17,.10) 62%,rgba(17,17,17,.10) 92%,transparent 92%);padding:0 .08em;}
+.hero p.lead{font-size:clamp(16px,2vw,19px);color:var(--ink-3);max-width:720px;margin:0 auto 36px;line-height:1.55;}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;}
+.hero-meta{margin-top:20px;font-size:13px;color:var(--ink-4);}
+.hero-meta strong{color:var(--ink-2);font-weight:600;}
+
+/* App preview mock */
+.hero-preview{margin-top:64px;position:relative;perspective:1400px;}
+.app-frame{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;transform:rotateX(2deg);transform-origin:50% 0;}
+.app-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:#F4F4F5;border-bottom:1px solid var(--line);}
+.app-bar .dot{width:11px;height:11px;border-radius:50%;background:#E5E7EB;}
+.app-bar .dot.r{background:#FCA5A5;}.app-bar .dot.y{background:#FCD34D;}.app-bar .dot.g{background:#86EFAC;}
+.app-bar .url{margin-left:14px;font-size:12px;color:var(--ink-4);}
+.app-body{display:grid;grid-template-columns:200px 1fr;min-height:380px;}
+.app-side{background:#fff;padding:18px 12px;border-right:1px solid var(--line);}
+.app-side .sb-unif{display:flex;align-items:center;gap:9px;padding:10px 11px;background:#111;border-radius:9px;margin-bottom:8px;font-size:12px;font-weight:600;color:#fff;position:relative;}
+.app-side .sb-unif .mini-bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px;}
+.app-side .sb-unif .mini-bars span{width:2px;background:#fff;border-radius:1px;}
+.app-side .sb-unif .mini-bars span:nth-child(1){height:7px;opacity:.55;}
+.app-side .sb-unif .mini-bars span:nth-child(2){height:11px;}
+.app-side .sb-unif .mini-bars span:nth-child(3){height:6px;opacity:.55;}
+.app-side .sb-i{display:flex;align-items:center;gap:9px;padding:7px 10px;font-size:12px;color:var(--ink-3);border-radius:7px;}
+.app-side .sb-i.act{background:#F4F4F5;color:var(--ink);}
+.app-cols{padding:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:var(--bg);}
+.app-col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;}
+.app-col-h{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-4);margin-bottom:8px;}
+.app-card{background:#fff;border:1px solid var(--line);border-radius:7px;padding:8px 10px;margin-bottom:6px;font-size:11px;position:relative;padding-left:13px;}
+.app-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px;}
+.app-card.b1::before{background:#7F77DD;}
+.app-card.b2::before{background:#1D9E75;}
+.app-card.b3::before{background:#E24B4A;}
+.app-card.b4::before{background:#378ADD;}
+.app-card .src{font-size:9px;color:var(--ink-4);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;}
+.app-card .ti{color:var(--ink);line-height:1.3;}
+@media(max-width:760px){
+  .app-body{grid-template-columns:1fr;}
+  .app-side{display:none;}
+  .app-cols{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ── Sections ───────────────────────────────────────────── */
+section{padding:80px 0;}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px;}
+.eyebrow::before{content:'';display:inline-block;width:14px;height:1px;background:var(--ink-3);}
+.section-head h2{font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15;}
+.section-head p{font-size:17px;color:var(--ink-3);}
+
+/* ── Diferencial Block (Board Unificado) ────────────────── */
+.diff{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+@media(max-width:840px){.diff-grid{grid-template-columns:1fr;}}
+.diff-text h3{font-size:28px;font-weight:700;letter-spacing:-.015em;margin-bottom:14px;line-height:1.2;}
+.diff-text p{font-size:16px;color:var(--ink-2);margin-bottom:14px;line-height:1.6;}
+.diff-text ul{list-style:none;margin-top:18px;}
+.diff-text ul li{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;color:var(--ink-2);font-size:15px;}
+.diff-text ul li::before{content:'';flex-shrink:0;margin-top:8px;width:5px;height:5px;background:var(--ink);border-radius:50%;}
+.diff-vis{position:relative;padding:24px;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);}
+.diff-boards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.diff-board-mini{background:#fff;border:1px solid var(--line);border-radius:7px;padding:8px;font-size:9px;color:var(--ink-3);}
+.diff-board-mini-h{font-weight:600;color:var(--ink);font-size:10px;margin-bottom:5px;}
+.diff-board-mini .pip{height:6px;border-radius:2px;margin-bottom:3px;}
+.diff-arrow{text-align:center;color:var(--ink-3);font-size:18px;margin:10px 0;line-height:1;}
+.diff-unified{background:#111;border-radius:9px;padding:14px 12px;color:#fff;text-align:center;position:relative;overflow:hidden;}
+.diff-unified::before,.diff-unified::after{content:'';position:absolute;top:50%;width:60px;height:60px;border-radius:50%;transform:translateY(-50%);background:rgba(255,255,255,.04);}
+.diff-unified::before{left:-20px;}
+.diff-unified::after{right:-20px;}
+.diff-unified-bars{display:inline-flex;align-items:flex-end;gap:3px;height:18px;margin-bottom:6px;position:relative;z-index:1;}
+.diff-unified-bars span{width:3px;background:#fff;border-radius:1.5px;}
+.diff-unified-bars span:nth-child(1){height:11px;opacity:.55;}
+.diff-unified-bars span:nth-child(2){height:18px;}
+.diff-unified-bars span:nth-child(3){height:9px;opacity:.55;}
+.diff-unified-h{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1;}
+.diff-unified-pill{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:3px 9px;font-size:10px;margin-top:6px;position:relative;z-index:1;}
+
+/* ── Visões do Board ────────────────────────────────────── */
+.views{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+@media(max-width:840px){.views{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.views{grid-template-columns:1fr;}}
+.view{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;text-align:center;transition:border-color .15s,transform .15s,box-shadow .15s;}
+.view:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.view-icon{width:48px;height:48px;margin:0 auto 12px;background:#111;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.view-icon svg{width:22px;height:22px;stroke-width:1.6;}
+.view h3{font-size:14px;font-weight:600;margin-bottom:5px;}
+.view p{font-size:12.5px;color:var(--ink-3);line-height:1.5;}
+
+/* ── Modules grid (cards explicando módulos) ────────────── */
+.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:980px){.modules{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.modules{grid-template-columns:1fr;}}
+.mod{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:border-color .15s,transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
+.mod:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.mod-h{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.mod-icon{width:36px;height:36px;border-radius:9px;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mod-icon svg{width:18px;height:18px;stroke-width:1.6;}
+.mod h3{font-size:16px;font-weight:600;letter-spacing:-.005em;}
+.mod-tag{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px;}
+.mod-desc{font-size:14px;color:var(--ink-3);line-height:1.55;margin-bottom:14px;}
+.mod-feats{list-style:none;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);}
+.mod-feats li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ink-2);padding:5px 0;line-height:1.45;}
+.mod-feats li::before{content:'';width:4px;height:4px;background:var(--ink);border-radius:50%;flex-shrink:0;margin-top:7px;}
+
+/* ── Lab/Canvas formats showcase ────────────────────────── */
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+@media(max-width:840px){.lab-grid{grid-template-columns:1fr;}}
+.lab-formats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.lab-fmt{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;align-items:center;gap:11px;transition:border-color .15s,transform .15s;}
+.lab-fmt:hover{border-color:var(--ink);transform:translateX(2px);}
+.lab-fmt-ico{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink);}
+.lab-fmt-ico svg{width:16px;height:16px;stroke-width:1.6;}
+.lab-fmt-text strong{font-size:13px;font-weight:600;display:block;line-height:1.2;}
+.lab-fmt-text span{font-size:11.5px;color:var(--ink-3);}
+
+/* ── Tracker / Dojo / Stats stripe ──────────────────────── */
+.stripe{background:#111;color:#fff;padding:60px 0;border-radius:var(--radius-lg);margin:0 24px;position:relative;overflow:hidden;}
+.stripe::before,.stripe::after{content:'';position:absolute;top:50%;width:240px;height:240px;border-radius:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none;}
+.stripe::before{left:-60px;}.stripe::after{right:-60px;}
+.stripe .container{position:relative;z-index:1;}
+.stripe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;}
+@media(max-width:760px){.stripe-grid{grid-template-columns:repeat(2,1fr);gap:24px;}}
+.stat-num{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1;}
+.stat-lbl{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;}
+
+/* ── Templates strip ────────────────────────────────────── */
+.tpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+.tpl{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:center;transition:border-color .15s,transform .15s,box-shadow .15s;}
+.tpl:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.tpl-ico{width:40px;height:40px;margin:0 auto 10px;background:var(--bg);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--ink);}
+.tpl-ico svg{width:20px;height:20px;stroke-width:1.5;}
+.tpl-name{font-size:14px;font-weight:600;margin-bottom:4px;}
+.tpl-cat{font-size:11px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+
+/* ── Novidades / atualizações recentes ──────────────────── */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+@media(max-width:820px){.news{grid-template-columns:1fr;}}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;display:flex;flex-direction:column;gap:8px;position:relative;transition:border-color .15s,transform .15s,box-shadow .15s;}
+.news-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.news-pill{position:absolute;top:14px;right:14px;font-size:9.5px;font-weight:700;letter-spacing:.08em;background:var(--ink);color:#fff;padding:3px 8px;border-radius:999px;text-transform:uppercase;}
+.news-icon{width:38px;height:38px;border-radius:9px;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:center;}
+.news-icon svg{width:18px;height:18px;stroke-width:1.6;}
+.news-card h3{font-size:15px;font-weight:600;letter-spacing:-.005em;margin-top:4px;}
+.news-card p{font-size:13.5px;color:var(--ink-3);line-height:1.5;}
+
+/* ── Pricing ────────────────────────────────────────────── */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
+@media(max-width:840px){.prices{grid-template-columns:1fr;max-width:420px;margin:0 auto;}}
+.price{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 26px;display:flex;flex-direction:column;position:relative;}
+.price.featured{border:2px solid var(--ink);box-shadow:var(--shadow-md);}
+.price.featured::before{content:'Mais popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px;}
+.price-belt{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.price-belt-vis{width:36px;height:8px;border-radius:2px;border:1px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;}
+.price-belt-vis::after{content:'';position:absolute;right:5px;top:-2px;bottom:-2px;width:3px;background:#111;border-radius:1px;opacity:.55;}
+.price-belt-vis.white{background:#FAFAF8;}
+.price-belt-vis.purple{background:#7F3FBF;}
+.price-belt-vis.purple::after{background:#FFD66E;opacity:.85;}
+.price-belt-vis.black{background:#111;}
+.price-belt-vis.black::after{background:#D4AF37;opacity:.9;}
+.price-belt-name{font-size:15px;font-weight:700;letter-spacing:-.005em;}
+.price-belt-tag{font-size:11px;color:var(--ink-4);letter-spacing:.04em;text-transform:uppercase;font-weight:600;margin-bottom:4px;display:block;}
+.price-tag{display:flex;align-items:baseline;gap:6px;margin:14px 0 6px;}
+.price-num{font-size:42px;font-weight:700;letter-spacing:-.03em;}
+.price-per{font-size:13px;color:var(--ink-3);}
+.price-desc{font-size:13px;color:var(--ink-3);margin-bottom:22px;line-height:1.5;min-height:38px;}
+.price-feats{list-style:none;flex:1;margin-bottom:24px;}
+.price-feats li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--ink-2);padding:6px 0;}
+.price-feats li::before{content:'✓';color:var(--ok);font-weight:700;flex-shrink:0;}
+.price-feats li.no::before{content:'—';color:var(--ink-4);}
+.price-feats li.no{color:var(--ink-4);}
+.price-feats li strong{color:var(--ink);font-weight:600;}
+
+/* ── FAQ ────────────────────────────────────────────────── */
+.faq{max-width:760px;margin:0 auto;}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:10px;}
+.faq-item summary{font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--ink-4);transition:transform .2s;font-weight:300;line-height:1;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item p{font-size:14px;color:var(--ink-3);margin-top:14px;line-height:1.6;}
+
+/* ── Final CTA ──────────────────────────────────────────── */
+.cta-final{background:#111;color:#fff;padding:80px 0;text-align:center;border-radius:var(--radius-lg);margin:0 24px;position:relative;overflow:hidden;}
+.cta-final::before,.cta-final::after{content:'';position:absolute;top:50%;width:240px;height:240px;border-radius:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none;}
+.cta-final::before{left:-60px;}.cta-final::after{right:-60px;}
+.cta-final .container{position:relative;z-index:1;}
+.cta-final h2{font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
+.cta-final p{font-size:17px;opacity:.75;margin-bottom:28px;color:#E5E5E2;}
+.cta-final .btn{background:#fff;color:#111;}
+.cta-final .btn:hover{filter:brightness(.96);}
+.cta-bars{display:inline-flex;align-items:flex-end;gap:5px;height:38px;margin-bottom:24px;}
+.cta-bars span{width:5px;background:#fff;border-radius:2.5px;}
+.cta-bars span:nth-child(1){height:24px;opacity:.55;}
+.cta-bars span:nth-child(2){height:38px;}
+.cta-bars span:nth-child(3){height:18px;opacity:.55;}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;margin-top:60px;}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+@media(max-width:840px){.foot{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.foot{grid-template-columns:1fr;}}
+.foot h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-4);margin-bottom:14px;}
+.foot ul{list-style:none;}
+.foot li{margin-bottom:8px;}
+.foot a{font-size:14px;color:var(--ink-2);transition:color .12s;}
+.foot a:hover{color:var(--ink);}
+.foot-tag{font-size:13px;color:var(--ink-3);margin-top:14px;line-height:1.5;max-width:280px;}
+.foot-bot{text-align:center;font-size:12px;color:var(--ink-4);margin-top:40px;padding-top:24px;border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Synkan Management Lab">
+      <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+        <rect x="17"  y="25"  width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="33"  y="15"  width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+        <rect x="49"  y="31"  width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+        <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+        <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+        <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#unificado">Board Unificado</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#templates">Templates</a>
+      <a href="#entregaveis">Entregáveis</a>
+      <a href="#precos">Preços</a>
+      <a class="btn btn-secondary" href="https://app.synkan.com.br">Entrar →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-pill"><span class="pill-bars" aria-hidden="true"><span></span><span></span><span></span></span> Kanban · CRM · OKRs · IA · num app só</div>
+    <h1>Pare de pular entre <br/><span class="accent">10 ferramentas diferentes.</span></h1>
+    <p class="lead">Synkan junta kanban, CRM, OKRs, time tracking, formulários de captação, canvas com IA e gamificação. Tudo num lugar só, sincronizado em tempo real, com modo offline.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary btn-lg" href="https://app.synkan.com.br">Começar grátis →</a>
+      <a class="btn btn-secondary btn-lg" href="#modulos">Ver módulos</a>
+    </div>
+    <div class="hero-meta">Sem cartão de crédito · Funciona offline · <strong>Setup em 2 min</strong></div>
+
+    <!-- App preview mock -->
+    <div class="hero-preview">
+      <div class="app-frame">
+        <div class="app-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+          <div class="url">app.synkan.com.br</div>
+        </div>
+        <div class="app-body">
+          <div class="app-side">
+            <div class="sb-unif"><span class="mini-bars" aria-hidden="true"><span></span><span></span><span></span></span><span>Board Unificado</span></div>
+            <div class="sb-i">⌂ Home</div>
+            <div class="sb-i">▤ My boards</div>
+            <div class="sb-i">✦ Lab (IA)</div>
+            <div class="sb-i">◎ OKRs</div>
+            <div class="sb-i">⊞ Synconnect</div>
+            <div style="height:14px;"></div>
+            <div class="sb-i act">▦ Kanban</div>
+            <div class="sb-i">☑ Checklist</div>
+            <div class="sb-i">▭ Gantt</div>
+            <div class="sb-i">▥ Calendário</div>
+            <div class="sb-i">⊟ Dashboard</div>
+            <div class="sb-i">⏱ Tracker</div>
+          </div>
+          <div class="app-cols">
+            <div class="app-col">
+              <div class="app-col-h">A fazer</div>
+              <div class="app-card b1"><div class="src">Recebimentos</div><div class="ti">Honorários abr/26 — Cliente A</div></div>
+              <div class="app-card b2"><div class="src">Dev</div><div class="ti">Login com Google OAuth</div></div>
+            </div>
+            <div class="app-col">
+              <div class="app-col-h">Em andamento</div>
+              <div class="app-card b3"><div class="src">Suporte</div><div class="ti">Erro no checkout (Acme)</div></div>
+              <div class="app-card b4"><div class="src">Comercial</div><div class="ti">Proposta · Lead Hot 🔥</div></div>
+            </div>
+            <div class="app-col">
+              <div class="app-col-h">Bloqueado</div>
+              <div class="app-card b2"><div class="src">Dev</div><div class="ti">Bug: timeout no form</div></div>
+            </div>
+            <div class="app-col">
+              <div class="app-col-h">Concluído</div>
+              <div class="app-card b1"><div class="src">Recebimentos</div><div class="ti">Projeto piloto — Cliente F</div></div>
+              <div class="app-card b3"><div class="src">Suporte</div><div class="ti">Bug visual mobile</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIFERENCIAL: Board Unificado ────────────────── -->
+<section class="diff" id="unificado">
+  <div class="container">
+    <div class="diff-grid">
+      <div class="diff-text">
+        <span class="eyebrow">o diferencial</span>
+        <h3>Board Unificado: tudo o que importa, num só lugar.</h3>
+        <p>A maioria das ferramentas te força a abrir cada projeto separado pra saber o que está acontecendo. O Synkan agrega cards de <strong>todos os seus boards</strong> numa vista única.</p>
+        <ul>
+          <li>Vê tudo que está atrasado, bloqueado e em andamento numa tela só</li>
+          <li>Cada card mostra de qual board veio — listra colorida e pílula identificadora</li>
+          <li>Filtre por board(s) específicos com um clique</li>
+          <li>Funciona em todas as 5 visões: Kanban, Checklist, Gantt, Calendário e Dashboard</li>
+          <li>Drag & drop entre boards diretamente da vista unificada</li>
+        </ul>
+      </div>
+      <div class="diff-vis">
+        <div class="diff-boards">
+          <div class="diff-board-mini">
+            <div class="diff-board-mini-h">Recebimentos</div>
+            <div class="pip" style="background:#7F77DD;width:80%;"></div>
+            <div class="pip" style="background:#7F77DD;width:60%;"></div>
+            <div class="pip" style="background:#7F77DD;width:40%;"></div>
+          </div>
+          <div class="diff-board-mini">
+            <div class="diff-board-mini-h">Dev</div>
+            <div class="pip" style="background:#1D9E75;width:70%;"></div>
+            <div class="pip" style="background:#1D9E75;width:55%;"></div>
+            <div class="pip" style="background:#1D9E75;width:45%;"></div>
+          </div>
+          <div class="diff-board-mini">
+            <div class="diff-board-mini-h">Suporte</div>
+            <div class="pip" style="background:#E24B4A;width:65%;"></div>
+            <div class="pip" style="background:#E24B4A;width:50%;"></div>
+            <div class="pip" style="background:#E24B4A;width:35%;"></div>
+          </div>
+        </div>
+        <div class="diff-arrow">↓</div>
+        <div class="diff-unified">
+          <div class="diff-unified-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="diff-unified-h">Board Unificado</div>
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+            <span class="diff-unified-pill">Recebimentos</span>
+            <span class="diff-unified-pill">Dev</span>
+            <span class="diff-unified-pill">Suporte</span>
+          </div>
+          <div style="margin-top:10px;font-size:11px;opacity:.7;">Tudo num lugar só.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5 VISÕES ────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">o mesmo board, 5 ângulos</span>
+      <h2>5 visões pra ver o trabalho do jeito certo.</h2>
+      <p>Os mesmos cards, organizados de cinco formas diferentes. Trocar é instantâneo.</p>
+    </div>
+    <div class="views">
+      <div class="view">
+        <div class="view-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.2"/><rect x="10" y="4" width="5" height="11" rx="1.2"/><rect x="17" y="4" width="4" height="8" rx="1.2"/></svg></div>
+        <h3>Kanban</h3>
+        <p>Colunas customizáveis com drag & drop e WIP limits.</p>
+      </div>
+      <div class="view">
+        <div class="view-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="3" height="3" rx=".5"/><rect x="3" y="11" width="3" height="3" rx=".5"/><rect x="3" y="17" width="3" height="3" rx=".5"/><line x1="9" y1="6.5" x2="20" y2="6.5"/><line x1="9" y1="12.5" x2="20" y2="12.5"/><line x1="9" y1="18.5" x2="20" y2="18.5"/></svg></div>
+        <h3>Checklist</h3>
+        <p>Lista pra marcar o que fechou. Com confete.</p>
+      </div>
+      <div class="view">
+        <div class="view-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="5" x2="21" y2="5"/><rect x="3" y="9" width="11" height="3" rx=".5"/><rect x="7" y="14" width="13" height="3" rx=".5"/><rect x="5" y="19" width="9" height="3" rx=".5"/></svg></div>
+        <h3>Gantt</h3>
+        <p>Timeline com escala dia/semana/mês e barras por prazo.</p>
+      </div>
+      <div class="view">
+        <div class="view-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
+        <h3>Calendário</h3>
+        <p>Cards pelas suas deadlines, no mês ou na semana.</p>
+      </div>
+      <div class="view">
+        <div class="view-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+        <h3>Dashboard</h3>
+        <p>KPIs, funil de vendas com forecast e <strong>exportação em PDF</strong> com a sua marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MÓDULOS ─────────────────────────────────────── -->
+<section id="modulos" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">os módulos</span>
+      <h2>Não é só kanban. É a sua operação inteira.</h2>
+      <p>Cada módulo conversa com os outros. Um lead vira card, vira contrato, vira hora trackeada, vira KR avançando.</p>
+    </div>
+    <div class="modules">
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6"/><rect x="3" y="6" width="18" height="14" rx="1.5"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="11" y1="11" x2="11" y2="13"/><line x1="13" y1="11" x2="13" y2="13"/></svg></div>
+          <h3>Synconnect</h3>
+        </div>
+        <div class="mod-tag">CRM integrado</div>
+        <p class="mod-desc">Cadastre leads, clientes e fornecedores. Cada cadastro vira contexto pros cards.</p>
+        <ul class="mod-feats">
+          <li>CNPJ autocomplete via BrasilAPI (razão social, endereço, contatos)</li>
+          <li>Customer 360: histórico de cards, documentos e timeline por contato</li>
+          <li>Lead Score automático — Hot 🔥, Warm 🌤, Cold ❄</li>
+          <li>Vincule qualquer card a um lead/cliente/fornecedor</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+          <h3>Captação</h3>
+        </div>
+        <div class="mod-tag">formulários públicos</div>
+        <p class="mod-desc">Crie formulários, gere o link, receba leads no inbox. Um clique vira cadastro + card.</p>
+        <ul class="mod-feats">
+          <li>Builder de formulário com campos customizáveis</li>
+          <li>URL pública pra colar no site, redes sociais, e-mails</li>
+          <li>Inbox de leads com pré-preenchimento automático</li>
+          <li>Conversão em 1 clique pra Synconnect + board</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5"/><path d="M10 3v6L6 17a2 2 0 0 0 1.7 3h8.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M8 13h8"/><circle cx="9.5" cy="16" r=".7" fill="currentColor"/><circle cx="13" cy="17.2" r=".55" fill="currentColor"/></svg></div>
+          <h3>Lab (Canvas)</h3>
+        </div>
+        <div class="mod-tag">5 formatos · com IA</div>
+        <p class="mod-desc">Espaço pra pensar antes de virar card. Mapas, documentos, tabelas, planos. Mestre Kan IA gera tudo do zero.</p>
+        <ul class="mod-feats">
+          <li>5 formatos: branco, mapa de ideias, documento, tabela, plano de ação</li>
+          <li>11 tipos de node (sticky, idea, feature, problem, goal, risk, milestone…)</li>
+          <li>IA gera o canvas inteiro a partir de um tema</li>
+          <li>Promove nodes/bullets/linhas pra cards de board reais</li>
+          <li>Undo/Redo (Ctrl+Z/Y) e vinculação a Key Results de OKR</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+          <h3>OKRs</h3>
+        </div>
+        <div class="mod-tag">objetivos mensuráveis</div>
+        <p class="mod-desc">Defina objetivos por trimestre com Key Results numéricos. Acompanhe progresso real.</p>
+        <ul class="mod-feats">
+          <li>Objetivos com múltiplos KRs (alvo, unidade, valor atual)</li>
+          <li>Filtro por período (Q1/Q2/Q3/Q4 ou anual)</li>
+          <li>Vincule nodes do Canvas/Lab a Key Results</li>
+          <li>Cálculo automático de % de avanço</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><path d="M9 3h6"/><line x1="12" y1="3" x2="12" y2="5"/></svg></div>
+          <h3>Tracker</h3>
+        </div>
+        <div class="mod-tag">time tracking · cobrança</div>
+        <p class="mod-desc">Cronômetro em cada card. Vira <strong>relatório de horas trabalhadas</strong> e <strong>cobrança em PDF</strong> pronta pro cliente.</p>
+        <ul class="mod-feats">
+          <li>▶ Iniciar timer com 1 clique — pause, retome, edite manualmente</li>
+          <li>Relatório consolidado por pessoa, board, coluna e dia</li>
+          <li><strong>Gera invoice em PDF</strong> com sua marca, valor/hora e período customizável</li>
+          <li>Cobrança vinculada ao cliente do Synconnect — exporta CSV ou PDF pronto pra enviar</li>
+          <li>Top 8 cards com mais horas + alerta de timer rodando</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><circle cx="12" cy="8" r="2.2" fill="currentColor" stroke="none"/></svg></div>
+          <h3>Mestre Kan IA</h3>
+        </div>
+        <div class="mod-tag">claude haiku 4.5</div>
+        <p class="mod-desc">A IA embutida no Synkan. Sábia, concisa, com a calma de um mestre do dojo.</p>
+        <ul class="mod-feats">
+          <li>Quebra cards em subtarefas, redige e-mails de cobrança</li>
+          <li>Resume threads longas, sugere próxima ação</li>
+          <li>Gera canvas inteiros (mapa, documento, tabela, plano)</li>
+          <li>Busca semântica entre todos os boards</li>
+          <li>API key fica no servidor, não no navegador</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6q1.4-1.2 2.8 0t2.8 0t2.8 0t2.8 0t2.8 0t2.8 0t2.8 0"/><path d="M5 9 V20 H19 V9"/><path d="M3 6 H21"/><line x1="10" y1="12" x2="14" y2="12"/></svg></div>
+          <h3>Dojo</h3>
+        </div>
+        <div class="mod-tag">gamificação opcional</div>
+        <p class="mod-desc">Pra quem curte. XP, faixas de jiu-jitsu, conquistas e missões diárias. Desligável.</p>
+        <ul class="mod-feats">
+          <li>9 faixas: branca → preta 2° dan (com cores únicas)</li>
+          <li>Conquistas, missões diárias e semanais</li>
+          <li>Streak conta dias úteis (tolera 1 falta/semana)</li>
+          <li>Multiplicador de XP ao manter streak (até ×2)</li>
+          <li>Tudo configurável: pesos, caps, ativar/desativar</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+          <h3>Documentos</h3>
+        </div>
+        <div class="mod-tag">contratos & arquivos</div>
+        <p class="mod-desc">Contratos, NFs e documentos vinculados a contatos e cards.</p>
+        <ul class="mod-feats">
+          <li>Upload em Supabase Storage</li>
+          <li>Vinculação a contato (Synconnect) e card</li>
+          <li>Filtro por tipo, data, contato</li>
+          <li>Régua de follow-up por dias sem interação</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg></div>
+          <h3>Sincronização</h3>
+        </div>
+        <div class="mod-tag">supabase ou local</div>
+        <p class="mod-desc">Você escolhe: nuvem em tempo real ou 100% offline no navegador.</p>
+        <ul class="mod-feats">
+          <li>Modo Local: localStorage + IndexedDB + File Sync</li>
+          <li>Modo Cloud: Supabase com Realtime entre todos</li>
+          <li>RLS por board: só você e quem você convidou enxerga</li>
+          <li>Membros com role (Viewer/Editor/Admin)</li>
+          <li>Webhooks pra Slack, Discord, Zapier, Make, n8n</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── DENTRO DO CARD ──────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">tudo na ponta dos dedos</span>
+      <h2>Cada card é uma operação completa.</h2>
+      <p>Não é só um título e uma data. É contexto, conversa, tempo trackeado, IA, gente.</p>
+    </div>
+    <div class="modules" style="grid-template-columns:repeat(2,1fr);">
+      <div class="mod">
+        <h3 style="font-size:17px;margin-bottom:8px;">Os campos padrão</h3>
+        <p class="mod-desc">Tudo o que você espera de um card de verdade.</p>
+        <ul class="mod-feats">
+          <li>Responsável (com avatar do time)</li>
+          <li>Deadline com badges (em dia / vence logo / vencido)</li>
+          <li>Prioridade Alta / Média / Baixa</li>
+          <li>Tags coloridas customizáveis</li>
+          <li>Contato vinculado ao Synconnect</li>
+          <li>Subtarefas com barra de progresso</li>
+          <li>Anexos via Supabase Storage</li>
+          <li>Recorrência diária / semanal / mensal</li>
+        </ul>
+      </div>
+      <div class="mod">
+        <h3 style="font-size:17px;margin-bottom:8px;">O que vai além</h3>
+        <p class="mod-desc">Recursos que sua antiga ferramenta provavelmente não tem.</p>
+        <ul class="mod-feats">
+          <li>Threads de comentário com @menções</li>
+          <li>Reações emoji</li>
+          <li>Time tracking com timer integrado</li>
+          <li>Campos customizáveis por board (texto, número, select, URL, e-mail, telefone, relação)</li>
+          <li>IA Mestre Kan no card (subtarefas, e-mail, resumo, próxima ação)</li>
+          <li>Histórico de auditoria (criar/editar/mover/concluir)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LAB / CANVAS DEEP DIVE ──────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="lab-grid">
+      <div>
+        <span class="eyebrow">lab · canvas com IA</span>
+        <h3 style="font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;">Pense primeiro. Vire card depois.</h3>
+        <p style="font-size:16px;color:var(--ink-2);line-height:1.6;margin-bottom:14px;">O Lab é um canvas multi-formato. Você escolhe como pensar — mapa de ideias, documento, tabela, plano de ação ou em branco.</p>
+        <p style="font-size:16px;color:var(--ink-2);line-height:1.6;margin-bottom:18px;">Quando uma ideia amadurece, ela vira card de board com 1 clique. Sem reescrever nada.</p>
+        <p style="font-size:14px;color:var(--ink-3);line-height:1.55;">Ah, e o <strong style="color:var(--ink);">Mestre Kan IA</strong> gera o canvas inteiro a partir de um tema. Você só refina.</p>
+      </div>
+      <div class="lab-formats">
+        <div class="lab-fmt">
+          <div class="lab-fmt-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="3" r="1.8"/><circle cx="3" cy="11" r="1.8"/><circle cx="13" cy="11" r="1.8"/><line x1="8" y1="4.8" x2="3.5" y2="9.5"/><line x1="8" y1="4.8" x2="12.5" y2="9.5"/></svg></div>
+          <div class="lab-fmt-text"><strong>Mapa de Ideias</strong><span>nodes conectados com status</span></div>
+        </div>
+        <div class="lab-fmt">
+          <div class="lab-fmt-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2.5" width="10" height="11" rx="1"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="9" y2="10.5"/></svg></div>
+          <div class="lab-fmt-text"><strong>Documento</strong><span>bullets viram cards</span></div>
+        </div>
+        <div class="lab-fmt">
+          <div class="lab-fmt-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="6.5" x2="14" y2="6.5"/><line x1="6" y1="3" x2="6" y2="13"/><line x1="10" y1="3" x2="10" y2="13"/></svg></div>
+          <div class="lab-fmt-text"><strong>Tabela</strong><span>linhas viram cards</span></div>
+        </div>
+        <div class="lab-fmt">
+          <div class="lab-fmt-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="8" cy="8" r=".9" fill="currentColor"/></svg></div>
+          <div class="lab-fmt-text"><strong>Plano de Ação</strong><span>objetivo · etapas · riscos</span></div>
+        </div>
+        <div class="lab-fmt">
+          <div class="lab-fmt-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg></div>
+          <div class="lab-fmt-text"><strong>Em branco</strong><span>contenteditable puro</span></div>
+        </div>
+        <div class="lab-fmt" style="background:#111;color:#fff;border-color:#111;">
+          <div class="lab-fmt-ico" style="background:rgba(255,255,255,.1);color:#fff;"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6.5" r="3"/><path d="M3 14a5 5 0 0 1 10 0"/></svg></div>
+          <div class="lab-fmt-text"><strong>Mestre Kan IA</strong><span style="color:rgba(255,255,255,.65);">gera tudo do zero</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIPE: NÚMEROS ─────────────────────────────── -->
+<section style="padding:60px 0;">
+  <div class="stripe">
+    <div class="container">
+      <div class="stripe-grid">
+        <div>
+          <div class="stat-num">5</div>
+          <div class="stat-lbl">visões do mesmo board</div>
+        </div>
+        <div>
+          <div class="stat-num">11</div>
+          <div class="stat-lbl">tipos de nó no Canvas</div>
+        </div>
+        <div>
+          <div class="stat-num">9</div>
+          <div class="stat-lbl">faixas de XP no Dojo</div>
+        </div>
+        <div>
+          <div class="stat-num">∞</div>
+          <div class="stat-lbl">boards na Faixa Preta</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEMPLATES ───────────────────────────────────── -->
+<section id="templates" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">comece com um clique</span>
+      <h2>Templates prontos pra produção.</h2>
+      <p>Abra um template e o board já vem com colunas, marcadores, campos personalizados e cards de exemplo.</p>
+    </div>
+    <div class="tpls">
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15 9h-4.5a1.5 1.5 0 0 0 0 3h3a1.5 1.5 0 0 1 0 3H9"/></svg></div><div class="tpl-name">Recebimentos</div><div class="tpl-cat">Financeiro</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/><line x1="14" y1="15" x2="17" y2="15"/></svg></div><div class="tpl-name">Pagamentos</div><div class="tpl-cat">Financeiro</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c0-3 4-3 4-6s-4-3-4-6"/><path d="M4 7h2"/><path d="M4 13h2"/><path d="M4 19h2"/><path d="M14 19c0-3 4-3 4-6s-4-3-4-6"/><path d="M14 7h2"/><path d="M14 13h2"/><path d="M14 19h2"/></svg></div><div class="tpl-name">Roadmap</div><div class="tpl-cat">Produto</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 5 12 9 16"/><polyline points="15 8 19 12 15 16"/></svg></div><div class="tpl-name">Desenvolvimento</div><div class="tpl-cat">Engenharia</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16l-18-7z"/><line x1="11" y1="11" x2="11" y2="17"/></svg></div><div class="tpl-name">Marketing</div><div class="tpl-cat">Conteúdo</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.8"/><path d="M3 19a6 6 0 0 1 12 0"/><path d="M14.5 19a4.5 4.5 0 0 1 7 0"/></svg></div><div class="tpl-name">Recrutamento</div><div class="tpl-cat">Pessoas</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><div class="tpl-name">Vendas</div><div class="tpl-cat">Comercial</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L13.5 9 L20 9 L14.5 13 L16.5 19.5 L12 15.5 L7.5 19.5 L9.5 13 L4 9 L10.5 9 Z"/></svg></div><div class="tpl-name">Eventos</div><div class="tpl-cat">Operações</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 12 10 16 18 8"/></svg></div><div class="tpl-name">Personal / GTD</div><div class="tpl-cat">Pessoal</div></div>
+      <div class="tpl"><div class="tpl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9v3a3 3 0 0 1-3 3h-1v-7h4"/><path d="M12 3a9 9 0 0 0-9 9v3a3 3 0 0 0 3 3h1v-7H3"/></svg></div><div class="tpl-name">Suporte</div><div class="tpl-cat">Operações</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DA OPERAÇÃO PRO CLIENTE ─────────────────────── -->
+<section id="entregaveis">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">relatórios · cobrança · forecast</span>
+      <h2>Sua operação vira entregável.</h2>
+      <p>Não é só pra organizar o trabalho — é pra apresentar pro cliente. Dashboard executivo, funil de vendas e cobrança por hora trabalhada, exportando em PDF com a cara da sua empresa.</p>
+    </div>
+    <div class="news">
+
+      <div class="news-card">
+        <div class="news-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
+        <h3>Dashboard executivo em PDF</h3>
+        <p>Throughput, cycle time, aging e prioridades num PDF que sai com o logo e o nome da sua empresa no topo. Manda direto pro cliente, sem precisar montar slide.</p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 L9 12 L13 16 L21 6"/><polyline points="15 6 21 6 21 12"/></svg></div>
+        <h3>Funil de vendas com forecast</h3>
+        <p>Pipeline total, forecast ponderado (valor × probabilidade por etapa) e taxa de conversão calculados sozinhos. Basta o board ter um campo de moeda.</p>
+      </div>
+
+      <div class="news-card">
+        <div class="news-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><path d="M9 3h6"/><line x1="12" y1="3" x2="12" y2="5"/></svg></div>
+        <h3>Cobrança por hora trabalhada</h3>
+        <p>O Tracker vira invoice em PDF com a sua marca, valor por hora, período customizável e cliente do Synconnect. Relatório de horas pronto pra enviar.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ─────────────────────────────────────── -->
+<section id="precos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">preços · planos do dojo</span>
+      <h2>Suba de faixa quando estiver pronto.</h2>
+      <p>Como no dojo, todo mundo começa com a faixa branca. Cresça no seu ritmo. Cancele quando quiser, pagamento em reais, recibo por e-mail.</p>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <span class="price-belt-tag">Iniciante</span>
+        <div class="price-belt">
+          <span class="price-belt-vis white" aria-hidden="true"></span>
+          <span class="price-belt-name">Faixa Branca</span>
+        </div>
+        <div class="price-tag"><span class="price-num">R$ 0,00</span><span class="price-per">/ pra sempre</span></div>
+        <div class="price-desc">Os primeiros passos no dojo.</div>
+        <ul class="price-feats">
+          <li>1 pessoa</li>
+          <li>1 board</li>
+          <li><strong>Acesso a apenas 1 template</strong></li>
+          <li>Visões Kanban + Checklist</li>
+          <li>Modo local (offline)</li>
+          <li class="no">Lab / Canvas</li>
+          <li class="no">Synconnect (CRM)</li>
+          <li class="no">Mestre Kan IA</li>
+          <li class="no">Captação</li>
+        </ul>
+        <a class="btn btn-secondary" href="https://app.synkan.com.br">Criar conta grátis</a>
+      </div>
+      <div class="price featured">
+        <span class="price-belt-tag">Praticante avançado</span>
+        <div class="price-belt">
+          <span class="price-belt-vis purple" aria-hidden="true"></span>
+          <span class="price-belt-name">Faixa Roxa</span>
+        </div>
+        <div class="price-tag"><span class="price-num">R$ 29,90</span><span class="price-per">/ usuário / mês</span></div>
+        <div class="price-desc">Pra quem treina todo dia no board.</div>
+        <ul class="price-feats">
+          <li>Até <strong>10 boards</strong></li>
+          <li>Até <strong>5 Lab / Canvas</strong></li>
+          <li><strong>Todas as 5 visões + Tracker</strong></li>
+          <li>Board Unificado</li>
+          <li>Synconnect (CRM completo)</li>
+          <li><strong>200 interações/mês</strong> com Mestre Kan IA</li>
+          <li>OKRs + Dojo + Documentos</li>
+          <li>Integrações (webhooks, calendário)</li>
+          <li class="no">Captação</li>
+        </ul>
+        <a class="btn btn-primary" href="https://app.synkan.com.br">Subir pra Faixa Roxa →</a>
+      </div>
+      <div class="price">
+        <span class="price-belt-tag">Mestre · Sensei</span>
+        <div class="price-belt">
+          <span class="price-belt-vis black" aria-hidden="true"></span>
+          <span class="price-belt-name">Faixa Preta</span>
+        </div>
+        <div class="price-tag"><span class="price-num">R$ 79,90</span><span class="price-per">/ usuário / mês</span></div>
+        <div class="price-desc">Domínio total da operação.</div>
+        <ul class="price-feats">
+          <li>Tudo da Roxa, mais:</li>
+          <li><strong>Boards ilimitados</strong></li>
+          <li><strong>Lab / Canvas ilimitados</strong></li>
+          <li><strong>1.000 interações/mês</strong> com Mestre Kan IA</li>
+          <li>Captação (formulários públicos)</li>
+          <li>Régua de follow-up automática</li>
+          <li>Convidados externos (clientes)</li>
+          <li>Audit log completo</li>
+          <li>SSO (SAML / Google Workspace)</li>
+        </ul>
+        <a class="btn btn-primary" href="https://app.synkan.com.br">Subir pra Faixa Preta →</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--ink-4);margin-top:28px;">Precisa de mais? <a href="mailto:contato@synkan.com.br" style="color:var(--ink);text-decoration:underline;">Faixa Preta 2° dan</a> sob medida pra equipes grandes (interações ilimitadas, RBAC avançado, SLA).</p>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">faq</span>
+      <h2>Perguntas que recebemos.</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>O que é o Board Unificado?</summary>
+        <p>É uma vista virtual que junta cards de todos os seus boards numa tela só. Útil quando você gerencia várias frentes (financeiro, dev, marketing) e quer ver tudo o que está atrasado, bloqueado ou pra hoje sem ficar pulando entre boards. Cada card mostra a qual board pertence, e clicar nele te leva direto pra edição no board original. Funciona em todas as 5 visões: Kanban, Checklist, Gantt, Calendário e Dashboard.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O Synconnect substitui meu CRM?</summary>
+        <p>Pra equipes pequenas e médias, sim. Você cadastra leads, clientes e fornecedores, com CNPJ autocomplete via BrasilAPI, Customer 360 (histórico completo de cards e documentos por contato), Lead Score automático (Hot/Warm/Cold), Captação por formulários públicos e vinculação direta com cards. Não tem (ainda) automações complexas tipo HubSpot ou Salesforce.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona o Lab e o Mestre Kan IA?</summary>
+        <p>O Lab é um canvas multi-formato — você pensa em mapa de ideias, documento, tabela ou plano de ação. O Mestre Kan (Claude Haiku 4.5) gera o canvas inteiro a partir de um tema. Quando uma ideia amadurece, vira card de board com 1 clique. Dentro dos cards, ele também quebra em subtarefas, redige e-mails de cobrança, resume threads e sugere próxima ação. A API key fica no servidor, não no navegador.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Funciona offline?</summary>
+        <p>Sim. O Synkan tem dois modos. Local: dados ficam no navegador (localStorage + IndexedDB) e funcionam offline. Cloud: sincroniza em tempo real via Supabase entre dispositivos e membros, com Row Level Security por board. Você escolhe e pode trocar quando quiser.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O Dojo (gamificação) é obrigatório?</summary>
+        <p>Não. É 100% opcional e pode ser desligado em Configurações → Dojo. Se ativo, você ganha XP por concluir cards, cadastrar leads, completar OKRs etc. Sobe de faixa (branca → preta), desbloqueia conquistas e completa missões diárias e semanais. O streak conta dias úteis e tolera 1 falta por semana, então feriado e folga não quebram.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Os meus dados são meus mesmo?</summary>
+        <p>Sim. O Synkan roda sobre Supabase (Postgres) com Row Level Security: só você e os membros que você convidou conseguem ver os dados. No modo local, os dados ficam no seu navegador e não saem dele. Você consegue exportar tudo em JSON a qualquer momento.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Como é o pagamento da assinatura?</summary>
+        <p>Mensal ou anual (com 2 meses grátis no plano anual). Pagamento via cartão de crédito. Sua empresa recebe o recibo da assinatura por e-mail.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ───────────────────────────────────── -->
+<div class="cta-final">
+  <div class="container">
+    <div class="cta-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2>Pronto pra parar de pular entre apps?</h2>
+    <p>Crie sua conta em menos de 2 minutos. Sem cartão.</p>
+    <a class="btn btn-lg" href="https://app.synkan.com.br">Começar grátis →</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo" aria-label="Synkan Management Lab">
+          <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="64" height="64" rx="14" fill="#111"/>
+            <rect x="17" y="25" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.20)"/>
+            <rect x="33" y="15" width="8" height="40" rx="2.4" fill="rgba(255,255,255,.28)"/>
+            <rect x="49" y="31" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.20)"/>
+            <rect x="12" y="22" width="8" height="28" rx="2.4" fill="rgba(255,255,255,.55)"/>
+            <rect x="28" y="12" width="8" height="40" rx="2.4" fill="#fff"/>
+            <rect x="44" y="28" width="8" height="22" rx="2.4" fill="rgba(255,255,255,.55)"/>
+          </svg>
+          <span class="logo-name">Synkan <span class="logo-suffix">Management Lab</span></span>
+        </a>
+        <p class="foot-tag">Kanban, CRM, OKRs, IA, Time Tracking e Gamificação. Tudo num app só. Feito no Brasil.</p>
+      </div>
+      <div>
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="#unificado">Board Unificado</a></li>
+          <li><a href="#modulos">Módulos</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="#precos">Preços</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Módulos</h4>
+        <ul>
+          <li><a href="#modulos">Synconnect (CRM)</a></li>
+          <li><a href="#modulos">Lab (IA)</a></li>
+          <li><a href="#modulos">OKRs + Tracker</a></li>
+          <li><a href="#modulos">Dojo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="mailto:contato@synkan.com.br">Contato</a></li>
+          <li><a href="/termos">Termos de Uso</a></li>
+          <li><a href="/privacidade">Privacidade (LGPD)</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">© 2026 Synkan Management Lab · Feito no Brasil</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+</script>
+
+</body>
+</html>

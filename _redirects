@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────────────────────────────
+# Cloudflare Pages · Redirecionamentos do Synkan Management Lab
+# Sintaxe: <de>  <para>  <status>
+# 200 = rewrite (URL não muda no navegador)
+# 301 = redirect permanente (URL muda)
+# 302 = redirect temporário
+# ─────────────────────────────────────────────────────────────────────
+
+# Compat com filenames legados (caso alguém tenha bookmarkado)
+/synkan_landing.html              /                       301
+/synkan_termos.html               /termos                 301
+/synkan_privacidade.html          /privacidade            301
+/synkan_status.html               /status                 301
+/synkan_changelog.html            /changelog              301
+/synkan_docs.html                 /docs                   301
+/synkan_404.html                  /naoencontrado          301
+/billing/synkan_upgrade.html      /upgrade                301
+
+# Aliases amigáveis
+/terms                            /termos                 301
+/privacy                          /privacidade            301
+/pricing                          /upgrade                301
+/precos                           /upgrade                301
+/planos                           /upgrade                301
+/help                             /docs                   301
+/ajuda                            /docs                   301
+
+# Rota app — redireciona pro subdomínio do app
+/app                              https://app.synkan.com.br  301
+/app/*                            https://app.synkan.com.br  301
+/login                            https://app.synkan.com.br  301
+
+# Rota status no subdomínio (redireciona pra status.synkan.com.br
+# quando configurar; por enquanto usa a rota local)
+# /status-page                    https://status.synkan.com.br  301
