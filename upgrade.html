@@ -70,9 +70,9 @@ a{color:var(--ink);}
 .tag-desc{font-size:12.5px;color:var(--ink-3);margin-bottom:18px;line-height:1.5;min-height:38px;}
 
 .feats{list-style:none;flex:1;margin-bottom:20px;}
-.feats li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ink-2);padding:5px 0;line-height:1.4;}
-.feats li::before{content:'✓';color:var(--ok);font-weight:700;flex-shrink:0;width:14px;}
-.feats li.no::before{content:'—';color:var(--ink-4);}
+.feats li{position:relative;padding:5px 0 5px 22px;font-size:13px;color:var(--ink-2);line-height:1.4;}
+.feats li::before{content:'✓';position:absolute;left:0;top:5px;color:var(--ok);font-weight:700;}
+.feats li.no::before{content:'—';position:absolute;left:0;top:5px;color:var(--ink-4);}
 .feats li.no{color:var(--ink-4);}
 .feats li strong{color:var(--ink);font-weight:600;}
 
@@ -121,10 +121,7 @@ a{color:var(--ink);}
   border:1px solid var(--dojo-paper-line);
   position:relative;
 }
-.prices.dojo-prices .plan.featured{
-  border:2px solid var(--dojo-hinomaru);
-  box-shadow:0 4px 18px rgba(188,0,45,.10);
-}
+.prices.dojo-prices .plan.featured{border:2px solid var(--dojo-hinomaru);box-shadow:0 4px 18px rgba(188,0,45,.10);padding-top:34px;}
 .prices.dojo-prices .plan.featured::before{
   content:'Mais popular' !important;
   background:#DC1E3F;
