@@ -262,6 +262,136 @@ section{padding:80px 0;}
 .price-feats li.no{color:var(--ink-4);}
 .price-feats li strong{color:var(--ink);font-weight:600;}
 
+/* ── DOJO theme nos cards de preço ───────────────────────── */
+.prices.dojo-prices{
+  --dojo-washi:#F8F2E4;
+  --dojo-washi-2:#FBF7EE;
+  --dojo-paper-line:#E0D5C2;
+  --dojo-sumi:#1A1612;
+  --dojo-hinomaru:#BC002D;
+  --dojo-mincho:'Hiragino Mincho ProN','Yu Mincho','Songti SC','Times New Roman',Georgia,serif;
+  position:relative;
+}
+/* Decoração lateral: motif de barras do logo Synkan (mesma linguagem visual da landing) */
+.prices.dojo-prices::before,
+.prices.dojo-prices::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:14px;
+  height:42px;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 14 42' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='10' width='3' height='26' rx='1.2' fill='%23111' opacity='.45'/%3E%3Crect x='5.5' y='2' width='3' height='38' rx='1.2' fill='%23111'/%3E%3Crect x='11' y='15' width='3' height='18' rx='1.2' fill='%23111' opacity='.45'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-size:contain;
+  opacity:.18;
+  pointer-events:none;
+  z-index:0;
+}
+.prices.dojo-prices::before{left:-32px;}
+.prices.dojo-prices::after{right:-32px;}
+@media(max-width:1180px){
+  .prices.dojo-prices::before,
+  .prices.dojo-prices::after{display:none;}
+}
+
+.prices.dojo-prices .price{
+  background:linear-gradient(180deg,var(--dojo-washi-2) 0%,var(--dojo-washi) 100%);
+  border:1px solid var(--dojo-paper-line);
+  position:relative;
+  overflow:hidden;
+}
+/* Featured card — borda hinomaru com selo hanko centralizado */
+.prices.dojo-prices .price.featured{
+  border:2px solid var(--dojo-hinomaru);
+  box-shadow:0 4px 18px rgba(188,0,45,.10);
+}
+.prices.dojo-prices .price.featured::before{
+  content:'Mais popular';
+  background:var(--dojo-hinomaru);
+  color:#fff;
+  font-family:var(--font-sans);
+  letter-spacing:.08em;
+  font-size:10.5px;
+  font-weight:600;
+  text-transform:uppercase;
+  border-radius:3px;
+  box-shadow:0 2px 6px rgba(188,0,45,.30);
+  padding:5px 14px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Watermark kanji em cada card */
+.prices.dojo-prices .price[data-kanji]::after{
+  content:attr(data-kanji);
+  position:absolute;
+  right:-6px;
+  bottom:-18px;
+  font-family:var(--dojo-mincho);
+  font-size:96px;
+  font-weight:300;
+  color:rgba(26,22,18,.045);
+  pointer-events:none;
+  line-height:1;
+  user-select:none;
+  z-index:0;
+}
+.prices.dojo-prices .price > *{position:relative;z-index:1;}
+
+/* Tipografia em Mincho */
+.prices.dojo-prices .price-belt-tag{
+  font-family:var(--dojo-mincho);
+  letter-spacing:.16em;
+  font-weight:600;
+  color:var(--ink-3);
+}
+.prices.dojo-prices .price-belt-name{
+  font-family:var(--dojo-mincho);
+  font-weight:600;
+  letter-spacing:-.005em;
+}
+.prices.dojo-prices .price-num{
+  font-family:var(--dojo-mincho);
+  font-weight:500;
+  letter-spacing:-.025em;
+}
+.prices.dojo-prices .price-per{
+  font-family:var(--dojo-mincho);
+  font-style:italic;
+}
+.prices.dojo-prices .price-desc{
+  font-family:var(--dojo-mincho);
+  font-style:italic;
+}
+.prices.dojo-prices .price-feats li{font-family:var(--dojo-mincho);}
+.prices.dojo-prices .price-feats li::before{
+  color:var(--dojo-hinomaru);
+}
+.prices.dojo-prices .price-feats li.no::before{
+  color:var(--ink-4);
+}
+
+/* Botões com cara de placa de madeira */
+.prices.dojo-prices .price .btn-primary{
+  background:var(--dojo-sumi);
+  font-family:var(--dojo-mincho);
+  letter-spacing:.04em;
+}
+.prices.dojo-prices .price .btn-primary:hover{background:#000;}
+.prices.dojo-prices .price .btn-secondary{
+  background:transparent;
+  border:1px solid var(--dojo-paper-line);
+  color:var(--dojo-sumi);
+  font-family:var(--dojo-mincho);
+  letter-spacing:.04em;
+}
+.prices.dojo-prices .price .btn-secondary:hover{
+  background:var(--dojo-sumi);
+  color:#F5EFE6;
+  border-color:var(--dojo-sumi);
+}
+
 /* ── FAQ ────────────────────────────────────────────────── */
 .faq{max-width:760px;margin:0 auto;}
 .faq-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:10px;}
@@ -802,31 +932,30 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
     <div class="section-head">
       <span class="eyebrow">preços · planos do dojo</span>
       <h2>Suba de faixa quando estiver pronto.</h2>
-      <p>Como no dojo, todo mundo começa com a faixa branca. Cresça no seu ritmo. Cancele quando quiser, pagamento em reais, recibo por e-mail.</p>
+      <p>Comece com 5 dias grátis pra conhecer o dojo. Sem cartão necessário. Cancele quando quiser, pagamento em reais, recibo por e-mail.</p>
     </div>
-    <div class="prices">
-      <div class="price">
-        <span class="price-belt-tag">Iniciante</span>
+    <div class="prices dojo-prices">
+      <div class="price" data-kanji="試">
+        <span class="price-belt-tag">Conheça o dojo</span>
         <div class="price-belt">
           <span class="price-belt-vis white" aria-hidden="true"></span>
-          <span class="price-belt-name">Faixa Branca</span>
+          <span class="price-belt-name">5 dias grátis</span>
         </div>
-        <div class="price-tag"><span class="price-num">R$ 0,00</span><span class="price-per">/ pra sempre</span></div>
-        <div class="price-desc">Os primeiros passos no dojo.</div>
+        <div class="price-tag"><span class="price-num">R$ 0</span><span class="price-per">/ 5 dias</span></div>
+        <div class="price-desc">Acesso completo, sem compromisso.</div>
         <ul class="price-feats">
-          <li>1 pessoa</li>
-          <li>1 board</li>
-          <li><strong>Acesso a apenas 1 template</strong></li>
-          <li>Visões Kanban + Checklist</li>
-          <li>Modo local (offline)</li>
-          <li class="no">Lab / Canvas</li>
-          <li class="no">Synconnect (CRM)</li>
-          <li class="no">Mestre Kan IA</li>
-          <li class="no">Captação</li>
+          <li><strong>Tudo da Faixa Roxa liberado</strong></li>
+          <li>Sem cartão de crédito</li>
+          <li>Boards, Lab, CRM, Tracker, IA</li>
+          <li>Modo local e cloud</li>
+          <li>Mestre Kan IA com 30 chamadas</li>
+          <li>Sem letras miúdas</li>
+          <li>Após 5 dias, escolha um plano</li>
+          <li>Seus dados ficam guardados se você pausar</li>
         </ul>
-        <a class="btn btn-secondary" href="https://app.synkan.com.br">Criar conta grátis</a>
+        <a class="btn btn-secondary" href="https://app.synkan.com.br">Começar trial →</a>
       </div>
-      <div class="price featured">
+      <div class="price featured" data-kanji="修">
         <span class="price-belt-tag">Praticante avançado</span>
         <div class="price-belt">
           <span class="price-belt-vis purple" aria-hidden="true"></span>
@@ -847,7 +976,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
         </ul>
         <a class="btn btn-primary" href="https://app.synkan.com.br">Subir pra Faixa Roxa →</a>
       </div>
-      <div class="price">
+      <div class="price" data-kanji="達">
         <span class="price-belt-tag">Mestre · Sensei</span>
         <div class="price-belt">
           <span class="price-belt-vis black" aria-hidden="true"></span>
