@@ -1,0 +1,12 @@
+# Backup files do sed
+*.bak
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
