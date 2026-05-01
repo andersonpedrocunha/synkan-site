@@ -125,14 +125,7 @@ a{color:var(--ink);}
 .prices.dojo-prices .plan.featured::before{
   content:'Mais popular' !important;
   background:#DC1E3F;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif !important;
-  letter-spacing:.04em;
-  font-size:12px;
-  font-weight:700;
-  text-transform:uppercase;
-  border-radius:6px;
-  padding:6px 16px;
-  top:-13px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif !important;letter-spacing:.04em;font-size:11px;font-weight:700;text-transform:uppercase;white-space:nowrap;border-radius:6px;padding:5px 14px;top:-12px;
   box-shadow:0 3px 8px rgba(220,30,63,.35),0 1px 2px rgba(0,0,0,.10);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -160,6 +153,7 @@ a{color:var(--ink);}
 .prices.dojo-prices .feats li{font-family:var(--dojo-mincho);}
 .prices.dojo-prices .feats li::before{color:var(--dojo-hinomaru);}
 .prices.dojo-prices .feats li.no::before{color:var(--ink-4);}
+.prices.dojo-prices .plan .btn{padding:10px 14px !important;font-size:13px !important;}
 .prices.dojo-prices .btn-primary{background:var(--dojo-sumi);font-family:var(--dojo-mincho);letter-spacing:.04em;}
 .prices.dojo-prices .btn-primary:hover{background:#000;}
 .prices.dojo-prices .btn-secondary{background:transparent;border:1px solid var(--dojo-paper-line);color:var(--dojo-sumi);font-family:var(--dojo-mincho);letter-spacing:.04em;}
@@ -262,7 +256,7 @@ footer a{color:var(--ink-3);}
           <li class="no">Captação</li>
           <li class="no">Webhooks</li>
         </ul>
-        <button class="btn btn-primary" onclick="checkout('faixa_azul')">Assinar Faixa Azul →</button>
+        <button class="btn btn-primary" onclick="checkout('faixa_azul')">Faixa Azul →</button>
       </div>
 
       <div class="plan featured" id="plan-roxa" data-kanji="修">
@@ -284,7 +278,7 @@ footer a{color:var(--ink-3);}
           <li>Webhooks e calendário</li>
           <li class="no">Captação (formulários)</li>
         </ul>
-        <button class="btn btn-primary" onclick="checkout('faixa_roxa')">Subir pra Faixa Roxa →</button>
+        <button class="btn btn-primary" onclick="checkout('faixa_roxa')">Faixa Roxa →</button>
       </div>
 
       <div class="plan" id="plan-preta" data-kanji="達">
@@ -306,7 +300,7 @@ footer a{color:var(--ink-3);}
           <li>Audit log completo</li>
           <li>SSO (SAML / Google Workspace)</li>
         </ul>
-        <button class="btn btn-primary" onclick="checkout('faixa_preta')">Subir pra Faixa Preta →</button>
+        <button class="btn btn-primary" onclick="checkout('faixa_preta')">Faixa Preta →</button>
       </div>
 
     </div>
