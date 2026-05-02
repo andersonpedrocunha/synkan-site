@@ -376,10 +376,24 @@ function showError(msg){
 
 async function checkout(planCode){
   // Pega user_id e email do usuário logado.
-  // No app real, você vai injetar isso via meta tag ou window.SYNKAN_USER no momento de embed.
+  // Ordem de prioridade:
+  //   1) Query string ?user_id=...&email=... (vindo do app cross-domain)
+  //   2) window.SYNKAN_USER (caso a página seja embedada dentro do app)
+  //   3) localStorage (se já tiver sido salvo nesse domínio antes)
+  const params = new URLSearchParams(window.location.search);
+  const qsUserId = params.get('user_id');
+  const qsEmail = params.get('email');
+
+  // Se veio user_id pela URL, persiste no localStorage do synkan.com.br
+  // pra próximas visitas (e pro retorno do checkout)
+  if (qsUserId) {
+    try { localStorage.setItem('synkan_user_id', qsUserId); } catch(e){}
+    if (qsEmail) try { localStorage.setItem('synkan_user_email', qsEmail); } catch(e){}
+  }
+
   const user = window.SYNKAN_USER || {};
-  const userId = user.id || localStorage.getItem('synkan_user_id');
-  const userEmail = user.email || localStorage.getItem('synkan_user_email');
+  const userId = qsUserId || user.id || localStorage.getItem('synkan_user_id');
+  const userEmail = qsEmail || user.email || localStorage.getItem('synkan_user_email');
 
   if (!userId) {
     showError('Você precisa estar logado pra fazer upgrade. Volta ao app, faz login e tenta de novo.');
