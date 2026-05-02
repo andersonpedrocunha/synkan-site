@@ -350,8 +350,15 @@ footer a{color:var(--ink-3);}
 </footer>
 
 <script>
-// ── Configuração: substitua pela URL do seu billing_server em produção ──
-const BILLING_API = window.SYNKAN_BILLING_API || 'http://127.0.0.1:9998';
+// ── Configuração: aponta pro billing_server.
+// Em produção (synkan.com.br ou app.synkan.com.br): usa https://billing.synkan.com.br
+// Em desenvolvimento local (file:// ou localhost): usa http://127.0.0.1:9998
+const BILLING_API = (function(){
+  if (window.SYNKAN_BILLING_API) return window.SYNKAN_BILLING_API;
+  const host = (location && location.hostname) || '';
+  const isLocal = !host || host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local');
+  return isLocal ? 'http://127.0.0.1:9998' : 'https://billing.synkan.com.br';
+})();
 
 let cycle = 'monthly';
 
