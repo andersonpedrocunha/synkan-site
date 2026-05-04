@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Synkan Management Lab — Kanban, CRM, OKRs e IA num só lugar</title>
-<meta name="description" content="Synkan Management Lab une kanban, CRM (Synconnect), Lab de ideias com IA, OKRs, time tracking e gamificação. Tudo num app só, sincronizado em tempo real." />
+<title>Synkan Management Lab — Kanban, CRM, OKRs, Slack, WhatsApp e IA num só lugar</title>
+<meta name="description" content="Synkan Management Lab une kanban, CRM (Synconnect), Lab com planilhas e IA, OKRs, time tracking, gamificação, Slack App nativo, WhatsApp via Z-API e Calendar sync. Tudo num app só, em tempo real." />
 <link rel="icon" type="image/png" href="synkan-icon-512.png" />
 <style>
 :root{
@@ -644,12 +644,13 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5"/><path d="M10 3v6L6 17a2 2 0 0 0 1.7 3h8.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M8 13h8"/><circle cx="9.5" cy="16" r=".7" fill="currentColor"/><circle cx="13" cy="17.2" r=".55" fill="currentColor"/></svg></div>
           <h3>Lab (Canvas)</h3>
         </div>
-        <div class="mod-tag">5 formatos · com IA</div>
-        <p class="mod-desc">Espaço pra pensar antes de virar card. Mapas, documentos, tabelas, planos. Mestre Kan IA gera tudo do zero.</p>
+        <div class="mod-tag">6 formatos · com IA</div>
+        <p class="mod-desc">Espaço pra pensar antes de virar card. Mapas, documentos, planilhas, tabelas, planos. Mestre Kan IA gera tudo do zero.</p>
         <ul class="mod-feats">
-          <li>5 formatos: branco, mapa de ideias, documento, tabela, plano de ação</li>
+          <li>6 formatos: branco, mapa de ideias, documento, tabela, <strong>planilha</strong>, plano de ação</li>
+          <li><strong>Planilha completa</strong>: fórmulas (SUM, MEDIA, SE, VLOOKUP…), formatação por célula, atalhos Excel/Google Sheets, copy/paste, fill handle, lista suspensa, checkbox, notas</li>
           <li>11 tipos de node (sticky, idea, feature, problem, goal, risk, milestone…)</li>
-          <li>IA gera o canvas inteiro a partir de um tema</li>
+          <li>IA gera o canvas/planilha inteira a partir de um tema</li>
           <li>Promove nodes/bullets/linhas pra cards de board reais</li>
           <li>Undo/Redo (Ctrl+Z/Y) e vinculação a Key Results de OKR</li>
         </ul>
@@ -745,7 +746,72 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <li>Modo Cloud: Supabase com Realtime entre todos</li>
           <li>RLS por board: só você e quem você convidou enxerga</li>
           <li>Membros com role (Viewer/Editor/Admin)</li>
-          <li>Webhooks pra Slack, Discord, Zapier, Make, n8n</li>
+          <li>Webhooks genéricos pra Discord, Zapier, Make, n8n</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/><path d="M9 15a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM9 6.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/><path d="M9 22.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/><path d="M19 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/><path d="M19 13a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/><path d="M15 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/><path d="M15 22.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></div>
+          <h3>Slack App nativo</h3>
+        </div>
+        <div class="mod-tag">bot oficial · OAuth</div>
+        <p class="mod-desc">Não é webhook — é uma <strong>app instalada no seu workspace</strong>. Notifica, recebe comandos e responde no chat.</p>
+        <ul class="mod-feats">
+          <li>Conexão em 1 clique via OAuth — bot Synkan instalado no workspace</li>
+          <li>Notificações por canal: card criado, concluído, atribuído, mudou de status, lead novo</li>
+          <li>Filtros por canal e por board — múltiplos canais simultâneos</li>
+          <li><strong>Slash commands</strong>: <code>/synkan novo</code> abre modal pra escolher board + prioridade + deadline; <code>/synkan listar</code> mostra cards abertos</li>
+          <li><strong>Botões interativos</strong> nas mensagens: ✓ Concluir, 👤 Atribuir a mim, 🔗 Abrir no Synkan</li>
+          <li>@menção e DM ao bot criam cards instantaneamente</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h3>WhatsApp · Z-API</h3>
+        </div>
+        <div class="mod-tag">grupos + números</div>
+        <p class="mod-desc">Notificações automáticas de cards e leads no WhatsApp da sua equipe — em <strong>números individuais ou grupos</strong>.</p>
+        <ul class="mod-feats">
+          <li>Plug-and-play (R$ 119/mês com gestão Synkan) ou DIY (Z-API por R$ 99,99 e cole credenciais)</li>
+          <li>Mensagens ilimitadas, sem cobrança por envio</li>
+          <li>Múltiplos destinos com filtro por evento e por board</li>
+          <li>Suporta grupos do WhatsApp (cada equipe com canal próprio)</li>
+          <li>Cancelamento e gerenciamento via Stripe Customer Portal</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1.2" fill="currentColor"/><circle cx="12" cy="15" r="1.2" fill="currentColor"/><circle cx="16" cy="15" r="1.2" fill="currentColor"/></svg></div>
+          <h3>Calendar Sync</h3>
+        </div>
+        <div class="mod-tag">google · outlook · apple</div>
+        <p class="mod-desc">Deadlines do Synkan aparecem direto no seu calendário, atualizando sozinhos. Sem download de .ics.</p>
+        <ul class="mod-feats">
+          <li>URL pública assinada (webcal) — cole no Google Calendar ou Outlook</li>
+          <li>Múltiplas URLs com nomes próprios (ex: "Trabalho", "Pessoal")</li>
+          <li>Filtro de boards por URL — escolha quais entram</li>
+          <li>Atualização automática (Apple ~5min, Outlook ~3-6h, Google ~12-24h)</li>
+          <li>Revogue a qualquer momento — token único por URL</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mod-h">
+          <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6V12L16 14"/><path d="M3 12h2"/><path d="M19 12h2"/></svg></div>
+          <h3>Resumos automáticos</h3>
+        </div>
+        <div class="mod-tag">diário · semanal</div>
+        <p class="mod-desc">A equipe começa o dia sabendo o que está vencido, o que vence hoje e o que está concluído — sem ninguém abrir o app.</p>
+        <ul class="mod-feats">
+          <li>Resumo diário com horário customizável (ex: 09h) por canal Slack/WhatsApp</li>
+          <li>Resumo semanal com dia escolhido (ex: segunda) e janela de 7 dias</li>
+          <li>Mostra: vencidos, vencem hoje, próximos 7 dias, concluídos na janela</li>
+          <li>Agrupa por board, exibe responsável + prioridade + deadline</li>
+          <li>Por canal: cada canal pode ter horário/dia próprios</li>
         </ul>
       </div>
 
