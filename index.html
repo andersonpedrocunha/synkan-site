@@ -255,6 +255,31 @@ section{padding:80px 0;}
 .price-belt-vis.black::after{background:#D4AF37;opacity:.9;}
 .price-belt-name{font-size:15px;font-weight:700;letter-spacing:-.005em;}
 .price-belt-tag{font-size:11px;color:var(--ink-4);letter-spacing:.04em;text-transform:uppercase;font-weight:600;margin-bottom:4px;display:block;}
+/* Toggle Mensal/Anual nos preços */
+.cycle-toggle{
+  display:inline-flex;align-items:center;gap:0;
+  margin:0 auto 28px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:4px;
+}
+.cycle-toggle{display:flex;justify-content:center;width:max-content;margin-left:auto;margin-right:auto;}
+.cycle-btn{
+  border:none;background:transparent;cursor:pointer;
+  padding:8px 18px;font-size:13.5px;font-weight:500;
+  color:var(--ink-3);border-radius:999px;
+  font-family:inherit;letter-spacing:-.005em;
+  transition:background .15s,color .15s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.cycle-btn:hover{color:var(--ink);}
+.cycle-btn.is-active{background:var(--ink);color:#fff;}
+.cycle-badge{
+  font-size:10.5px;font-weight:600;
+  background:#FBE07A;color:#5C3F08;
+  padding:2px 7px;border-radius:999px;
+  letter-spacing:.02em;
+}
+.cycle-btn.is-active .cycle-badge{background:#FFD54F;color:#3a2a05;}
 .price-tag{display:flex;align-items:baseline;gap:6px;margin:14px 0 6px;flex-wrap:nowrap;}
 .price-num{font-size:30px;font-weight:700;letter-spacing:-.03em;white-space:nowrap;flex-shrink:0;}
 .price-per{font-size:11.5px;color:var(--ink-3);line-height:1.3;}
@@ -1023,6 +1048,15 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
       <h2>Suba de faixa quando estiver pronto.</h2>
       <p>Comece com 5 dias grátis pra conhecer o dojo. Sem cartão necessário. Cancele quando quiser, pagamento em reais, recibo por e-mail.</p>
     </div>
+
+    <!-- Toggle Mensal / Anual -->
+    <div class="cycle-toggle" role="tablist" aria-label="Ciclo de cobrança">
+      <button type="button" class="cycle-btn is-active" data-cycle="monthly" onclick="setBillingCycle('monthly')" role="tab" aria-selected="true">Mensal</button>
+      <button type="button" class="cycle-btn" data-cycle="annual" onclick="setBillingCycle('annual')" role="tab" aria-selected="false">
+        Anual <span class="cycle-badge">-10%</span>
+      </button>
+    </div>
+
     <div class="prices dojo-prices">
       <div class="price" data-kanji="試">
         <span class="price-belt-tag">Conheça o dojo</span>
@@ -1050,7 +1084,10 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-belt-vis blue" aria-hidden="true"></span>
           <span class="price-belt-name">Faixa Azul</span>
         </div>
-        <div class="price-tag"><span class="price-num">R$ 14,90</span><span class="price-per">/ mês</span></div>
+        <div class="price-tag">
+          <span class="price-num" data-monthly="R$ 14,90" data-annual="R$ 13,42">R$ 14,90</span>
+          <span class="price-per" data-monthly="/ mês" data-annual="/ mês · cobrado anual">/ mês</span>
+        </div>
         <div class="price-desc">Pra organização pessoal.</div>
         <ul class="price-feats">
           <li><strong>1 pessoa</strong></li>
@@ -1073,7 +1110,10 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-belt-vis purple" aria-hidden="true"></span>
           <span class="price-belt-name">Faixa Roxa</span>
         </div>
-        <div class="price-tag"><span class="price-num">R$ 29,90</span><span class="price-per">/ usuário / mês</span></div>
+        <div class="price-tag">
+          <span class="price-num" data-monthly="R$ 29,90" data-annual="R$ 26,92">R$ 29,90</span>
+          <span class="price-per" data-monthly="/ usuário / mês" data-annual="/ usuário / mês · cobrado anual">/ usuário / mês</span>
+        </div>
         <div class="price-desc">Pra quem treina todo dia no board.</div>
         <ul class="price-feats">
           <li>Até <strong>10 boards</strong></li>
@@ -1094,7 +1134,10 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-belt-vis black" aria-hidden="true"></span>
           <span class="price-belt-name">Faixa Preta</span>
         </div>
-        <div class="price-tag"><span class="price-num">R$ 79,90</span><span class="price-per">/ usuário / mês</span></div>
+        <div class="price-tag">
+          <span class="price-num" data-monthly="R$ 79,90" data-annual="R$ 71,92">R$ 79,90</span>
+          <span class="price-per" data-monthly="/ usuário / mês" data-annual="/ usuário / mês · cobrado anual">/ usuário / mês</span>
+        </div>
         <div class="price-desc">Domínio total da operação.</div>
         <ul class="price-feats">
           <li>Tudo da Roxa, mais:</li>
@@ -1192,7 +1235,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
       </details>
       <details class="faq-item">
         <summary>Como é o pagamento da assinatura?</summary>
-        <p>Mensal ou anual (com 2 meses grátis no plano anual). Pagamento via cartão de crédito. Sua empresa recebe o recibo da assinatura por e-mail.</p>
+        <p>Mensal ou anual (com <strong>10% de desconto</strong> no plano anual). Pagamento via cartão de crédito. Sua empresa recebe o recibo da assinatura por e-mail.</p>
       </details>
     </div>
   </div>
@@ -1256,6 +1299,29 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 8);
 }, { passive: true });
+
+// Toggle Mensal/Anual nos cards de preço.
+// Procura todos elementos com data-monthly/data-annual e troca o textContent.
+function setBillingCycle(cycle) {
+  if (!['monthly','annual'].includes(cycle)) cycle = 'monthly';
+  // Atualiza estado dos botões
+  document.querySelectorAll('.cycle-btn').forEach(btn => {
+    const active = btn.dataset.cycle === cycle;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  // Atualiza textContent dos elementos com data-monthly/data-annual
+  document.querySelectorAll('[data-monthly][data-annual]').forEach(el => {
+    el.textContent = el.dataset[cycle];
+  });
+  // Persiste preferência (lembrar próxima visita)
+  try { localStorage.setItem('synkan_billing_cycle', cycle); } catch(e){}
+}
+// Restaura preferência ao carregar
+try {
+  const saved = localStorage.getItem('synkan_billing_cycle');
+  if (saved === 'annual') setBillingCycle('annual');
+} catch(e){}
 </script>
 
 </body>
