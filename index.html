@@ -1102,7 +1102,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <li class="no">Captação</li>
           <li class="no">Webhooks</li>
         </ul>
-        <a class="btn btn-primary" href="https://app.synkan.com.br">Faixa Azul →</a>
+        <a class="btn btn-primary plan-cta" data-plan="faixa_azul" href="https://app.synkan.com.br/?plan=faixa_azul&cycle=monthly">Faixa Azul →</a>
       </div>
       <div class="price featured" data-kanji="修">
         <span class="price-belt-tag">Profissional</span>
@@ -1126,7 +1126,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <li>Integrações (webhooks, calendário)</li>
           <li class="no">Captação</li>
         </ul>
-        <a class="btn btn-primary" href="https://app.synkan.com.br">Faixa Roxa →</a>
+        <a class="btn btn-primary plan-cta" data-plan="faixa_roxa" href="https://app.synkan.com.br/?plan=faixa_roxa&cycle=monthly">Faixa Roxa →</a>
       </div>
       <div class="price" data-kanji="達">
         <span class="price-belt-tag">Mestre · Sensei</span>
@@ -1150,7 +1150,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <li>Convidados externos (clientes)</li>
           <li>Audit log completo</li>
         </ul>
-        <a class="btn btn-primary" href="https://app.synkan.com.br">Faixa Preta →</a>
+        <a class="btn btn-primary plan-cta" data-plan="faixa_preta" href="https://app.synkan.com.br/?plan=faixa_preta&cycle=monthly">Faixa Preta →</a>
       </div>
     </div>
     <p style="text-align:center;font-size:13px;color:var(--ink-4);margin-top:28px;">Precisa de mais? <a href="mailto:contato@synkan.com.br" style="color:var(--ink);text-decoration:underline;">Faixa Preta 2° dan</a> sob medida pra equipes grandes (interações ilimitadas, RBAC avançado, SLA).</p>
@@ -1313,6 +1313,12 @@ function setBillingCycle(cycle) {
   // Atualiza textContent dos elementos com data-monthly/data-annual
   document.querySelectorAll('[data-monthly][data-annual]').forEach(el => {
     el.textContent = el.dataset[cycle];
+  });
+  // Atualiza href dos CTAs de plano com o cycle escolhido
+  // Assim, ao clicar "Faixa Roxa", o app sabe que é annual e dispara o checkout certo.
+  document.querySelectorAll('a.plan-cta[data-plan]').forEach(a => {
+    const plan = a.dataset.plan;
+    a.href = `https://app.synkan.com.br/?plan=${plan}&cycle=${cycle}`;
   });
   // Persiste preferência (lembrar próxima visita)
   try { localStorage.setItem('synkan_billing_cycle', cycle); } catch(e){}
