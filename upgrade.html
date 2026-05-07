@@ -410,6 +410,7 @@ async function checkout(planCode){
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         plan_code: planCode,
+        cycle: cycle,
         user_id: userId,
         user_email: userEmail,
       }),
