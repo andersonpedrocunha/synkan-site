@@ -75,8 +75,7 @@ contato@synkan.com.br      →  seu-gmail@gmail.com
 suporte@synkan.com.br      →  seu-gmail@gmail.com
 dpo@synkan.com.br          →  seu-gmail@gmail.com
 cobranca@synkan.com.br     →  seu-gmail@gmail.com
-alertas@synkan.com.br      →  seu-gmail@gmail.com
-status@synkan.com.br       →  seu-gmail@gmail.com
+alertas@synkan.com.br      →  seu-gmail@gmail.com  (também atende inscrição em alertas de status)
 ```
 
 A Cloudflare confirma seu email pessoal e cria os MX records sozinha. **Grátis e ilimitado.**
