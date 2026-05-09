@@ -237,8 +237,9 @@ section{padding:80px 0;}
 .news-card p{font-size:13.5px;color:var(--ink-3);line-height:1.5;}
 
 /* ── Pricing ────────────────────────────────────────────── */
-.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:stretch;}
-@media(max-width:1100px){.prices{grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto;gap:14px;}}
+.prices{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;align-items:stretch;}
+@media(max-width:1280px){.prices{grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto;gap:14px;}}
+@media(max-width:880px){.prices{grid-template-columns:repeat(2,1fr);max-width:760px;}}
 @media(max-width:540px){.prices{grid-template-columns:1fr;max-width:420px;}}
 .price{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px 20px;display:flex;flex-direction:column;position:relative;}
 .price.featured{border:2px solid var(--ink);box-shadow:var(--shadow-md);}
@@ -247,6 +248,7 @@ section{padding:80px 0;}
 .price-belt-vis{width:36px;height:8px;border-radius:2px;border:1px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;}
 .price-belt-vis::after{content:'';position:absolute;right:5px;top:-2px;bottom:-2px;width:3px;background:#111;border-radius:1px;opacity:.55;}
 .price-belt-vis.white{background:#FAFAF8;}
+.price-belt-vis.trial{background:#E8DFCB;}
 .price-belt-vis.blue{background:#2D4A77;}
 .price-belt-vis.blue::after{background:#fff;opacity:.85;}
 .price-belt-vis.purple{background:#7F3FBF;}
@@ -280,6 +282,105 @@ section{padding:80px 0;}
   letter-spacing:.02em;
 }
 .cycle-btn.is-active .cycle-badge{background:#FFD54F;color:#3a2a05;}
+
+/* ── Tabela completa (colapsável, abaixo dos add-ons) ─────────────────── */
+.compare-toggle-wrap{display:flex;justify-content:center;margin:48px 0 0;}
+.compare-toggle{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:11px 22px;cursor:pointer;font-family:inherit;
+  font-size:14px;font-weight:600;color:var(--ink-2);
+  transition:all .15s;box-shadow:var(--shadow-sm);
+}
+.compare-toggle:hover{border-color:var(--ink);color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.compare-toggle .ct-icon{
+  display:inline-block;width:14px;height:14px;
+  transition:transform .2s;
+  background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+.compare-toggle.is-open .ct-icon{transform:rotate(180deg);}
+.compare-table-wrap{
+  margin-top:28px;overflow-x:auto;background:#fff;
+  border:1px solid var(--line);border-radius:14px;
+  animation:compareFadeIn .3s ease;
+}
+.compare-table-wrap[hidden]{display:none;}
+@keyframes compareFadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.compare-table{width:100%;border-collapse:collapse;min-width:880px;}
+.compare-table thead th{
+  padding:18px 12px;text-align:center;
+  font-weight:600;color:var(--ink);
+  border-bottom:2px solid var(--line);background:var(--bg-soft);
+  font-size:13px;vertical-align:middle;
+}
+.compare-table thead th:first-child{
+  text-align:left;padding-left:22px;font-size:11px;color:var(--ink-4);
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.compare-table thead th .ct-eyebrow{
+  display:block;font-size:9.5px;color:var(--ink-4);letter-spacing:.10em;
+  text-transform:uppercase;margin-bottom:6px;font-weight:600;
+}
+.compare-table thead th .ct-belt-row{
+  display:flex;justify-content:center;align-items:center;gap:7px;margin-bottom:4px;
+}
+.compare-table thead th .ct-belt{
+  display:inline-block;width:32px;height:9px;border-radius:2px;
+  border:1px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;
+}
+.compare-table thead th .ct-belt::after{
+  content:'';position:absolute;right:5px;top:-2px;bottom:-2px;width:3px;
+  background:#111;border-radius:1px;opacity:.55;
+}
+.compare-table thead th .ct-belt.ct-white{background:#FAFAF8;}
+.compare-table thead th .ct-belt.ct-trial{background:#E8DFCB;}
+.compare-table thead th .ct-belt.ct-blue{background:#2D4A77;}
+.compare-table thead th .ct-belt.ct-blue::after{background:#fff;opacity:.85;}
+.compare-table thead th .ct-belt.ct-purple{background:#7F3FBF;}
+.compare-table thead th .ct-belt.ct-purple::after{background:#FFD66E;opacity:.85;}
+.compare-table thead th .ct-belt.ct-black{background:#111;}
+.compare-table thead th .ct-belt.ct-black::after{background:#D4AF37;opacity:.9;}
+.compare-table thead th .ct-name{font-size:14px;font-weight:600;color:var(--ink);}
+.compare-table thead th .ct-price{
+  display:block;font-size:11.5px;color:var(--ink-4);
+  font-weight:400;font-style:italic;margin-top:4px;
+}
+.compare-table thead th.ct-popular{
+  background:linear-gradient(180deg,rgba(188,0,45,.08) 0%,var(--bg-soft) 100%);position:relative;
+}
+.compare-table thead th.ct-popular::before{
+  content:'Mais popular';position:absolute;top:-1px;left:8px;right:8px;
+  background:var(--dojo-hinomaru,#BC002D);color:#fff;
+  font-size:9.5px;font-weight:700;padding:2px 0;letter-spacing:.08em;text-transform:uppercase;
+}
+.compare-table thead th.ct-popular .ct-name{color:var(--dojo-hinomaru,#BC002D);}
+.compare-table thead th.ct-popular::after{
+  content:'';position:absolute;bottom:-2px;left:8px;right:8px;height:3px;
+  background:var(--dojo-hinomaru,#BC002D);border-radius:2px 2px 0 0;
+}
+.compare-table tbody td{
+  padding:11px 12px;font-size:13px;color:var(--ink-2);
+  border-bottom:1px solid var(--line);text-align:center;vertical-align:middle;
+}
+.compare-table tbody td:first-child{
+  text-align:left;padding-left:22px;font-weight:500;color:var(--ink);
+}
+.compare-table tbody td .ct-hint{
+  display:block;font-size:10.5px;color:var(--ink-4);font-style:italic;
+  font-weight:400;margin-top:2px;
+}
+.compare-table tbody tr.ct-section td{
+  background:var(--bg-soft);padding:9px 14px;font-size:10.5px;
+  color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;
+  font-weight:700;border-bottom:none;
+}
+.compare-table tbody td.ct-popular{background:rgba(188,0,45,.03);}
+.compare-table tbody td.ct-yes{color:var(--ok);font-weight:700;font-size:16px;}
+.compare-table tbody td.ct-no{color:var(--ink-4);font-weight:400;}
+.compare-table tbody td.ct-num{color:var(--ink);font-weight:600;}
+.compare-table tbody td.ct-popular.ct-num,
+.compare-table tbody td.ct-popular.ct-yes{color:var(--dojo-hinomaru,#BC002D);}
+.compare-table tbody td.ct-partial{color:var(--dojo-hinomaru,#BC002D);font-style:italic;font-size:11px;}
 .price-tag{display:flex;align-items:baseline;gap:6px;margin:14px 0 6px;flex-wrap:nowrap;}
 .price-num{font-size:30px;font-weight:700;letter-spacing:-.03em;white-space:nowrap;flex-shrink:0;}
 .price-per{font-size:11.5px;color:var(--ink-3);line-height:1.3;}
@@ -1131,26 +1232,47 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
     </div>
 
     <div class="prices dojo-prices">
+      <div class="price" data-kanji="始">
+        <span class="price-belt-tag">Iniciante</span>
+        <div class="price-belt">
+          <span class="price-belt-vis white" aria-hidden="true"></span>
+          <span class="price-belt-name">Faixa Branca</span>
+        </div>
+        <div class="price-tag"><span class="price-num">Grátis</span><span class="price-per">pra sempre</span></div>
+        <div class="price-desc">Pra você experimentar o caminho sem pressa.</div>
+        <ul class="price-feats">
+          <li><strong>1 board</strong> (2 com Zai ativo)</li>
+          <li><strong>1 OKR</strong> ativo</li>
+          <li><strong>1 Zai</strong> · finanças</li>
+          <li><strong>1 Lab (canvas)</strong></li>
+          <li><strong>10 interações/mês</strong> com Mestre Kan IA</li>
+          <li><strong>Tatami (chat)</strong> · histórico 30 dias</li>
+          <li class="no">Synconnect (CRM)</li>
+          <li class="no">Integrações</li>
+          <li class="no">Boards compartilhados</li>
+        </ul>
+        <a class="btn btn-secondary" href="https://app.synkan.com.br">Começar grátis →</a>
+      </div>
       <div class="price" data-kanji="試">
         <span class="price-belt-tag">Conheça o dojo</span>
         <div class="price-belt">
-          <span class="price-belt-vis white" aria-hidden="true"></span>
+          <span class="price-belt-vis trial" aria-hidden="true"></span>
           <span class="price-belt-name">5 dias grátis</span>
         </div>
-        <div class="price-tag"><span class="price-num">R$ 0</span><span class="price-per">/ 5 dias</span></div>
-        <div class="price-desc">Acesso completo, sem compromisso.</div>
+        <div class="price-tag"><span class="price-num">Trial</span><span class="price-per">5 dias · sem cartão</span></div>
+        <div class="price-desc">Acesso completo pra sentir o pacote inteiro.</div>
         <ul class="price-feats">
           <li><strong>Tudo da Faixa Roxa liberado</strong></li>
           <li>Sem cartão de crédito</li>
-          <li>Boards, Lab, Synconnect, Tracker, IA</li>
-          <li><strong>Tatami · chat + voz no tatame</strong> liberado pra testar</li>
+          <li>Boards, Lab (canvas), Synconnect, Tracker, IA</li>
+          <li><strong>Tatami (chat) + voz no tatame</strong> liberado</li>
           <li>Modo local e cloud</li>
           <li>Mestre Kan IA com 30 chamadas</li>
           <li>Sem letras miúdas</li>
           <li>Após 5 dias, escolha um plano</li>
-          <li>Seus dados ficam guardados se você pausar</li>
+          <li>Seus dados ficam guardados se pausar</li>
         </ul>
-        <a class="btn btn-secondary" href="https://app.synkan.com.br">Começar trial →</a>
+        <a class="btn btn-secondary" href="https://app.synkan.com.br">Iniciar trial →</a>
       </div>
       <div class="price" data-kanji="個">
         <span class="price-belt-tag">Pessoal</span>
@@ -1165,17 +1287,17 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
         <div class="price-desc">Pra organização pessoal.</div>
         <ul class="price-feats">
           <li><strong>1 pessoa</strong></li>
-          <li>Até <strong>5 boards</strong></li>
-          <li>Até <strong>5 Lab / Canvas</strong></li>
+          <li>Até <strong>5 boards</strong> + 3 Zais</li>
+          <li>Até <strong>5 Lab (canvas)</strong></li>
+          <li><strong>3 OKRs</strong> ativos</li>
           <li><strong>Todas as 6 visões + Tracker</strong></li>
           <li>Board Unificado</li>
           <li><strong>100 interações/mês</strong> com Mestre Kan IA</li>
-          <li>OKRs (até 3) + Dojo + Documentos</li>
+          <li><strong>Tatami (chat)</strong> · histórico 90 dias</li>
           <li>Synconnect (até 100 contatos)</li>
-          <li>Integração com calendário</li>
-          <li class="no">Tatami (chat + voz)</li>
-          <li class="no">Captação</li>
-          <li class="no">Webhooks</li>
+          <li>Integração com calendário + WhatsApp</li>
+          <li class="no">Voz no tatame ao vivo</li>
+          <li class="no">Captação (formulários)</li>
         </ul>
         <a class="btn btn-primary plan-cta" data-plan="faixa_azul" href="https://app.synkan.com.br/?plan=faixa_azul&cycle=monthly">Faixa Azul →</a>
       </div>
@@ -1186,21 +1308,23 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-belt-name">Faixa Roxa</span>
         </div>
         <div class="price-tag">
-          <span class="price-num" data-monthly="R$ 29,90" data-annual="R$ 26,92">R$ 29,90</span>
+          <span class="price-num" data-monthly="R$ 27,90" data-annual="R$ 25,11">R$ 27,90</span>
           <span class="price-per" data-monthly="/ usuário / mês" data-annual="/ usuário / mês · cobrado anual">/ usuário / mês</span>
         </div>
-        <div class="price-desc">Pra quem treina todo dia no board.</div>
+        <div class="price-desc">Pra times pequenos que querem todo o ferramental num lugar só.</div>
         <ul class="price-feats">
           <li>Até <strong>10 boards</strong></li>
-          <li>Até <strong>10 Lab / Canvas</strong></li>
+          <li>Até <strong>10 Zais</strong></li>
+          <li><strong>Lab (canvas) ilimitado</strong></li>
+          <li><strong>5 OKRs</strong> ativos</li>
           <li><strong>Todas as 6 visões + Tracker</strong></li>
           <li>Board Unificado</li>
           <li>Synconnect (contatos + captação de leads)</li>
-          <li><strong>Tatami · chat + voz no tatame</strong></li>
+          <li><strong>Tatami (chat) + voz no tatame</strong> · histórico ∞</li>
           <li><strong>300 interações/mês</strong> com Mestre Kan IA</li>
-          <li>OKRs + Dojo + Documentos</li>
-          <li>Integrações (webhooks, calendário)</li>
-          <li class="no">Captação</li>
+          <li>Admins ilimitados (R$ 27,90/seat)</li>
+          <li>Integrações (webhooks, calendário, WhatsApp)</li>
+          <li class="no">Granatum</li>
         </ul>
         <a class="btn btn-primary plan-cta" data-plan="faixa_roxa" href="https://app.synkan.com.br/?plan=faixa_roxa&cycle=monthly">Faixa Roxa →</a>
       </div>
@@ -1211,25 +1335,25 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-belt-name">Faixa Preta</span>
         </div>
         <div class="price-tag">
-          <span class="price-num" data-monthly="R$ 79,90" data-annual="R$ 71,92">R$ 79,90</span>
+          <span class="price-num" data-monthly="R$ 62,90" data-annual="R$ 56,61">R$ 62,90</span>
           <span class="price-per" data-monthly="/ usuário / mês" data-annual="/ usuário / mês · cobrado anual">/ usuário / mês</span>
         </div>
         <div class="price-desc">Domínio total da operação.</div>
         <ul class="price-feats">
           <li>Tudo da Roxa, mais:</li>
-          <li><strong>Boards ilimitados</strong></li>
-          <li><strong>Lab / Canvas ilimitados</strong></li>
+          <li><strong>Boards, Lab (canvas), OKRs e Zais ilimitados</strong></li>
           <li><strong>1.000 interações/mês</strong> com Mestre Kan IA</li>
           <li>Captação (formulários públicos)</li>
           <li><strong>Integração Granatum</strong> (ERP financeiro · exclusivo)</li>
           <li>Régua de follow-up automática</li>
           <li>Convidados externos (clientes)</li>
           <li>Audit log completo</li>
+          <li>Suporte por email · 24h</li>
         </ul>
         <a class="btn btn-primary plan-cta" data-plan="faixa_preta" href="https://app.synkan.com.br/?plan=faixa_preta&cycle=monthly">Faixa Preta →</a>
       </div>
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--ink-4);margin-top:28px;">Precisa de mais? <a href="mailto:contato@synkan.com.br" style="color:var(--ink);text-decoration:underline;">Faixa Preta 2° dan</a> sob medida pra equipes grandes (interações ilimitadas, RBAC avançado, SLA).</p>
+    <p style="text-align:center;font-size:13px;color:var(--ink-4);margin-top:28px;">Precisa de mais? <a href="mailto:contato@synkan.com.br" style="color:var(--ink);text-decoration:underline;">Faixa Preta 2° dan</a> sob medida pra equipes grandes (interações ilimitadas, SSO/SCIM, RBAC avançado).</p>
 
     <!-- Add-ons (pacotes adicionais) -->
     <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--line);">
@@ -1270,6 +1394,108 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
         </div>
       </div>
     </div>
+
+    <!-- ── Comparativo completo (colapsável) ────────────────────── -->
+    <div class="compare-toggle-wrap">
+      <button type="button" class="compare-toggle" id="compareToggleBtn" onclick="toggleCompareTable()" aria-expanded="false" aria-controls="compareTableWrap">
+        <span class="ct-text">Comparar todos os planos lado a lado</span>
+        <span class="ct-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="compare-table-wrap" id="compareTableWrap" hidden>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>
+              <span class="ct-eyebrow">Iniciante</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-white"></span><span class="ct-name">Faixa Branca</span></span>
+              <span class="ct-price">Grátis</span>
+            </th>
+            <th>
+              <span class="ct-eyebrow">Conheça o Dojo</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-trial"></span><span class="ct-name">5 dias grátis</span></span>
+              <span class="ct-price">Trial · sem cartão</span>
+            </th>
+            <th>
+              <span class="ct-eyebrow">Pessoal</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-blue"></span><span class="ct-name">Faixa Azul</span></span>
+              <span class="ct-price">R$ 14,90/mês</span>
+            </th>
+            <th class="ct-popular">
+              <span class="ct-eyebrow">Profissional</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-purple"></span><span class="ct-name">Faixa Roxa</span></span>
+              <span class="ct-price">R$ 27,90/user/mês</span>
+            </th>
+            <th>
+              <span class="ct-eyebrow">Mestre · Sensei</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-black"></span><span class="ct-name">Faixa Preta</span></span>
+              <span class="ct-price">R$ 62,90/user/mês</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="ct-section"><td colspan="6">Comunicação · Tatami</td></tr>
+          <tr><td>Canais ilimitados</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Histórico do chat<span class="ct-hint">Tempo de retenção</span></td><td class="ct-num">30 dias</td><td class="ct-num">liberado</td><td class="ct-num">90 dias</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
+          <tr><td>Voz · Tatame ao vivo</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Mapa visual de canais<span class="ct-hint">Visão dojo (ukiyo-e)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Kudos · elogios com XP</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Gestão de tarefas</td></tr>
+          <tr><td>Boards Kanban</td><td class="ct-num">1<span class="ct-hint">2 com Zai ativo</span></td><td class="ct-num">∞</td><td class="ct-num">5</td><td class="ct-popular ct-num">10</td><td class="ct-num">∞</td></tr>
+          <tr><td>Lab (canvas)<span class="ct-hint">Mindmap, fluxos, documentos, OKR canvas</span></td><td class="ct-num">1</td><td class="ct-num">∞</td><td class="ct-num">5</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
+          <tr><td>OKRs ativos</td><td class="ct-num">1</td><td class="ct-num">∞</td><td class="ct-num">3</td><td class="ct-popular ct-num">5</td><td class="ct-num">∞</td></tr>
+          <tr><td>Board Unificado<span class="ct-hint">Vista agregada</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Finanças · Zai</td></tr>
+          <tr><td>Zais ativos<span class="ct-hint">Cada Zai = 1 dashboard financeiro</span></td><td class="ct-num">1</td><td class="ct-num">∞</td><td class="ct-num">3</td><td class="ct-popular ct-num">10</td><td class="ct-num">∞</td></tr>
+          <tr><td>Runway + projeção 90d</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Granatum · sync bancário</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">CRM · Synconnect</td></tr>
+          <tr><td>Synconnect<span class="ct-hint">Contatos, leads, conversão em card</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Captação<span class="ct-hint">Formulário público de leads</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">IA · Mestre Kan</td></tr>
+          <tr><td>Chamadas IA/mês</td><td class="ct-num">10</td><td class="ct-num">30</td><td class="ct-num">100</td><td class="ct-popular ct-num">300</td><td class="ct-num">1.000</td></tr>
+          <tr><td>Geração de Lab/OKR/Board com IA</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Briefing executivo automático</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Add-on créditos extras<span class="ct-hint">Pacotes 100/300/1000 chamadas avulsas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Gamificação · Dojo do Mestre Kan</td></tr>
+          <tr><td>XP, faixas, conquistas, missões</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Selo de honra · prazos cumpridos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Pomodoro Dojo · timer com tema</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Streak · sequência diária</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Membros · convites</td></tr>
+          <tr><td>Admins · acesso total<span class="ct-hint">Cada admin = seat pago</span></td><td class="ct-num">1<span class="ct-hint">só você</span></td><td class="ct-num">1</td><td class="ct-num">1</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
+          <tr><td>Editores externos<span class="ct-hint">Grátis · só boards compartilhados</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-num">3 boards</td><td class="ct-popular ct-num">3 boards</td><td class="ct-num">5 boards</td></tr>
+          <tr><td>Viewers · só leitura</td><td class="ct-no">×</td><td class="ct-num">1 board</td><td class="ct-num">5 boards</td><td class="ct-popular ct-num">5 boards</td><td class="ct-num">10 boards</td></tr>
+          <tr><td>Boards compartilhados<span class="ct-hint">Time vendo o mesmo board</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Integrações</td></tr>
+          <tr><td>WhatsApp · notificações + comandos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Google Calendar / iCal</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr><td>Granatum · sync financeiro</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+          <tr><td>SSO · SAML / SCIM</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-partial">add-on</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Segurança · Conformidade</td></tr>
+          <tr><td>Audit log · janela visível</td><td class="ct-num">7 dias</td><td class="ct-num">30 dias</td><td class="ct-num">30 dias</td><td class="ct-popular ct-num">90 dias</td><td class="ct-num">∞</td></tr>
+          <tr><td>Backup automático</td><td class="ct-num">semanal</td><td class="ct-num">diário</td><td class="ct-num">diário</td><td class="ct-popular ct-num">diário</td><td class="ct-num">diário + export</td></tr>
+          <tr><td>LGPD self-service<span class="ct-hint">Apagar conta + dados</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+
+          <tr class="ct-section"><td colspan="6">Suporte</td></tr>
+          <tr><td>Canal de suporte<span class="ct-hint">Resposta em até 24h em dias úteis</span></td><td class="ct-num">email · 24h</td><td class="ct-num">email · 24h</td><td class="ct-num">email · 24h</td><td class="ct-popular ct-num">email · 24h</td><td class="ct-num">email · 24h</td></tr>
+          <tr><td>Onboarding<span class="ct-hint">Call de apresentação sob demanda por email — não inclusa no plano</span></td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-popular ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </section>
 
@@ -1375,6 +1601,33 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 8);
 }, { passive: true });
+
+// Toggle da Tabela completa (compare table) — abre/fecha o comparativo lado a lado.
+function toggleCompareTable() {
+  const wrap = document.getElementById('compareTableWrap');
+  const btn = document.getElementById('compareToggleBtn');
+  const txt = btn.querySelector('.ct-text');
+  if (!wrap || !btn || !txt) return;
+  const isOpening = wrap.hasAttribute('hidden');
+  if (isOpening) {
+    wrap.removeAttribute('hidden');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    txt.textContent = 'Esconder tabela';
+    // scroll suave pra tabela aparecer no viewport
+    setTimeout(() => {
+      const rect = wrap.getBoundingClientRect();
+      if (rect.top < 0 || rect.top > window.innerHeight - 200) {
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
+  } else {
+    wrap.setAttribute('hidden', '');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    txt.textContent = 'Comparar todos os planos lado a lado';
+  }
+}
 
 // Toggle Mensal/Anual nos cards de preço.
 // Procura todos elementos com data-monthly/data-annual e troca o textContent.
