@@ -212,8 +212,8 @@ footer a{color:var(--ink-3);}
 
       <div class="plan" id="plan-trial" data-kanji="試">
         <span class="belt-tag">Conheça o dojo</span>
-        <div class="belt-name"><span class="belt-vis white"></span><strong>5 dias grátis</strong></div>
-        <div class="tag"><span class="num">R$ 0</span><span class="per">/ 5 dias</span></div>
+        <div class="belt-name"><span class="belt-vis white"></span><strong>7 dias grátis</strong></div>
+        <div class="tag"><span class="num">R$ 0</span><span class="per">/ 7 dias</span></div>
         <div class="tag-desc">Acesso completo, sem compromisso.</div>
         <ul class="feats">
           <li><strong>Tudo da Faixa Roxa liberado</strong></li>
@@ -221,7 +221,7 @@ footer a{color:var(--ink-3);}
           <li>Boards, Lab, CRM, Tracker, IA</li>
           <li>Modo local e cloud</li>
           <li><strong>30 chamadas</strong> com Mestre Kan IA</li>
-          <li>Após 5 dias, escolha um plano</li>
+          <li>Após 7 dias, escolha um plano</li>
           <li>Seus dados ficam salvos se você pausar</li>
         </ul>
         <button class="btn btn-secondary" onclick="startTrial()">Começar trial →</button>
@@ -230,8 +230,8 @@ footer a{color:var(--ink-3);}
       <div class="plan" id="plan-azul" data-kanji="個">
         <span class="belt-tag">Pessoal</span>
         <div class="belt-name"><span class="belt-vis blue"></span><strong>Faixa Azul</strong></div>
-        <div class="tag" data-monthly="14,90" data-annual="13,41">
-          <span class="num">R$ <span class="num-val">14,90</span></span>
+        <div class="tag" data-monthly="15,90" data-annual="14,31">
+          <span class="num">R$ <span class="num-val">15,90</span></span>
           <span class="per">/ mês</span>
         </div>
         <div class="tag-desc">Pra organização pessoal.</div>
@@ -256,23 +256,23 @@ footer a{color:var(--ink-3);}
       <div class="plan featured" id="plan-roxa" data-kanji="修">
         <span class="belt-tag">Profissional</span>
         <div class="belt-name"><span class="belt-vis purple"></span><strong>Faixa Roxa</strong></div>
-        <div class="tag" data-monthly="29,90" data-annual="26,91">
-          <span class="num">R$ <span class="num-val">29,90</span></span>
+        <div class="tag" data-monthly="39,90" data-annual="35,91">
+          <span class="num">R$ <span class="num-val">39,90</span></span>
           <span class="per">/ usuário / mês</span>
         </div>
         <div class="tag-desc">Pra quem treina todo dia no board.</div>
         <ul class="feats">
-          <li>Até <strong>10 boards</strong></li>
-          <li>Até <strong>10 Lab / Canvas</strong></li>
+          <li>Até <strong>20 boards</strong></li>
+          <li>Até <strong>20 Lab / Canvas</strong></li>
           <li><strong>Todas as 6 visões + Tracker</strong></li>
           <li>Board Unificado</li>
-          <li>Synconnect (até <strong>2.000 contatos</strong>)</li>
-          <li><strong>300 interações/mês</strong> com Mestre Kan IA</li>
-          <li>OKRs + Dojo + Documentos</li>
-          <li><strong>Tatame ao vivo</strong> (voz + vídeo, sem gravar)</li>
-          <li>Bunko Box <strong>35 GB</strong></li>
+          <li>Synconnect (até <strong>5.000 contatos</strong>)</li>
+          <li><strong>500 interações/mês</strong> com Mestre Kan IA</li>
+          <li>OKRs (até 15) + Dojo + Documentos</li>
+          <li><strong>Tatame ao vivo</strong> (voz + vídeo) + <strong>5h/mês de gravação</strong></li>
+          <li>Bunko Box <strong>50 GB</strong></li>
           <li>Webhooks e calendário</li>
-          <li class="no">Gravação MP4 + transcrição</li>
+          <li class="no">Gravação ilimitada</li>
           <li class="no">Captação (formulários)</li>
         </ul>
         <button class="btn btn-primary" onclick="checkout('faixa_roxa')">Faixa Roxa →</button>
@@ -281,8 +281,8 @@ footer a{color:var(--ink-3);}
       <div class="plan" id="plan-preta" data-kanji="達">
         <span class="belt-tag">Mestre · Sensei</span>
         <div class="belt-name"><span class="belt-vis black"></span><strong>Faixa Preta</strong></div>
-        <div class="tag" data-monthly="69,90" data-annual="62,91">
-          <span class="num">R$ <span class="num-val">69,90</span></span>
+        <div class="tag" data-monthly="89,90" data-annual="80,91">
+          <span class="num">R$ <span class="num-val">89,90</span></span>
           <span class="per">/ usuário / mês</span>
         </div>
         <div class="tag-desc">Domínio total da operação.</div>
@@ -439,7 +439,7 @@ async function checkout(planCode){
   }
 }
 
-// Inicia o trial de 5 dias (sem cartão de crédito)
+// Inicia o trial de 7 dias (sem cartão de crédito)
 function startTrial(){
   const user = window.SYNKAN_USER || {};
   if (user.id) {
