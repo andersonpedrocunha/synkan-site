@@ -97,6 +97,10 @@ img,svg{display:block;max-width:100%;}
 .hero-cta{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;}
 .hero-meta{margin-top:20px;font-size:13px;color:var(--ink-4);}
 .hero-meta strong{color:var(--ink-2);font-weight:600;}
+.hero-kan-quote{margin:32px auto 0;max-width:540px;font-family:'Shippori Mincho',serif;font-style:italic;font-size:15px;color:var(--ink-2);line-height:1.6;padding:0 18px;border-left:3px solid var(--dojo-hinomaru,#BC002D);text-align:left;}
+.hero-kan-sig{display:block;margin-top:8px;font-style:normal;font-family:var(--font-sans);font-size:12px;color:var(--ink-4);letter-spacing:.04em;}
+.section-kan-quote{margin:18px auto 0;max-width:580px;font-family:'Shippori Mincho',serif;font-style:italic;font-size:14px;color:var(--ink-3);line-height:1.6;padding:0 16px;border-left:2px solid var(--dojo-hinomaru,#BC002D);}
+.section-kan-sig{display:block;margin-top:6px;font-style:normal;font-family:var(--font-sans);font-size:11.5px;color:var(--ink-4);letter-spacing:.04em;}
 
 /* App preview mock */
 .hero-preview{margin-top:64px;position:relative;perspective:1400px;}
@@ -189,6 +193,10 @@ section{padding:80px 0;}
 .mod-icon{width:36px;height:36px;border-radius:9px;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .mod-icon svg{width:18px;height:18px;stroke-width:1.6;}
 .mod h3{font-size:16px;font-weight:600;letter-spacing:-.005em;}
+.mod-pillar{background:linear-gradient(180deg,#fff 0%,rgba(188,0,45,.025) 100%);border:1.5px solid var(--dojo-hinomaru,#BC002D);position:relative;}
+.mod-pillar:hover{border-color:#8a0020;}
+.mod-pillar .mod-icon{background:var(--dojo-hinomaru,#BC002D);}
+.mod-pillar-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;background:var(--dojo-hinomaru,#BC002D);color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;text-transform:uppercase;}
 .mod-tag{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px;}
 .mod-desc{font-size:14px;color:var(--ink-3);line-height:1.55;margin-bottom:14px;}
 .mod-feats{list-style:none;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);}
@@ -614,14 +622,15 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
 <!-- ── HERO ────────────────────────────────────────── -->
 <section class="hero" id="top">
   <div class="container">
-    <div class="hero-pill"><span class="pill-bars" aria-hidden="true"><span></span><span></span><span></span></span> Kanban · CRM · Financeiro · OKRs · Tatami · IA · num app só</div>
-    <h1>Pare de pular entre <br/><span class="accent">10 ferramentas diferentes.</span></h1>
-    <p class="lead">Toda sua operação num app só. Sincronizado em tempo real, com <strong>IA Mestre Kan</strong> conectando os pontos.</p>
+    <div class="hero-pill"><span class="pill-bars" aria-hidden="true"><span></span><span></span><span></span></span> 道場 · Kanban + Tatami · o dojo brasileiro do trabalho</div>
+    <h1>Suba no tatame <br/><span class="accent">com o seu time.</span></h1>
+    <p class="lead">Kanban com <strong>chat ao vivo</strong> no espírito do dojo. Mova cards, converse no Tatami, suba na sala pra resolver junto — tudo num só lugar, guiado pelo <strong>Mestre Kan</strong>.</p>
     <div class="hero-cta">
       <a class="btn btn-primary btn-lg" href="https://app.synkan.com.br">Começar grátis →</a>
-      <a class="btn btn-secondary btn-lg" href="#modulos">Ver módulos</a>
+      <a class="btn btn-secondary btn-lg" href="#tatame">Ver o Tatami ao vivo</a>
     </div>
     <div class="hero-meta">Sem cartão de crédito · Funciona offline · <strong>Setup em 2 min</strong></div>
+    <div class="hero-kan-quote">"Aqui você não usa um software — você pratica o trabalho." <span class="hero-kan-sig">— Mestre Kan, sensei do dojo</span></div>
 
     <!-- App preview mock -->
     <div class="hero-preview">
@@ -780,9 +789,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
 <section>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">o mesmo board, 6 ângulos</span>
-      <h2>6 visões pra ver o trabalho do jeito certo.</h2>
-      <p>Os mesmos cards, organizados de seis formas diferentes. Trocar é instantâneo.</p>
+      <span class="eyebrow">型 Kata · o pilar 1 do dojo</span>
+      <h2><strong>Kanban</strong> em 6 visões. O kata do trabalho diário.</h2>
+      <p>Os mesmos cards organizados de seis formas diferentes — Kanban, Table, Checklist, Gantt, Calendário e Dashboard. Trocar é instantâneo. <strong>Cada card é um movimento.</strong></p>
     </div>
     <div class="views">
       <div class="view">
@@ -823,9 +832,10 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
 <section id="modulos" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">os módulos</span>
-      <h2>Não é só kanban. É a sua operação inteira.</h2>
-      <p>Cada módulo conversa com os outros. Um lead vira card, vira contrato, vira hora trackeada, vira KR avançando.</p>
+      <span class="eyebrow">os caminhos do dojo</span>
+      <h2><strong>Kanban</strong> e <strong>Tatami</strong> são o coração. Os outros 6 caminhos orbitam eles.</h2>
+      <p>Cada técnica do dojo conversa com as outras: um lead vira card no kanban, vira conversa no tatami, vira chamada ao vivo, vira hora trackeada, vira KR avançando. Tudo conectado, no espírito do dojo.</p>
+      <p class="section-kan-quote">"Pratique uma técnica até virar instinto. Depois a próxima. Não tente fazer tudo igualmente bem ao mesmo tempo." <span class="section-kan-sig">— Mestre Kan</span></p>
     </div>
     <div class="modules">
 
@@ -925,18 +935,19 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
         </ul>
       </div>
 
-      <div class="mod">
+      <div class="mod mod-pillar" id="tatame">
         <div class="mod-h">
           <div class="mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><line x1="14" y1="5" x2="14" y2="19"/><path d="M11 10l-2 2 2 2"/><path d="M17 10l2 2-2 2"/></svg></div>
-          <h3>Tatame · ao vivo</h3>
+          <h3>Tatami · 場 Ba <span class="mod-pillar-tag">PILAR</span></h3>
         </div>
-        <div class="mod-tag">voz + vídeo + gravação MP4</div>
-        <p class="mod-desc">Reuniões integradas ao workspace. Voz, vídeo, screen share e — na Faixa Preta — gravação MP4 com transcrição automática.</p>
+        <div class="mod-tag">chat + tatame ao vivo + gravação</div>
+        <p class="mod-desc"><strong>O lugar onde o time se encontra.</strong> Comece com chat por canal (texto, threads, kudos), <strong>suba no tatame</strong> com 1 clique pra voz/vídeo/screen share, projete Board ou OKR dentro da sala, grave em MP4 e a IA transcreve.</p>
         <ul class="mod-feats">
+          <li><strong>"Subir no tatame"</strong> — chat vira chamada ao vivo em 1 clique</li>
           <li>Voz + vídeo + screen sharing (Roxa+)</li>
-          <li>Gravação MP4 — 30h/mês (Preta)</li>
-          <li>Transcrição automática · Whisper</li>
-          <li>Extrair ações da transcrição com IA</li>
+          <li>Apresenta Board/Lab/OKR dentro da sala (todos navegam juntos)</li>
+          <li>Gravação MP4 — até 30h/mês (Preta)</li>
+          <li>Transcrição automática · IA extrai ações</li>
           <li>Mapa visual do dojo (ukiyo-e)</li>
         </ul>
       </div>
@@ -1345,7 +1356,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
         <ul class="price-feats">
           <li><strong>Mesmos limites da Faixa Azul</strong></li>
           <li>Sem cartão de crédito</li>
-          <li>Até <strong>5 boards · 5 Lab · 3 OKRs</strong></li>
+          <li>Até <strong>5 boards · 5 Lab · 10 OKRs</strong></li>
           <li><strong>Tatame ao vivo</strong> + gravação (5h) <em>· preview Roxa</em></li>
           <li><strong>People Journey full</strong> · onboarding · carreira · PDI · Feedback 360 · offboarding <em>· preview Preta</em></li>
           <li>Synconnect até <strong>50 contatos</strong></li>
@@ -1402,7 +1413,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <li>Até <strong>20 boards</strong></li>
           <li>Até <strong>20 Zais</strong></li>
           <li>Até <strong>20 Lab (canvas)</strong></li>
-          <li><strong>15 OKRs</strong> ativos</li>
+          <li><strong>10 OKRs</strong> ativos</li>
           <li><strong>Todas as 6 visões + Tracker</strong></li>
           <li>Board Unificado</li>
           <li>Synconnect até <strong>5.000 contatos</strong></li>
@@ -1627,9 +1638,9 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <tr><td>AI sugestão de horário<span class="ct-hint">Mestre Kan acha o melhor slot</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
           <tr class="ct-section"><td colspan="7">Gestão de tarefas</td></tr>
-          <tr><td>Boards Kanban</td><td class="ct-num">1<span class="ct-hint">2 com Zai ativo</span></td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
-          <tr><td>Lab (canvas)<span class="ct-hint">Mindmap, fluxos, documentos, OKR canvas</span></td><td class="ct-num">1</td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
-          <tr><td>OKRs ativos</td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">15</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Boards Kanban</td><td class="ct-num">1<span class="ct-hint">2 com Zai ativo</span></td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">100</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Lab (canvas)<span class="ct-hint">Mindmap, fluxos, documentos, OKR canvas</span></td><td class="ct-num">1</td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">100</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>OKRs ativos</td><td class="ct-num">1</td><td class="ct-num">10<span class="ct-hint">preview Roxa</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">10</td><td class="ct-num">30</td><td class="ct-ent ct-num">∞</td></tr>
           <tr><td>Board Unificado<span class="ct-hint">Vista agregada</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
           <tr class="ct-section"><td colspan="7">Bunko Box · armazenamento</td></tr>
@@ -1639,13 +1650,13 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <tr><td>Espaço extra sob demanda<span class="ct-hint">Fale com vendas — pacotes adicionais</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
           <tr class="ct-section"><td colspan="7">Finanças · Zai</td></tr>
-          <tr><td>Zais ativos<span class="ct-hint">Cada Zai = 1 dashboard financeiro</span></td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Zais ativos<span class="ct-hint">Cada Zai = 1 dashboard financeiro</span></td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">20</td><td class="ct-num">50</td><td class="ct-ent ct-num">∞</td></tr>
           <tr><td>Runway + projeção 90d</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
           <tr><td>Granatum · sync bancário</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
           <tr class="ct-section"><td colspan="7">Contatos &amp; Leads · Synconnect</td></tr>
           <tr><td>Synconnect<span class="ct-hint">Pipeline + contatos + deals</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
-          <tr><td>Contatos cadastrados<span class="ct-hint">Leads + clientes + fornecedores somados</span></td><td class="ct-no">×</td><td class="ct-num">50<span class="ct-hint">igual à Azul</span></td><td class="ct-num">50</td><td class="ct-popular ct-num">5.000</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Contatos cadastrados<span class="ct-hint">Leads + clientes + fornecedores somados</span></td><td class="ct-no">×</td><td class="ct-num">50<span class="ct-hint">igual à Azul</span></td><td class="ct-num">50</td><td class="ct-popular ct-num">5.000</td><td class="ct-num">50.000</td><td class="ct-ent ct-num">∞</td></tr>
           <tr><td>Vendedores + split de comissão<span class="ct-hint">Interno ou externo (sem login)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
           <tr><td>Dashboard de vendedores<span class="ct-hint">Ranking won + win rate por rep</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
           <tr><td>Customer 360<span class="ct-hint">Tudo do contato numa tela</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
@@ -1677,7 +1688,7 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <tr><td>Google Calendar / iCal</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
           <tr><td>Granatum · sync financeiro</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
           <tr class="ct-section"><td colspan="7">Segurança · Conformidade</td></tr>
-          <tr><td>Audit log · janela visível</td><td class="ct-num">7 dias</td><td class="ct-num">30 dias</td><td class="ct-num">30 dias</td><td class="ct-popular ct-num">90 dias</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Audit log · janela visível</td><td class="ct-num">7 dias</td><td class="ct-num">30 dias</td><td class="ct-num">30 dias</td><td class="ct-popular ct-num">90 dias</td><td class="ct-num">365 dias</td><td class="ct-ent ct-num">5+ anos</td></tr>
           <tr><td>Backup automático</td><td class="ct-num">semanal</td><td class="ct-num">diário</td><td class="ct-num">diário</td><td class="ct-popular ct-num">diário</td><td class="ct-num">diário + export</td><td class="ct-ent ct-num">diário + export + SIEM</td></tr>
           <tr><td>LGPD self-service<span class="ct-hint">Apagar conta + dados</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
