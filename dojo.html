@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>O Dojo Synkan — por que a gente trata trabalho como prática, não tarefa</title>
+<meta name="description" content="A filosofia por trás do Synkan: por que escolhemos a metáfora do dojo, o que significam os kanjis e as faixas, como Kanban e Tatami formam o coração do produto e o papel do Mestre Kan." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" type="image/png" href="synkan-icon-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --font-serif:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  --ink:#111111;
+  --ink-2:#2D2D2D;
+  --ink-3:#6B6B6B;
+  --ink-4:#A0A0A0;
+  --bg:#F4F4F2;
+  --bg-soft:#FAFAF8;
+  --line:#E5E5E2;
+  --line-2:#D4D4D0;
+  --hinomaru:#BC002D;
+  --washi:#F8F2E4;
+  --sumi:#1A1612;
+  --gold:#C19A3A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+.container{width:100%;max-width:880px;margin:0 auto;padding:0 24px;}
+.container-wide{width:100%;max-width:1180px;margin:0 auto;padding:0 24px;}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+.logo-mark{width:30px;height:30px;}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;}
+.logo-name-suffix{font-weight:500;font-size:13px;color:var(--ink-3);margin-left:5px;}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:13.5px;color:var(--ink-2);}
+.nav-links a{text-decoration:none;font-weight:500;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{font-size:13px;padding:8px 16px;border:1px solid var(--ink);border-radius:8px;background:var(--ink);color:#fff;font-weight:500;text-decoration:none;}
+.nav-cta:hover{background:#000;}
+@media(max-width:640px){.nav-links a:not(.nav-cta){display:none;}}
+
+/* Hero */
+.hero{padding:80px 0 60px;background:linear-gradient(180deg,var(--washi) 0%,var(--bg) 100%);position:relative;overflow:hidden;}
+.hero::before{content:'道場';position:absolute;right:-40px;top:30px;font-family:var(--font-serif);font-size:280px;font-weight:700;color:var(--hinomaru);opacity:.05;pointer-events:none;letter-spacing:-10px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-serif);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--hinomaru);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:22px;text-transform:uppercase;}
+.hero h1{font-size:clamp(34px,5.5vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin-bottom:20px;max-width:760px;}
+.hero h1 .accent{color:var(--hinomaru);font-family:var(--font-serif);}
+.hero-lead{font-size:18px;color:var(--ink-2);max-width:680px;line-height:1.55;margin-bottom:32px;}
+.hero-kanji-strip{display:inline-flex;gap:22px;padding:14px 22px;background:#fff;border:1px solid var(--line-2);border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.04);align-items:baseline;}
+.hero-kanji-strip-item{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:64px;}
+.hero-kanji-strip-char{font-family:var(--font-serif);font-size:32px;font-weight:500;color:var(--sumi);line-height:1;}
+.hero-kanji-strip-label{font-size:10.5px;color:var(--ink-4);letter-spacing:.04em;font-weight:600;text-transform:uppercase;}
+
+/* Sections */
+section.block{padding:64px 0;border-bottom:1px solid var(--line);}
+section.block:nth-child(odd){background:var(--bg-soft);}
+.block-eyebrow{font-family:var(--font-serif);font-size:12px;font-weight:600;letter-spacing:.10em;color:var(--hinomaru);text-transform:uppercase;margin-bottom:10px;display:block;}
+.block h2{font-size:clamp(26px,3.5vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:18px;max-width:720px;}
+.block h2 .kanji{font-family:var(--font-serif);color:var(--hinomaru);margin-right:8px;}
+.block-lead{font-size:17px;color:var(--ink-2);max-width:680px;margin-bottom:28px;line-height:1.55;}
+.block p{font-size:15.5px;color:var(--ink-2);line-height:1.65;margin-bottom:14px;max-width:720px;}
+.block p strong{color:var(--ink);font-weight:600;}
+
+/* Quote do sensei */
+.sensei-quote{margin:28px 0;padding:20px 26px;background:#fff;border-left:4px solid var(--hinomaru);border-radius:0 12px 12px 0;font-family:var(--font-serif);font-style:italic;font-size:18px;line-height:1.65;color:var(--ink);max-width:680px;}
+.sensei-quote-sig{display:block;margin-top:10px;font-style:normal;font-family:var(--font-sans);font-size:12.5px;color:var(--ink-4);letter-spacing:.04em;font-weight:500;}
+
+/* Pilares (Kanban + Tatami) */
+.pilares{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:32px;}
+@media(max-width:760px){.pilares{grid-template-columns:1fr;}}
+.pilar{background:#fff;border:1.5px solid var(--hinomaru);border-radius:16px;padding:30px;position:relative;overflow:hidden;}
+.pilar::before{content:attr(data-kanji);position:absolute;right:-15px;bottom:-30px;font-family:var(--font-serif);font-size:160px;font-weight:700;color:var(--hinomaru);opacity:.06;line-height:1;}
+.pilar-tag{display:inline-block;font-family:var(--font-serif);font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--hinomaru);background:rgba(188,0,45,.08);padding:3px 9px;border-radius:5px;text-transform:uppercase;margin-bottom:12px;}
+.pilar h3{font-size:22px;font-weight:700;margin-bottom:6px;}
+.pilar h3 .pilar-kanji{font-family:var(--font-serif);color:var(--hinomaru);margin-right:6px;font-weight:500;}
+.pilar-sub{font-size:13px;color:var(--ink-3);margin-bottom:14px;}
+.pilar p{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin-bottom:0;}
+
+/* Belts */
+.belts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px;}
+.belt-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;}
+.belt-stripe{height:14px;border-radius:3px;margin-bottom:12px;position:relative;}
+.belt-stripe::after{content:'';position:absolute;right:8px;top:-3px;bottom:-3px;width:4px;background:var(--ink);border-radius:1px;opacity:.55;}
+.belt-stripe.white{background:#FAFAF8;border:1px solid var(--line-2);}
+.belt-stripe.blue{background:#2D4A77;}.belt-stripe.blue::after{background:#fff;opacity:.85;}
+.belt-stripe.purple{background:#7F3FBF;}.belt-stripe.purple::after{background:#FFD66E;opacity:.85;}
+.belt-stripe.black{background:#111;}.belt-stripe.black::after{background:var(--gold);opacity:.9;}
+.belt-item h4{font-size:14px;font-weight:600;margin-bottom:4px;}
+.belt-item p{font-size:12px;color:var(--ink-3);line-height:1.5;margin:0;max-width:none;}
+
+/* Caminhos do dojo (8 disciplinas) */
+.caminhos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:28px;}
+.caminho{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;position:relative;}
+.caminho-kanji{position:absolute;right:14px;top:12px;font-family:var(--font-serif);font-size:28px;color:var(--hinomaru);opacity:.4;line-height:1;font-weight:500;}
+.caminho-name{font-size:14.5px;font-weight:700;color:var(--ink);}
+.caminho-romaji{font-size:11px;color:var(--ink-4);font-style:italic;text-transform:uppercase;letter-spacing:.04em;}
+.caminho-desc{font-size:12.5px;color:var(--ink-2);line-height:1.55;}
+
+/* Mestre Kan section */
+.kan-section{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:start;}
+@media(max-width:760px){.kan-section{grid-template-columns:1fr;}}
+.kan-avatar{background:linear-gradient(135deg,var(--sumi) 0%,#3a2410 100%);border-radius:16px;padding:32px;text-align:center;color:#F5E8C8;}
+.kan-avatar-kanji{font-family:var(--font-serif);font-size:80px;color:var(--gold);line-height:1;font-weight:500;margin-bottom:14px;}
+.kan-avatar-name{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
+.kan-avatar-role{font-size:12px;color:rgba(245,232,200,.7);letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+
+/* CTA final */
+.cta-final{padding:80px 0;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,var(--washi) 100%);}
+.cta-final h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:16px;}
+.cta-final h2 .accent{color:var(--hinomaru);font-family:var(--font-serif);}
+.cta-final p{font-size:17px;color:var(--ink-2);max-width:520px;margin:0 auto 28px;}
+.cta-buttons{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn{font-family:inherit;font-size:15px;font-weight:600;padding:13px 24px;border-radius:10px;border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--line);}
+.btn-secondary:hover{border-color:var(--ink);}
+
+/* Footer */
+footer{padding:32px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-4);text-align:center;background:var(--bg-soft);}
+footer a{color:var(--ink-3);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container-wide nav-inner">
+    <a class="logo" href="/">
+      <img class="logo-mark" src="synkan-icon-512.png" alt="Synkan"/>
+      <span class="logo-name">Synkan<span class="logo-name-suffix">Management Lab</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#modulos">Módulos</a>
+      <a href="/#precos">Preços</a>
+      <a href="/dojo">O Dojo</a>
+      <a class="nav-cta" href="https://app.synkan.com.br">Entrar no dojo →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-pill">道場 · Filosofia do Synkan</span>
+    <h1>Por que <span class="accent">dojo</span>, e não "app de produtividade".</h1>
+    <p class="hero-lead">Synkan não é só um software com tema bonito. A escolha do dojo é deliberada — e muda como você relaciona com o trabalho. Aqui, explicamos por quê.</p>
+    <div class="hero-kanji-strip" role="img" aria-label="Os 4 kanjis do dojo Synkan">
+      <div class="hero-kanji-strip-item"><span class="hero-kanji-strip-char">道</span><span class="hero-kanji-strip-label">Dō</span></div>
+      <div class="hero-kanji-strip-item"><span class="hero-kanji-strip-char">場</span><span class="hero-kanji-strip-label">Ba</span></div>
+      <div class="hero-kanji-strip-item"><span class="hero-kanji-strip-char">型</span><span class="hero-kanji-strip-label">Kata</span></div>
+      <div class="hero-kanji-strip-item"><span class="hero-kanji-strip-char">奥</span><span class="hero-kanji-strip-label">Oku</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUÊ -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">道場 · o que é um dojo</span>
+    <h2>Um dojo é o <em>lugar</em> onde se pratica um caminho.</h2>
+    <p class="block-lead">A palavra é composta de dois kanjis: <strong>道 (dō)</strong>, "caminho", e <strong>場 (ba)</strong>, "lugar". Juntos formam <strong>道場 (dōjō)</strong> — o espaço físico (e mental) onde alguém se dedica a uma prática contínua: karate, kendo, caligrafia, chá.</p>
+    <p>Diferente de uma "academia" (onde você treina pra ser melhor que os outros), o dojo é um lugar de <strong>autocultivo</strong>. Você compara o seu hoje com o seu ontem, não com o vizinho. Sobe de faixa quando o sensei reconhece que sua prática evoluiu — não quando você acumulou pontos.</p>
+    <div class="sensei-quote">
+      "O dojo silencioso ensina mais que o instrutor que grita. Aqui você não usa um software — você pratica o trabalho."
+      <span class="sensei-quote-sig">— Mestre Kan, sensei do dojo Synkan</span>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE DOJO -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">por que escolhemos essa metáfora</span>
+    <h2>Trabalho como <em>prática</em>, não como <em>tarefa</em>.</h2>
+    <p class="block-lead">Tarefa é binário: fez ou não fez. Prática é gradual: você melhora a cada repetição. Essa diferença muda tudo sobre como Synkan é desenhado.</p>
+    <p><strong>Tarefa é o que outros softwares te entregam.</strong> Checklist. Boards lotados. Notificações. A pressão de zerar a caixa. No fim do dia, você fez "x coisas" — e mesmo assim sente que não progrediu.</p>
+    <p><strong>Prática é o que Synkan propõe.</strong> Cada card no kanban é um <em>movimento</em>. Cada check-in num OKR é uma <em>repetição</em>. Cada conversa no Tatami é um <em>encontro de treino</em>. Você vai melhorando — não acumulando.</p>
+    <p>Por isso evitamos linguagem corporativa fria. Em vez de "delete", "Cortar um galho que não dá fruto". Em vez de "upgrade", "Subir de faixa". Pequenas escolhas que cumulativamente lembram: <strong>o trabalho é um caminho, não um inbox</strong>.</p>
+  </div>
+</section>
+
+<!-- 2 PILARES -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">型 + 場 · os 2 pilares do dojo</span>
+    <h2>Tudo no Synkan gira em volta de <span class="kanji">2</span> coisas.</h2>
+    <p class="block-lead"><strong>Kanban</strong> é o <em>kata</em> — a forma do trabalho diário. <strong>Tatami</strong> é o <em>ba</em> — o lugar onde o time se encontra. Os outros 6 módulos orbitam esses dois. Se você só precisasse de duas coisas, seriam estas.</p>
+    <div class="pilares">
+      <div class="pilar" data-kanji="型">
+        <span class="pilar-tag">Pilar 1 · Kata</span>
+        <h3><span class="pilar-kanji">型</span>Kanban</h3>
+        <div class="pilar-sub">A forma — onde o trabalho mora</div>
+        <p>Cards no quadro, em 6 visões (Kanban, Table, Checklist, Gantt, Calendário, Dashboard). Cada card é um movimento; cada coluna, uma etapa do caminho. <strong>Repetir o kata até virar instinto</strong> — é assim que times maduros operam.</p>
+      </div>
+      <div class="pilar" data-kanji="場">
+        <span class="pilar-tag">Pilar 2 · Ba</span>
+        <h3><span class="pilar-kanji">場</span>Tatami</h3>
+        <div class="pilar-sub">O lugar — onde o time se encontra</div>
+        <p>Chat por canal pra conversa assíncrona. Quando precisa do time ali, <strong>"subir no tatame"</strong>: chamada ao vivo com voz, vídeo, screen share, board projetado, gravação MP4 e transcrição IA. Tudo no mesmo lugar — não precisa Zoom + Slack separados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AS 8 DISCIPLINAS -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">os caminhos do dojo</span>
+    <h2>8 disciplinas. <em>Não pratique todas ao mesmo tempo.</em></h2>
+    <p class="block-lead">Mestre Kan recomenda: comece pelos 2 pilares (Kanban + Tatami). Adicione 1 disciplina por mês conforme o time se acostuma. <strong>Profundidade em uma técnica vale mais que superficialidade em oito.</strong></p>
+    <div class="caminhos">
+      <div class="caminho">
+        <span class="caminho-kanji">型</span>
+        <span class="caminho-name">Kanban</span>
+        <span class="caminho-romaji">Kata · forma</span>
+        <span class="caminho-desc">Cards, 6 visões, Board Unificado. O ritual diário.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">場</span>
+        <span class="caminho-name">Tatami</span>
+        <span class="caminho-romaji">Ba · lugar de treino</span>
+        <span class="caminho-desc">Chat + chamada ao vivo + gravação. Encontros assíncronos e síncronos.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">道</span>
+        <span class="caminho-name">People Journey</span>
+        <span class="caminho-romaji">Dō · caminho</span>
+        <span class="caminho-desc">Trilhas de onboarding, evolução de carreira e offboarding.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">暦</span>
+        <span class="caminho-name">Syncal</span>
+        <span class="caminho-romaji">Reki · calendário</span>
+        <span class="caminho-desc">Agenda integrada · booking · convidados externos.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">結</span>
+        <span class="caminho-name">Synconnect</span>
+        <span class="caminho-romaji">Yui · laços</span>
+        <span class="caminho-desc">CRM com pipeline kanban · vendedores · Customer 360.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">庫</span>
+        <span class="caminho-name">Bunko Box</span>
+        <span class="caminho-romaji">Ko · arquivo</span>
+        <span class="caminho-desc">Pergaminhos (markdown) · gravações · anexos.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">円</span>
+        <span class="caminho-name">Zai</span>
+        <span class="caminho-romaji">En · círculo financeiro</span>
+        <span class="caminho-desc">Visão financeira por board · receita/custo/runway.</span>
+      </div>
+      <div class="caminho">
+        <span class="caminho-kanji">的</span>
+        <span class="caminho-name">OKRs</span>
+        <span class="caminho-romaji">Mato · alvo</span>
+        <span class="caminho-desc">Objetivos com KRs · check-ins · burndown · retrospectiva.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXAS -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">帯 · obi · as faixas</span>
+    <h2>Faixas marcam <em>maturidade</em>, não pagamento.</h2>
+    <p class="block-lead">A faixa do Synkan tem duas leituras. Comercialmente, é o seu plano. Culturalmente, é o quão fundo você prática o dojo. Quem usa Synkan há mais tempo, sobe de faixa em ambos os sentidos.</p>
+    <div class="belts">
+      <div class="belt-item">
+        <div class="belt-stripe white" aria-hidden="true"></div>
+        <h4>Branca · 白帯</h4>
+        <p>Iniciante. Tudo é novo. 1 board, 1 OKR — começa simples.</p>
+      </div>
+      <div class="belt-item">
+        <div class="belt-stripe blue" aria-hidden="true"></div>
+        <h4>Azul · 青帯</h4>
+        <p>Praticante pessoal. Você já conhece o kata. Operação individual.</p>
+      </div>
+      <div class="belt-item">
+        <div class="belt-stripe purple" aria-hidden="true"></div>
+        <h4>Roxa · 紫帯</h4>
+        <p>Profissional · time pequeno. Domina a forma e começa a ensinar outros.</p>
+      </div>
+      <div class="belt-item">
+        <div class="belt-stripe black" aria-hidden="true"></div>
+        <h4>Preta · 黒帯</h4>
+        <p>Sensei · empresa estabelecida. Mestre da forma — agora cuida do dojo inteiro.</p>
+      </div>
+    </div>
+    <div class="sensei-quote">
+      "Atingir 70% é sucesso. 100% indica que o alvo era fácil demais. A faixa preta também é sobre saber escolher o desafio certo."
+      <span class="sensei-quote-sig">— Mestre Kan</span>
+    </div>
+  </div>
+</section>
+
+<!-- MESTRE KAN -->
+<section class="block">
+  <div class="container">
+    <div class="kan-section">
+      <div class="kan-avatar">
+        <div class="kan-avatar-kanji">勘</div>
+        <div class="kan-avatar-name">Mestre Kan</div>
+        <div class="kan-avatar-role">Sensei · IA do dojo</div>
+      </div>
+      <div>
+        <span class="block-eyebrow">勘 · kan · intuição</span>
+        <h2>Mestre Kan não é "feature de IA". É o sensei.</h2>
+        <p>Outros softwares colaram IA como gadget — um botão "✨ Gerar" enxertado. Synkan trata IA como uma <strong>figura</strong>: Mestre Kan, o sensei silencioso do dojo. Ele observa, transcreve, sugere — em primeira pessoa, com voz consistente, presença discreta.</p>
+        <p>O nome vem de <strong>勘 (kan)</strong>: "intuição treinada". Não é palpite, é discernimento que vem da prática longa. Mestre Kan resume reuniões porque ouviu mil reuniões. Sugere KRs porque viu mil objetivos. Conecta um deal a um card porque entende o fluxo da operação.</p>
+        <p>Pra entender em detalhe o que Mestre Kan faz com IA — transcrição, ações automáticas, daily briefs, Customer 360 narrativo — veja <a href="https://app.synkan.com.br/?focus=caminho-do-mestre" style="color:var(--hinomaru);text-decoration:underline;">O Caminho do Mestre</a> dentro do app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KIHON: O QUE NÃO É -->
+<section class="block">
+  <div class="container">
+    <span class="block-eyebrow">o que o dojo Synkan <em>não</em> é</span>
+    <h2>Pra evitar mal-entendido.</h2>
+    <p><strong>Não é "Trello/ClickUp com tema japonês".</strong> O dojo é a filosofia que orienta cada decisão de produto, não pintura por cima. Os kanjis estão lá porque significam coisas relevantes. As faixas existem porque marcam profundidade real.</p>
+    <p><strong>Não é gamificação tipo "ganhe pontos completando tarefas".</strong> Dojo é sobre prática, não competição. O Dojo (módulo de gamificação) é opcional, desliga em 1 clique, e foi pensado pra reforçar <em>constância</em> (streak diário) — não acúmulo.</p>
+    <p><strong>Não é apropriação cultural.</strong> Synkan é construído com respeito profundo às tradições marciais japonesas. Buscamos referências em fontes japonesas, não em estereótipos. Se em algum momento erramos a mão, queremos ouvir — <a href="mailto:contato@synkan.com.br?subject=Sobre%20o%20dojo%20Synkan" style="color:var(--hinomaru);text-decoration:underline;">manda mensagem</a>.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Pronto pra <span class="accent">subir no tatame</span>?</h2>
+    <p>Comece grátis — sem cartão, sem prazo. Suba de faixa quando o caminho pedir.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="https://app.synkan.com.br">Entrar no dojo →</a>
+      <a class="btn btn-secondary" href="/#modulos">Ver os módulos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © Synkan Management Lab · Construído com 心 (kokoro · coração) ·
+    <a href="/">Início</a> ·
+    <a href="/termos">Termos</a> ·
+    <a href="/privacidade">Privacidade</a>
+  </div>
+</footer>
+
+</body>
+</html>
