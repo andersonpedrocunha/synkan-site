@@ -381,6 +381,17 @@ section{padding:80px 0;}
 .compare-table tbody td.ct-popular.ct-num,
 .compare-table tbody td.ct-popular.ct-yes{color:var(--dojo-hinomaru,#BC002D);}
 .compare-table tbody td.ct-partial{color:var(--dojo-hinomaru,#BC002D);font-style:italic;font-size:11px;}
+.compare-table thead th.ct-enterprise{background:linear-gradient(180deg,#1a1a22 0%,#2a1530 100%);color:#fff;}
+.compare-table thead th.ct-enterprise .ct-eyebrow,
+.compare-table thead th.ct-enterprise .ct-price{color:#c8c8d4;}
+.compare-table thead th.ct-enterprise .ct-name{color:#c49aff;}
+.compare-table thead th .ct-belt.ct-enterprise-vis{
+  width:32px;height:14px;border-radius:3px;display:inline-block;
+  background:linear-gradient(135deg,#c49aff 0%,#7a4cc4 100%);
+}
+.compare-table tbody td.ct-ent{background:rgba(196,154,255,.05);}
+.compare-table tbody td.ct-ent.ct-yes,
+.compare-table tbody td.ct-ent.ct-num{color:#7a4cc4;font-weight:700;}
 .price-tag{display:flex;align-items:baseline;gap:6px;margin:14px 0 6px;flex-wrap:nowrap;}
 .price-num{font-size:30px;font-weight:700;letter-spacing:-.03em;white-space:nowrap;flex-shrink:0;}
 .price-per{font-size:11.5px;color:var(--ink-3);line-height:1.3;}
@@ -391,6 +402,39 @@ section{padding:80px 0;}
 .price-feats li.no::before{content:'—';position:absolute;left:0;top:5px;color:var(--ink-4);}
 .price-feats li.no{color:var(--ink-4);}
 .price-feats li strong{color:var(--ink);font-weight:600;}
+
+/* ── Card Enterprise (Personalizado) ──────────────────────── */
+.enterprise-card{
+  margin:32px auto 0;max-width:1180px;
+  background:linear-gradient(135deg,#0b0b0d 0%,#1a1a22 55%,#2a1530 100%);
+  border:1px solid #3a3a4a;border-radius:var(--radius-lg);
+  padding:36px 40px;color:#f5f5f7;
+  position:relative;overflow:hidden;
+}
+.enterprise-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 88% 18%, rgba(196,154,255,.22), transparent 55%);
+  pointer-events:none;
+}
+.enterprise-card-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start;}
+@media(max-width:840px){.enterprise-card-inner{grid-template-columns:1fr;gap:24px;}.enterprise-card{padding:28px 24px;}}
+.enterprise-card-head{display:flex;gap:18px;align-items:flex-start;}
+.enterprise-kanji{
+  font-family:var(--dojo-mincho,'Shippori Mincho',serif);
+  font-size:64px;line-height:1;color:#c49aff;flex-shrink:0;
+  text-shadow:0 0 24px rgba(196,154,255,.4);
+}
+.enterprise-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c49aff;margin-bottom:6px;}
+.enterprise-title{font-size:28px;margin:0 0 8px;color:#fff;font-weight:700;}
+.enterprise-sub{font-size:14px;color:#c8c8d4;line-height:1.5;margin:0;}
+.enterprise-feats{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:6px;}
+.enterprise-feats li{position:relative;padding:4px 0 4px 22px;font-size:13px;color:#dcdce5;line-height:1.45;}
+.enterprise-feats li::before{content:'◆';position:absolute;left:0;top:5px;color:#c49aff;font-size:10px;}
+.enterprise-feats li strong{color:#fff;font-weight:600;}
+.enterprise-cta-row{grid-column:1 / -1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);}
+.enterprise-cta-row .btn-primary{background:#c49aff;color:#0b0b0d;border-color:#c49aff;}
+.enterprise-cta-row .btn-primary:hover{background:#d9b7ff;border-color:#d9b7ff;}
+.enterprise-note{font-size:12px;color:#9a9ab0;}
 
 /* ── DOJO theme nos cards de preço ───────────────────────── */
 .prices.dojo-prices{
@@ -1389,30 +1433,63 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
           <span class="price-num" data-monthly="R$ 89,90" data-annual="R$ 80,91">R$ 89,90</span>
           <span class="price-per" data-monthly="/ usuário / mês" data-annual="/ usuário / mês · cobrado anual">/ usuário / mês</span>
         </div>
-        <div class="price-desc">Domínio total da operação.</div>
+        <div class="price-desc">Domínio total da operação — pra empresas até 25 admins.</div>
         <ul class="price-feats">
           <li>Tudo da Roxa, mais:</li>
-          <li><strong>Boards, Lab (canvas), OKRs e Zais ilimitados</strong></li>
-          <li><strong>People Journey enterprise</strong> · onboarding (10/mês) + carreira + offboarding</li>
+          <li>Até <strong>100 boards</strong></li>
+          <li>Até <strong>100 Lab (canvas)</strong></li>
+          <li><strong>30 OKRs</strong> ativos</li>
+          <li>Até <strong>50 Zais</strong></li>
+          <li><strong>25 admins</strong> incluídos</li>
+          <li><strong>People Journey enterprise</strong> · onboarding (30/mês) + carreira + offboarding</li>
           <li><strong>Gestão completa</strong> · <strong>PDI</strong> + <strong>Feedback 360</strong> + Notas + 1:1s + Celebrações</li>
           <li><strong>Comitê de calibração</strong> · votação multi-gestor pra promoções (anti-viés)</li>
           <li><strong>Syncal Unlimited</strong> · booking ilimitado + AI sugestão de horário</li>
           <li><strong>1.000 interações/mês</strong> com Mestre Kan IA</li>
-          <li>Synconnect <strong>ilimitado</strong></li>
+          <li>Synconnect até <strong>50.000 contatos</strong></li>
           <li><strong>Tatame com gravação MP4</strong> · até 30h/mês</li>
           <li><strong>Transcrição automática</strong> pelo Mestre Kan</li>
           <li>Bunko Box <strong>200 GB</strong> (extra sob demanda)</li>
           <li>Captação (formulários públicos)</li>
           <li><strong>Integração Granatum</strong> (ERP financeiro · exclusivo)</li>
           <li>Régua de follow-up automática</li>
-          <li>Convidados externos (clientes)</li>
-          <li>Audit log completo</li>
+          <li>Convidados externos (clientes · até 50 simultâneos)</li>
+          <li>Audit log completo · 365 dias</li>
           <li>Suporte por email · 24h</li>
         </ul>
         <a class="btn btn-primary plan-cta" data-plan="faixa_preta" href="https://app.synkan.com.br/?plan=faixa_preta&cycle=monthly">Faixa Preta →</a>
       </div>
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--ink-4);margin-top:28px;">Precisa de algo sob medida? <a href="mailto:contato@synkan.com.br?subject=Plano%20personalizado" style="color:var(--ink);text-decoration:underline;">Fale com a gente pra um plano personalizado</a>.</p>
+
+    <!-- ── Card Personalizado · Enterprise ─────────────────────────── -->
+    <div class="enterprise-card">
+      <div class="enterprise-card-inner">
+        <div class="enterprise-card-head">
+          <span class="enterprise-kanji" aria-hidden="true">奥</span>
+          <div>
+            <span class="enterprise-tag">Personalizado · Sob consulta</span>
+            <h3 class="enterprise-title">Enterprise · Okuden</h3>
+            <p class="enterprise-sub">Pra empresas com 50+ pessoas, exigências de compliance, SSO/SAML, white-label ou contratos próprios.</p>
+          </div>
+        </div>
+        <ul class="enterprise-feats">
+          <li><strong>Tudo da Faixa Preta sem teto</strong> · boards, Lab, OKRs, Zais, admins, contatos, gravação</li>
+          <li><strong>SSO / SAML</strong> · Okta · Azure AD · Google Workspace</li>
+          <li><strong>White-label</strong> · cor, logo e domínio próprios</li>
+          <li><strong>Multi-workspace</strong> · holding com várias empresas isoladas numa conta</li>
+          <li><strong>Audit log estendido</strong> · 5+ anos · export SIEM</li>
+          <li><strong>SLA 99,9%</strong> · uptime contratual + suporte 24/7</li>
+          <li><strong>Customer Success Manager dedicado</strong></li>
+          <li><strong>Integrações customizadas</strong> · webhooks dedicados · API estendida</li>
+          <li><strong>Migração assistida</strong> · Synkan importa seus dados (CSV, ERP, CRM antigo)</li>
+          <li><strong>On-premise / VPC dedicada</strong> sob demanda</li>
+        </ul>
+        <div class="enterprise-cta-row">
+          <a class="btn btn-primary" href="mailto:contato@synkan.com.br?subject=Plano%20Personalizado%20Enterprise&body=Oi%2C%20queremos%20conversar%20sobre%20o%20plano%20Enterprise.%0A%0ANome%3A%0AEmpresa%3A%0AN%C3%BAmero%20de%20pessoas%3A%0AO%20que%20mais%20pesa%20pra%20gente%3A">Fale com vendas →</a>
+          <span class="enterprise-note">Resposta em até 1 dia útil · contrato anual mínimo</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Add-ons (pacotes adicionais) -->
     <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--line);">
@@ -1492,116 +1569,132 @@ footer{padding:48px 0 32px;border-top:1px solid var(--line);background:#fff;marg
               <span class="ct-belt-row"><span class="ct-belt ct-black"></span><span class="ct-name">Faixa Preta</span></span>
               <span class="ct-price">R$ 89,90/user/mês</span>
             </th>
+            <th class="ct-enterprise">
+              <span class="ct-eyebrow">Personalizado</span>
+              <span class="ct-belt-row"><span class="ct-belt ct-enterprise-vis"></span><span class="ct-name">Enterprise</span></span>
+              <span class="ct-price">Sob consulta</span>
+            </th>
           </tr>
         </thead>
         <tbody>
 
-          <tr class="ct-section"><td colspan="6">Comunicação · Tatami</td></tr>
-          <tr><td>Canais ilimitados</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Histórico do chat<span class="ct-hint">Tempo de retenção</span></td><td class="ct-num">30 dias</td><td class="ct-num">liberado</td><td class="ct-num">90 dias</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
-          <tr><td>Tatame ao vivo<span class="ct-hint">Voz + vídeo + screen share</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Gravação MP4 do Tatame<span class="ct-hint">Horas por mês</span></td><td class="ct-no">×</td><td class="ct-num">5h/mês</td><td class="ct-no">×</td><td class="ct-popular ct-num">5h/mês</td><td class="ct-num">30h/mês</td></tr>
-          <tr><td>Transcrição IA · Mestre Kan<span class="ct-hint">Automática nas gravações</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Mapa visual de canais<span class="ct-hint">Visão dojo (ukiyo-e)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Kudos · elogios com XP<span class="ct-hint">Só em canais 3+ pessoas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Selo de honra · compromisso público<span class="ct-hint">Só em canais 3+ pessoas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Comunicação · Tatami</td></tr>
+          <tr><td>Canais ilimitados</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Histórico do chat<span class="ct-hint">Tempo de retenção</span></td><td class="ct-num">30 dias</td><td class="ct-num">liberado</td><td class="ct-num">90 dias</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Tatame ao vivo<span class="ct-hint">Voz + vídeo + screen share</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Gravação MP4 do Tatame<span class="ct-hint">Horas por mês</span></td><td class="ct-no">×</td><td class="ct-num">5h/mês</td><td class="ct-no">×</td><td class="ct-popular ct-num">5h/mês</td><td class="ct-num">30h/mês</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Transcrição IA · Mestre Kan<span class="ct-hint">Automática nas gravações</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Mapa visual de canais<span class="ct-hint">Visão dojo (ukiyo-e)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Kudos · elogios com XP<span class="ct-hint">Só em canais 3+ pessoas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Selo de honra · compromisso público<span class="ct-hint">Só em canais 3+ pessoas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">People Journey · onboarding estruturado</td></tr>
-          <tr><td>Trilha de onboarding<span class="ct-hint">Lua Nova → Lua Cheia com etapas, prazos e categorias</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-num">3/mês</td><td class="ct-num">10/mês</td></tr>
-          <tr><td>Templates de trilha por papel<span class="ct-hint">Dev, vendas, design, etc</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Pulse check-ins<span class="ct-hint">Mestre Kan pergunta a cada 7 dias</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Bunko Box automático<span class="ct-hint">Pasta People · [Nome] com 4 subpastas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Canal de chat privado<span class="ct-hint">#onboarding-[nome] criado automático</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">People Journey · onboarding estruturado</td></tr>
+          <tr><td>Trilha de onboarding<span class="ct-hint">Lua Nova → Lua Cheia com etapas, prazos e categorias</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-num">3/mês</td><td class="ct-num">10/mês</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Templates de trilha por papel<span class="ct-hint">Dev, vendas, design, etc</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Pulse check-ins<span class="ct-hint">Mestre Kan pergunta a cada 7 dias</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Bunko Box automático<span class="ct-hint">Pasta People · [Nome] com 4 subpastas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Canal de chat privado<span class="ct-hint">#onboarding-[nome] criado automático</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Gestão de pessoas · acompanhamento contínuo</td></tr>
-          <tr><td>Notas do gestor (timeline)<span class="ct-hint">Observação · Elogio · Preocupação · Ação</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>1:1s registrados + Syncal<span class="ct-hint">Pauta + ata + action items + humor</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Celebrações automáticas<span class="ct-hint">Aniversário pessoal + aniversário na empresa postados no Tatami</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>PDI · Plano de Desenvolvimento Individual<span class="ct-hint">Cadência customizável + metas + auto-avaliação</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Feedback 360<span class="ct-hint">De pares, clientes, gestor · com modo anônimo</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Gestão de pessoas · acompanhamento contínuo</td></tr>
+          <tr><td>Notas do gestor (timeline)<span class="ct-hint">Observação · Elogio · Preocupação · Ação</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>1:1s registrados + Syncal<span class="ct-hint">Pauta + ata + action items + humor</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Celebrações automáticas<span class="ct-hint">Aniversário pessoal + aniversário na empresa postados no Tatami</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>PDI · Plano de Desenvolvimento Individual<span class="ct-hint">Cadência customizável + metas + auto-avaliação</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Feedback 360<span class="ct-hint">De pares, clientes, gestor · com modo anônimo</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Evolução de carreira · trilhas pós-graduação</td></tr>
-          <tr><td>Trilhas de senioridade<span class="ct-hint">Júnior → Pleno → Sênior → Staff com critérios mensuráveis</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Templates customizáveis<span class="ct-hint">Critérios técnicos, soft skills e impacto · com pesos</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Milestones com evidência<span class="ct-hint">Auto-marca + validação do gestor · markdown</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Solicitação formal de promoção<span class="ct-hint">Auto-avaliação + review do gestor · threshold customizável</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Comitê de calibração<span class="ct-hint">Votação multi-gestor pra reduzir viés em promoções</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Auto-iniciar após graduação<span class="ct-hint">Pessoa gradua do onboarding e entra na trilha de carreira</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Evolução de carreira · trilhas pós-graduação</td></tr>
+          <tr><td>Trilhas de senioridade<span class="ct-hint">Júnior → Pleno → Sênior → Staff com critérios mensuráveis</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Templates customizáveis<span class="ct-hint">Critérios técnicos, soft skills e impacto · com pesos</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Milestones com evidência<span class="ct-hint">Auto-marca + validação do gestor · markdown</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Solicitação formal de promoção<span class="ct-hint">Auto-avaliação + review do gestor · threshold customizável</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Comitê de calibração<span class="ct-hint">Votação multi-gestor pra reduzir viés em promoções</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Auto-iniciar após graduação<span class="ct-hint">Pessoa gradua do onboarding e entra na trilha de carreira</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Offboarding · saída estruturada</td></tr>
-          <tr><td>Checklist categorizado<span class="ct-hint">Docs · Acessos · Handover · Conhecimento · Equipamento · Despedida</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Canal #handover no Tatami<span class="ct-hint">Auto-criado privado · pessoa + gestor + sucessor</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Templates por tipo de saída<span class="ct-hint">Resignação · desligamento · acordo mútuo · aposentadoria</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Tarefas bloqueadoras<span class="ct-hint">Impedem conclusão até resolvidas · revogar acessos, devolver equipamentos</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Exit interview + feedback<span class="ct-hint">Coleta estruturada da pessoa sobre a empresa</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Sucessor designado<span class="ct-hint">Knowledge handover direcionado · pessoa que assume</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Offboarding · saída estruturada</td></tr>
+          <tr><td>Checklist categorizado<span class="ct-hint">Docs · Acessos · Handover · Conhecimento · Equipamento · Despedida</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Canal #handover no Tatami<span class="ct-hint">Auto-criado privado · pessoa + gestor + sucessor</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Templates por tipo de saída<span class="ct-hint">Resignação · desligamento · acordo mútuo · aposentadoria</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Tarefas bloqueadoras<span class="ct-hint">Impedem conclusão até resolvidas · revogar acessos, devolver equipamentos</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Exit interview + feedback<span class="ct-hint">Coleta estruturada da pessoa sobre a empresa</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Sucessor designado<span class="ct-hint">Knowledge handover direcionado · pessoa que assume</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Syncal · agenda integrada</td></tr>
-          <tr><td>Eventos manuais<span class="ct-hint">Reuniões, tarefas com hora, lembretes</span></td><td class="ct-num">10/mês</td><td class="ct-num">∞</td><td class="ct-num">∞</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
-          <tr><td>Google Calendar / Outlook sync<span class="ct-hint">Bidirecional + cards de board</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>RSVP + lembretes<span class="ct-hint">Convidados respondem · notificação por email</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Booking pages<span class="ct-hint">Página pública compartilhável onde a pessoa agenda direto na sua agenda</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-num">1 página</td><td class="ct-num">∞</td></tr>
-          <tr><td>Polls de horário<span class="ct-hint">Disponibilidade colaborativa · decide em grupo no Tatami</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>AI sugestão de horário<span class="ct-hint">Mestre Kan acha o melhor slot</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Syncal · agenda integrada</td></tr>
+          <tr><td>Eventos manuais<span class="ct-hint">Reuniões, tarefas com hora, lembretes</span></td><td class="ct-num">10/mês</td><td class="ct-num">∞</td><td class="ct-num">∞</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Google Calendar / Outlook sync<span class="ct-hint">Bidirecional + cards de board</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>RSVP + lembretes<span class="ct-hint">Convidados respondem · notificação por email</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Booking pages<span class="ct-hint">Página pública compartilhável onde a pessoa agenda direto na sua agenda</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-num">1 página</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Polls de horário<span class="ct-hint">Disponibilidade colaborativa · decide em grupo no Tatami</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>AI sugestão de horário<span class="ct-hint">Mestre Kan acha o melhor slot</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Gestão de tarefas</td></tr>
-          <tr><td>Boards Kanban</td><td class="ct-num">1<span class="ct-hint">2 com Zai ativo</span></td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td></tr>
-          <tr><td>Lab (canvas)<span class="ct-hint">Mindmap, fluxos, documentos, OKR canvas</span></td><td class="ct-num">1</td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td></tr>
-          <tr><td>OKRs ativos</td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">15</td><td class="ct-num">∞</td></tr>
-          <tr><td>Board Unificado<span class="ct-hint">Vista agregada</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Gestão de tarefas</td></tr>
+          <tr><td>Boards Kanban</td><td class="ct-num">1<span class="ct-hint">2 com Zai ativo</span></td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Lab (canvas)<span class="ct-hint">Mindmap, fluxos, documentos, OKR canvas</span></td><td class="ct-num">1</td><td class="ct-num">5<span class="ct-hint">igual à Azul</span></td><td class="ct-num">5</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>OKRs ativos</td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">15</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Board Unificado<span class="ct-hint">Vista agregada</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Bunko Box · armazenamento</td></tr>
-          <tr><td>Espaço total<span class="ct-hint">PDFs, planilhas, contratos, gravações, anexos</span></td><td class="ct-num">100 MB</td><td class="ct-num">5 GB</td><td class="ct-num">5 GB</td><td class="ct-popular ct-num">50 GB</td><td class="ct-num">200 GB</td></tr>
-          <tr><td>Páginas markdown<span class="ct-hint">Wiki + transcrições + docs</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Pastas + drag-drop de arquivos</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Espaço extra sob demanda<span class="ct-hint">Fale com vendas — pacotes adicionais</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Bunko Box · armazenamento</td></tr>
+          <tr><td>Espaço total<span class="ct-hint">PDFs, planilhas, contratos, gravações, anexos</span></td><td class="ct-num">100 MB</td><td class="ct-num">5 GB</td><td class="ct-num">5 GB</td><td class="ct-popular ct-num">50 GB</td><td class="ct-num">200 GB</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Páginas markdown<span class="ct-hint">Wiki + transcrições + docs</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Pastas + drag-drop de arquivos</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Espaço extra sob demanda<span class="ct-hint">Fale com vendas — pacotes adicionais</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Finanças · Zai</td></tr>
-          <tr><td>Zais ativos<span class="ct-hint">Cada Zai = 1 dashboard financeiro</span></td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td></tr>
-          <tr><td>Runway + projeção 90d</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Granatum · sync bancário</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Finanças · Zai</td></tr>
+          <tr><td>Zais ativos<span class="ct-hint">Cada Zai = 1 dashboard financeiro</span></td><td class="ct-num">1</td><td class="ct-num">3<span class="ct-hint">igual à Azul</span></td><td class="ct-num">3</td><td class="ct-popular ct-num">20</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Runway + projeção 90d</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Granatum · sync bancário</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Contatos &amp; Leads · Synconnect</td></tr>
-          <tr><td>Synconnect<span class="ct-hint">Pipeline + contatos + deals</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Contatos cadastrados<span class="ct-hint">Leads + clientes + fornecedores somados</span></td><td class="ct-no">×</td><td class="ct-num">50<span class="ct-hint">igual à Azul</span></td><td class="ct-num">50</td><td class="ct-popular ct-num">5.000</td><td class="ct-num">∞</td></tr>
-          <tr><td>Vendedores + split de comissão<span class="ct-hint">Interno ou externo (sem login)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Dashboard de vendedores<span class="ct-hint">Ranking won + win rate por rep</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Customer 360<span class="ct-hint">Tudo do contato numa tela</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Régua de follow-up<span class="ct-hint">Alerta leads/clientes/deals esfriando</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Captação<span class="ct-hint">Formulário público de leads</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Contatos &amp; Leads · Synconnect</td></tr>
+          <tr><td>Synconnect<span class="ct-hint">Pipeline + contatos + deals</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Contatos cadastrados<span class="ct-hint">Leads + clientes + fornecedores somados</span></td><td class="ct-no">×</td><td class="ct-num">50<span class="ct-hint">igual à Azul</span></td><td class="ct-num">50</td><td class="ct-popular ct-num">5.000</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Vendedores + split de comissão<span class="ct-hint">Interno ou externo (sem login)</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Dashboard de vendedores<span class="ct-hint">Ranking won + win rate por rep</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Customer 360<span class="ct-hint">Tudo do contato numa tela</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Régua de follow-up<span class="ct-hint">Alerta leads/clientes/deals esfriando</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Captação<span class="ct-hint">Formulário público de leads</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">IA · Mestre Kan</td></tr>
-          <tr><td>Chamadas IA/mês</td><td class="ct-num">10</td><td class="ct-num">30</td><td class="ct-num">100</td><td class="ct-popular ct-num">500</td><td class="ct-num">1.000</td></tr>
-          <tr><td>Geração de Lab/OKR/Board com IA</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Briefing executivo automático</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Add-on créditos extras<span class="ct-hint">Pacotes 100/300/1000 chamadas avulsas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">IA · Mestre Kan</td></tr>
+          <tr><td>Chamadas IA/mês</td><td class="ct-num">10</td><td class="ct-num">30</td><td class="ct-num">100</td><td class="ct-popular ct-num">500</td><td class="ct-num">1.000</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Geração de Lab/OKR/Board com IA</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Briefing executivo automático</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Add-on créditos extras<span class="ct-hint">Pacotes 100/300/1000 chamadas avulsas</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Gamificação · Dojo do Mestre Kan</td></tr>
-          <tr><td>XP, faixas, conquistas, missões<span class="ct-hint">XP acumula em background mesmo no free</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Visitar o módulo Dojo<span class="ct-hint">Ver progresso, conquistas e ranking</span></td><td class="ct-num">1×/dia</td><td class="ct-num">∞</td><td class="ct-num">∞</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
-          <tr><td>Selo de honra · prazos cumpridos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Pomodoro Dojo · timer com tema</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Streak · sequência diária</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Gamificação · Dojo do Mestre Kan</td></tr>
+          <tr><td>XP, faixas, conquistas, missões<span class="ct-hint">XP acumula em background mesmo no free</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Visitar o módulo Dojo<span class="ct-hint">Ver progresso, conquistas e ranking</span></td><td class="ct-num">1×/dia</td><td class="ct-num">∞</td><td class="ct-num">∞</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Selo de honra · prazos cumpridos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Pomodoro Dojo · timer com tema</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Streak · sequência diária</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Membros · convites</td></tr>
-          <tr><td>Admins · acesso total<span class="ct-hint">Cada admin = seat pago</span></td><td class="ct-num">1<span class="ct-hint">só você</span></td><td class="ct-num">1</td><td class="ct-num">1</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td></tr>
-          <tr><td>Editores externos<span class="ct-hint">Grátis · só boards compartilhados</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-num">3 boards</td><td class="ct-popular ct-num">5 boards</td><td class="ct-num">5 boards</td></tr>
-          <tr><td>Viewers · só leitura</td><td class="ct-no">×</td><td class="ct-num">1 board</td><td class="ct-num">5 boards</td><td class="ct-popular ct-num">10 boards</td><td class="ct-num">10 boards</td></tr>
-          <tr><td>Boards compartilhados<span class="ct-hint">Time vendo o mesmo board</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Membros · convites</td></tr>
+          <tr><td>Admins · acesso total<span class="ct-hint">Cada admin = seat pago</span></td><td class="ct-num">1<span class="ct-hint">só você</span></td><td class="ct-num">1</td><td class="ct-num">1</td><td class="ct-popular ct-num">∞</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Editores externos<span class="ct-hint">Grátis · só boards compartilhados</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-num">3 boards</td><td class="ct-popular ct-num">5 boards</td><td class="ct-num">5 boards</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Viewers · só leitura</td><td class="ct-no">×</td><td class="ct-num">1 board</td><td class="ct-num">5 boards</td><td class="ct-popular ct-num">10 boards</td><td class="ct-num">10 boards</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Boards compartilhados<span class="ct-hint">Time vendo o mesmo board</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Integrações</td></tr>
-          <tr><td>WhatsApp · notificações + comandos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Slack · notificações + bridge<span class="ct-hint">Eventos do Synkan postam no Slack do time</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Google Calendar / iCal</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
-          <tr><td>Granatum · sync financeiro</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td></tr>
-          <tr class="ct-section"><td colspan="6">Segurança · Conformidade</td></tr>
-          <tr><td>Audit log · janela visível</td><td class="ct-num">7 dias</td><td class="ct-num">30 dias</td><td class="ct-num">30 dias</td><td class="ct-popular ct-num">90 dias</td><td class="ct-num">∞</td></tr>
-          <tr><td>Backup automático</td><td class="ct-num">semanal</td><td class="ct-num">diário</td><td class="ct-num">diário</td><td class="ct-popular ct-num">diário</td><td class="ct-num">diário + export</td></tr>
-          <tr><td>LGPD self-service<span class="ct-hint">Apagar conta + dados</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Integrações</td></tr>
+          <tr><td>WhatsApp · notificações + comandos</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Slack · notificações + bridge<span class="ct-hint">Eventos do Synkan postam no Slack do time</span></td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-no">×</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Google Calendar / iCal</td><td class="ct-no">×</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Granatum · sync financeiro</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr class="ct-section"><td colspan="7">Segurança · Conformidade</td></tr>
+          <tr><td>Audit log · janela visível</td><td class="ct-num">7 dias</td><td class="ct-num">30 dias</td><td class="ct-num">30 dias</td><td class="ct-popular ct-num">90 dias</td><td class="ct-num">∞</td><td class="ct-ent ct-num">∞</td></tr>
+          <tr><td>Backup automático</td><td class="ct-num">semanal</td><td class="ct-num">diário</td><td class="ct-num">diário</td><td class="ct-popular ct-num">diário</td><td class="ct-num">diário + export</td><td class="ct-ent ct-num">diário + export + SIEM</td></tr>
+          <tr><td>LGPD self-service<span class="ct-hint">Apagar conta + dados</span></td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-popular ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-ent ct-yes">✓</td></tr>
 
-          <tr class="ct-section"><td colspan="6">Suporte</td></tr>
-          <tr><td>Canal de suporte<span class="ct-hint">Resposta em até 24h em dias úteis</span></td><td class="ct-num">FAQ + docs</td><td class="ct-num">email · 24h</td><td class="ct-num">email · 24h</td><td class="ct-popular ct-num">email · 24h</td><td class="ct-num">email · 24h</td></tr>
-          <tr><td>Onboarding<span class="ct-hint">Call de apresentação sob demanda por email — não inclusa no plano</span></td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-popular ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td></tr>
+          <tr class="ct-section"><td colspan="7">Suporte</td></tr>
+          <tr><td>Canal de suporte<span class="ct-hint">Resposta em até 24h em dias úteis</span></td><td class="ct-num">FAQ + docs</td><td class="ct-num">email · 24h</td><td class="ct-num">email · 24h</td><td class="ct-popular ct-num">email · 24h</td><td class="ct-num">email · 24h</td><td class="ct-ent ct-num">24/7 prioritário</td></tr>
+          <tr><td>Onboarding<span class="ct-hint">Call de apresentação sob demanda por email — não inclusa no plano</span></td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-popular ct-num">tour + canal de dúvidas</td><td class="ct-num">tour + canal de dúvidas</td><td class="ct-ent ct-num">CSM dedicado + onboarding guiado</td></tr>
+
+          <tr class="ct-section"><td colspan="7">Enterprise · exclusivos</td></tr>
+          <tr><td>SSO / SAML<span class="ct-hint">Okta · Azure AD · Google Workspace</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>White-label<span class="ct-hint">Logo, cor e domínio próprios</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Multi-workspace<span class="ct-hint">Holding com várias empresas isoladas numa conta</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>SLA contratual<span class="ct-hint">99,9% uptime garantido</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Audit log estendido<span class="ct-hint">5+ anos · export SIEM</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Customer Success Manager dedicado</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Integrações customizadas<span class="ct-hint">Webhooks dedicados + API estendida</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>Migração assistida<span class="ct-hint">Synkan importa seus dados (CSV, ERP, CRM antigo)</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
+          <tr><td>On-premise / VPC dedicada<span class="ct-hint">Sob demanda</span></td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-no">×</td><td class="ct-popular ct-no">×</td><td class="ct-no">×</td><td class="ct-ent ct-yes">✓</td></tr>
 
         </tbody>
       </table>
