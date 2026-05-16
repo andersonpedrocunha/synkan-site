@@ -401,45 +401,26 @@ function showError(msg){
 }
 
 async function checkout(planCode){
-  // Pega user_id e email do usuário logado.
-  // Ordem de prioridade:
-  //   1) Query string ?user_id=...&email=... (vindo do app cross-domain)
-  //   2) window.SYNKAN_USER (caso a página seja embedada dentro do app)
-  //   3) localStorage (se já tiver sido salvo nesse domínio antes)
-  const params = new URLSearchParams(window.location.search);
-  const qsUserId = params.get('user_id');
-  const qsEmail = params.get('email');
-
-  // Se veio user_id pela URL, persiste no localStorage do synkan.com.br
-  // pra próximas visitas (e pro retorno do checkout)
-  if (qsUserId) {
-    try { localStorage.setItem('synkan_user_id', qsUserId); } catch(e){}
-    if (qsEmail) try { localStorage.setItem('synkan_user_email', qsEmail); } catch(e){}
-  }
-
-  const user = window.SYNKAN_USER || {};
-  const userId = qsUserId || user.id || localStorage.getItem('synkan_user_id');
-  const userEmail = qsEmail || user.email || localStorage.getItem('synkan_user_email');
-
-  if (!userId) {
-    showError('Você precisa estar logado pra fazer upgrade. Volta ao app, faz login e tenta de novo.');
-    return;
-  }
-
+  // SEGURANÇA: o backend agora exige JWT do Supabase pra criar checkout
+  // (antes user A podia passar user_id=B no body e fazer checkout em nome de B).
+  // Como essa página tá em synkan.com.br (não tem cookies/localStorage do app),
+  // não dá pra obter o JWT aqui. Redirecionamos pro app, que faz o checkout
+  // autenticado lá. UX continua igual — o usuário só passa pelo app de relance.
   const btn = event.target;
-  const originalText = btn.textContent;
   btn.disabled = true;
-  btn.textContent = 'Abrindo checkout…';
-
+  btn.textContent = 'Redirecionando pro app…';
+  const cycleVal = (typeof cycle !== 'undefined' && cycle) ? cycle : 'monthly';
+  const target = `https://app.synkan.com.br/?upgrade=1&plan_code=${encodeURIComponent(planCode)}&cycle=${encodeURIComponent(cycleVal)}`;
+  window.location.href = target;
+  return;
+  // ── (código antigo cross-domain mantido abaixo apenas como referência, desativado) ──
   try {
     const r = await fetch(BILLING_API + '/api/billing/create-checkout', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         plan_code: planCode,
-        cycle: cycle,
-        user_id: userId,
-        user_email: userEmail,
+        cycle: cycleVal,
       }),
     });
     if (!r.ok) {
