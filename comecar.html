@@ -95,57 +95,470 @@ img,svg{display:block;max-width:100%;}
 .hero-meta{margin-top:18px;font-size:13px;color:var(--ink-4);}
 .hero-meta strong{color:var(--ink-2);font-weight:600;}
 
-/* ── App mockup (substitui o screenshot real) ──────────── */
-.appmock{background:#1A1612;border-radius:14px;padding:14px;box-shadow:0 30px 60px rgba(0,0,0,.18),0 0 0 0.5px rgba(0,0,0,.10);transform:rotate(-1deg);position:relative;}
-.appmock::before{content:'';position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:80px;height:6px;background:rgba(255,255,255,.15);border-radius:3px;}
-.appmock-bar{display:flex;align-items:center;gap:6px;padding:0 4px 10px;}
-.appmock-bar i{width:11px;height:11px;border-radius:50%;background:#3C3835;display:inline-block;}
-.appmock-bar i:nth-child(1){background:#FF5F57;}
-.appmock-bar i:nth-child(2){background:#FEBC2E;}
-.appmock-bar i:nth-child(3){background:#28C840;}
-.appmock-bar small{color:#807870;font-size:10.5px;margin-left:auto;font-family:var(--font-mono);}
-.appmock-body{background:#F5E8C8;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:140px 1fr 220px;min-height:380px;font-size:11.5px;}
-.appmock-side{background:#1A1612;color:#F5E8C8;padding:14px 10px;}
-.appmock-side .ws{display:flex;align-items:center;gap:8px;padding-bottom:12px;margin-bottom:12px;border-bottom:0.5px solid rgba(245,232,200,.15);}
-.appmock-side .ws-avatar{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#BC002D,#6B4825);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:14px;color:#F5E8C8;font-weight:600;}
-.appmock-side .ws-name{font-size:11px;font-weight:600;line-height:1.2;}
-.appmock-side .ws-name small{display:block;font-size:9px;opacity:.55;font-weight:400;margin-top:1px;}
-.appmock-side .menu-item{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:5px;color:rgba(245,232,200,.7);font-size:11px;margin-bottom:1px;cursor:default;}
-.appmock-side .menu-item.active{background:rgba(245,232,200,.10);color:#F5E8C8;font-weight:500;}
-.appmock-main{padding:16px;background:#F5E8C8;display:flex;flex-direction:column;min-width:0;}
-.appmock-board-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:0.5px solid rgba(26,22,18,.10);}
-.appmock-board-head h4{font-size:13px;font-weight:700;color:#1A1612;}
-.appmock-board-head .views{display:inline-flex;gap:3px;background:rgba(26,22,18,.06);border-radius:5px;padding:2px;}
-.appmock-board-head .views span{padding:3px 7px;font-size:9px;color:#6B4825;border-radius:3px;font-weight:600;}
-.appmock-board-head .views span.on{background:#fff;color:#1A1612;box-shadow:0 1px 2px rgba(0,0,0,.05);}
-.appmock-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;flex:1;}
-.appmock-col{background:rgba(255,255,255,.55);border-radius:6px;padding:8px;display:flex;flex-direction:column;gap:6px;}
-.appmock-col-h{font-size:9.5px;font-weight:700;color:#6B4825;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between;}
-.appmock-col-h span{background:rgba(107,72,37,.15);color:#6B4825;padding:1px 5px;border-radius:8px;font-size:9px;}
-.appmock-card{background:#fff;border-radius:5px;padding:7px 8px;font-size:10px;color:#1A1612;line-height:1.35;box-shadow:0 1px 2px rgba(0,0,0,.04);}
-.appmock-card .tag{display:inline-block;font-size:8.5px;padding:1px 5px;border-radius:8px;margin-bottom:4px;font-weight:600;letter-spacing:.02em;}
-.appmock-card .tag.red{background:#FCE4E8;color:#A32D2D;}
-.appmock-card .tag.gold{background:#F8EDD1;color:#7A5500;}
-.appmock-card .tag.green{background:#E4EFD6;color:#3B6D11;}
-.appmock-card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:4px;font-size:9px;color:#6B4825;}
-.appmock-card .avatar{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#BC002D,#6B4825);display:inline-block;}
-.appmock-chat{background:#1A1612;color:#F5E8C8;padding:14px 12px;display:flex;flex-direction:column;}
-.appmock-chat-h{font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;padding-bottom:10px;border-bottom:0.5px solid rgba(245,232,200,.15);margin-bottom:10px;}
-.appmock-chat-h .live{width:6px;height:6px;border-radius:50%;background:#3B6D11;animation:pulse 1.6s infinite;}
-@keyframes pulse{0%,100%{opacity:.5;}50%{opacity:1;}}
-.appmock-msg{margin-bottom:10px;}
-.appmock-msg .who{font-size:9.5px;font-weight:600;color:#C19A3A;margin-bottom:2px;}
-.appmock-msg .who small{color:rgba(245,232,200,.45);font-weight:400;margin-left:4px;}
-.appmock-msg .body{font-size:10.5px;line-height:1.4;color:rgba(245,232,200,.92);}
-.appmock-chat-input{margin-top:auto;background:rgba(245,232,200,.10);border-radius:6px;padding:6px 10px;font-size:10px;color:rgba(245,232,200,.5);display:flex;align-items:center;justify-content:space-between;}
-.appmock-chat-input span{color:#BC002D;}
+/* ══════════════════════════════════════════════════════════════
+   APP MOCKUP — janela tipo SaaS premium (estilo Linear/Notion)
+   ──────────────────────────────────────────────────────────────
+   Estrutura:
+   .appmock           (janela inteira com chrome macOS)
+     .am-titlebar     (3 traffic lights + URL)
+     .am-window       (corpo do app)
+       .am-topbar     (logo workspace + busca + user)
+       .am-main       (grid 3 col: sidebar | board | chat)
+         .am-side       (sidebar com seções)
+         .am-canvas     (header board + kanban)
+         .am-panel      (chat lateral)
+   ══════════════════════════════════════════════════════════════ */
 
+.appmock{
+  background:linear-gradient(180deg,#E0DAC8 0%,#D4CCB6 100%);
+  border-radius:14px;
+  padding:8px 8px 8px;
+  box-shadow:
+    0 50px 100px -20px rgba(26,22,18,.30),
+    0 30px 60px -30px rgba(26,22,18,.25),
+    0 0 0 0.5px rgba(26,22,18,.20),
+    inset 0 0 0 0.5px rgba(255,255,255,.40);
+  position:relative;
+  transform:perspective(1400px) rotateY(-2deg) rotateX(2deg);
+  transform-origin:center center;
+}
+.solution .appmock{transform:perspective(1800px) rotateX(1deg);}
+
+/* Title bar macOS */
+.am-titlebar{
+  display:flex;align-items:center;gap:8px;padding:7px 10px;
+  position:relative;
+}
+.am-titlebar .lights{display:flex;gap:6px;}
+.am-titlebar .lights i{
+  width:11px;height:11px;border-radius:50%;
+  display:inline-block;box-shadow:inset 0 0.5px 0.5px rgba(0,0,0,.20);
+}
+.am-titlebar .lights i:nth-child(1){background:#FF5F57;}
+.am-titlebar .lights i:nth-child(2){background:#FEBC2E;}
+.am-titlebar .lights i:nth-child(3){background:#28C840;}
+.am-titlebar .url{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:rgba(255,255,255,.50);
+  border:0.5px solid rgba(26,22,18,.10);
+  border-radius:6px;padding:3px 12px 3px 28px;
+  font-family:var(--font-mono);font-size:11px;color:#3A2410;
+  min-width:240px;text-align:center;
+  position:relative;
+}
+.am-titlebar .url::before{
+  content:'';position:absolute;left:8px;top:50%;transform:translateY(-50%);
+  width:9px;height:9px;border-radius:50%;
+  background:#1A1612;
+}
+.am-titlebar .url::after{
+  content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:3px;height:3px;border-radius:50%;background:#C19A3A;
+}
+
+/* Window body */
+.am-window{
+  background:#FAF6E8;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 0 0 0.5px rgba(26,22,18,.10);
+  display:flex;flex-direction:column;
+  min-height:480px;
+  font-size:11.5px;
+  color:#1A1612;
+}
+
+/* ─── Top app bar ────────────────────────────────────── */
+.am-topbar{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:9px 14px;
+  background:linear-gradient(180deg,#FAF6E8 0%,#F4ECD0 100%);
+  border-bottom:0.5px solid rgba(107,72,37,.18);
+  flex-shrink:0;
+}
+.am-topbar .wsbar{display:flex;align-items:center;gap:8px;}
+.am-topbar .ws-mark{
+  width:24px;height:24px;border-radius:6px;
+  background:linear-gradient(135deg,#1A1612 0%,#3A2410 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:#F5E8C8;font-family:var(--font-serif);font-size:13px;font-weight:600;
+  box-shadow:0 1px 2px rgba(26,22,18,.18);
+}
+.am-topbar .ws-name{font-weight:700;font-size:12px;color:#1A1612;}
+.am-topbar .ws-name .chev{color:#6B4825;margin-left:3px;font-size:9px;}
+.am-topbar .search{
+  background:#FFFCEF;border:0.5px solid rgba(107,72,37,.20);
+  border-radius:6px;padding:5px 10px 5px 26px;
+  font-size:11px;color:#6B4825;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:300px;margin:0 auto;width:100%;
+  position:relative;
+}
+.am-topbar .search::before{
+  content:'';position:absolute;left:9px;top:50%;transform:translateY(-50%);
+  width:11px;height:11px;border-radius:50%;
+  border:1.4px solid #C19A3A;
+}
+.am-topbar .search::after{
+  content:'';position:absolute;left:18px;top:55%;
+  width:5px;height:1.4px;background:#C19A3A;transform:rotate(45deg);
+}
+.am-topbar .search kbd{
+  background:rgba(107,72,37,.10);color:#6B4825;
+  font-size:9px;padding:1px 5px;border-radius:3px;
+  font-family:var(--font-mono);font-weight:600;
+}
+.am-topbar .top-tools{display:flex;align-items:center;gap:6px;}
+.am-topbar .tool-btn{
+  width:26px;height:26px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  color:#6B4825;font-size:14px;
+  background:transparent;
+  position:relative;
+}
+.am-topbar .tool-btn.has-badge::after{
+  content:'';position:absolute;top:3px;right:4px;
+  width:6px;height:6px;border-radius:50%;background:#BC002D;
+  box-shadow:0 0 0 1.5px #F4ECD0;
+}
+.am-topbar .me{
+  display:flex;align-items:center;gap:7px;padding:3px 4px 3px 8px;
+  background:rgba(26,22,18,.04);border-radius:14px;
+  font-size:11px;color:#1A1612;font-weight:600;
+}
+.am-topbar .me .avatar{
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,#BC002D 0%,#6B4825 100%);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;
+  position:relative;flex-shrink:0;
+}
+.am-topbar .me .avatar::after{
+  content:'';position:absolute;bottom:-1px;right:-1px;
+  width:7px;height:7px;border-radius:50%;background:#3B6D11;
+  box-shadow:0 0 0 1.5px #FAF6E8;
+}
+
+/* ─── Main grid ──────────────────────────────────────── */
+.am-main{
+  display:grid;
+  grid-template-columns:170px 1fr 232px;
+  flex:1;min-height:0;
+}
+
+/* ─── Sidebar ────────────────────────────────────────── */
+.am-side{
+  background:linear-gradient(180deg,#1A1612 0%,#241B14 100%);
+  color:#F5E8C8;
+  padding:14px 8px 10px;
+  display:flex;flex-direction:column;gap:14px;
+  border-right:0.5px solid rgba(0,0,0,.20);
+}
+.am-side-section{display:flex;flex-direction:column;gap:1px;}
+.am-side-section .sec-label{
+  font-size:9px;font-weight:700;letter-spacing:.10em;
+  color:rgba(245,232,200,.40);text-transform:uppercase;
+  padding:0 8px 4px;
+}
+.am-side .nav-i{
+  display:flex;align-items:center;gap:8px;
+  padding:5px 8px;border-radius:5px;
+  color:rgba(245,232,200,.72);font-size:11.5px;font-weight:500;
+  position:relative;
+}
+.am-side .nav-i .ico{
+  width:16px;font-family:var(--font-serif);font-size:13px;
+  text-align:center;color:rgba(245,232,200,.55);
+  flex-shrink:0;
+}
+.am-side .nav-i .ico.emoji{font-family:var(--font-sans);font-size:12px;}
+.am-side .nav-i.active{
+  background:linear-gradient(90deg,rgba(193,154,58,.18) 0%,rgba(193,154,58,.06) 100%);
+  color:#F5E8C8;font-weight:600;
+  box-shadow:inset 2px 0 0 #C19A3A;
+}
+.am-side .nav-i.active .ico{color:#C19A3A;}
+.am-side .nav-i .badge{
+  margin-left:auto;background:#BC002D;color:#fff;
+  font-size:9px;padding:1px 5px;border-radius:8px;font-weight:700;
+  font-family:var(--font-sans);
+}
+.am-side .nav-i .star{
+  margin-left:auto;color:#C19A3A;font-size:10px;
+}
+.am-side-foot{
+  margin-top:auto;padding:8px;border-top:0.5px solid rgba(245,232,200,.10);
+  display:flex;align-items:center;gap:8px;
+}
+.am-side-foot .me{
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,#BC002D,#6B4825);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:10px;font-weight:700;
+  flex-shrink:0;position:relative;
+}
+.am-side-foot .me::after{
+  content:'';position:absolute;bottom:-1px;right:-1px;
+  width:7px;height:7px;border-radius:50%;background:#3B6D11;
+  box-shadow:0 0 0 1.5px #1A1612;
+}
+.am-side-foot .who{font-size:10.5px;line-height:1.2;color:#F5E8C8;font-weight:600;}
+.am-side-foot .who small{display:block;font-size:9px;opacity:.55;font-weight:400;margin-top:1px;}
+
+/* ─── Canvas (main board area) ───────────────────────── */
+.am-canvas{
+  padding:14px 16px 12px;
+  background:linear-gradient(180deg,#FAF6E8 0%,#F4ECD0 100%);
+  display:flex;flex-direction:column;
+  min-width:0;
+  position:relative;
+}
+.am-canvas::before{
+  content:'集';position:absolute;bottom:-30px;right:-20px;
+  font-family:var(--font-serif);font-size:280px;color:rgba(193,154,58,.05);
+  pointer-events:none;line-height:1;
+}
+.am-canvas-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:0.5px solid rgba(107,72,37,.18);
+  flex-wrap:wrap;gap:8px;position:relative;z-index:1;
+}
+.am-canvas-head .crumbs{display:flex;align-items:center;gap:8px;}
+.am-canvas-head h4{
+  font-size:14px;font-weight:700;color:#1A1612;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:8px;
+}
+.am-canvas-head h4 .b-mark{
+  display:inline-block;width:16px;height:16px;border-radius:4px;
+  background:linear-gradient(135deg,#C19A3A,#6B4825);
+}
+.am-canvas-head .who-on{display:inline-flex;align-items:center;margin-left:6px;}
+.am-canvas-head .who-on .a{
+  width:18px;height:18px;border-radius:50%;
+  border:1.5px solid #FAF6E8;
+  font-size:9px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-left:-5px;
+}
+.am-canvas-head .who-on .a:first-child{margin-left:0;}
+.am-canvas-head .who-on .a.a1{background:linear-gradient(135deg,#BC002D,#6B4825);}
+.am-canvas-head .who-on .a.a2{background:linear-gradient(135deg,#3B6D11,#5C4F3F);}
+.am-canvas-head .who-on .a.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
+.am-canvas-head .who-on .a.a4{background:#6B4825;color:#F5E8C8;}
+.am-canvas-head .views{
+  display:inline-flex;gap:1px;background:rgba(26,22,18,.06);
+  border-radius:5px;padding:2px;border:0.5px solid rgba(107,72,37,.10);
+}
+.am-canvas-head .views .v{
+  padding:3px 8px;font-size:9.5px;color:#6B4825;border-radius:3px;
+  font-weight:600;display:inline-flex;align-items:center;gap:4px;
+}
+.am-canvas-head .views .v.on{
+  background:#fff;color:#1A1612;
+  box-shadow:0 1px 2px rgba(26,22,18,.08);
+}
+.am-canvas-cols{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  flex:1;min-height:0;position:relative;z-index:1;
+}
+.am-col{
+  background:rgba(255,252,239,.65);
+  border:0.5px solid rgba(107,72,37,.10);
+  border-radius:7px;padding:8px 7px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.am-col-h{
+  font-size:9.5px;font-weight:700;color:#6B4825;
+  text-transform:uppercase;letter-spacing:.06em;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 2px 4px;
+}
+.am-col-h .ct{
+  background:rgba(107,72,37,.12);color:#6B4825;
+  padding:0px 6px;border-radius:8px;font-size:9px;font-weight:700;
+}
+.am-col-h .plus{
+  color:rgba(107,72,37,.45);font-size:13px;line-height:1;cursor:default;
+}
+
+/* ─── Kanban card ────────────────────────────────────── */
+.am-card{
+  background:#fff;
+  border-radius:6px;padding:8px 9px;
+  box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04);
+  position:relative;
+  line-height:1.35;
+  display:flex;flex-direction:column;gap:5px;
+}
+.am-card.urgent{box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04),inset 3px 0 0 #BC002D;}
+.am-card.gold-stripe{box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04),inset 3px 0 0 #C19A3A;}
+.am-card.done{opacity:.72;}
+.am-card .tags{display:flex;flex-wrap:wrap;gap:3px;}
+.am-card .tag{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:9px;padding:1px 6px;border-radius:9px;
+  font-weight:600;letter-spacing:.01em;line-height:1.35;
+}
+.am-card .tag.red{background:#FCE4E8;color:#A32D2D;}
+.am-card .tag.gold{background:#F8EDD1;color:#7A5500;}
+.am-card .tag.green{background:#E4EFD6;color:#3B6D11;}
+.am-card .tag.purple{background:#EBE4F2;color:#5E3F8A;}
+.am-card .tag.blue{background:#DCE6F4;color:#1A4778;}
+.am-card .tag.neutral{background:#EFE9D6;color:#6B4825;}
+.am-card .title{font-size:11.5px;font-weight:600;color:#1A1612;letter-spacing:-.005em;}
+.am-card .desc{font-size:10px;color:#6B4825;opacity:.85;line-height:1.4;}
+.am-card .progress{
+  display:flex;align-items:center;gap:6px;font-size:9px;color:#6B4825;
+}
+.am-card .progress .bar{
+  flex:1;height:3px;background:rgba(107,72,37,.12);
+  border-radius:2px;overflow:hidden;
+}
+.am-card .progress .bar i{
+  display:block;height:100%;background:#3B6D11;border-radius:2px;
+}
+.am-card .foot{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:9.5px;color:#6B4825;
+}
+.am-card .foot .left{display:flex;align-items:center;gap:8px;}
+.am-card .foot .left .item{display:inline-flex;align-items:center;gap:3px;}
+.am-card .foot .left .item.due{color:#A32D2D;font-weight:600;}
+.am-card .foot .left .item.due.soon{color:#7A5500;}
+.am-card .foot .av{
+  width:18px;height:18px;border-radius:50%;
+  font-size:8.5px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid #fff;
+}
+.am-card .foot .av.a1{background:linear-gradient(135deg,#BC002D,#6B4825);}
+.am-card .foot .av.a2{background:linear-gradient(135deg,#3B6D11,#5C4F3F);}
+.am-card .foot .av.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
+.am-card .foot .av.a4{background:#6B4825;color:#F5E8C8;}
+.am-card .check{color:#3B6D11;font-weight:700;}
+
+/* ─── Chat panel ─────────────────────────────────────── */
+.am-panel{
+  background:linear-gradient(180deg,#1A1612 0%,#241B14 100%);
+  color:#F5E8C8;
+  padding:12px 11px 10px;
+  display:flex;flex-direction:column;
+  border-left:0.5px solid rgba(0,0,0,.20);
+  min-width:0;
+}
+.am-panel-h{
+  font-size:11.5px;font-weight:700;
+  display:flex;align-items:center;gap:7px;
+  padding-bottom:10px;border-bottom:0.5px solid rgba(245,232,200,.12);
+  margin-bottom:10px;
+  flex-shrink:0;
+}
+.am-panel-h .ch{color:rgba(245,232,200,.55);font-weight:500;}
+.am-panel-h .live{
+  width:6px;height:6px;border-radius:50%;background:#3B6D11;
+  box-shadow:0 0 0 2px rgba(59,109,17,.25);
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.5;}50%{opacity:1;}}
+.am-panel-h .who-on{display:inline-flex;margin-left:auto;}
+.am-panel-h .who-on .a{
+  width:16px;height:16px;border-radius:50%;
+  border:1.5px solid #1A1612;
+  font-size:8px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-left:-4px;
+}
+.am-panel-h .who-on .a:first-child{margin-left:0;}
+.am-panel-h .who-on .a.a1{background:linear-gradient(135deg,#BC002D,#6B4825);}
+.am-panel-h .who-on .a.a2{background:linear-gradient(135deg,#3B6D11,#5C4F3F);}
+.am-panel-h .who-on .a.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
+
+.am-msg{display:flex;gap:7px;margin-bottom:11px;}
+.am-msg .av{
+  width:24px;height:24px;border-radius:50%;
+  font-size:9.5px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;align-self:flex-start;
+}
+.am-msg .av.a1{background:linear-gradient(135deg,#BC002D,#6B4825);}
+.am-msg .av.a2{background:linear-gradient(135deg,#3B6D11,#5C4F3F);}
+.am-msg .av.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
+.am-msg .av.av-kan{background:linear-gradient(135deg,#1A1612,#3A2410);color:#C19A3A;font-family:var(--font-serif);font-size:12px;border:0.5px solid #C19A3A;}
+.am-msg .right{min-width:0;flex:1;}
+.am-msg .who{font-size:10px;font-weight:700;color:#F5E8C8;display:flex;align-items:baseline;gap:6px;margin-bottom:2px;}
+.am-msg .who small{font-size:8.5px;color:rgba(245,232,200,.40);font-weight:400;}
+.am-msg .body{font-size:10.5px;line-height:1.45;color:rgba(245,232,200,.92);}
+.am-msg .body a{color:#C19A3A;}
+.am-msg .body .mention{color:#C19A3A;background:rgba(193,154,58,.12);padding:0 4px;border-radius:3px;font-weight:600;}
+.am-msg .body .ref{color:#C19A3A;font-weight:600;}
+.am-msg .reactions{display:flex;gap:4px;margin-top:5px;}
+.am-msg .reactions .r{
+  background:rgba(245,232,200,.08);
+  border:0.5px solid rgba(245,232,200,.15);
+  border-radius:9px;padding:1px 6px;
+  font-size:9.5px;color:rgba(245,232,200,.85);
+  display:inline-flex;align-items:center;gap:3px;
+}
+.am-msg .reactions .r b{font-weight:600;color:#C19A3A;font-size:9px;}
+.am-msg .thread{
+  font-size:9px;color:#C19A3A;margin-top:4px;font-weight:600;
+}
+
+.am-typing{
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;color:rgba(245,232,200,.50);
+  font-style:italic;margin-bottom:8px;padding-left:31px;
+}
+.am-typing .dots{display:inline-flex;gap:2px;}
+.am-typing .dots i{
+  width:3.5px;height:3.5px;border-radius:50%;background:rgba(245,232,200,.55);
+  animation:typing 1.2s ease-in-out infinite;
+}
+.am-typing .dots i:nth-child(2){animation-delay:.15s;}
+.am-typing .dots i:nth-child(3){animation-delay:.30s;}
+@keyframes typing{0%,80%,100%{opacity:.3;transform:translateY(0);}40%{opacity:1;transform:translateY(-2px);}}
+
+.am-input{
+  margin-top:auto;background:rgba(245,232,200,.08);
+  border:0.5px solid rgba(245,232,200,.12);
+  border-radius:7px;padding:7px 10px;
+  font-size:10.5px;color:rgba(245,232,200,.40);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.am-input kbd{
+  background:rgba(245,232,200,.10);color:rgba(245,232,200,.50);
+  font-size:9px;padding:1px 5px;border-radius:3px;
+  font-family:var(--font-mono);
+}
+
+/* Stripe de status no rodapé */
+.am-status{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:5px 14px;font-size:9.5px;color:#6B4825;
+  background:linear-gradient(180deg,#F4ECD0 0%,#EBE0B8 100%);
+  border-top:0.5px solid rgba(107,72,37,.18);
+  flex-shrink:0;font-family:var(--font-mono);
+}
+.am-status .left{display:flex;align-items:center;gap:14px;}
+.am-status .left i{
+  width:6px;height:6px;border-radius:50%;background:#3B6D11;display:inline-block;margin-right:5px;
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media(max-width:980px){
+  .am-main{grid-template-columns:1fr;}
+  .am-side,.am-panel{display:none;}
+  .appmock{transform:none;}
+  .solution .appmock{transform:none;}
+}
 @media(max-width:680px){
-  .appmock{transform:rotate(0);padding:10px;}
-  .appmock-body{grid-template-columns:1fr;min-height:auto;}
-  .appmock-side,.appmock-chat{display:none;}
-  .appmock-cols{grid-template-columns:1fr;}
-  .appmock-cols .appmock-col:nth-child(n+2){display:none;}
+  .appmock{padding:6px;}
+  .am-window{min-height:auto;}
+  .am-canvas-cols{grid-template-columns:1fr;}
+  .am-canvas-cols .am-col:nth-child(n+2){display:none;}
+  .am-topbar .search{display:none;}
+  .am-status{display:none;}
 }
 
 /* ── Sections genéricas ────────────────────────────────── */
@@ -290,109 +703,245 @@ footer .footer-links{display:flex;gap:18px;}
       <div>
         <div class="hero-pill">
           <span class="dot"></span>
-          v9 · 100% brasileiro · Faixa Branca grátis pra sempre
+          v9 · 100% brasileiro · em português · em real
         </div>
         <h1>
-          Pare de pular entre <em>5 ferramentas</em><br>
-          pra rodar 1 trabalho.
+          <em>5 apps</em> de gestão.<br>
+          1 dojo.
         </h1>
         <p class="lead">
-          Synkan junta <strong>Kanban</strong>, <strong>chat ao vivo</strong>, <strong>OKR</strong>, <strong>calendário</strong> e <strong>CRM</strong> num lugar só. Pensado pra quem trabalha sozinho ou em times até 10 pessoas. Sem precisar de Notion + Trello + Slack + Cal + HubSpot.
+          Synkan substitui <strong>Notion + Trello + Slack + Calendário + CRM</strong> por uma ferramenta brasileira só, pensada pra quem trabalha sozinho ou em times até 10 pessoas. Sem dólar variando, sem 5 contas pra pagar, sem perder o fio do que decidiu.
         </p>
         <div class="hero-cta">
           <a href="https://app.synkan.com.br/signup" class="btn btn-primary btn-lg" data-cta="hero-primary">
-            Começar grátis · 1 minuto →
+            Entrar no dojo · grátis →
           </a>
         </div>
         <div class="hero-meta">
-          Sem cartão · <strong>Faixa Branca grátis pra sempre</strong> · Cancela quando quiser
+          Faixa Branca <strong>grátis pra sempre</strong> · sem cartão · cancela em 1 clique
         </div>
       </div>
-      <!-- App mockup (inline HTML — substitui screenshot) -->
+      <!-- ════════════════════════════════════════════════
+           App mockup — janela tipo SaaS premium (inline)
+           Sem dependência de PNG. Replica visual real.
+           ════════════════════════════════════════════════ -->
       <div class="appmock" role="img" aria-label="Captura do app Synkan mostrando Kanban e chat ao vivo">
-        <div class="appmock-bar">
-          <i></i><i></i><i></i>
-          <small>app.synkan.com.br</small>
+        <!-- Title bar macOS -->
+        <div class="am-titlebar">
+          <div class="lights"><i></i><i></i><i></i></div>
+          <div class="url">app.synkan.com.br / boards / marketing</div>
         </div>
-        <div class="appmock-body">
-          <!-- Sidebar -->
-          <aside class="appmock-side">
-            <div class="ws">
-              <div class="ws-avatar">道</div>
-              <div class="ws-name">Synkan<small>dojo · 4 pessoas</small></div>
+
+        <div class="am-window">
+          <!-- Top app bar -->
+          <header class="am-topbar">
+            <div class="wsbar">
+              <div class="ws-mark">道</div>
+              <div class="ws-name">Synkan dojo<span class="chev">▾</span></div>
             </div>
-            <div class="menu-item active">▦ Boards</div>
-            <div class="menu-item">畳 Tatami</div>
-            <div class="menu-item">🎯 OKRs</div>
-            <div class="menu-item">📅 Syncal</div>
-            <div class="menu-item">⊞ Synconnect</div>
-            <div class="menu-item">財 Zai</div>
-          </aside>
-          <!-- Kanban -->
-          <main class="appmock-main">
-            <div class="appmock-board-head">
-              <h4>Marketing · Q1 2026</h4>
-              <div class="views">
-                <span class="on">Kanban</span><span>Tabela</span><span>Cal</span>
+            <div class="search">
+              <span>Buscar cards, pessoas, OKRs…</span>
+              <kbd>⌘K</kbd>
+            </div>
+            <div class="top-tools">
+              <div class="tool-btn has-badge">🔔</div>
+              <div class="me">
+                <span>Ana</span>
+                <div class="avatar">A</div>
               </div>
             </div>
-            <div class="appmock-cols">
-              <div class="appmock-col">
-                <div class="appmock-col-h">A fazer <span>3</span></div>
-                <div class="appmock-card">
-                  <span class="tag red">急 urgente</span>
-                  <div>Landing page de lançamento</div>
-                  <div class="meta"><span>📅 12 mai</span><span class="avatar"></span></div>
+          </header>
+
+          <!-- Main grid -->
+          <div class="am-main">
+            <!-- Sidebar -->
+            <aside class="am-side">
+              <div class="am-side-section">
+                <div class="sec-label">Fixados</div>
+                <div class="nav-i active"><span class="ico emoji">▦</span>Marketing Q1<span class="star">★</span></div>
+                <div class="nav-i"><span class="ico emoji">▦</span>Comercial<span class="star">★</span></div>
+              </div>
+              <div class="am-side-section">
+                <div class="sec-label">Módulos</div>
+                <div class="nav-i"><span class="ico">畳</span>Tatami<span class="badge">3</span></div>
+                <div class="nav-i"><span class="ico emoji">🎯</span>OKRs</div>
+                <div class="nav-i"><span class="ico emoji">📅</span>Syncal</div>
+                <div class="nav-i"><span class="ico emoji">⊞</span>Synconnect</div>
+                <div class="nav-i"><span class="ico">財</span>Zai</div>
+                <div class="nav-i"><span class="ico">人</span>Pessoas</div>
+              </div>
+              <div class="am-side-foot">
+                <div class="me">A</div>
+                <div class="who">Ana Reis<small>online · Faixa Roxa</small></div>
+              </div>
+            </aside>
+
+            <!-- Canvas (Kanban) -->
+            <main class="am-canvas">
+              <div class="am-canvas-head">
+                <div class="crumbs">
+                  <h4><span class="b-mark"></span>Marketing · Q1 2026</h4>
+                  <div class="who-on">
+                    <div class="a a1">A</div>
+                    <div class="a a2">L</div>
+                    <div class="a a3">M</div>
+                    <div class="a a4">+1</div>
+                  </div>
                 </div>
-                <div class="appmock-card">
-                  <span class="tag gold">média</span>
-                  <div>Setup Google Ads campanha 1</div>
-                  <div class="meta"><span>📅 15 mai</span><span class="avatar"></span></div>
+                <div class="views">
+                  <span class="v on">▦ Kanban</span>
+                  <span class="v">⊟ Tabela</span>
+                  <span class="v">📅</span>
+                  <span class="v">⊪</span>
                 </div>
               </div>
-              <div class="appmock-col">
-                <div class="appmock-col-h">Em curso <span>2</span></div>
-                <div class="appmock-card">
-                  <span class="tag green">design</span>
-                  <div>Banner LinkedIn + perfil</div>
-                  <div class="meta"><span>🎯 KR 1.2</span><span class="avatar"></span></div>
+              <div class="am-canvas-cols">
+                <div class="am-col">
+                  <div class="am-col-h"><span>A fazer</span><span class="ct">3</span></div>
+                  <div class="am-card urgent">
+                    <div class="tags">
+                      <span class="tag red">急 urgente</span>
+                      <span class="tag blue">copy</span>
+                    </div>
+                    <div class="title">Landing /comecar pra Google Ads</div>
+                    <div class="foot">
+                      <div class="left">
+                        <span class="item due">📅 12 mai</span>
+                        <span class="item">💬 4</span>
+                      </div>
+                      <div class="av a1">A</div>
+                    </div>
+                  </div>
+                  <div class="am-card gold-stripe">
+                    <div class="tags">
+                      <span class="tag gold">média</span>
+                    </div>
+                    <div class="title">Setup Google Ads · 3 ad groups</div>
+                    <div class="foot">
+                      <div class="left">
+                        <span class="item due soon">📅 15 mai</span>
+                        <span class="item">📎 2</span>
+                      </div>
+                      <div class="av a3">M</div>
+                    </div>
+                  </div>
                 </div>
-                <div class="appmock-card">
-                  <div>12 posts de estoque</div>
-                  <div class="meta"><span>3/12 ✓</span><span class="avatar"></span></div>
+
+                <div class="am-col">
+                  <div class="am-col-h"><span>Em curso</span><span class="ct">2</span></div>
+                  <div class="am-card">
+                    <div class="tags">
+                      <span class="tag green">design</span>
+                      <span class="tag purple">KR 1.2</span>
+                    </div>
+                    <div class="title">Banner LinkedIn + perfil</div>
+                    <div class="progress">
+                      <div class="bar"><i style="width:65%;"></i></div>
+                      <span>65%</span>
+                    </div>
+                    <div class="foot">
+                      <div class="left"><span class="item">📅 18 mai</span></div>
+                      <div class="av a2">L</div>
+                    </div>
+                  </div>
+                  <div class="am-card">
+                    <div class="tags">
+                      <span class="tag neutral">conteúdo</span>
+                    </div>
+                    <div class="title">12 posts de estoque</div>
+                    <div class="progress">
+                      <div class="bar"><i style="width:25%;"></i></div>
+                      <span>3/12</span>
+                    </div>
+                    <div class="foot">
+                      <div class="left"><span class="item">💬 8</span></div>
+                      <div class="av a1">A</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="am-col">
+                  <div class="am-col-h"><span>Pronto</span><span class="ct">5</span></div>
+                  <div class="am-card done">
+                    <div class="tags">
+                      <span class="tag green">done</span>
+                    </div>
+                    <div class="title"><span class="check">✓</span> Brand + identidade</div>
+                    <div class="foot">
+                      <div class="left"><span class="item">ontem</span></div>
+                      <div class="av a2">L</div>
+                    </div>
+                  </div>
+                  <div class="am-card done">
+                    <div class="tags">
+                      <span class="tag green">done</span>
+                    </div>
+                    <div class="title"><span class="check">✓</span> Definir ICP inicial</div>
+                  </div>
                 </div>
               </div>
-              <div class="appmock-col">
-                <div class="appmock-col-h">Pronto <span>5</span></div>
-                <div class="appmock-card">
-                  <span class="tag green">done</span>
-                  <div>Brand + identidade</div>
-                  <div class="meta"><span>✓ ontem</span><span class="avatar"></span></div>
+            </main>
+
+            <!-- Chat panel -->
+            <aside class="am-panel">
+              <div class="am-panel-h">
+                <span class="live"></span>
+                <span class="ch">#</span>marketing
+                <div class="who-on">
+                  <div class="a a1">A</div>
+                  <div class="a a2">L</div>
+                  <div class="a a3">M</div>
                 </div>
               </div>
+
+              <div class="am-msg">
+                <div class="av a1">A</div>
+                <div class="right">
+                  <div class="who">Ana <small>14:23</small></div>
+                  <div class="body">Coloquei a <span class="ref">#landing</span> em <em>Em curso</em>. Quer revisar a copy antes de subir?</div>
+                  <div class="reactions">
+                    <span class="r">👍 <b>2</b></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="am-msg">
+                <div class="av a2">L</div>
+                <div class="right">
+                  <div class="who">Lucas <small>14:24</small></div>
+                  <div class="body">Boa, abre na sessão das 15h?</div>
+                </div>
+              </div>
+
+              <div class="am-msg">
+                <div class="av av-kan">勘</div>
+                <div class="right">
+                  <div class="who">Mestre Kan <small>agora</small></div>
+                  <div class="body">道. Vi 4 hooks no draft. Sugiro testar A/B com 2 deles. <span class="mention">@Ana</span> quer que eu gere variações?</div>
+                  <div class="thread">↩ 2 respostas</div>
+                </div>
+              </div>
+
+              <div class="am-typing">
+                <span>Ana está digitando</span>
+                <span class="dots"><i></i><i></i><i></i></span>
+              </div>
+
+              <div class="am-input">
+                <span>Mensagem #marketing…</span>
+                <kbd>↵</kbd>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Status bar -->
+          <div class="am-status">
+            <div class="left">
+              <span><i></i>Sincronizado</span>
+              <span>12 cards · 2 KRs · 3 online</span>
             </div>
-          </main>
-          <!-- Chat (Tatami) -->
-          <aside class="appmock-chat">
-            <div class="appmock-chat-h">
-              <span class="live"></span> #marketing · ao vivo
-            </div>
-            <div class="appmock-msg">
-              <div class="who">Ana <small>14:23</small></div>
-              <div class="body">Coloquei a landing no Em curso 👍</div>
-            </div>
-            <div class="appmock-msg">
-              <div class="who">Lucas <small>14:24</small></div>
-              <div class="body">Boa! Já posso revisar copy?</div>
-            </div>
-            <div class="appmock-msg">
-              <div class="who">Mestre Kan <small>agora</small></div>
-              <div class="body">道. Sugiro testar A/B com 2 hooks diferentes — quer que eu gere os textos?</div>
-            </div>
-            <div class="appmock-chat-input">
-              Mensagem… <span>▲</span>
-            </div>
-          </aside>
+            <div>v9 · faixa roxa</div>
+          </div>
         </div>
       </div>
     </div>
@@ -404,33 +953,34 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="centered" style="background:#fff;">
   <div class="container">
-    <span class="eyebrow">Trabalhando assim hoje?</span>
-    <h2>Você abre 5 abas pra responder 1 cliente.</h2>
+    <span class="eyebrow">Hoje, no seu dia</span>
+    <h2>Você é gerente de aba do navegador.</h2>
+    <p class="section-sub">17 abas abertas, 4 contas pra pagar, R$ 87/mês em ferramentas que não conversam entre si — e você ainda perde a decisão que tomou ontem.</p>
     <div class="problem-grid">
       <div class="problem-card">
         <span class="icon">📋</span>
-        <h4>No Trello</h4>
-        <p>você arrasta os cards.</p>
+        <h4>Trello</h4>
+        <p>arrastando cards entre 6 boards.</p>
       </div>
       <div class="problem-card">
         <span class="icon">💬</span>
-        <h4>No Slack</h4>
-        <p>você conversa sobre eles.</p>
+        <h4>Slack</h4>
+        <p>47 mensagens não lidas em 9 canais.</p>
       </div>
       <div class="problem-card">
         <span class="icon">📅</span>
-        <h4>No Google Calendar</h4>
-        <p>você marca as reuniões.</p>
+        <h4>Calendar</h4>
+        <p>3 reuniões sobrepostas hoje.</p>
       </div>
       <div class="problem-card">
         <span class="icon">📊</span>
-        <h4>No Notion</h4>
-        <p>você anota o que decidiu.</p>
+        <h4>Notion</h4>
+        <p>12 páginas, 0 organização.</p>
       </div>
     </div>
     <p class="problem-tagline">
-      E quando precisa achar onde aquela decisão foi tomada,<br>
-      você não acha em lugar nenhum.
+      Quando o cliente pergunta "onde ficou aquilo?",<br>
+      você ainda tá procurando.
     </p>
   </div>
 </section>
@@ -441,107 +991,245 @@ footer .footer-links{display:flex;gap:18px;}
 <section class="solution centered">
   <div class="container">
     <span class="eyebrow">No Synkan</span>
-    <h2>Tudo está num tatame só.</h2>
+    <h2>Sobe no tatame com seu time.</h2>
     <p class="section-sub" style="margin:0 auto 0;">
-      Kanban, chat, OKR, calendário e CRM conversam direto. Sem integração, sem zapier, sem perder contexto.
+      Card conversa com chat. Chat conversa com OKR. OKR conversa com calendário. Tudo no mesmo lugar, sem Zapier, sem integração quebrada na sexta à noite.
     </p>
-    <!-- Mesmo mockup, sem rotação, maior -->
+    <!-- ════════════════════════════════════════════════
+         Mockup grande sem rotação · cenário "comercial"
+         ════════════════════════════════════════════════ -->
     <div class="appmock" aria-hidden="true">
-      <div class="appmock-bar">
-        <i></i><i></i><i></i>
-        <small>app.synkan.com.br/board/marketing</small>
+      <div class="am-titlebar">
+        <div class="lights"><i></i><i></i><i></i></div>
+        <div class="url">app.synkan.com.br / boards / comercial</div>
       </div>
-      <div class="appmock-body">
-        <aside class="appmock-side">
-          <div class="ws">
-            <div class="ws-avatar">道</div>
-            <div class="ws-name">Synkan<small>dojo · 4 pessoas</small></div>
+
+      <div class="am-window">
+        <header class="am-topbar">
+          <div class="wsbar">
+            <div class="ws-mark">道</div>
+            <div class="ws-name">Synkan dojo<span class="chev">▾</span></div>
           </div>
-          <div class="menu-item active">▦ Boards</div>
-          <div class="menu-item">畳 Tatami <span style="background:#BC002D;color:#fff;font-size:9px;padding:1px 5px;border-radius:8px;margin-left:auto;">3</span></div>
-          <div class="menu-item">🎯 OKRs</div>
-          <div class="menu-item">📅 Syncal</div>
-          <div class="menu-item">⊞ Synconnect</div>
-          <div class="menu-item">財 Zai</div>
-          <div class="menu-item">人 Pessoas</div>
-          <div class="menu-item">📦 Bunko</div>
-        </aside>
-        <main class="appmock-main">
-          <div class="appmock-board-head">
-            <h4>Marketing · Q1 2026</h4>
-            <div class="views">
-              <span class="on">Kanban</span><span>Tabela</span><span>Cal</span><span>Gantt</span>
+          <div class="search">
+            <span>Buscar cards, pessoas, OKRs…</span>
+            <kbd>⌘K</kbd>
+          </div>
+          <div class="top-tools">
+            <div class="tool-btn has-badge">🔔</div>
+            <div class="me">
+              <span>Anderson</span>
+              <div class="avatar">A</div>
             </div>
           </div>
-          <div class="appmock-cols">
-            <div class="appmock-col">
-              <div class="appmock-col-h">A fazer <span>3</span></div>
-              <div class="appmock-card">
-                <span class="tag red">急 urgente</span>
-                <div>Landing page de lançamento</div>
-                <div class="meta"><span>📅 12 mai</span><span class="avatar"></span></div>
+        </header>
+
+        <div class="am-main">
+          <aside class="am-side">
+            <div class="am-side-section">
+              <div class="sec-label">Fixados</div>
+              <div class="nav-i"><span class="ico emoji">▦</span>Marketing Q1<span class="star">★</span></div>
+              <div class="nav-i active"><span class="ico emoji">▦</span>Comercial<span class="star">★</span></div>
+            </div>
+            <div class="am-side-section">
+              <div class="sec-label">Módulos</div>
+              <div class="nav-i"><span class="ico">畳</span>Tatami<span class="badge">2</span></div>
+              <div class="nav-i"><span class="ico emoji">🎯</span>OKRs</div>
+              <div class="nav-i"><span class="ico emoji">📅</span>Syncal</div>
+              <div class="nav-i"><span class="ico emoji">⊞</span>Synconnect</div>
+              <div class="nav-i"><span class="ico">財</span>Zai</div>
+              <div class="nav-i"><span class="ico">人</span>Pessoas</div>
+              <div class="nav-i"><span class="ico emoji">📦</span>Bunko</div>
+            </div>
+            <div class="am-side-foot">
+              <div class="me">A</div>
+              <div class="who">Anderson<small>online · Faixa Preta</small></div>
+            </div>
+          </aside>
+
+          <main class="am-canvas">
+            <div class="am-canvas-head">
+              <div class="crumbs">
+                <h4><span class="b-mark" style="background:linear-gradient(135deg,#BC002D,#6B4825);"></span>Comercial · Q1 2026</h4>
+                <div class="who-on">
+                  <div class="a a1">A</div>
+                  <div class="a a2">L</div>
+                  <div class="a a3">M</div>
+                  <div class="a a4">+2</div>
+                </div>
               </div>
-              <div class="appmock-card">
-                <span class="tag gold">média</span>
-                <div>Setup Google Ads</div>
-                <div class="meta"><span>📅 15 mai</span><span class="avatar"></span></div>
-              </div>
-              <div class="appmock-card">
-                <div>Reunião com fornecedor</div>
-                <div class="meta"><span>📅 18 mai</span><span class="avatar"></span></div>
+              <div class="views">
+                <span class="v on">▦ Kanban</span>
+                <span class="v">⊟ Tabela</span>
+                <span class="v">📅</span>
+                <span class="v">⊪ Gantt</span>
               </div>
             </div>
-            <div class="appmock-col">
-              <div class="appmock-col-h">Em curso <span>2</span></div>
-              <div class="appmock-card">
-                <span class="tag green">design</span>
-                <div>Banner LinkedIn + perfil</div>
-                <div class="meta"><span>🎯 KR 1.2</span><span class="avatar"></span></div>
+
+            <div class="am-canvas-cols">
+              <div class="am-col">
+                <div class="am-col-h"><span>Lead</span><span class="ct">4</span></div>
+                <div class="am-card">
+                  <div class="tags">
+                    <span class="tag blue">inbound</span>
+                  </div>
+                  <div class="title">Renato · Estúdio Aurora</div>
+                  <div class="desc">Agência design 6p · buscando alternativa Notion</div>
+                  <div class="foot">
+                    <div class="left">
+                      <span class="item">R$ 240/m</span>
+                      <span class="item">💬 3</span>
+                    </div>
+                    <div class="av a2">L</div>
+                  </div>
+                </div>
+                <div class="am-card">
+                  <div class="tags">
+                    <span class="tag neutral">outbound</span>
+                  </div>
+                  <div class="title">Camila · Lume Marketing</div>
+                  <div class="desc">3 pessoas · interessada no Tatami</div>
+                  <div class="foot">
+                    <div class="left">
+                      <span class="item">R$ 120/m</span>
+                    </div>
+                    <div class="av a3">M</div>
+                  </div>
+                </div>
               </div>
-              <div class="appmock-card">
-                <div>12 posts de estoque</div>
-                <div class="meta"><span>3/12 ✓</span><span class="avatar"></span></div>
+
+              <div class="am-col">
+                <div class="am-col-h"><span>Em negociação</span><span class="ct">3</span></div>
+                <div class="am-card urgent">
+                  <div class="tags">
+                    <span class="tag red">急 fechar hoje</span>
+                    <span class="tag purple">KR 2.1</span>
+                  </div>
+                  <div class="title">João · Indie Hackers BR</div>
+                  <div class="desc">Founder solo · trial Roxa expira hoje</div>
+                  <div class="progress">
+                    <div class="bar"><i style="width:85%;"></i></div>
+                    <span>85%</span>
+                  </div>
+                  <div class="foot">
+                    <div class="left">
+                      <span class="item due">⏱ 2h</span>
+                      <span class="item">💬 12</span>
+                      <span class="item">📎 4</span>
+                    </div>
+                    <div class="av a1">A</div>
+                  </div>
+                </div>
+                <div class="am-card gold-stripe">
+                  <div class="tags">
+                    <span class="tag gold">proposta</span>
+                  </div>
+                  <div class="title">Beatriz · Tatame Studio</div>
+                  <div class="desc">Agência 8p · enviou proposta Faixa Preta</div>
+                  <div class="foot">
+                    <div class="left">
+                      <span class="item due soon">📅 amanhã</span>
+                      <span class="item">💬 6</span>
+                    </div>
+                    <div class="av a3">M</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="am-col">
+                <div class="am-col-h"><span>Fechado</span><span class="ct">7</span></div>
+                <div class="am-card">
+                  <div class="tags">
+                    <span class="tag green">won</span>
+                  </div>
+                  <div class="title"><span class="check">✓</span> Marcos · Solo Dev</div>
+                  <div class="desc">Faixa Roxa · 12 meses</div>
+                  <div class="foot">
+                    <div class="left">
+                      <span class="item" style="color:#3B6D11;font-weight:700;">+R$ 478</span>
+                    </div>
+                    <div class="av a1">A</div>
+                  </div>
+                </div>
+                <div class="am-card done">
+                  <div class="tags">
+                    <span class="tag green">won</span>
+                  </div>
+                  <div class="title"><span class="check">✓</span> Estúdio Tatame · 4 seats</div>
+                </div>
               </div>
             </div>
-            <div class="appmock-col">
-              <div class="appmock-col-h">Pronto <span>5</span></div>
-              <div class="appmock-card">
-                <span class="tag green">done</span>
-                <div>Brand + identidade</div>
-                <div class="meta"><span>✓ ontem</span><span class="avatar"></span></div>
-              </div>
-              <div class="appmock-card">
-                <span class="tag green">done</span>
-                <div>Definir ICP inicial</div>
-                <div class="meta"><span>✓ 2 dias</span><span class="avatar"></span></div>
+          </main>
+
+          <aside class="am-panel">
+            <div class="am-panel-h">
+              <span class="live"></span>
+              <span class="ch">#</span>comercial
+              <div class="who-on">
+                <div class="a a1">A</div>
+                <div class="a a2">L</div>
+                <div class="a a3">M</div>
               </div>
             </div>
+
+            <div class="am-msg">
+              <div class="av a3">M</div>
+              <div class="right">
+                <div class="who">Marina <small>09:42</small></div>
+                <div class="body">Beatriz pediu pra remarcar — propus quinta 16h. <span class="mention">@Anderson</span> ok?</div>
+              </div>
+            </div>
+
+            <div class="am-msg">
+              <div class="av a1">A</div>
+              <div class="right">
+                <div class="who">Anderson <small>09:44</small></div>
+                <div class="body">Fechado. Liguei o Syncal.</div>
+                <div class="reactions">
+                  <span class="r">✓ <b>3</b></span>
+                  <span class="r">🥋 <b>1</b></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="am-msg">
+              <div class="av av-kan">勘</div>
+              <div class="right">
+                <div class="who">Mestre Kan <small>10:01</small></div>
+                <div class="body">道. O João (trial expira em 2h) abriu o app 3x hoje. Sinal forte. Vale ligar agora?</div>
+                <div class="thread">↩ 4 respostas · ativa</div>
+              </div>
+            </div>
+
+            <div class="am-msg">
+              <div class="av a2">L</div>
+              <div class="right">
+                <div class="who">Lucas <small>10:08</small></div>
+                <div class="body">Subi a proposta da <span class="ref">#Beatriz</span> no Bunko 📎</div>
+                <div class="reactions">
+                  <span class="r">👀 <b>2</b></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="am-typing">
+              <span>Marina está digitando</span>
+              <span class="dots"><i></i><i></i><i></i></span>
+            </div>
+
+            <div class="am-input">
+              <span>Mensagem #comercial…</span>
+              <kbd>↵</kbd>
+            </div>
+          </aside>
+        </div>
+
+        <div class="am-status">
+          <div class="left">
+            <span><i></i>Sincronizado</span>
+            <span>14 cards · 3 KRs · 5 online · MRR R$ 1.847</span>
           </div>
-        </main>
-        <aside class="appmock-chat">
-          <div class="appmock-chat-h">
-            <span class="live"></span> #marketing · ao vivo
-          </div>
-          <div class="appmock-msg">
-            <div class="who">Ana <small>14:23</small></div>
-            <div class="body">Coloquei a landing no Em curso 👍</div>
-          </div>
-          <div class="appmock-msg">
-            <div class="who">Lucas <small>14:24</small></div>
-            <div class="body">Boa! Já posso revisar copy?</div>
-          </div>
-          <div class="appmock-msg">
-            <div class="who">Ana <small>14:25</small></div>
-            <div class="body">Subi o draft no thread do card.</div>
-          </div>
-          <div class="appmock-msg">
-            <div class="who">Mestre Kan <small>agora</small></div>
-            <div class="body">道. Sugiro testar A/B com 2 hooks. Quer que eu gere?</div>
-          </div>
-          <div class="appmock-chat-input">
-            Mensagem… <span>▲</span>
-          </div>
-        </aside>
+          <div>v9 · faixa preta</div>
+        </div>
       </div>
     </div>
   </div>
