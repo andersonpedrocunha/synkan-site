@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background creme -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E8C8"/>
+      <stop offset="100%" stop-color="#FAF3DD"/>
+    </linearGradient>
+    <linearGradient id="dojo" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1612"/>
+      <stop offset="100%" stop-color="#3A2410"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Kanji 集 (concentração) grande como marca d'água -->
+  <text x="1100" y="500"
+        font-family="'Shippori Mincho', 'Noto Serif JP', serif"
+        font-size="620"
+        fill="#C19A3A"
+        opacity="0.10"
+        text-anchor="end"
+        font-weight="400">集</text>
+
+  <!-- Logo Synkan no topo esquerdo -->
+  <g transform="translate(80, 80)">
+    <!-- Quadrado preto com barras -->
+    <rect width="56" height="56" rx="13" fill="#111111"/>
+    <rect x="15" y="32" width="5" height="10" rx="1.5" fill="#fff" opacity="0.55"/>
+    <rect x="23" y="16" width="5" height="26" rx="1.5" fill="#fff"/>
+    <rect x="31" y="22" width="5" height="20" rx="1.5" fill="#fff"/>
+    <rect x="39" y="36" width="5" height="6" rx="1.5" fill="#fff" opacity="0.55"/>
+
+    <!-- Nome -->
+    <text x="74" y="38"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif"
+          font-size="32"
+          font-weight="700"
+          fill="#111111"
+          letter-spacing="-0.5">Synkan</text>
+  </g>
+
+  <!-- Pílula vermelha "v9 · 100% brasileiro" no topo direito -->
+  <g transform="translate(820, 92)">
+    <rect x="0" y="0" width="300" height="36" rx="18" fill="#fff" stroke="#E5E5E2" stroke-width="1"/>
+    <circle cx="20" cy="18" r="4" fill="#BC002D"/>
+    <text x="34" y="24"
+          font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="13"
+          font-weight="600"
+          fill="#111111"
+          letter-spacing="0.04em">v9 · 100% BRASILEIRO · GRÁTIS</text>
+  </g>
+
+  <!-- H1 principal -->
+  <text x="80" y="280"
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="72"
+        font-weight="700"
+        fill="#111111"
+        letter-spacing="-2">Pare de pular entre</text>
+
+  <text x="80" y="365"
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="72"
+        font-weight="700"
+        fill="#111111"
+        letter-spacing="-2">5 ferramentas pra rodar</text>
+
+  <!-- "1 trabalho" com highlight amarelo -->
+  <rect x="80" y="395" width="338" height="50" fill="#BC002D" opacity="0.20" rx="2"/>
+  <text x="80" y="450"
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="72"
+        font-weight="700"
+        fill="#111111"
+        letter-spacing="-2">1 trabalho.</text>
+
+  <!-- Subtítulo -->
+  <text x="80" y="510"
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="22"
+        fill="#6B6B6B"
+        font-weight="400">Kanban + chat + OKR + calendário + CRM num lugar só.</text>
+
+  <!-- Pílulas dos módulos no rodapé -->
+  <g transform="translate(80, 555)">
+    <!-- Tatami -->
+    <rect x="0" y="0" width="105" height="34" rx="17" fill="#1A1612"/>
+    <text x="52.5" y="22" font-family="'Shippori Mincho', serif" font-size="14" font-weight="600" fill="#F5E8C8" text-anchor="middle">畳 Tatami</text>
+
+    <!-- Kanban -->
+    <rect x="115" y="0" width="100" height="34" rx="17" fill="#fff" stroke="#E5E5E2"/>
+    <text x="165" y="22" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">📋 Kanban</text>
+
+    <!-- OKR -->
+    <rect x="225" y="0" width="80" height="34" rx="17" fill="#fff" stroke="#E5E5E2"/>
+    <text x="265" y="22" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">🎯 OKR</text>
+
+    <!-- CRM -->
+    <rect x="315" y="0" width="135" height="34" rx="17" fill="#fff" stroke="#E5E5E2"/>
+    <text x="382.5" y="22" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">⊞ Synconnect</text>
+
+    <!-- Zai -->
+    <rect x="460" y="0" width="80" height="34" rx="17" fill="#fff" stroke="#E5E5E2"/>
+    <text x="500" y="22" font-family="'Shippori Mincho', serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">財 Zai</text>
+
+    <!-- IA -->
+    <rect x="550" y="0" width="155" height="34" rx="17" fill="#fff" stroke="#E5E5E2"/>
+    <text x="627.5" y="22" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">✦ Mestre Kan IA</text>
+  </g>
+
+  <!-- URL no rodapé direito -->
+  <text x="1120" y="595"
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="18"
+        font-weight="600"
+        fill="#BC002D"
+        text-anchor="end"
+        letter-spacing="0.02em">synkan.com.br/comecar</text>
+</svg>
