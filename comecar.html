@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Synkan · Pare de pular entre 5 ferramentas — Kanban, Chat, OKR num lugar só</title>
-<meta name="description" content="Synkan junta Kanban, chat ao vivo, OKR, calendário e CRM num lugar só. Feito pra quem trabalha sozinho ou em times até 10 pessoas. Faixa Branca grátis pra sempre. Sem cartão." />
+<title>Synkan · 5 apps de gestão, 1 dojo — em português, em real</title>
+<meta name="description" content="Synkan substitui Notion + Trello + Slack + Calendário + CRM por uma ferramenta brasileira pensada pra freelancer, agência e startup até 15 pessoas. Em real, suporte humano, dados em SP. Faixa Branca grátis pra sempre." />
 <link rel="icon" type="image/png" href="synkan-icon-512.png" />
 
 <!-- Open Graph / Compartilhamento -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://synkan.com.br/comecar" />
-<meta property="og:title" content="Synkan · Kanban, Chat e OKR num tatame só" />
-<meta property="og:description" content="Pare de pular entre Notion + Trello + Slack. Synkan junta tudo num lugar só, em português, com Mestre Kan IA. Grátis pra sempre na Faixa Branca." />
+<meta property="og:title" content="Synkan · 5 apps de gestão. 1 dojo." />
+<meta property="og:description" content="Largue Notion + Trello + Slack + Cal + CRM. Synkan é tudo num só lugar — em português, em real, com Mestre Kan IA. Faixa Branca grátis pra sempre." />
 <meta property="og:image" content="https://synkan.com.br/og-comecar.svg" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -82,10 +82,12 @@ img,svg{display:block;max-width:100%;}
 .btn-lg{padding:16px 30px;font-size:16px;}
 
 /* ── Hero ───────────────────────────────────────────────── */
-.hero{padding:64px 0 80px;position:relative;overflow:hidden;}
+.hero{padding:72px 0 100px;position:relative;overflow:hidden;}
 .hero::before{content:'集';position:absolute;top:-60px;right:-40px;font-family:var(--font-serif);font-size:480px;color:rgba(193,154,58,.06);pointer-events:none;line-height:1;font-weight:400;}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;position:relative;z-index:1;}
-@media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:36px;}}
+.hero-inner{text-align:center;max-width:780px;margin:0 auto 48px;position:relative;z-index:1;}
+.hero-inner h1{margin-left:auto;margin-right:auto;}
+.hero-inner p.lead{margin-left:auto;margin-right:auto;}
+.hero-mock-wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
 .hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:22px;box-shadow:var(--shadow-sm);}
 .hero-pill span.dot{width:6px;height:6px;border-radius:50%;background:var(--dojo-hinomaru);}
 .hero h1{font-size:clamp(34px,5vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:18px;color:var(--ink);}
@@ -112,17 +114,15 @@ img,svg{display:block;max-width:100%;}
 .appmock{
   background:linear-gradient(180deg,#E0DAC8 0%,#D4CCB6 100%);
   border-radius:14px;
-  padding:8px 8px 8px;
+  padding:8px;
   box-shadow:
     0 50px 100px -20px rgba(26,22,18,.30),
     0 30px 60px -30px rgba(26,22,18,.25),
     0 0 0 0.5px rgba(26,22,18,.20),
     inset 0 0 0 0.5px rgba(255,255,255,.40);
   position:relative;
-  transform:perspective(1400px) rotateY(-2deg) rotateX(2deg);
-  transform-origin:center center;
 }
-.solution .appmock{transform:perspective(1800px) rotateX(1deg);}
+.solution .appmock{margin:0 auto;}
 
 /* Title bar macOS */
 .am-titlebar{
@@ -163,88 +163,94 @@ img,svg{display:block;max-width:100%;}
   overflow:hidden;
   box-shadow:0 0 0 0.5px rgba(26,22,18,.10);
   display:flex;flex-direction:column;
-  min-height:480px;
-  font-size:11.5px;
+  min-height:520px;
+  font-size:13px;
   color:#1A1612;
 }
 
 /* ─── Top app bar ────────────────────────────────────── */
 .am-topbar{
   display:grid;grid-template-columns:auto 1fr auto;align-items:center;
-  gap:14px;padding:9px 14px;
+  gap:16px;padding:12px 18px;
   background:linear-gradient(180deg,#FAF6E8 0%,#F4ECD0 100%);
   border-bottom:0.5px solid rgba(107,72,37,.18);
   flex-shrink:0;
 }
-.am-topbar .wsbar{display:flex;align-items:center;gap:8px;}
+.am-topbar .wsbar{display:flex;align-items:center;gap:10px;}
 .am-topbar .ws-mark{
-  width:24px;height:24px;border-radius:6px;
+  width:30px;height:30px;border-radius:7px;
   background:linear-gradient(135deg,#1A1612 0%,#3A2410 100%);
   display:flex;align-items:center;justify-content:center;
-  color:#F5E8C8;font-family:var(--font-serif);font-size:13px;font-weight:600;
+  color:#F5E8C8;font-family:var(--font-serif);font-size:16px;font-weight:600;
   box-shadow:0 1px 2px rgba(26,22,18,.18);
 }
-.am-topbar .ws-name{font-weight:700;font-size:12px;color:#1A1612;}
-.am-topbar .ws-name .chev{color:#6B4825;margin-left:3px;font-size:9px;}
+.am-topbar .ws-name{font-weight:700;font-size:13px;color:#1A1612;}
+.am-topbar .ws-name .chev{color:#6B4825;margin-left:4px;font-size:10px;}
 .am-topbar .search{
   background:#FFFCEF;border:0.5px solid rgba(107,72,37,.20);
-  border-radius:6px;padding:5px 10px 5px 26px;
-  font-size:11px;color:#6B4825;
+  border-radius:7px;padding:7px 12px 7px 32px;
+  font-size:12.5px;color:#6B4825;
   display:flex;align-items:center;justify-content:space-between;
-  max-width:300px;margin:0 auto;width:100%;
+  max-width:380px;margin:0 auto;width:100%;
   position:relative;
 }
 .am-topbar .search::before{
-  content:'';position:absolute;left:9px;top:50%;transform:translateY(-50%);
-  width:11px;height:11px;border-radius:50%;
-  border:1.4px solid #C19A3A;
+  content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;border-radius:50%;
+  border:1.5px solid #C19A3A;
 }
 .am-topbar .search::after{
-  content:'';position:absolute;left:18px;top:55%;
-  width:5px;height:1.4px;background:#C19A3A;transform:rotate(45deg);
+  content:'';position:absolute;left:21px;top:55%;
+  width:6px;height:1.5px;background:#C19A3A;transform:rotate(45deg);
 }
 .am-topbar .search kbd{
   background:rgba(107,72,37,.10);color:#6B4825;
-  font-size:9px;padding:1px 5px;border-radius:3px;
+  font-size:10px;padding:2px 6px;border-radius:4px;
   font-family:var(--font-mono);font-weight:600;
 }
-.am-topbar .top-tools{display:flex;align-items:center;gap:6px;}
+.am-topbar .top-tools{display:flex;align-items:center;gap:8px;}
 .am-topbar .tool-btn{
-  width:26px;height:26px;border-radius:6px;
+  width:30px;height:30px;border-radius:7px;
   display:flex;align-items:center;justify-content:center;
-  color:#6B4825;font-size:14px;
+  color:#6B4825;font-size:16px;
   background:transparent;
   position:relative;
 }
 .am-topbar .tool-btn.has-badge::after{
-  content:'';position:absolute;top:3px;right:4px;
-  width:6px;height:6px;border-radius:50%;background:#BC002D;
+  content:'';position:absolute;top:5px;right:6px;
+  width:7px;height:7px;border-radius:50%;background:#BC002D;
   box-shadow:0 0 0 1.5px #F4ECD0;
 }
 .am-topbar .me{
-  display:flex;align-items:center;gap:7px;padding:3px 4px 3px 8px;
-  background:rgba(26,22,18,.04);border-radius:14px;
-  font-size:11px;color:#1A1612;font-weight:600;
+  display:flex;align-items:center;gap:8px;padding:4px 6px 4px 10px;
+  background:rgba(26,22,18,.04);border-radius:16px;
+  font-size:12.5px;color:#1A1612;font-weight:600;
 }
 .am-topbar .me .avatar{
-  width:22px;height:22px;border-radius:50%;
+  width:26px;height:26px;border-radius:50%;
   background:linear-gradient(135deg,#BC002D 0%,#6B4825 100%);
   color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:700;
+  font-size:11px;font-weight:700;
   position:relative;flex-shrink:0;
 }
 .am-topbar .me .avatar::after{
   content:'';position:absolute;bottom:-1px;right:-1px;
-  width:7px;height:7px;border-radius:50%;background:#3B6D11;
+  width:8px;height:8px;border-radius:50%;background:#3B6D11;
   box-shadow:0 0 0 1.5px #FAF6E8;
 }
 
 /* ─── Main grid ──────────────────────────────────────── */
 .am-main{
   display:grid;
-  grid-template-columns:170px 1fr 232px;
+  grid-template-columns:200px 1fr 280px;
   flex:1;min-height:0;
 }
+/* Variante hero: SÓ Kanban — sem sidebar, sem chat. Mais respirável */
+.am-main.kanban-only{
+  grid-template-columns:1fr;
+}
+.am-main.kanban-only .am-side,
+.am-main.kanban-only .am-panel{display:none;}
 
 /* ─── Sidebar ────────────────────────────────────────── */
 .am-side{
@@ -307,39 +313,39 @@ img,svg{display:block;max-width:100%;}
 
 /* ─── Canvas (main board area) ───────────────────────── */
 .am-canvas{
-  padding:14px 16px 12px;
+  padding:20px 22px 18px;
   background:linear-gradient(180deg,#FAF6E8 0%,#F4ECD0 100%);
   display:flex;flex-direction:column;
   min-width:0;
   position:relative;
 }
 .am-canvas::before{
-  content:'集';position:absolute;bottom:-30px;right:-20px;
-  font-family:var(--font-serif);font-size:280px;color:rgba(193,154,58,.05);
+  content:'集';position:absolute;bottom:-40px;right:-20px;
+  font-family:var(--font-serif);font-size:340px;color:rgba(193,154,58,.05);
   pointer-events:none;line-height:1;
 }
 .am-canvas-head{
   display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:12px;padding-bottom:10px;
+  margin-bottom:18px;padding-bottom:14px;
   border-bottom:0.5px solid rgba(107,72,37,.18);
-  flex-wrap:wrap;gap:8px;position:relative;z-index:1;
+  flex-wrap:wrap;gap:10px;position:relative;z-index:1;
 }
-.am-canvas-head .crumbs{display:flex;align-items:center;gap:8px;}
+.am-canvas-head .crumbs{display:flex;align-items:center;gap:10px;}
 .am-canvas-head h4{
-  font-size:14px;font-weight:700;color:#1A1612;letter-spacing:-.01em;
-  display:flex;align-items:center;gap:8px;
+  font-size:17px;font-weight:700;color:#1A1612;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:10px;
 }
 .am-canvas-head h4 .b-mark{
-  display:inline-block;width:16px;height:16px;border-radius:4px;
+  display:inline-block;width:18px;height:18px;border-radius:5px;
   background:linear-gradient(135deg,#C19A3A,#6B4825);
 }
-.am-canvas-head .who-on{display:inline-flex;align-items:center;margin-left:6px;}
+.am-canvas-head .who-on{display:inline-flex;align-items:center;margin-left:8px;}
 .am-canvas-head .who-on .a{
-  width:18px;height:18px;border-radius:50%;
+  width:22px;height:22px;border-radius:50%;
   border:1.5px solid #FAF6E8;
-  font-size:9px;font-weight:700;color:#fff;
+  font-size:10px;font-weight:700;color:#fff;
   display:flex;align-items:center;justify-content:center;
-  margin-left:-5px;
+  margin-left:-6px;
 }
 .am-canvas-head .who-on .a:first-child{margin-left:0;}
 .am-canvas-head .who-on .a.a1{background:linear-gradient(135deg,#BC002D,#6B4825);}
@@ -347,58 +353,58 @@ img,svg{display:block;max-width:100%;}
 .am-canvas-head .who-on .a.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
 .am-canvas-head .who-on .a.a4{background:#6B4825;color:#F5E8C8;}
 .am-canvas-head .views{
-  display:inline-flex;gap:1px;background:rgba(26,22,18,.06);
-  border-radius:5px;padding:2px;border:0.5px solid rgba(107,72,37,.10);
+  display:inline-flex;gap:2px;background:rgba(26,22,18,.06);
+  border-radius:7px;padding:3px;border:0.5px solid rgba(107,72,37,.10);
 }
 .am-canvas-head .views .v{
-  padding:3px 8px;font-size:9.5px;color:#6B4825;border-radius:3px;
-  font-weight:600;display:inline-flex;align-items:center;gap:4px;
+  padding:5px 12px;font-size:11.5px;color:#6B4825;border-radius:5px;
+  font-weight:600;display:inline-flex;align-items:center;gap:5px;
 }
 .am-canvas-head .views .v.on{
   background:#fff;color:#1A1612;
-  box-shadow:0 1px 2px rgba(26,22,18,.08);
+  box-shadow:0 1px 3px rgba(26,22,18,.08);
 }
 .am-canvas-cols{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
   flex:1;min-height:0;position:relative;z-index:1;
 }
 .am-col{
   background:rgba(255,252,239,.65);
   border:0.5px solid rgba(107,72,37,.10);
-  border-radius:7px;padding:8px 7px;
-  display:flex;flex-direction:column;gap:6px;
+  border-radius:9px;padding:12px 10px;
+  display:flex;flex-direction:column;gap:10px;
 }
 .am-col-h{
-  font-size:9.5px;font-weight:700;color:#6B4825;
+  font-size:11.5px;font-weight:700;color:#6B4825;
   text-transform:uppercase;letter-spacing:.06em;
   display:flex;justify-content:space-between;align-items:center;
-  padding:0 2px 4px;
+  padding:0 4px 8px;
 }
 .am-col-h .ct{
   background:rgba(107,72,37,.12);color:#6B4825;
-  padding:0px 6px;border-radius:8px;font-size:9px;font-weight:700;
+  padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;
 }
 .am-col-h .plus{
-  color:rgba(107,72,37,.45);font-size:13px;line-height:1;cursor:default;
+  color:rgba(107,72,37,.45);font-size:15px;line-height:1;cursor:default;
 }
 
 /* ─── Kanban card ────────────────────────────────────── */
 .am-card{
   background:#fff;
-  border-radius:6px;padding:8px 9px;
+  border-radius:8px;padding:12px 13px;
   box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04);
   position:relative;
   line-height:1.35;
-  display:flex;flex-direction:column;gap:5px;
+  display:flex;flex-direction:column;gap:8px;
 }
 .am-card.urgent{box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04),inset 3px 0 0 #BC002D;}
 .am-card.gold-stripe{box-shadow:0 1px 3px rgba(26,22,18,.06),0 0 0 0.5px rgba(26,22,18,.04),inset 3px 0 0 #C19A3A;}
 .am-card.done{opacity:.72;}
-.am-card .tags{display:flex;flex-wrap:wrap;gap:3px;}
+.am-card .tags{display:flex;flex-wrap:wrap;gap:4px;}
 .am-card .tag{
   display:inline-flex;align-items:center;gap:3px;
-  font-size:9px;padding:1px 6px;border-radius:9px;
-  font-weight:600;letter-spacing:.01em;line-height:1.35;
+  font-size:10.5px;padding:2px 8px;border-radius:10px;
+  font-weight:600;letter-spacing:.01em;line-height:1.4;
 }
 .am-card .tag.red{background:#FCE4E8;color:#A32D2D;}
 .am-card .tag.gold{background:#F8EDD1;color:#7A5500;}
@@ -406,29 +412,29 @@ img,svg{display:block;max-width:100%;}
 .am-card .tag.purple{background:#EBE4F2;color:#5E3F8A;}
 .am-card .tag.blue{background:#DCE6F4;color:#1A4778;}
 .am-card .tag.neutral{background:#EFE9D6;color:#6B4825;}
-.am-card .title{font-size:11.5px;font-weight:600;color:#1A1612;letter-spacing:-.005em;}
-.am-card .desc{font-size:10px;color:#6B4825;opacity:.85;line-height:1.4;}
+.am-card .title{font-size:13.5px;font-weight:600;color:#1A1612;letter-spacing:-.005em;line-height:1.35;}
+.am-card .desc{font-size:11.5px;color:#6B4825;opacity:.85;line-height:1.45;}
 .am-card .progress{
-  display:flex;align-items:center;gap:6px;font-size:9px;color:#6B4825;
+  display:flex;align-items:center;gap:8px;font-size:10.5px;color:#6B4825;
 }
 .am-card .progress .bar{
-  flex:1;height:3px;background:rgba(107,72,37,.12);
-  border-radius:2px;overflow:hidden;
+  flex:1;height:4px;background:rgba(107,72,37,.12);
+  border-radius:3px;overflow:hidden;
 }
 .am-card .progress .bar i{
-  display:block;height:100%;background:#3B6D11;border-radius:2px;
+  display:block;height:100%;background:#3B6D11;border-radius:3px;
 }
 .am-card .foot{
   display:flex;justify-content:space-between;align-items:center;
-  font-size:9.5px;color:#6B4825;
+  font-size:11px;color:#6B4825;
 }
-.am-card .foot .left{display:flex;align-items:center;gap:8px;}
-.am-card .foot .left .item{display:inline-flex;align-items:center;gap:3px;}
+.am-card .foot .left{display:flex;align-items:center;gap:10px;}
+.am-card .foot .left .item{display:inline-flex;align-items:center;gap:4px;}
 .am-card .foot .left .item.due{color:#A32D2D;font-weight:600;}
 .am-card .foot .left .item.due.soon{color:#7A5500;}
 .am-card .foot .av{
-  width:18px;height:18px;border-radius:50%;
-  font-size:8.5px;font-weight:700;color:#fff;
+  width:22px;height:22px;border-radius:50%;
+  font-size:10px;font-weight:700;color:#fff;
   display:flex;align-items:center;justify-content:center;
   border:1.5px solid #fff;
 }
@@ -436,7 +442,7 @@ img,svg{display:block;max-width:100%;}
 .am-card .foot .av.a2{background:linear-gradient(135deg,#3B6D11,#5C4F3F);}
 .am-card .foot .av.a3{background:linear-gradient(135deg,#7042A0,#3A2410);}
 .am-card .foot .av.a4{background:#6B4825;color:#F5E8C8;}
-.am-card .check{color:#3B6D11;font-weight:700;}
+.am-card .check{color:#3B6D11;font-weight:700;margin-right:3px;}
 
 /* ─── Chat panel ─────────────────────────────────────── */
 .am-panel{
@@ -546,19 +552,21 @@ img,svg{display:block;max-width:100%;}
 }
 
 /* ─── Responsive ─────────────────────────────────────── */
-@media(max-width:980px){
-  .am-main{grid-template-columns:1fr;}
-  .am-side,.am-panel{display:none;}
-  .appmock{transform:none;}
-  .solution .appmock{transform:none;}
+@media(max-width:880px){
+  .am-canvas{padding:14px 14px 12px;}
+  .am-card .title{font-size:12.5px;}
+  .am-topbar{padding:9px 12px;}
+  .am-topbar .search{display:none;}
+  .am-topbar{grid-template-columns:auto 1fr;}
+  .am-card-open{grid-template-columns:1fr;}
 }
 @media(max-width:680px){
-  .appmock{padding:6px;}
-  .am-window{min-height:auto;}
-  .am-canvas-cols{grid-template-columns:1fr;}
-  .am-canvas-cols .am-col:nth-child(n+2){display:none;}
-  .am-topbar .search{display:none;}
+  .appmock{padding:5px;}
+  .am-window{min-height:auto;font-size:12px;}
+  .am-canvas-cols{grid-template-columns:1fr;gap:10px;}
+  .am-canvas-cols .am-col:nth-child(n+3){display:none;}
   .am-status{display:none;}
+  .hero{padding:48px 0 60px;}
 }
 
 /* ── Sections genéricas ────────────────────────────────── */
@@ -580,8 +588,88 @@ section.centered h2 + p.section-sub{margin:0 auto 42px;}
 
 /* ── Solução em 1 imagem (reusa appmock) ──────────────── */
 .solution{background:var(--bg-cream);padding:100px 0;}
-.solution .appmock{margin:36px auto 0;max-width:980px;transform:rotate(0);}
-.solution .appmock-body{min-height:440px;}
+.solution .appmock{margin:36px auto 0;max-width:980px;}
+
+/* ── Variante "card aberto" — mostra integração card↔chat ── */
+.am-card-open{
+  display:grid;grid-template-columns:1.4fr 1fr;
+  background:#FAF6E8;min-height:560px;
+}
+@media(max-width:760px){.am-card-open{grid-template-columns:1fr;min-height:auto;}}
+.am-cd{
+  padding:24px 28px;background:#FAF6E8;
+  display:flex;flex-direction:column;gap:16px;overflow:hidden;
+}
+.am-cd .crumb{
+  font-size:11.5px;color:#6B4825;
+  display:flex;align-items:center;gap:6px;
+}
+.am-cd .crumb .sep{opacity:.4;}
+.am-cd .crumb a{color:#6B4825;}
+.am-cd h3{
+  font-size:22px;font-weight:700;color:#1A1612;letter-spacing:-.02em;
+  line-height:1.2;
+}
+.am-cd .meta-row{
+  display:flex;flex-wrap:wrap;gap:18px;
+  padding:12px 0;border-top:0.5px solid rgba(107,72,37,.12);
+  border-bottom:0.5px solid rgba(107,72,37,.12);
+  font-size:12px;color:#6B4825;
+}
+.am-cd .meta-row .m{display:flex;flex-direction:column;gap:4px;}
+.am-cd .meta-row .m .lbl{font-size:10.5px;color:#A39074;text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+.am-cd .meta-row .m .val{font-size:13px;color:#1A1612;font-weight:600;display:flex;align-items:center;gap:6px;}
+.am-cd .meta-row .pill-red{background:#FCE4E8;color:#A32D2D;padding:2px 9px;border-radius:10px;font-size:11.5px;font-weight:600;}
+.am-cd .meta-row .pill-purple{background:#EBE4F2;color:#5E3F8A;padding:2px 9px;border-radius:10px;font-size:11.5px;font-weight:600;}
+.am-cd .meta-row .av{
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,#BC002D,#6B4825);
+  color:#fff;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.am-cd .section-h{
+  font-size:11px;font-weight:700;color:#6B4825;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.am-cd .desc-body{
+  font-size:13.5px;color:#2D2D2D;line-height:1.55;
+}
+.am-cd .desc-body p{margin-bottom:10px;}
+.am-cd .subtasks{display:flex;flex-direction:column;gap:7px;}
+.am-cd .subtask{
+  display:flex;align-items:center;gap:9px;
+  font-size:12.5px;color:#1A1612;
+}
+.am-cd .subtask .box{
+  width:14px;height:14px;border-radius:3px;
+  border:1.5px solid #C19A3A;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.am-cd .subtask.done{color:#6B4825;text-decoration:line-through;}
+.am-cd .subtask.done .box{background:#3B6D11;border-color:#3B6D11;color:#fff;font-size:9px;font-weight:700;}
+.am-cd .subtask.done .box::before{content:'✓';}
+
+/* Thread/chat dentro do card */
+.am-cd-thread{
+  background:linear-gradient(180deg,#1A1612 0%,#241B14 100%);
+  color:#F5E8C8;padding:20px 18px 14px;
+  display:flex;flex-direction:column;
+  border-left:0.5px solid rgba(0,0,0,.20);
+  min-width:0;
+}
+.am-cd-thread .th-h{
+  font-size:11.5px;font-weight:700;
+  display:flex;align-items:center;gap:7px;
+  padding-bottom:12px;border-bottom:0.5px solid rgba(245,232,200,.12);
+  margin-bottom:14px;
+}
+.am-cd-thread .th-h .live{
+  width:7px;height:7px;border-radius:50%;background:#3B6D11;
+  box-shadow:0 0 0 2.5px rgba(59,109,17,.25);
+  animation:pulse 1.8s ease-in-out infinite;
+}
+.am-cd-thread .th-h .ch{color:rgba(245,232,200,.55);font-weight:500;}
+.am-cd-thread .th-h .count{margin-left:auto;font-size:10.5px;color:rgba(245,232,200,.50);font-weight:500;}
 
 /* ── Features grid ─────────────────────────────────────── */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
@@ -699,41 +787,41 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-pill">
-          <span class="dot"></span>
-          v9 · 100% brasileiro · em português · em real
-        </div>
-        <h1>
-          <em>5 apps</em> de gestão.<br>
-          1 dojo.
-        </h1>
-        <p class="lead">
-          Synkan substitui <strong>Notion + Trello + Slack + Calendário + CRM</strong> por uma ferramenta brasileira só, pensada pra quem trabalha sozinho ou em times até 10 pessoas. Sem dólar variando, sem 5 contas pra pagar, sem perder o fio do que decidiu.
-        </p>
-        <div class="hero-cta">
-          <a href="https://app.synkan.com.br/signup" class="btn btn-primary btn-lg" data-cta="hero-primary">
-            Entrar no dojo · grátis →
-          </a>
-        </div>
-        <div class="hero-meta">
-          Faixa Branca <strong>grátis pra sempre</strong> · sem cartão · cancela em 1 clique
-        </div>
+    <!-- Texto centralizado, mockup grande embaixo -->
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span class="dot"></span>
+        v9 · 100% brasileiro · em português · em real
       </div>
+      <h1>
+        <em>5 apps</em> de gestão.<br>
+        1 dojo.
+      </h1>
+      <p class="lead">
+        Synkan substitui <strong>Notion + Trello + Slack + Calendário + CRM</strong> por uma ferramenta brasileira só, pensada pra quem trabalha sozinho ou em times até 10 pessoas. Sem dólar variando, sem 5 contas pra pagar, sem perder o fio do que decidiu.
+      </p>
+      <div class="hero-cta">
+        <a href="https://app.synkan.com.br/signup" class="btn btn-primary btn-lg" data-cta="hero-primary">
+          Entrar no dojo · grátis →
+        </a>
+      </div>
+      <div class="hero-meta">
+        Faixa Branca <strong>grátis pra sempre</strong> · sem cartão · cancela em 1 clique
+      </div>
+    </div>
+
+    <div class="hero-mock-wrap">
       <!-- ════════════════════════════════════════════════
-           App mockup — janela tipo SaaS premium (inline)
-           Sem dependência de PNG. Replica visual real.
+           Hero mockup — SÓ Kanban, limpo e respirável
+           Sem sidebar, sem chat → foco total no board
            ════════════════════════════════════════════════ -->
-      <div class="appmock" role="img" aria-label="Captura do app Synkan mostrando Kanban e chat ao vivo">
-        <!-- Title bar macOS -->
+      <div class="appmock" role="img" aria-label="Kanban brasileiro do Synkan">
         <div class="am-titlebar">
           <div class="lights"><i></i><i></i><i></i></div>
           <div class="url">app.synkan.com.br / boards / marketing</div>
         </div>
 
         <div class="am-window">
-          <!-- Top app bar -->
           <header class="am-topbar">
             <div class="wsbar">
               <div class="ws-mark">道</div>
@@ -752,31 +840,8 @@ footer .footer-links{display:flex;gap:18px;}
             </div>
           </header>
 
-          <!-- Main grid -->
-          <div class="am-main">
-            <!-- Sidebar -->
-            <aside class="am-side">
-              <div class="am-side-section">
-                <div class="sec-label">Fixados</div>
-                <div class="nav-i active"><span class="ico emoji">▦</span>Marketing Q1<span class="star">★</span></div>
-                <div class="nav-i"><span class="ico emoji">▦</span>Comercial<span class="star">★</span></div>
-              </div>
-              <div class="am-side-section">
-                <div class="sec-label">Módulos</div>
-                <div class="nav-i"><span class="ico">畳</span>Tatami<span class="badge">3</span></div>
-                <div class="nav-i"><span class="ico emoji">🎯</span>OKRs</div>
-                <div class="nav-i"><span class="ico emoji">📅</span>Syncal</div>
-                <div class="nav-i"><span class="ico emoji">⊞</span>Synconnect</div>
-                <div class="nav-i"><span class="ico">財</span>Zai</div>
-                <div class="nav-i"><span class="ico">人</span>Pessoas</div>
-              </div>
-              <div class="am-side-foot">
-                <div class="me">A</div>
-                <div class="who">Ana Reis<small>online · Faixa Roxa</small></div>
-              </div>
-            </aside>
-
-            <!-- Canvas (Kanban) -->
+          <!-- SÓ canvas: sem sidebar, sem chat -->
+          <div class="am-main kanban-only">
             <main class="am-canvas">
               <div class="am-canvas-head">
                 <div class="crumbs">
@@ -785,42 +850,39 @@ footer .footer-links{display:flex;gap:18px;}
                     <div class="a a1">A</div>
                     <div class="a a2">L</div>
                     <div class="a a3">M</div>
-                    <div class="a a4">+1</div>
                   </div>
                 </div>
                 <div class="views">
                   <span class="v on">▦ Kanban</span>
                   <span class="v">⊟ Tabela</span>
-                  <span class="v">📅</span>
-                  <span class="v">⊪</span>
+                  <span class="v">📅 Calendário</span>
                 </div>
               </div>
+
               <div class="am-canvas-cols">
                 <div class="am-col">
-                  <div class="am-col-h"><span>A fazer</span><span class="ct">3</span></div>
+                  <div class="am-col-h"><span>A fazer</span><span class="ct">2</span></div>
                   <div class="am-card urgent">
                     <div class="tags">
                       <span class="tag red">急 urgente</span>
-                      <span class="tag blue">copy</span>
                     </div>
                     <div class="title">Landing /comecar pra Google Ads</div>
                     <div class="foot">
                       <div class="left">
-                        <span class="item due">📅 12 mai</span>
+                        <span class="item due">📅 hoje</span>
                         <span class="item">💬 4</span>
                       </div>
                       <div class="av a1">A</div>
                     </div>
                   </div>
-                  <div class="am-card gold-stripe">
+                  <div class="am-card">
                     <div class="tags">
                       <span class="tag gold">média</span>
                     </div>
-                    <div class="title">Setup Google Ads · 3 ad groups</div>
+                    <div class="title">Setup das 3 campanhas Ads</div>
                     <div class="foot">
                       <div class="left">
-                        <span class="item due soon">📅 15 mai</span>
-                        <span class="item">📎 2</span>
+                        <span class="item due soon">📅 sexta</span>
                       </div>
                       <div class="av a3">M</div>
                     </div>
@@ -831,16 +893,16 @@ footer .footer-links{display:flex;gap:18px;}
                   <div class="am-col-h"><span>Em curso</span><span class="ct">2</span></div>
                   <div class="am-card">
                     <div class="tags">
-                      <span class="tag green">design</span>
                       <span class="tag purple">KR 1.2</span>
+                      <span class="tag green">design</span>
                     </div>
-                    <div class="title">Banner LinkedIn + perfil</div>
+                    <div class="title">Banner do LinkedIn + identidade</div>
                     <div class="progress">
                       <div class="bar"><i style="width:65%;"></i></div>
                       <span>65%</span>
                     </div>
                     <div class="foot">
-                      <div class="left"><span class="item">📅 18 mai</span></div>
+                      <div class="left"><span class="item">💬 6</span></div>
                       <div class="av a2">L</div>
                     </div>
                   </div>
@@ -848,25 +910,25 @@ footer .footer-links{display:flex;gap:18px;}
                     <div class="tags">
                       <span class="tag neutral">conteúdo</span>
                     </div>
-                    <div class="title">12 posts de estoque</div>
+                    <div class="title">Estoque de 12 posts</div>
                     <div class="progress">
                       <div class="bar"><i style="width:25%;"></i></div>
-                      <span>3/12</span>
+                      <span>3 de 12</span>
                     </div>
                     <div class="foot">
-                      <div class="left"><span class="item">💬 8</span></div>
+                      <div class="left"></div>
                       <div class="av a1">A</div>
                     </div>
                   </div>
                 </div>
 
                 <div class="am-col">
-                  <div class="am-col-h"><span>Pronto</span><span class="ct">5</span></div>
+                  <div class="am-col-h"><span>Pronto</span><span class="ct">2</span></div>
                   <div class="am-card done">
                     <div class="tags">
                       <span class="tag green">done</span>
                     </div>
-                    <div class="title"><span class="check">✓</span> Brand + identidade</div>
+                    <div class="title"><span class="check">✓</span> Brand e identidade visual</div>
                     <div class="foot">
                       <div class="left"><span class="item">ontem</span></div>
                       <div class="av a2">L</div>
@@ -876,69 +938,17 @@ footer .footer-links{display:flex;gap:18px;}
                     <div class="tags">
                       <span class="tag green">done</span>
                     </div>
-                    <div class="title"><span class="check">✓</span> Definir ICP inicial</div>
+                    <div class="title"><span class="check">✓</span> Definição do ICP inicial</div>
                   </div>
                 </div>
               </div>
             </main>
-
-            <!-- Chat panel -->
-            <aside class="am-panel">
-              <div class="am-panel-h">
-                <span class="live"></span>
-                <span class="ch">#</span>marketing
-                <div class="who-on">
-                  <div class="a a1">A</div>
-                  <div class="a a2">L</div>
-                  <div class="a a3">M</div>
-                </div>
-              </div>
-
-              <div class="am-msg">
-                <div class="av a1">A</div>
-                <div class="right">
-                  <div class="who">Ana <small>14:23</small></div>
-                  <div class="body">Coloquei a <span class="ref">#landing</span> em <em>Em curso</em>. Quer revisar a copy antes de subir?</div>
-                  <div class="reactions">
-                    <span class="r">👍 <b>2</b></span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="am-msg">
-                <div class="av a2">L</div>
-                <div class="right">
-                  <div class="who">Lucas <small>14:24</small></div>
-                  <div class="body">Boa, abre na sessão das 15h?</div>
-                </div>
-              </div>
-
-              <div class="am-msg">
-                <div class="av av-kan">勘</div>
-                <div class="right">
-                  <div class="who">Mestre Kan <small>agora</small></div>
-                  <div class="body">道. Vi 4 hooks no draft. Sugiro testar A/B com 2 deles. <span class="mention">@Ana</span> quer que eu gere variações?</div>
-                  <div class="thread">↩ 2 respostas</div>
-                </div>
-              </div>
-
-              <div class="am-typing">
-                <span>Ana está digitando</span>
-                <span class="dots"><i></i><i></i><i></i></span>
-              </div>
-
-              <div class="am-input">
-                <span>Mensagem #marketing…</span>
-                <kbd>↵</kbd>
-              </div>
-            </aside>
           </div>
 
-          <!-- Status bar -->
           <div class="am-status">
             <div class="left">
               <span><i></i>Sincronizado</span>
-              <span>12 cards · 2 KRs · 3 online</span>
+              <span>6 cards · 3 pessoas online</span>
             </div>
             <div>v9 · faixa roxa</div>
           </div>
@@ -995,198 +1005,88 @@ footer .footer-links{display:flex;gap:18px;}
     <p class="section-sub" style="margin:0 auto 0;">
       Card conversa com chat. Chat conversa com OKR. OKR conversa com calendário. Tudo no mesmo lugar, sem Zapier, sem integração quebrada na sexta à noite.
     </p>
-    <!-- ════════════════════════════════════════════════
-         Mockup grande sem rotação · cenário "comercial"
-         ════════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════════════════
+         Mockup da solução: card aberto + thread de chat
+         Conta a história da integração card↔chat de forma clara
+         ════════════════════════════════════════════════════ -->
     <div class="appmock" aria-hidden="true">
       <div class="am-titlebar">
         <div class="lights"><i></i><i></i><i></i></div>
-        <div class="url">app.synkan.com.br / boards / comercial</div>
+        <div class="url">app.synkan.com.br / card / landing-comecar</div>
       </div>
 
       <div class="am-window">
-        <header class="am-topbar">
-          <div class="wsbar">
-            <div class="ws-mark">道</div>
-            <div class="ws-name">Synkan dojo<span class="chev">▾</span></div>
+        <div class="am-card-open">
+          <!-- Lado esquerdo: detalhe do card -->
+          <div class="am-cd">
+            <div class="crumb">
+              <span>▦ Marketing · Q1 2026</span>
+              <span class="sep">/</span>
+              <span style="color:#1A1612;font-weight:600;">A fazer</span>
+            </div>
+            <h3>Landing /comecar pra Google Ads</h3>
+
+            <div class="meta-row">
+              <div class="m">
+                <span class="lbl">Prazo</span>
+                <span class="val" style="color:#A32D2D;">📅 Hoje, 18 mai</span>
+              </div>
+              <div class="m">
+                <span class="lbl">Responsável</span>
+                <span class="val"><span class="av">A</span> Ana Reis</span>
+              </div>
+              <div class="m">
+                <span class="lbl">Prioridade</span>
+                <span class="val"><span class="pill-red">急 urgente</span></span>
+              </div>
+              <div class="m">
+                <span class="lbl">OKR ligado</span>
+                <span class="val"><span class="pill-purple">🎯 KR 1.2 · Lançar</span></span>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-h">Descrição</div>
+              <div class="desc-body" style="margin-top:8px;">
+                <p>Reescrever a copy do hero e refazer mockups internos. Hero deve mostrar Kanban limpo, sem 3 painéis competindo.</p>
+                <p style="color:#6B4825;">→ Subir até 12h pra rodar tráfego pago à tarde.</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-h">Subtarefas <span style="font-weight:500;color:#A39074;">· 3 de 4</span></div>
+              <div class="subtasks" style="margin-top:10px;">
+                <div class="subtask done"><span class="box"></span>Definir slogan principal</div>
+                <div class="subtask done"><span class="box"></span>Reescrever copy do hero</div>
+                <div class="subtask done"><span class="box"></span>Refazer mockups (kanban + chat)</div>
+                <div class="subtask"><span class="box"></span>Subir pro servidor antes das 12h</div>
+              </div>
+            </div>
           </div>
-          <div class="search">
-            <span>Buscar cards, pessoas, OKRs…</span>
-            <kbd>⌘K</kbd>
-          </div>
-          <div class="top-tools">
-            <div class="tool-btn has-badge">🔔</div>
-            <div class="me">
-              <span>Anderson</span>
-              <div class="avatar">A</div>
-            </div>
-          </div>
-        </header>
 
-        <div class="am-main">
-          <aside class="am-side">
-            <div class="am-side-section">
-              <div class="sec-label">Fixados</div>
-              <div class="nav-i"><span class="ico emoji">▦</span>Marketing Q1<span class="star">★</span></div>
-              <div class="nav-i active"><span class="ico emoji">▦</span>Comercial<span class="star">★</span></div>
-            </div>
-            <div class="am-side-section">
-              <div class="sec-label">Módulos</div>
-              <div class="nav-i"><span class="ico">畳</span>Tatami<span class="badge">2</span></div>
-              <div class="nav-i"><span class="ico emoji">🎯</span>OKRs</div>
-              <div class="nav-i"><span class="ico emoji">📅</span>Syncal</div>
-              <div class="nav-i"><span class="ico emoji">⊞</span>Synconnect</div>
-              <div class="nav-i"><span class="ico">財</span>Zai</div>
-              <div class="nav-i"><span class="ico">人</span>Pessoas</div>
-              <div class="nav-i"><span class="ico emoji">📦</span>Bunko</div>
-            </div>
-            <div class="am-side-foot">
-              <div class="me">A</div>
-              <div class="who">Anderson<small>online · Faixa Preta</small></div>
-            </div>
-          </aside>
-
-          <main class="am-canvas">
-            <div class="am-canvas-head">
-              <div class="crumbs">
-                <h4><span class="b-mark" style="background:linear-gradient(135deg,#BC002D,#6B4825);"></span>Comercial · Q1 2026</h4>
-                <div class="who-on">
-                  <div class="a a1">A</div>
-                  <div class="a a2">L</div>
-                  <div class="a a3">M</div>
-                  <div class="a a4">+2</div>
-                </div>
-              </div>
-              <div class="views">
-                <span class="v on">▦ Kanban</span>
-                <span class="v">⊟ Tabela</span>
-                <span class="v">📅</span>
-                <span class="v">⊪ Gantt</span>
-              </div>
-            </div>
-
-            <div class="am-canvas-cols">
-              <div class="am-col">
-                <div class="am-col-h"><span>Lead</span><span class="ct">4</span></div>
-                <div class="am-card">
-                  <div class="tags">
-                    <span class="tag blue">inbound</span>
-                  </div>
-                  <div class="title">Renato · Estúdio Aurora</div>
-                  <div class="desc">Agência design 6p · buscando alternativa Notion</div>
-                  <div class="foot">
-                    <div class="left">
-                      <span class="item">R$ 240/m</span>
-                      <span class="item">💬 3</span>
-                    </div>
-                    <div class="av a2">L</div>
-                  </div>
-                </div>
-                <div class="am-card">
-                  <div class="tags">
-                    <span class="tag neutral">outbound</span>
-                  </div>
-                  <div class="title">Camila · Lume Marketing</div>
-                  <div class="desc">3 pessoas · interessada no Tatami</div>
-                  <div class="foot">
-                    <div class="left">
-                      <span class="item">R$ 120/m</span>
-                    </div>
-                    <div class="av a3">M</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="am-col">
-                <div class="am-col-h"><span>Em negociação</span><span class="ct">3</span></div>
-                <div class="am-card urgent">
-                  <div class="tags">
-                    <span class="tag red">急 fechar hoje</span>
-                    <span class="tag purple">KR 2.1</span>
-                  </div>
-                  <div class="title">João · Indie Hackers BR</div>
-                  <div class="desc">Founder solo · trial Roxa expira hoje</div>
-                  <div class="progress">
-                    <div class="bar"><i style="width:85%;"></i></div>
-                    <span>85%</span>
-                  </div>
-                  <div class="foot">
-                    <div class="left">
-                      <span class="item due">⏱ 2h</span>
-                      <span class="item">💬 12</span>
-                      <span class="item">📎 4</span>
-                    </div>
-                    <div class="av a1">A</div>
-                  </div>
-                </div>
-                <div class="am-card gold-stripe">
-                  <div class="tags">
-                    <span class="tag gold">proposta</span>
-                  </div>
-                  <div class="title">Beatriz · Tatame Studio</div>
-                  <div class="desc">Agência 8p · enviou proposta Faixa Preta</div>
-                  <div class="foot">
-                    <div class="left">
-                      <span class="item due soon">📅 amanhã</span>
-                      <span class="item">💬 6</span>
-                    </div>
-                    <div class="av a3">M</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="am-col">
-                <div class="am-col-h"><span>Fechado</span><span class="ct">7</span></div>
-                <div class="am-card">
-                  <div class="tags">
-                    <span class="tag green">won</span>
-                  </div>
-                  <div class="title"><span class="check">✓</span> Marcos · Solo Dev</div>
-                  <div class="desc">Faixa Roxa · 12 meses</div>
-                  <div class="foot">
-                    <div class="left">
-                      <span class="item" style="color:#3B6D11;font-weight:700;">+R$ 478</span>
-                    </div>
-                    <div class="av a1">A</div>
-                  </div>
-                </div>
-                <div class="am-card done">
-                  <div class="tags">
-                    <span class="tag green">won</span>
-                  </div>
-                  <div class="title"><span class="check">✓</span> Estúdio Tatame · 4 seats</div>
-                </div>
-              </div>
-            </div>
-          </main>
-
-          <aside class="am-panel">
-            <div class="am-panel-h">
+          <!-- Lado direito: thread de chat DENTRO do card -->
+          <div class="am-cd-thread">
+            <div class="th-h">
               <span class="live"></span>
-              <span class="ch">#</span>comercial
-              <div class="who-on">
-                <div class="a a1">A</div>
-                <div class="a a2">L</div>
-                <div class="a a3">M</div>
-              </div>
+              <span class="ch">畳</span> Thread do card
+              <span class="count">4 mensagens</span>
             </div>
 
             <div class="am-msg">
-              <div class="av a3">M</div>
+              <div class="av a2">L</div>
               <div class="right">
-                <div class="who">Marina <small>09:42</small></div>
-                <div class="body">Beatriz pediu pra remarcar — propus quinta 16h. <span class="mention">@Anderson</span> ok?</div>
+                <div class="who">Lucas <small>09:42</small></div>
+                <div class="body">Revisei a copy do hero. <span class="mention">@Ana</span> "5 apps. 1 dojo." ficou bem mais forte que o anterior 👌</div>
               </div>
             </div>
 
             <div class="am-msg">
               <div class="av a1">A</div>
               <div class="right">
-                <div class="who">Anderson <small>09:44</small></div>
-                <div class="body">Fechado. Liguei o Syncal.</div>
+                <div class="who">Ana <small>09:51</small></div>
+                <div class="body">Boa. Movi pra <em>Em curso</em>. Pode atribuir KR 1.2 que tô refazendo os mockups agora.</div>
                 <div class="reactions">
-                  <span class="r">✓ <b>3</b></span>
-                  <span class="r">🥋 <b>1</b></span>
+                  <span class="r">🥋 <b>2</b></span>
                 </div>
               </div>
             </div>
@@ -1194,41 +1094,30 @@ footer .footer-links{display:flex;gap:18px;}
             <div class="am-msg">
               <div class="av av-kan">勘</div>
               <div class="right">
-                <div class="who">Mestre Kan <small>10:01</small></div>
-                <div class="body">道. O João (trial expira em 2h) abriu o app 3x hoje. Sinal forte. Vale ligar agora?</div>
-                <div class="thread">↩ 4 respostas · ativa</div>
+                <div class="who">Mestre Kan <small>10:14</small></div>
+                <div class="body">道. Lembrete: o prazo é hoje 12h. Quer que eu gere variações do CTA pra A/B test?</div>
+                <div class="thread">↩ 1 resposta</div>
               </div>
             </div>
 
             <div class="am-msg">
-              <div class="av a2">L</div>
+              <div class="av a1">A</div>
               <div class="right">
-                <div class="who">Lucas <small>10:08</small></div>
-                <div class="body">Subi a proposta da <span class="ref">#Beatriz</span> no Bunko 📎</div>
-                <div class="reactions">
-                  <span class="r">👀 <b>2</b></span>
-                </div>
+                <div class="who">Ana <small>agora</small></div>
+                <div class="body">Subindo o draft. Daí a gente roda Ads à tarde.</div>
               </div>
             </div>
 
             <div class="am-typing">
-              <span>Marina está digitando</span>
+              <span>Lucas está digitando</span>
               <span class="dots"><i></i><i></i><i></i></span>
             </div>
 
             <div class="am-input">
-              <span>Mensagem #comercial…</span>
+              <span>Responder neste card…</span>
               <kbd>↵</kbd>
             </div>
-          </aside>
-        </div>
-
-        <div class="am-status">
-          <div class="left">
-            <span><i></i>Sincronizado</span>
-            <span>14 cards · 3 KRs · 5 online · MRR R$ 1.847</span>
           </div>
-          <div>v9 · faixa preta</div>
         </div>
       </div>
     </div>
@@ -1285,23 +1174,24 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="centered" style="background:#fff;">
   <div class="container">
-    <span class="eyebrow">Feito pra você</span>
-    <h2>Funciona melhor pra times até 10 pessoas.</h2>
+    <span class="eyebrow">O dojo abre pra</span>
+    <h2>Quem cansou de ferramenta gringa.</h2>
+    <p class="section-sub">Synkan é pensado pra realidade brasileira: pagamento em real, suporte em português, dados em São Paulo, e o tipo de time que existe aqui — pequeno, ágil e cheio de cliente paralelo.</p>
     <div class="audience-grid">
       <div class="audience-card">
         <div class="a-icon">人</div>
-        <h4>Trabalha sozinho</h4>
-        <p>Freelancer, consultor, infoprodutor. Quer organizar projetos, clientes e finanças num só lugar.</p>
+        <h4>Freelancer que virou empresa</h4>
+        <p>Você trabalha sozinho mas atende 4 clientes ao mesmo tempo. Quer organizar projetos, agenda, contato e dinheiro num só lugar — sem pagar plano enterprise.</p>
       </div>
       <div class="audience-card">
         <div class="a-icon">🤝</div>
-        <h4>Tem agência pequena</h4>
-        <p>2-5 pessoas, vários clientes paralelos. Quer alinhar o time sem virar caos.</p>
+        <h4>Agência de 2 a 8 pessoas</h4>
+        <p>Vocês têm clientes que cobram resposta em 1h. Reunião semanal, mensagem solta no WhatsApp, briefing perdido no email. Synkan junta tudo no mesmo dojo.</p>
       </div>
       <div class="audience-card">
         <div class="a-icon">🚀</div>
-        <h4>Tá tocando uma startup</h4>
-        <p>3-15 pessoas, crescendo rápido. Quer Kanban + chat + OKR antes de gastar com 5 ferramentas separadas.</p>
+        <h4>Startup nos primeiros 15</h4>
+        <p>Crescendo rápido, processo virando bagunça. Quer Kanban + chat + OKR funcionando <strong>antes</strong> de gastar com Linear + Slack + Lattice separados.</p>
       </div>
     </div>
   </div>
@@ -1312,9 +1202,9 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="centered">
   <div class="container">
-    <span class="eyebrow">Preço sem pegadinha</span>
-    <h2>Faixa Branca grátis pra sempre.</h2>
-    <p class="section-sub">Anual com 10% off. Trial Roxa de 7 dias sem cartão.</p>
+    <span class="eyebrow">Sem dólar, sem pegadinha</span>
+    <h2>Em real, da Faixa Branca à Preta.</h2>
+    <p class="section-sub">Grátis pra sempre na Branca. Anual com 10% off. Trial de 7 dias na Roxa sem precisar de cartão. Cancela em 1 clique, sem ligar pra ninguém.</p>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="p-label"><span class="p-dot" style="background:#F4F4F2;border:1.5px solid var(--ink);"></span>Branca</div>
@@ -1378,42 +1268,44 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section style="background:var(--bg-cream-soft);">
   <div class="container">
-    <span class="eyebrow">Primeiros do dojo</span>
-    <h2>Quem já tá usando.</h2>
+    <span class="eyebrow">Os primeiros do tatame</span>
+    <h2>Recém-aberto. Vagas pra fundador honesto.</h2>
     <p class="section-sub">
-      Depoimentos reais dos primeiros usuários. <strong>Quer aparecer aqui?</strong> Manda seu feedback pra <a href="mailto:contato@synkan.com.br" style="color:var(--dojo-hinomaru);text-decoration:underline;">contato@synkan.com.br</a>.
+      Synkan acabou de abrir o dojo. Estamos buscando os 50 primeiros que vão moldar o produto com a gente — <strong>desconto vitalício de fundador na Faixa Roxa</strong> pra quem testar e dar feedback nas primeiras semanas.
+      <br><br>
+      Quer ser um? Manda um oi pra <a href="mailto:contato@synkan.com.br" style="color:var(--dojo-hinomaru);text-decoration:underline;font-weight:600;">contato@synkan.com.br</a>.
     </p>
     <div class="test-grid">
       <div class="test-card placeholder">
         <span class="quote-mark">"</span>
-        <blockquote>Aguardando primeiros depoimentos.</blockquote>
+        <blockquote>Sua história aqui — testou o Synkan no time?</blockquote>
         <div class="test-author">
-          <div class="avatar">+</div>
+          <div class="avatar">★</div>
           <div class="info">
-            <strong>Quer ser o primeiro?</strong>
-            <span>contato@synkan.com.br</span>
+            <strong>Vaga 1 · founding member</strong>
+            <span>R$ 19,90 vitalício na Roxa</span>
           </div>
         </div>
       </div>
       <div class="test-card placeholder">
         <span class="quote-mark">"</span>
-        <blockquote>Aguardando feedback de quem testou.</blockquote>
+        <blockquote>Resolveu o caos das suas 5 ferramentas?</blockquote>
         <div class="test-author">
-          <div class="avatar">+</div>
+          <div class="avatar">★</div>
           <div class="info">
-            <strong>Sua vaga</strong>
-            <span>aqui</span>
+            <strong>Vaga 2 · founding member</strong>
+            <span>R$ 19,90 vitalício na Roxa</span>
           </div>
         </div>
       </div>
       <div class="test-card placeholder">
         <span class="quote-mark">"</span>
-        <blockquote>Espaço pro 3º depoimento.</blockquote>
+        <blockquote>O Mestre Kan virou parte do seu time?</blockquote>
         <div class="test-author">
-          <div class="avatar">+</div>
+          <div class="avatar">★</div>
           <div class="info">
-            <strong>Aberto</strong>
-            <span>pra você</span>
+            <strong>Vaga 3 · founding member</strong>
+            <span>R$ 19,90 vitalício na Roxa</span>
           </div>
         </div>
       </div>
@@ -1426,40 +1318,44 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="centered">
   <div class="container">
-    <span class="eyebrow">Dúvidas que aparecem</span>
+    <span class="eyebrow">O que costumam perguntar</span>
     <h2>Antes de criar conta.</h2>
     <div class="faq">
       <details>
-        <summary>Funciona offline?</summary>
-        <p>Sim. Modo local guarda tudo no seu navegador (localStorage + IndexedDB). Modo cloud sincroniza em tempo real entre dispositivos. Você escolhe em Configurações → Sincronização.</p>
-      </details>
-      <details>
-        <summary>Posso trazer dados do Trello, Notion ou Asana?</summary>
-        <p>Sim. Importação por CSV ou JSON pra cards, contatos e OKRs. O Synconnect também aceita planilha de contatos. Pra dúvida específica de migração, escreve pra contato@synkan.com.br — a gente ajuda.</p>
+        <summary>Synkan é mesmo brasileiro? Não é só localizado?</summary>
+        <p>Mesmo. Empresa registrada no Brasil, suporte humano em português, dados na região São Paulo (Supabase), pagamento via Stripe em real (sem dólar variando), e o produto foi <strong>nascido em português</strong> — não é tradução do inglês. Conformidade LGPD: você apaga sua conta inteira com 1 clique em Configurações → Conta.</p>
       </details>
       <details>
         <summary>Preciso de cartão pra começar?</summary>
-        <p>Não. Faixa Branca é grátis sem cartão. Pra testar Roxa, o trial de 7 dias também não pede cartão — só pede no fim do período se quiser continuar.</p>
+        <p>Não. Faixa Branca é <strong>grátis pra sempre</strong>, sem pedir cartão. Pra testar a Roxa, o trial de 7 dias também não pede cartão — só pede no último dia se você quiser continuar.</p>
       </details>
       <details>
-        <summary>Posso convidar pessoas externas (clientes, fornecedores)?</summary>
-        <p>Sim. Viewers e editores externos são <strong>grátis</strong> (não custam seat). Apenas admins consomem assento pago na Faixa Preta. Na Azul e Roxa, todos os papéis são livres.</p>
+        <summary>Posso migrar do Trello, Notion ou Asana?</summary>
+        <p>Sim, importação por CSV ou JSON pra cards, contatos e OKRs. Pra migração mais pesada (workspace inteiro com anexos), escreve pra <a href="mailto:contato@synkan.com.br">contato@synkan.com.br</a> — a gente faz a migração junto.</p>
       </details>
       <details>
-        <summary>Quem é o Mestre Kan?</summary>
-        <p>O sensei do dojo. Persona do Synkan — narra paywalls, ensina o caminho no tour inicial e ajuda nos cards via IA. Voz pré-gravada com sotaque oriental, sem soar robô. 75 áudios curtos pré-produzidos, não consome cota.</p>
+        <summary>Funciona offline?</summary>
+        <p>Sim. Modo local guarda tudo no seu navegador (localStorage + IndexedDB) — funciona até no avião. Modo cloud sincroniza em tempo real entre dispositivos. Troca em Configurações → Sincronização. Comum usar local pra trabalho profundo e ligar cloud pra colaborar.</p>
       </details>
       <details>
-        <summary>Synkan é brasileiro?</summary>
-        <p>100%. Empresa, suporte, dados (Supabase região São Paulo) e a língua do produto. Pagamento via Stripe em real. Conformidade LGPD: você pode apagar sua conta inteira com 1 clique em Configurações → Conta.</p>
+        <summary>Posso convidar clientes externos sem pagar seat?</summary>
+        <p>Sim. <strong>Viewers e editores externos são grátis</strong> nas Faixas Azul e Roxa — não custam seat. Quem custa é admin (na Faixa Preta com cobrança por usuário). Convide cliente, fornecedor, parceiro à vontade.</p>
+      </details>
+      <details>
+        <summary>Quem é o Mestre Kan e por que tem nome?</summary>
+        <p>Porque IA com nome se torna parte do time. O Mestre Kan é o sensei do dojo — quebra cards em subtarefas, redige email, resume thread longa, lê notas fiscais e narra o app com voz pré-gravada (sotaque oriental, sem soar robô). 75 áudios curtos prontos, <strong>não consomem cota de IA</strong>.</p>
+      </details>
+      <details>
+        <summary>Cada chamada de IA conta quanto?</summary>
+        <p><strong>Ações deliberadas</strong> consomem 1 chamada: quebrar card, redigir email, sugerir KRs, extrair dados de NF. <strong>Tudo o mais é grátis</strong>: transcrição de áudio, busca, exportar, navegação, leitura de cards por voz. Faixa Roxa = 500 chamadas/mês. Faixa Preta = 1.000. Sobra muito.</p>
       </details>
       <details>
         <summary>Como cancelo?</summary>
-        <p>Configurações → Conta → Cancelar plano. 1 clique. Sem ligação, sem retenção, sem formulário de 10 perguntas. Volta pra Faixa Branca grátis automaticamente — seus dados ficam intactos.</p>
+        <p>Configurações → Conta → Cancelar plano. <strong>1 clique.</strong> Sem ligação, sem retenção, sem formulário de 10 perguntas pra te fazer desistir. Volta pra Faixa Branca grátis automaticamente — seus dados ficam intactos, nada some.</p>
       </details>
       <details>
-        <summary>Quanto consome de IA cada coisa?</summary>
-        <p>Ações deliberadas (quebrar card em subtarefas, redigir email, sugerir KRs) = 1 chamada cada. Transcrição de áudio, busca, exportar e navegação = grátis. Você vê quantas chamadas tem no Settings.</p>
+        <summary>Tá pronto pra produção ou ainda é beta?</summary>
+        <p>Pronto. v9 (maio/2026) com mais de 1 ano de desenvolvimento, segurança auditada (RLS em todas as tabelas sensíveis, JWT obrigatório em endpoints de pagamento, CORS restrito). Mas seja honesto: somos novos, ainda não temos 10 mil clientes. Se quer estabilidade de gigante, vai num gigante. Se quer ferramenta brasileira evoluindo rápido com canal direto com o fundador, é aqui.</p>
       </details>
     </div>
   </div>
@@ -1470,16 +1366,16 @@ footer .footer-links{display:flex;gap:18px;}
 ═══════════════════════════════════════════════════════ -->
 <section class="cta-final">
   <div class="container">
-    <h2>O caminho começa com<br>um movimento.</h2>
+    <h2>Largue as 5 abas.<br>Sobe no tatame.</h2>
     <p>
-      Faixa Branca é grátis pra sempre.<br>
-      Faz a primeira parada do dia agora.
+      Faixa Branca grátis pra sempre · sem cartão · cancela em 1 clique.<br>
+      Em 60 segundos você tá dentro.
     </p>
     <a href="https://app.synkan.com.br/signup" class="btn btn-red btn-lg" data-cta="final">
-      Começar grátis · 1 minuto →
+      Entrar no dojo agora →
     </a>
     <div class="cta-meta">
-      Em 60 segundos você tá dentro do dojo.
+      道 · o caminho começa com 1 movimento
     </div>
   </div>
 </section>
