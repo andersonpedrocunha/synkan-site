@@ -63,7 +63,7 @@ img,svg{display:block;max-width:100%;}
 
 /* ── Logo ───────────────────────────────────────────────── */
 .logo{display:inline-flex;align-items:center;gap:9px;}
-.logo-mark{width:34px;height:34px;flex-shrink:0;}
+.logo-mark{width:34px;height:34px;flex-shrink:0;object-fit:contain;border-radius:7px;}
 .logo-name{font-weight:700;font-size:18px;letter-spacing:-.01em;}
 
 /* ── Nav minimalista (sem menu pra não distrair) ───────── */
@@ -890,13 +890,7 @@ footer .footer-links{display:flex;gap:18px;}
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="/" class="logo">
-      <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="34" height="34" rx="8" fill="#111"/>
-        <rect x="9" y="20" width="3" height="6" rx="1" fill="#fff" opacity=".55"/>
-        <rect x="14" y="10" width="3" height="16" rx="1" fill="#fff"/>
-        <rect x="19" y="14" width="3" height="12" rx="1" fill="#fff"/>
-        <rect x="24" y="22" width="3" height="4" rx="1" fill="#fff" opacity=".55"/>
-      </svg>
+      <img class="logo-mark" src="synkan-icon-512.png" alt="Synkan" />
       <span class="logo-name">Synkan</span>
     </a>
     <a href="https://app.synkan.com.br/signup" class="nav-cta" data-cta="nav">
@@ -1499,13 +1493,7 @@ footer .footer-links{display:flex;gap:18px;}
     <div class="footer-inner">
       <div>
         <a href="/" class="logo" style="display:inline-flex;">
-          <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:24px;height:24px;">
-            <rect width="34" height="34" rx="8" fill="#111"/>
-            <rect x="9" y="20" width="3" height="6" rx="1" fill="#fff" opacity=".55"/>
-            <rect x="14" y="10" width="3" height="16" rx="1" fill="#fff"/>
-            <rect x="19" y="14" width="3" height="12" rx="1" fill="#fff"/>
-            <rect x="24" y="22" width="3" height="4" rx="1" fill="#fff" opacity=".55"/>
-          </svg>
+          <img class="logo-mark" src="synkan-icon-512.png" alt="Synkan" style="width:24px;height:24px;" />
           <span style="font-weight:600;font-size:14px;">Synkan</span>
         </a>
         <span style="margin-left:14px;color:var(--ink-4);">v9 · feito com calma</span>
