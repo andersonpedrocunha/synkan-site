@@ -18,11 +18,14 @@
 /*.html
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.synkan.com.br https://billing.synkan.com.br https://api.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com; form-action 'self' https://checkout.stripe.com;
 
-# Cache pra assets estáticos (logo, favicon)
+# Cache pra assets estáticos. NÃO usar 'immutable' em PNG/SVG porque
+# queremos que revalide quando trocarmos uma imagem (capa de post, etc).
+# max-age curto + must-revalidate = browser/CDN checa atualizações via ETag.
+# Fontes ficam imutáveis (raramente trocam e são versionadas).
 /*.png
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600, must-revalidate
 /*.svg
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600, must-revalidate
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
