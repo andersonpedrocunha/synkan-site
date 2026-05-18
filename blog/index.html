@@ -60,12 +60,33 @@ a{color:inherit;text-decoration:none;}
 /* Posts list */
 .posts{padding:30px 0 100px;}
 .post-item{
-  display:block;padding:32px 0;
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:28px;
+  align-items:center;
+  padding:28px 0;
   border-bottom:0.5px solid var(--line);
-  transition:padding-left .15s;
+  transition:transform .15s;
 }
-.post-item:hover{padding-left:8px;}
+.post-item:hover{transform:translateX(4px);}
 .post-item:last-child{border-bottom:none;}
+.post-cover{
+  width:200px;height:120px;border-radius:10px;
+  object-fit:cover;background:var(--bg-cream-soft);
+  border:0.5px solid var(--line);
+}
+.post-cover-placeholder{
+  width:200px;height:120px;border-radius:10px;
+  background:linear-gradient(135deg,var(--bg-cream-soft) 0%,#F4ECD0 100%);
+  border:0.5px dashed var(--line-2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:48px;color:var(--dojo-gold);
+  opacity:.5;
+}
+@media(max-width:680px){
+  .post-item{grid-template-columns:1fr;gap:14px;}
+  .post-cover,.post-cover-placeholder{width:100%;height:160px;}
+}
 .post-meta{
   display:flex;align-items:center;gap:10px;
   font-size:12px;color:var(--ink-4);
@@ -144,35 +165,44 @@ footer .footer-links{display:flex;gap:18px;}
   <div class="container">
 
     <!-- ════════════════════════════════════════════════════
-         POST 1 · próximo a publicar
+         POST 1 · publicado
          ════════════════════════════════════════════════════ -->
     <a href="/blog/5-clientes-paralelos-sem-caos" class="post-item">
-      <div class="post-meta">
-        <span class="post-cat uso">Caso de uso</span>
-        <span>Em breve · maio 2026</span>
+      <img class="post-cover" src="/blog/covers/5-clientes-paralelos.png" alt="Três tatames flutuando em composição zen" onerror="this.outerHTML='<div class=&quot;post-cover-placeholder&quot;>集</div>'" />
+      <div>
+        <div class="post-meta">
+          <span class="post-cat uso">Caso de uso</span>
+          <span>Maio 2026</span>
+        </div>
+        <h2 class="post-title">Como rodar 5 clientes paralelos sem virar caos</h2>
+        <p class="post-excerpt">O método "3 tatames" — dividir cabeça por contexto, não por tempo. Funciona pra freelancer, agência de 2-5 pessoas e qualquer time que atende vários clientes em paralelo.</p>
+        <div class="post-readtime">8 min de leitura</div>
       </div>
-      <h2 class="post-title">Como rodar 5 clientes paralelos sem virar caos</h2>
-      <p class="post-excerpt">O método "3 tatames" — dividir cabeça por contexto, não por tempo. Funciona pra freelancer, agência de 2-5 pessoas e qualquer time que atende vários clientes em paralelo.</p>
-      <div class="post-readtime">8 min de leitura</div>
     </a>
 
     <!-- Placeholder pros próximos posts -->
     <div class="post-item post-soon">
-      <div class="post-meta">
-        <span class="post-cat filosofia">Filosofia</span>
-        <span>Em breve · junho 2026</span>
+      <div class="post-cover-placeholder">禅</div>
+      <div>
+        <div class="post-meta">
+          <span class="post-cat filosofia">Filosofia</span>
+          <span>Junho 2026</span>
+        </div>
+        <h2 class="post-title">O que kaizen ensinou sobre escrever software</h2>
+        <p class="post-excerpt">A filosofia japonesa de melhoria contínua aplicada ao processo de construir o Synkan. Sem firula, sem feature pelo feature.</p>
       </div>
-      <h2 class="post-title">O que kaizen ensinou sobre escrever software</h2>
-      <p class="post-excerpt">A filosofia japonesa de melhoria contínua aplicada ao processo de construir o Synkan. Sem firula, sem feature pelo feature.</p>
     </div>
 
     <div class="post-item post-soon">
-      <div class="post-meta">
-        <span class="post-cat uso">Caso de uso</span>
-        <span>Em breve · julho 2026</span>
+      <div class="post-cover-placeholder">畳</div>
+      <div>
+        <div class="post-meta">
+          <span class="post-cat uso">Caso de uso</span>
+          <span>Julho 2026</span>
+        </div>
+        <h2 class="post-title">Agência de 3 pessoas, 8 clientes, 1 ferramenta</h2>
+        <p class="post-excerpt">Como uma agência de marketing pequena usa Kanban + chat + CRM integrados pra evitar reunião sobre reunião.</p>
       </div>
-      <h2 class="post-title">Agência de 3 pessoas, 8 clientes, 1 ferramenta</h2>
-      <p class="post-excerpt">Como uma agência de marketing pequena usa Kanban + chat + CRM integrados pra evitar reunião sobre reunião.</p>
     </div>
 
   </div>

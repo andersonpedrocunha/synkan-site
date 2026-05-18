@@ -49,7 +49,14 @@ a{color:inherit;}
 .nav-cta:hover{border-color:var(--ink);}
 
 /* Article header */
-.art-head{padding:60px 0 30px;}
+.art-head{padding:50px 0 30px;}
+.art-cover{
+  width:100%;max-width:880px;margin:0 auto 40px;
+  border-radius:14px;display:block;
+  box-shadow:0 20px 50px -20px rgba(26,22,18,.25);
+  aspect-ratio:16/9;object-fit:cover;
+  background:linear-gradient(135deg,#FAF3DD 0%,#F5E8C8 100%);
+}
 .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-3);margin-bottom:32px;text-decoration:none;font-weight:500;}
 .back-link:hover{color:var(--ink);}
 .art-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-4);font-weight:500;margin-bottom:14px;}
@@ -139,6 +146,9 @@ footer .footer-links{display:flex;gap:18px;}
   <header class="art-head">
     <div class="container">
       <a href="/blog" class="back-link">← Todos os posts</a>
+    </div>
+    <img class="art-cover" src="/blog/covers/5-clientes-paralelos.png" alt="Três tatames em composição zen — método de contexto preservado" />
+    <div class="container">
       <div class="art-meta">
         <span class="post-cat">Caso de uso</span>
         <span>Maio 2026 · 8 min de leitura</span>
