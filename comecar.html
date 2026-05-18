@@ -570,21 +570,55 @@ img,svg{display:block;max-width:100%;}
 }
 
 /* ── Sections genéricas ────────────────────────────────── */
-section{padding:80px 0;}
-section h2{font-size:clamp(28px,3.5vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:18px;color:var(--ink);}
-section h2 + p.section-sub{font-size:17px;color:var(--ink-3);max-width:600px;line-height:1.55;margin-bottom:42px;}
+section{padding:88px 0;position:relative;}
+section h2{font-size:clamp(28px,3.8vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:18px;color:var(--ink);}
+section h2 + p.section-sub{font-size:17px;color:var(--ink-3);max-width:620px;line-height:1.6;margin-bottom:44px;}
 section.centered{text-align:center;}
-section.centered h2 + p.section-sub{margin:0 auto 42px;}
-.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--dojo-hinomaru);margin-bottom:12px;}
+section.centered h2 + p.section-sub{margin:0 auto 44px;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dojo-hinomaru);
+  margin-bottom:14px;
+}
+.eyebrow::before{
+  content:'';width:18px;height:1.5px;background:var(--dojo-hinomaru);
+  display:inline-block;
+}
+section.centered .eyebrow::before{display:none;}
+section.centered .eyebrow{
+  padding:5px 14px;background:rgba(188,0,45,.08);
+  border:0.5px solid rgba(188,0,45,.20);border-radius:999px;
+  letter-spacing:.10em;
+}
 
 /* ── Problema ──────────────────────────────────────────── */
-.problem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;}
+.problem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px;}
 @media(max-width:780px){.problem-grid{grid-template-columns:repeat(2,1fr);}}
-.problem-card{background:#fff;border-radius:var(--radius);padding:24px 20px;border:1px solid var(--line);}
-.problem-card .icon{font-size:28px;margin-bottom:10px;display:block;}
-.problem-card h4{font-size:14px;font-weight:700;margin-bottom:6px;}
+.problem-card{
+  background:var(--bg-soft);border-radius:var(--radius);
+  padding:24px 20px;border:1px solid var(--line);
+  text-align:left;transition:transform .15s,border-color .15s,background .15s;
+}
+.problem-card:hover{transform:translateY(-2px);border-color:var(--line-2);background:#fff;}
+.problem-card .icon{font-size:26px;margin-bottom:14px;display:block;opacity:.85;}
+.problem-card h4{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--ink);}
 .problem-card p{font-size:13px;color:var(--ink-3);line-height:1.5;}
-.problem-tagline{margin-top:36px;text-align:center;font-family:var(--font-serif);font-style:italic;font-size:18px;color:var(--ink-2);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.5;padding:24px;border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);}
+.problem-tagline{
+  margin-top:44px;text-align:center;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:20px;color:var(--ink);
+  max-width:640px;margin-left:auto;margin-right:auto;line-height:1.5;
+  padding:28px 24px;
+  position:relative;
+}
+.problem-tagline::before,
+.problem-tagline::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  width:48px;height:1px;background:var(--dojo-hinomaru);
+}
+.problem-tagline::before{top:0;}
+.problem-tagline::after{bottom:0;}
 
 /* ── Solução em 1 imagem (reusa appmock) ──────────────── */
 .solution{background:var(--bg-cream);padding:100px 0;}
@@ -675,27 +709,62 @@ section.centered h2 + p.section-sub{margin:0 auto 42px;}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 @media(max-width:880px){.feat-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.feat-grid{grid-template-columns:1fr;}}
-.feat-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s,border-color .15s;}
-.feat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--line-2);}
-.feat-card .feat-icon{width:44px;height:44px;border-radius:10px;background:var(--bg-cream-soft);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:22px;color:var(--dojo-sumi);margin-bottom:14px;}
+.feat-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;display:flex;flex-direction:column;
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+  position:relative;
+}
+.feat-card:hover{
+  transform:translateY(-3px);box-shadow:var(--shadow-md);
+  border-color:var(--dojo-gold);
+}
+.feat-card:hover .feat-icon{background:linear-gradient(135deg,#FAF3DD 0%,#F5E8C8 100%);}
+.feat-card .feat-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--bg-cream-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:24px;color:var(--dojo-sumi);
+  margin-bottom:16px;
+  border:0.5px solid rgba(193,154,58,.25);
+  transition:background .15s;
+}
 .feat-card .feat-icon.emoji{font-family:var(--font-sans);font-size:22px;}
-.feat-card h4{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em;}
-.feat-card p{font-size:14px;color:var(--ink-3);line-height:1.55;flex:1;}
+.feat-card h4{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.015em;color:var(--ink);}
+.feat-card p{font-size:14px;color:var(--ink-3);line-height:1.6;flex:1;}
 
 /* ── Pra quem ──────────────────────────────────────────── */
 .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
 @media(max-width:780px){.audience-grid{grid-template-columns:1fr;}}
-.audience-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 24px;text-align:center;}
-.audience-card .a-icon{font-size:38px;margin-bottom:14px;}
-.audience-card h4{font-size:18px;font-weight:700;margin-bottom:10px;}
+.audience-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 24px;text-align:center;
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+  position:relative;
+}
+.audience-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--dojo-gold);}
+.audience-card .a-icon{
+  font-size:38px;margin-bottom:14px;display:inline-block;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,#FAF3DD 0%,#F5E8C8 100%);
+  line-height:64px;border:0.5px solid rgba(193,154,58,.30);
+  font-family:var(--font-serif);
+}
+.audience-card h4{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em;}
 .audience-card p{font-size:14px;color:var(--ink-3);line-height:1.6;}
 
 /* ── Pricing ───────────────────────────────────────────── */
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;}
 @media(max-width:980px){.pricing-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.pricing-grid{grid-template-columns:1fr;}}
-.price-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;display:flex;flex-direction:column;position:relative;}
-.price-card.popular{border:2px solid var(--dojo-hinomaru);background:#FFFCFC;}
+.price-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px;display:flex;flex-direction:column;position:relative;
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.price-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-2);}
+.price-card.popular{border:2px solid var(--dojo-hinomaru);background:#FFFCFC;box-shadow:0 6px 20px -8px rgba(188,0,45,.20);}
+.price-card.popular:hover{box-shadow:0 12px 28px -10px rgba(188,0,45,.28);}
 .price-card.popular::before{content:'Mais popular';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--dojo-hinomaru);color:#fff;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:999px;}
 .price-card .p-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
 .price-card .p-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
@@ -732,6 +801,58 @@ section.centered h2 + p.section-sub{margin:0 auto 42px;}
 .faq summary::after{content:'+';color:var(--ink-3);font-size:20px;font-weight:300;transition:transform .15s;}
 .faq details[open] summary::after{transform:rotate(45deg);}
 .faq details p{font-size:14px;color:var(--ink-3);line-height:1.6;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--line);}
+
+/* ── Manifesto · seção de quebra visual ──────────────────── */
+.manifesto{
+  background:linear-gradient(135deg,#1A1612 0%,#3A2410 60%,#1A1612 100%);
+  color:#F5E8C8;padding:120px 0;
+  position:relative;overflow:hidden;
+}
+.manifesto::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%,rgba(193,154,58,.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+.manifesto-inner{
+  max-width:680px;margin:0 auto;text-align:center;
+  position:relative;z-index:1;
+}
+.manifesto-kanji{
+  font-family:var(--font-serif);font-size:96px;color:#C19A3A;
+  line-height:1;margin-bottom:24px;font-weight:400;
+  opacity:.95;
+}
+.manifesto h2{
+  color:#F5E8C8;font-size:clamp(34px,4.5vw,48px);
+  font-weight:700;letter-spacing:-.02em;line-height:1.1;
+  margin-bottom:24px;
+}
+.manifesto p{
+  font-size:17px;color:rgba(245,232,200,.78);line-height:1.65;
+  margin-bottom:18px;
+  font-family:var(--font-serif);
+}
+.manifesto p em{
+  color:#C19A3A;font-style:italic;
+}
+.manifesto p strong{
+  color:#F5E8C8;font-weight:600;font-family:var(--font-sans);
+}
+.manifesto-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  margin-top:48px;padding-top:36px;
+  border-top:0.5px solid rgba(245,232,200,.15);
+}
+@media(max-width:560px){.manifesto-stats{grid-template-columns:repeat(2,1fr);gap:32px;}}
+.ms-item{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.ms-val{
+  font-family:var(--font-serif);font-size:42px;font-weight:600;
+  color:#C19A3A;line-height:1;letter-spacing:-.02em;
+}
+.ms-lbl{
+  font-size:12px;color:rgba(245,232,200,.60);line-height:1.4;
+  text-transform:uppercase;letter-spacing:.05em;font-weight:600;
+}
 
 /* ── CTA Final ─────────────────────────────────────────── */
 .cta-final{background:var(--dojo-sumi);color:#F5E8C8;padding:120px 0;position:relative;overflow:hidden;text-align:center;}
@@ -798,7 +919,7 @@ footer .footer-links{display:flex;gap:18px;}
         1 dojo.
       </h1>
       <p class="lead">
-        Synkan substitui <strong>Notion + Trello + Slack + Calendário + CRM</strong> por uma ferramenta brasileira só, pensada pra quem trabalha sozinho ou em times até 10 pessoas. Sem dólar variando, sem 5 contas pra pagar, sem perder o fio do que decidiu.
+        Synkan reúne <strong>Kanban, chat ao vivo, OKR, calendário, CRM e financeiro</strong> num lugar só — pensado pra quem trabalha sozinho ou em times até 10 pessoas. Em português, em real, sem 5 contas pra pagar nem o fio do que decidiu perdido em algum lugar.
       </p>
       <div class="hero-cta">
         <a href="https://app.synkan.com.br/signup" class="btn btn-primary btn-lg" data-cta="hero-primary">
@@ -965,27 +1086,27 @@ footer .footer-links{display:flex;gap:18px;}
   <div class="container">
     <span class="eyebrow">Hoje, no seu dia</span>
     <h2>Você é gerente de aba do navegador.</h2>
-    <p class="section-sub">17 abas abertas, 4 contas pra pagar, R$ 87/mês em ferramentas que não conversam entre si — e você ainda perde a decisão que tomou ontem.</p>
+    <p class="section-sub">17 abas abertas. 4 mensalidades em dólar. 6 lugares pra anotar a mesma coisa — e nenhum onde achar quando precisa.</p>
     <div class="problem-grid">
       <div class="problem-card">
         <span class="icon">📋</span>
-        <h4>Trello</h4>
-        <p>arrastando cards entre 6 boards.</p>
+        <h4>No kanban</h4>
+        <p>arrastando cards entre 6 boards diferentes.</p>
       </div>
       <div class="problem-card">
         <span class="icon">💬</span>
-        <h4>Slack</h4>
+        <h4>No chat do time</h4>
         <p>47 mensagens não lidas em 9 canais.</p>
       </div>
       <div class="problem-card">
         <span class="icon">📅</span>
-        <h4>Calendar</h4>
-        <p>3 reuniões sobrepostas hoje.</p>
+        <h4>No calendário</h4>
+        <p>3 reuniões sobrepostas só hoje.</p>
       </div>
       <div class="problem-card">
         <span class="icon">📊</span>
-        <h4>Notion</h4>
-        <p>12 páginas, 0 organização.</p>
+        <h4>No documento</h4>
+        <p>12 páginas avulsas, 0 organização.</p>
       </div>
     </div>
     <p class="problem-tagline">
@@ -1007,12 +1128,12 @@ footer .footer-links{display:flex;gap:18px;}
     </p>
     <!-- ════════════════════════════════════════════════════
          Mockup da solução: card aberto + thread de chat
-         Conta a história da integração card↔chat de forma clara
+         Cenário: agência tocando entrega pra cliente
          ════════════════════════════════════════════════════ -->
     <div class="appmock" aria-hidden="true">
       <div class="am-titlebar">
         <div class="lights"><i></i><i></i><i></i></div>
-        <div class="url">app.synkan.com.br / card / landing-comecar</div>
+        <div class="url">app.synkan.com.br / card / apresentacao-aurora</div>
       </div>
 
       <div class="am-window">
@@ -1020,16 +1141,16 @@ footer .footer-links{display:flex;gap:18px;}
           <!-- Lado esquerdo: detalhe do card -->
           <div class="am-cd">
             <div class="crumb">
-              <span>▦ Marketing · Q1 2026</span>
+              <span>▦ Clientes · Aurora Estúdio</span>
               <span class="sep">/</span>
-              <span style="color:#1A1612;font-weight:600;">A fazer</span>
+              <span style="color:#1A1612;font-weight:600;">Em curso</span>
             </div>
-            <h3>Landing /comecar pra Google Ads</h3>
+            <h3>Apresentação Q1 · resultados pro cliente</h3>
 
             <div class="meta-row">
               <div class="m">
                 <span class="lbl">Prazo</span>
-                <span class="val" style="color:#A32D2D;">📅 Hoje, 18 mai</span>
+                <span class="val" style="color:#A32D2D;">📅 Amanhã, 18h</span>
               </div>
               <div class="m">
                 <span class="lbl">Responsável</span>
@@ -1037,29 +1158,29 @@ footer .footer-links{display:flex;gap:18px;}
               </div>
               <div class="m">
                 <span class="lbl">Prioridade</span>
-                <span class="val"><span class="pill-red">急 urgente</span></span>
+                <span class="val"><span class="pill-red">急 alta</span></span>
               </div>
               <div class="m">
                 <span class="lbl">OKR ligado</span>
-                <span class="val"><span class="pill-purple">🎯 KR 1.2 · Lançar</span></span>
+                <span class="val"><span class="pill-purple">🎯 KR 2.1 · NPS clientes</span></span>
               </div>
             </div>
 
             <div>
               <div class="section-h">Descrição</div>
               <div class="desc-body" style="margin-top:8px;">
-                <p>Reescrever a copy do hero e refazer mockups internos. Hero deve mostrar Kanban limpo, sem 3 painéis competindo.</p>
-                <p style="color:#6B4825;">→ Subir até 12h pra rodar tráfego pago à tarde.</p>
+                <p>Apresentar resultados do primeiro trimestre pra Aurora — foco em ROI das campanhas e próximos passos do Q2.</p>
+                <p style="color:#6B4825;">→ Material todo no Bunko · gravação da última call linkada abaixo.</p>
               </div>
             </div>
 
             <div>
               <div class="section-h">Subtarefas <span style="font-weight:500;color:#A39074;">· 3 de 4</span></div>
               <div class="subtasks" style="margin-top:10px;">
-                <div class="subtask done"><span class="box"></span>Definir slogan principal</div>
-                <div class="subtask done"><span class="box"></span>Reescrever copy do hero</div>
-                <div class="subtask done"><span class="box"></span>Refazer mockups (kanban + chat)</div>
-                <div class="subtask"><span class="box"></span>Subir pro servidor antes das 12h</div>
+                <div class="subtask done"><span class="box"></span>Coletar métricas do trimestre</div>
+                <div class="subtask done"><span class="box"></span>Montar deck inicial</div>
+                <div class="subtask done"><span class="box"></span>Revisar com Lucas</div>
+                <div class="subtask"><span class="box"></span>Enviar pra Aurora até amanhã 16h</div>
               </div>
             </div>
           </div>
@@ -1076,7 +1197,7 @@ footer .footer-links{display:flex;gap:18px;}
               <div class="av a2">L</div>
               <div class="right">
                 <div class="who">Lucas <small>09:42</small></div>
-                <div class="body">Revisei a copy do hero. <span class="mention">@Ana</span> "5 apps. 1 dojo." ficou bem mais forte que o anterior 👌</div>
+                <div class="body">Deck tá bom, <span class="mention">@Ana</span>. Adicionei o comparativo trimestral no slide 4. Falta só fechar os próximos passos.</div>
               </div>
             </div>
 
@@ -1084,7 +1205,7 @@ footer .footer-links{display:flex;gap:18px;}
               <div class="av a1">A</div>
               <div class="right">
                 <div class="who">Ana <small>09:51</small></div>
-                <div class="body">Boa. Movi pra <em>Em curso</em>. Pode atribuir KR 1.2 que tô refazendo os mockups agora.</div>
+                <div class="body">Boa. Vou subir um draft no Bunko hoje. Mestre Kan, resume o briefing do último encontro pra eu não repetir?</div>
                 <div class="reactions">
                   <span class="r">🥋 <b>2</b></span>
                 </div>
@@ -1095,7 +1216,7 @@ footer .footer-links{display:flex;gap:18px;}
               <div class="av av-kan">勘</div>
               <div class="right">
                 <div class="who">Mestre Kan <small>10:14</small></div>
-                <div class="body">道. Lembrete: o prazo é hoje 12h. Quer que eu gere variações do CTA pra A/B test?</div>
+                <div class="body">道. Aurora pediu foco em <em>ROI</em> e <em>prazo</em>. Sugestão: 3 slides de números, 1 de próximos passos, 1 de pedidos abertos.</div>
                 <div class="thread">↩ 1 resposta</div>
               </div>
             </div>
@@ -1104,7 +1225,7 @@ footer .footer-links{display:flex;gap:18px;}
               <div class="av a1">A</div>
               <div class="right">
                 <div class="who">Ana <small>agora</small></div>
-                <div class="body">Subindo o draft. Daí a gente roda Ads à tarde.</div>
+                <div class="body">Perfeito. Mando até amanhã às 16h pra ter folga.</div>
               </div>
             </div>
 
@@ -1172,7 +1293,7 @@ footer .footer-links{display:flex;gap:18px;}
 <!-- ═══════════════════════════════════════════════════════
      SEÇÃO 5 · PRA QUEM É
 ═══════════════════════════════════════════════════════ -->
-<section class="centered" style="background:#fff;">
+<section class="centered" style="background:linear-gradient(180deg,#fff 0%,var(--bg-cream-soft) 100%);">
   <div class="container">
     <span class="eyebrow">O dojo abre pra</span>
     <h2>Quem cansou de ferramenta gringa.</h2>
@@ -1254,7 +1375,7 @@ footer .footer-links{display:flex;gap:18px;}
           <li>200GB · audit log 365d</li>
           <li>Comitê de calibração</li>
         </ul>
-        <a href="mailto:contato@synkan.com.br?subject=Quero%20Faixa%20Preta" class="btn btn-secondary" data-cta="price-preta">Falar com vendas →</a>
+        <a href="https://app.synkan.com.br/signup?plan=faixa_preta" class="btn btn-secondary" data-cta="price-preta">Assinar →</a>
       </div>
     </div>
     <p class="pricing-fine">
@@ -1264,49 +1385,36 @@ footer .footer-links{display:flex;gap:18px;}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     SEÇÃO 7 · DEPOIMENTOS (placeholders, substitui depois)
+     SEÇÃO · MANIFESTO · quebra visual + personalidade
 ═══════════════════════════════════════════════════════ -->
-<section style="background:var(--bg-cream-soft);">
+<section class="manifesto">
   <div class="container">
-    <span class="eyebrow">Os primeiros do tatame</span>
-    <h2>Recém-aberto. Vagas pra fundador honesto.</h2>
-    <p class="section-sub">
-      Synkan acabou de abrir o dojo. Estamos buscando os 50 primeiros que vão moldar o produto com a gente — <strong>desconto vitalício de fundador na Faixa Roxa</strong> pra quem testar e dar feedback nas primeiras semanas.
-      <br><br>
-      Quer ser um? Manda um oi pra <a href="mailto:contato@synkan.com.br" style="color:var(--dojo-hinomaru);text-decoration:underline;font-weight:600;">contato@synkan.com.br</a>.
-    </p>
-    <div class="test-grid">
-      <div class="test-card placeholder">
-        <span class="quote-mark">"</span>
-        <blockquote>Sua história aqui — testou o Synkan no time?</blockquote>
-        <div class="test-author">
-          <div class="avatar">★</div>
-          <div class="info">
-            <strong>Vaga 1 · founding member</strong>
-            <span>R$ 19,90 vitalício na Roxa</span>
-          </div>
+    <div class="manifesto-inner">
+      <div class="manifesto-kanji">禅</div>
+      <span class="eyebrow" style="color:#C19A3A;">Por que esse dojo existe</span>
+      <h2>Software não precisa ser triste.</h2>
+      <p>
+        Synkan é feito com <em>calma</em>. Em São Paulo. Por quem trabalha do mesmo jeito que você — com 4 clientes paralelos, 17 abas abertas e um café frio na mesa.
+      </p>
+      <p>
+        Cada decisão de produto começa com uma pergunta só: <strong>"isso facilita o dia de quem usa, ou só enche o marketing?"</strong>
+      </p>
+      <div class="manifesto-stats">
+        <div class="ms-item">
+          <div class="ms-val">6</div>
+          <div class="ms-lbl">módulos<br>integrados</div>
         </div>
-      </div>
-      <div class="test-card placeholder">
-        <span class="quote-mark">"</span>
-        <blockquote>Resolveu o caos das suas 5 ferramentas?</blockquote>
-        <div class="test-author">
-          <div class="avatar">★</div>
-          <div class="info">
-            <strong>Vaga 2 · founding member</strong>
-            <span>R$ 19,90 vitalício na Roxa</span>
-          </div>
+        <div class="ms-item">
+          <div class="ms-val">1</div>
+          <div class="ms-lbl">login pra<br>tudo</div>
         </div>
-      </div>
-      <div class="test-card placeholder">
-        <span class="quote-mark">"</span>
-        <blockquote>O Mestre Kan virou parte do seu time?</blockquote>
-        <div class="test-author">
-          <div class="avatar">★</div>
-          <div class="info">
-            <strong>Vaga 3 · founding member</strong>
-            <span>R$ 19,90 vitalício na Roxa</span>
-          </div>
+        <div class="ms-item">
+          <div class="ms-val">R$</div>
+          <div class="ms-lbl">pagamento<br>em real</div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-val">SP</div>
+          <div class="ms-lbl">dados em<br>São Paulo</div>
         </div>
       </div>
     </div>
