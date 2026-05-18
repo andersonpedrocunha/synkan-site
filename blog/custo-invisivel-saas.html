@@ -218,37 +218,66 @@ footer .footer-links{display:flex;gap:18px;}
         </tbody>
       </table>
 
+      <p style="font-size:13px;color:var(--ink-4);font-style:italic;margin-top:-10px;">Valores arredondados em planos pra equipes pequenas. Algumas ferramentas já cobram em real (Google Workspace, Figma desde 2024); outras ainda cobram em dólar — e é aí que mora o próximo problema.</p>
+
       <p>R$ 820 por mês. <strong>R$ 9.840 por ano em SaaS pra 3 pessoas</strong>. Isso já doi olhar quando você fecha a conta com calma — mas é só o começo.</p>
 
       <h2>A conta dos invisíveis</h2>
 
-      <p>O que ninguém calcula é o que essas ferramentas separadas <strong>fazem você gastar pra fazer elas conversarem entre si</strong>. E não é pouco.</p>
+      <p>O que ninguém calcula é o que essas ferramentas separadas <strong>fazem você gastar pra fazer elas conversarem entre si</strong> — e tudo que vem em volta. E não é pouco.</p>
 
-      <h3>1. Tempo perdido em troca de contexto</h3>
+      <h3>1. IOF e câmbio (o que o cartão cobra além do preço de tabela)</h3>
+
+      <p>Esse é o custo que faz a fatura visível ser <strong>maior do que parece</strong>, e quase ninguém soma. Boa parte dos SaaS na tabela acima é cobrada em <strong>dólar</strong>, não em real:</p>
+
+      <ul>
+        <li><strong>Cobram em BRL hoje:</strong> Google Workspace, Figma (desde 2024), e algumas opções nacionais</li>
+        <li><strong>Cobram em USD:</strong> Notion, Slack, Trello/Atlassian, HubSpot, Calendly, Loom, Zapier, Asana, Linear, Airtable… ou seja, a maioria</li>
+      </ul>
+
+      <p>Pra cada compra em dólar feita com cartão de crédito brasileiro, você paga três coisas que não aparecem no preço de tabela:</p>
+
+      <ul>
+        <li><strong>IOF sobre cartão internacional:</strong> em 2026 ainda em torno de 3,38%, em redução gradual pra zero até 2028. Antes de 2023 era 6,38%.</li>
+        <li><strong>Spread cambial do cartão/banco:</strong> tipicamente <strong>4 a 6%</strong> acima da cotação do dólar comercial. Cada bandeira/banco cobra um valor — quase nunca informado de forma transparente.</li>
+        <li><strong>Variação do próprio dólar:</strong> dólar sobe 10% no mês? Sua fatura de SaaS sobe 10% no mês. Em ano de tensão política ou choque global, dá pra ver 15-20% de variação rápida.</li>
+      </ul>
+
+      <p>Pra nossa agência exemplo, com ~R$ 620 dos R$ 820 visíveis vindo de SaaS em USD, isso significa:</p>
+
+      <ul>
+        <li>IOF (3,38%): ~R$ 21/mês</li>
+        <li>Spread cambial (~5%): ~R$ 31/mês</li>
+        <li>Volatilidade do dólar: imprevisível, mas pode somar R$ 50-100/mês em meses ruins</li>
+      </ul>
+
+      <p>Total adicional realista: <strong>R$ 60 a R$ 150 por mês</strong> só de fricção fiscal/cambial. Pra empresas maiores, ferramentas como pagamento via boleto/PIX ou contratos diretos em real reduzem isso — mas micro-empresas e freelas raramente têm escala pra negociar.</p>
+
+      <h3>2. Tempo perdido em troca de contexto</h3>
 
       <p>Pesquisa da Gloria Mark (Universidade da Califórnia Irvine) mostra que cada troca de tarefa custa <strong>23 minutos e 15 segundos</strong> em média até a pessoa voltar ao nível de foco anterior. O relatório <em>Anatomy of Work Index</em> da Asana (2023) aponta que um trabalhador médio do conhecimento alterna entre <strong>10 aplicativos por dia</strong> e perde cerca de <strong>5 horas por semana</strong> só procurando informação espalhada.</p>
 
       <p>Tradução em real: pra um time de 3 pessoas com salário hora de R$ 60, são <strong>R$ 900 por semana</strong> em tempo perdido — só de gente pulando entre janelas. <strong>R$ 3.600 por mês</strong>. Mais que quatro vezes a fatura visível.</p>
 
-      <h3>2. Custos de integração (Zapier, Make, scripts)</h3>
+      <h3>3. Custos de integração (Zapier, Make, scripts)</h3>
 
       <p>Pra fazer Notion conversar com Slack, Slack conversar com Trello, Trello conversar com HubSpot — você acaba contratando ferramentas de integração: Zapier, Make (antigo Integromat), n8n. O plano Starter do Zapier (já incluído na tabela acima) cobra R$ 100/mês mas tem limite baixo. Quando sua operação cresce, vai pra R$ 250 ou R$ 500/mês. E ainda assim, integrações quebram.</p>
 
       <p>Quando quebra — o webhook que liga "card movido pro Done" com "notificar canal #produção" para de funcionar — alguém perde 2-4 horas debugando. Isso acontece, em média, <strong>uma vez por mês por integração</strong>. Pra um time com 8-10 integrações, são <strong>20 a 30 horas/mês</strong> de manutenção que ninguém contratou pra fazer.</p>
 
-      <h3>3. Custo administrativo (gestão de acessos)</h3>
+      <h3>4. Custo administrativo (gestão de acessos)</h3>
 
       <p>Cada SaaS tem seus próprios logins, permissões, configurações de time. Quando um funcionário entra, alguém precisa criar conta nas 10 ferramentas, definir nível de acesso em cada uma, ensinar ele a usar cada interface. Quando sai, alguém precisa revogar acesso nas 10 também (e geralmente <strong>esquece de revogar em pelo menos 2</strong>, que continuam sendo cobradas pelo seat dele meses depois).</p>
 
       <p>Pesquisa da Productiv (SaaS Management Index 2023) estimou que organizações desperdiçam <strong>cerca de 30% do gasto total em SaaS</strong> com licenças não usadas, duplicadas ou esquecidas. Pra nossa agência de R$ 820/mês, isso é <strong>R$ 246/mês jogados fora</strong>.</p>
 
-      <h3>4. Onboarding de novo funcionário</h3>
+      <h3>5. Onboarding de novo funcionário</h3>
 
       <p>Quando entra uma pessoa nova, ela precisa aprender a usar cada uma das 10 ferramentas. Mesmo que cada uma seja "intuitiva", a curva de aprendizado pra ficar fluente em todas é de <strong>2 a 4 semanas</strong>. Durante esse período, ela produz a meio gás — e quem ensina (geralmente o fundador ou um sênior) gasta horas por dia respondendo "onde acha tal coisa".</p>
 
       <p>Custo difícil de medir, mas real: pelo menos <strong>1 semana de produtividade perdida</strong> por contratação. Pra um time que contrata 4-5 pessoas por ano, são 4-5 semanas de capacidade perdida só com onboarding de ferramentas — antes mesmo de eles entenderem o trabalho de verdade.</p>
 
-      <h3>5. Shadow IT e pagamentos esquecidos</h3>
+      <h3>6. Shadow IT e pagamentos esquecidos</h3>
 
       <p>É a categoria mais bizarra dos custos invisíveis: ferramentas que <strong>continuam sendo cobradas e ninguém mais usa</strong>. Aquele Loom que um designer assinou pro projeto da Maria que terminou há 6 meses. Aquele Airtable que vocês testaram por 2 semanas em 2024 e nunca cancelaram. Aquele Buffer que migrou pra outro plano mas a antiga conta continua viva.</p>
 
@@ -270,15 +299,18 @@ footer .footer-links{display:flex;gap:18px;}
         </thead>
         <tbody>
           <tr><td>Visível (mensalidades)</td><td>—</td><td>820,00</td></tr>
+          <tr><td>IOF + spread cambial</td><td>~8% sobre ferramentas em USD</td><td>90,00</td></tr>
           <tr><td>Tempo de troca de contexto</td><td>3 pessoas × 5h/sem × R$60</td><td>3.600,00</td></tr>
           <tr><td>Manutenção de integrações</td><td>~25h/mês × R$60</td><td>1.500,00</td></tr>
           <tr><td>Desperdício em licenças (30%)</td><td>30% do visível</td><td>246,00</td></tr>
           <tr><td>Shadow IT (estimativa)</td><td>—</td><td>200,00</td></tr>
-          <tr class="total"><td colspan="2"><strong>Total real mensal</strong></td><td><strong>~6.366,00</strong></td></tr>
+          <tr class="total"><td colspan="2"><strong>Total real mensal</strong></td><td><strong>~6.456,00</strong></td></tr>
         </tbody>
       </table>
 
-      <p>O custo real é <strong>~8 vezes maior</strong> do que a fatura do cartão sugere. R$ 76 mil por ano em vez dos R$ 10 mil que você achava. Pra time de 3 pessoas.</p>
+      <p>O custo real é <strong>~8 vezes maior</strong> do que a fatura do cartão sugere. <strong>R$ 77 mil por ano</strong> em vez dos R$ 10 mil que você achava. Pra time de 3 pessoas.</p>
+
+      <p>E essa conta ainda <em>subestima</em>: não inclui volatilidade do dólar (que pode adicionar 10-20% em meses voláteis), não inclui treinamento contínuo pra ferramentas que mudam de UI a cada release, não inclui o custo de oportunidade do tempo que sai pra reunião sobre qual ferramenta usar pra que finalidade.</p>
 
       <p>E essa conta nem considerou os custos qualitativos — informação perdida, decisão atrasada, cliente que ficou sem resposta porque a mensagem caiu num canal que ninguém viu. Esses são reais também, só não cabem em planilha.</p>
 
