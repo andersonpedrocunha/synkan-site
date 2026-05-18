@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Custo invisível do SaaS na sua empresa · Synkan</title>
+<meta name="description" content="O que aparece na fatura do cartão é só uma fatia. SaaS sprawl tem custos invisíveis que somam muito mais: tempo de troca de contexto, integração, gestão de acessos, onboarding e ferramentas esquecidas." />
+<link rel="icon" type="image/png" href="/synkan-icon-512.png" />
+
+<!-- OG -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://synkan.com.br/blog/custo-invisivel-saas" />
+<meta property="og:title" content="Custo invisível do SaaS na sua empresa" />
+<meta property="og:description" content="O que aparece na fatura do cartão é só a parte de cima do iceberg. SaaS sprawl tem custos ocultos que pesam mais do que a mensalidade." />
+
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+  --font-serif:'Shippori Mincho',Georgia,serif;
+  --ink:#111;
+  --ink-2:#2D2D2D;
+  --ink-3:#6B6B6B;
+  --ink-4:#A0A0A0;
+  --bg:#F4F4F2;
+  --line:#E5E5E2;
+  --line-2:#D4D4D0;
+  --dojo-sumi:#1A1612;
+  --dojo-hinomaru:#BC002D;
+  --dojo-gold:#C19A3A;
+  --bg-cream-soft:#FAF3DD;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+.container{max-width:720px;margin:0 auto;padding:0 24px;}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s;}
+.nav.scrolled{border-bottom-color:var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;max-width:880px;margin:0 auto;padding-left:24px;padding-right:24px;}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-mark{width:32px;height:32px;border-radius:7px;object-fit:contain;}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink);}
+.nav-links{display:flex;gap:22px;align-items:center;}
+.nav-links a{font-size:14px;color:var(--ink-2);font-weight:500;text-decoration:none;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{font-size:13px;color:var(--ink) !important;font-weight:600;padding:6px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;text-decoration:none;}
+.nav-cta:hover{border-color:var(--ink);}
+
+/* Article header */
+.art-head{padding:50px 0 30px;}
+.art-cover{
+  width:100%;max-width:880px;margin:0 auto 40px;
+  border-radius:14px;display:block;
+  box-shadow:0 20px 50px -20px rgba(26,22,18,.25);
+  aspect-ratio:16/9;object-fit:cover;
+  background:linear-gradient(135deg,#FAF3DD 0%,#F5E8C8 100%);
+}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-3);margin-bottom:32px;text-decoration:none;font-weight:500;}
+.back-link:hover{color:var(--ink);}
+.art-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-4);font-weight:500;margin-bottom:14px;flex-wrap:wrap;}
+.post-cat{display:inline-block;padding:3px 10px;background:rgba(188,0,45,.10);color:#A32D2D;border-radius:10px;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;}
+.art-head h1{font-size:clamp(30px,4.5vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:18px;color:var(--ink);}
+.art-head .lead{font-size:18px;color:var(--ink-3);line-height:1.55;}
+
+/* Article body */
+.art-body{padding:30px 0 80px;font-size:17px;line-height:1.75;color:var(--ink-2);}
+.art-body h2{
+  font-size:26px;font-weight:700;color:var(--ink);
+  letter-spacing:-.02em;line-height:1.2;
+  margin:48px 0 16px;
+}
+.art-body h3{
+  font-size:19px;font-weight:700;color:var(--ink);
+  letter-spacing:-.01em;line-height:1.3;
+  margin:36px 0 12px;
+}
+.art-body p{margin-bottom:20px;}
+.art-body strong{color:var(--ink);font-weight:600;}
+.art-body em{font-style:italic;color:var(--ink-2);}
+.art-body ul,.art-body ol{margin:0 0 24px 24px;}
+.art-body li{margin-bottom:10px;}
+.art-body blockquote{
+  border-left:3px solid var(--dojo-hinomaru);
+  margin:28px 0;padding:8px 0 8px 24px;
+  font-family:var(--font-serif);font-style:italic;font-size:19px;color:var(--ink);line-height:1.6;
+}
+.art-body code{
+  background:rgba(193,154,58,.12);
+  color:#7A5500;padding:2px 6px;border-radius:4px;
+  font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:.92em;
+}
+.art-body a{color:var(--dojo-hinomaru);text-decoration:underline;text-underline-offset:2px;}
+.art-body a:hover{text-decoration:none;}
+
+/* Cost table */
+.cost-table{
+  width:100%;border-collapse:collapse;
+  margin:24px 0 32px;font-size:15px;
+  border:0.5px solid var(--line);
+  border-radius:8px;overflow:hidden;
+}
+.cost-table th{
+  text-align:left;padding:11px 14px;
+  background:var(--bg-cream-soft);
+  font-weight:700;font-size:13px;
+  color:var(--ink);letter-spacing:-.005em;
+  border-bottom:0.5px solid var(--line);
+}
+.cost-table td{
+  padding:10px 14px;
+  border-bottom:0.5px solid var(--line);
+  font-size:14.5px;
+}
+.cost-table tr:last-child td{border-bottom:none;}
+.cost-table tr.total td{
+  background:rgba(193,154,58,.06);
+  font-weight:700;color:var(--ink);
+  border-top:1px solid var(--dojo-gold);
+}
+.cost-table td:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+
+/* Kanji divider */
+.kanji-divider{
+  text-align:center;margin:48px 0;
+  font-family:var(--font-serif);font-size:36px;color:var(--dojo-gold);
+  letter-spacing:1em;line-height:1;opacity:.7;
+}
+
+/* P.S. box (subtle promo) */
+.ps-box{
+  border-top:0.5px solid var(--line);
+  margin-top:48px;padding:28px 0 0;
+  font-size:15px;color:var(--ink-3);line-height:1.7;
+}
+.ps-box strong{color:var(--ink);}
+.ps-box a{color:var(--dojo-hinomaru);text-decoration:underline;font-weight:600;}
+
+/* Footer */
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);}
+footer .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;max-width:880px;margin:0 auto;padding:0 24px;}
+footer a{color:var(--ink-3);text-decoration:none;}
+footer a:hover{color:var(--ink);}
+footer .footer-links{display:flex;gap:18px;}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <img class="logo-mark" src="/synkan-icon-512.png" alt="Synkan" />
+      <span class="logo-name">Synkan</span>
+    </a>
+    <div class="nav-links">
+      <a href="/blog">Blog</a>
+      <a href="/comecar" class="nav-cta">Começar grátis →</a>
+    </div>
+  </div>
+</nav>
+
+<article>
+  <header class="art-head">
+    <div class="container">
+      <a href="/blog" class="back-link">← Todos os posts</a>
+    </div>
+    <img class="art-cover" src="/blog/custo-invisivel-saas.png" alt="Iceberg em pintura sumi-ê — a parte visível dos custos vs a parte invisível" />
+    <div class="container">
+      <div class="art-meta">
+        <span class="post-cat">Análise · SaaS (infra-web)</span>
+        <span>Maio 2026 · 9 min de leitura</span>
+      </div>
+      <h1>Custo invisível<br>do SaaS na sua empresa</h1>
+      <p class="lead">O que aparece na fatura do cartão de crédito é só a parte de cima do iceberg. Cada ferramenta SaaS que sua empresa contrata carrega um conjunto de custos ocultos que, somados, pesam muito mais do que a mensalidade. Vamos fazer essa conta com honestidade.</p>
+    </div>
+  </header>
+
+  <div class="art-body">
+    <div class="container">
+
+      <p>É domingo à noite. Você abre a fatura do cartão da empresa pra fechar o mês e nota o de sempre: Notion R$ 150, Slack R$ 105, Trello R$ 150, Google Workspace R$ 90, HubSpot R$ 100, Calendly R$ 50, Loom R$ 75, Zapier R$ 100, Figma R$ 60, Dropbox R$ 40. Mais umas cinco coisas menores que você nem lembra direito pra que servem.</p>
+
+      <p>Soma. Dá uns <strong>R$ 820 por mês</strong>. R$ 9.840 por ano. Pra um time de três pessoas.</p>
+
+      <p>Você fecha a planilha e segue a vida. "É o que tem que ser, faz parte do custo de tocar empresa moderna." E em parte é mesmo. O problema é que essa fatura <strong>é só a fração visível</strong> do que essas ferramentas custam. A parte invisível, que ninguém coloca na planilha, geralmente é maior.</p>
+
+      <h2>Primeiro, o que é SaaS, afinal</h2>
+
+      <p>Se você é de tecnologia, pula esse parágrafo. Se não é: <strong>SaaS</strong> significa <em>software as a service</em>, ou "software como serviço" — também chamado às vezes de <em>infra-web</em>. É qualquer aplicativo que você usa pelo navegador (ou app desktop) e paga uma mensalidade, em vez de comprar uma vez. Notion, Slack, Trello, Google Workspace, HubSpot, Salesforce — tudo SaaS.</p>
+
+      <p>O modelo virou padrão nos últimos 15 anos porque é cômodo: você não instala servidor, não cuida de backup, não precisa pagar suporte técnico próprio. A empresa do software cuida disso e cobra mensalidade. Bom pra quem oferece, bom pra quem usa.</p>
+
+      <p>O custo dessa comodidade, no entanto, evoluiu de uma forma que poucos pararam pra medir.</p>
+
+      <h2>A conta dos visíveis</h2>
+
+      <p>Vou usar como exemplo uma agência típica de 3 pessoas em 2026. O <em>stack</em> abaixo é bem comum — talvez você reconheça parte dele:</p>
+
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Ferramenta</th>
+            <th>Função</th>
+            <th>R$/mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Notion Plus (3 users)</td><td>Documentos, wiki</td><td>150,00</td></tr>
+          <tr><td>Slack Pro (3 users)</td><td>Chat interno</td><td>105,00</td></tr>
+          <tr><td>Trello Premium (3 users)</td><td>Kanban de projetos</td><td>150,00</td></tr>
+          <tr><td>Google Workspace Business (3 users)</td><td>Email, drive, calendário</td><td>90,00</td></tr>
+          <tr><td>HubSpot Starter</td><td>CRM</td><td>100,00</td></tr>
+          <tr><td>Calendly Standard (3 users)</td><td>Agendamento</td><td>50,00</td></tr>
+          <tr><td>Loom Business (2 users)</td><td>Gravação de vídeo</td><td>75,00</td></tr>
+          <tr><td>Zapier Starter</td><td>Integrações entre as outras</td><td>100,00</td></tr>
+          <tr class="total"><td colspan="2"><strong>Total visível mensal</strong></td><td><strong>820,00</strong></td></tr>
+        </tbody>
+      </table>
+
+      <p>R$ 820 por mês. <strong>R$ 9.840 por ano em SaaS pra 3 pessoas</strong>. Isso já doi olhar quando você fecha a conta com calma — mas é só o começo.</p>
+
+      <h2>A conta dos invisíveis</h2>
+
+      <p>O que ninguém calcula é o que essas ferramentas separadas <strong>fazem você gastar pra fazer elas conversarem entre si</strong>. E não é pouco.</p>
+
+      <h3>1. Tempo perdido em troca de contexto</h3>
+
+      <p>Pesquisa da Gloria Mark (Universidade da Califórnia Irvine) mostra que cada troca de tarefa custa <strong>23 minutos e 15 segundos</strong> em média até a pessoa voltar ao nível de foco anterior. O relatório <em>Anatomy of Work Index</em> da Asana (2023) aponta que um trabalhador médio do conhecimento alterna entre <strong>10 aplicativos por dia</strong> e perde cerca de <strong>5 horas por semana</strong> só procurando informação espalhada.</p>
+
+      <p>Tradução em real: pra um time de 3 pessoas com salário hora de R$ 60, são <strong>R$ 900 por semana</strong> em tempo perdido — só de gente pulando entre janelas. <strong>R$ 3.600 por mês</strong>. Mais que quatro vezes a fatura visível.</p>
+
+      <h3>2. Custos de integração (Zapier, Make, scripts)</h3>
+
+      <p>Pra fazer Notion conversar com Slack, Slack conversar com Trello, Trello conversar com HubSpot — você acaba contratando ferramentas de integração: Zapier, Make (antigo Integromat), n8n. O plano Starter do Zapier (já incluído na tabela acima) cobra R$ 100/mês mas tem limite baixo. Quando sua operação cresce, vai pra R$ 250 ou R$ 500/mês. E ainda assim, integrações quebram.</p>
+
+      <p>Quando quebra — o webhook que liga "card movido pro Done" com "notificar canal #produção" para de funcionar — alguém perde 2-4 horas debugando. Isso acontece, em média, <strong>uma vez por mês por integração</strong>. Pra um time com 8-10 integrações, são <strong>20 a 30 horas/mês</strong> de manutenção que ninguém contratou pra fazer.</p>
+
+      <h3>3. Custo administrativo (gestão de acessos)</h3>
+
+      <p>Cada SaaS tem seus próprios logins, permissões, configurações de time. Quando um funcionário entra, alguém precisa criar conta nas 10 ferramentas, definir nível de acesso em cada uma, ensinar ele a usar cada interface. Quando sai, alguém precisa revogar acesso nas 10 também (e geralmente <strong>esquece de revogar em pelo menos 2</strong>, que continuam sendo cobradas pelo seat dele meses depois).</p>
+
+      <p>Pesquisa da Productiv (SaaS Management Index 2023) estimou que organizações desperdiçam <strong>cerca de 30% do gasto total em SaaS</strong> com licenças não usadas, duplicadas ou esquecidas. Pra nossa agência de R$ 820/mês, isso é <strong>R$ 246/mês jogados fora</strong>.</p>
+
+      <h3>4. Onboarding de novo funcionário</h3>
+
+      <p>Quando entra uma pessoa nova, ela precisa aprender a usar cada uma das 10 ferramentas. Mesmo que cada uma seja "intuitiva", a curva de aprendizado pra ficar fluente em todas é de <strong>2 a 4 semanas</strong>. Durante esse período, ela produz a meio gás — e quem ensina (geralmente o fundador ou um sênior) gasta horas por dia respondendo "onde acha tal coisa".</p>
+
+      <p>Custo difícil de medir, mas real: pelo menos <strong>1 semana de produtividade perdida</strong> por contratação. Pra um time que contrata 4-5 pessoas por ano, são 4-5 semanas de capacidade perdida só com onboarding de ferramentas — antes mesmo de eles entenderem o trabalho de verdade.</p>
+
+      <h3>5. Shadow IT e pagamentos esquecidos</h3>
+
+      <p>É a categoria mais bizarra dos custos invisíveis: ferramentas que <strong>continuam sendo cobradas e ninguém mais usa</strong>. Aquele Loom que um designer assinou pro projeto da Maria que terminou há 6 meses. Aquele Airtable que vocês testaram por 2 semanas em 2024 e nunca cancelaram. Aquele Buffer que migrou pra outro plano mas a antiga conta continua viva.</p>
+
+      <p>Em times de 5-15 pessoas, é normal achar <strong>R$ 100 a R$ 300 por mês</strong> sendo cobrado por SaaS que ninguém abre há trimestres. Se você nunca fez auditoria, abre a fatura e procura — quase com certeza tem um por aí.</p>
+
+      <div class="kanji-divider">隠</div>
+
+      <h2>A soma honesta</h2>
+
+      <p>Vamos colocar tudo na mesa:</p>
+
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th></th>
+            <th>R$/mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Visível (mensalidades)</td><td>—</td><td>820,00</td></tr>
+          <tr><td>Tempo de troca de contexto</td><td>3 pessoas × 5h/sem × R$60</td><td>3.600,00</td></tr>
+          <tr><td>Manutenção de integrações</td><td>~25h/mês × R$60</td><td>1.500,00</td></tr>
+          <tr><td>Desperdício em licenças (30%)</td><td>30% do visível</td><td>246,00</td></tr>
+          <tr><td>Shadow IT (estimativa)</td><td>—</td><td>200,00</td></tr>
+          <tr class="total"><td colspan="2"><strong>Total real mensal</strong></td><td><strong>~6.366,00</strong></td></tr>
+        </tbody>
+      </table>
+
+      <p>O custo real é <strong>~8 vezes maior</strong> do que a fatura do cartão sugere. R$ 76 mil por ano em vez dos R$ 10 mil que você achava. Pra time de 3 pessoas.</p>
+
+      <p>E essa conta nem considerou os custos qualitativos — informação perdida, decisão atrasada, cliente que ficou sem resposta porque a mensagem caiu num canal que ninguém viu. Esses são reais também, só não cabem em planilha.</p>
+
+      <blockquote>
+        SaaS não é caro por causa da mensalidade. É caro por causa de tudo que você gasta <em>operacionalizando</em> a mensalidade.
+      </blockquote>
+
+      <h2>Pra quem isso não é problema</h2>
+
+      <p>Vale ser honesto: fragmentar SaaS faz sentido em alguns cenários.</p>
+
+      <p><strong>Empresas grandes (50+ pessoas)</strong> precisam de ferramentas especializadas por departamento, geralmente com integração via SSO corporativo. Pra elas, ter Salesforce + Slack + Asana + Confluence faz sentido — cada um faz uma coisa muito bem, e o time é grande o suficiente pra ter alguém cuidando da integração em tempo integral.</p>
+
+      <p><strong>Indústrias regulamentadas</strong> (saúde, financeiro, jurídico) muitas vezes precisam de ferramentas com certificações específicas que ferramentas gerais não têm. Aqui, fragmentar é compliance, não escolha.</p>
+
+      <p><strong>Equipes globais</strong> com integrações pesadas em sistemas legados também costumam compor stacks heterogêneos porque o sistema legado dita o ritmo.</p>
+
+      <p>Pra <strong>times de 1 a 20 pessoas</strong>, no entanto — solos, micro-agências, startups iniciais, equipes departamentais — a fragmentação raramente compensa. O custo invisível domina.</p>
+
+      <h2>O que dá pra fazer</h2>
+
+      <p>Três princípios que aplicam pra times pequenos preocupados com sprawl de SaaS:</p>
+
+      <h3>1. Faça auditoria semestral</h3>
+
+      <p>Uma vez a cada 6 meses, abra a fatura do cartão e liste TODOS os SaaS sendo cobrados. Pra cada um, responda 3 perguntas:</p>
+
+      <ul>
+        <li>Quem usa isso ativamente nas últimas 4 semanas?</li>
+        <li>O que aconteceria se cancelássemos hoje?</li>
+        <li>Existe uma ferramenta que já temos que faz isso também?</li>
+      </ul>
+
+      <p>Se 2 das 3 respostas forem "nada" ou "ninguém", cancela. Sério. <strong>Você não vai sentir falta</strong> — se sentisse, alguém estaria usando.</p>
+
+      <h3>2. Consolide o que pode ser consolidado</h3>
+
+      <p>Pra cada par de ferramentas que faz funções próximas, pergunte: <em>preciso mesmo dessas duas separadas?</em> Notion + Confluence geralmente não. Trello + Asana raramente. Slack + Discord nunca. Pra times pequenos, escolher uma e migrar tudo costuma render economia direta + redução de fragmentação.</p>
+
+      <h3>3. Considere ferramentas integradas pra o que sobrar</h3>
+
+      <p>Pra funções que naturalmente conversam entre si (kanban + chat + calendário + CRM), faz sentido buscar uma ferramenta que já integre essas peças nativamente. Não porque é "moderno" — porque o custo invisível de manter Trello + Slack + Calendly + HubSpot conversando custa mais do que pagar por uma ferramenta integrada.</p>
+
+      <p>Existem várias opções: Notion tenta consolidar parte disso, ClickUp tenta outra parte, Coda tenta uma terceira. Nenhuma resolve tudo, mas cada uma reduz fragmentação numa direção.</p>
+
+      <h2>A conta que vale lembrar</h2>
+
+      <p>Quando alguém te oferece um novo SaaS por "só R$ 30/mês", lembra que esse "só R$ 30" tem 3 multiplicadores invisíveis: o tempo que vai sair pra aprender, o tempo que vai sair pra integrar com o que você já tem, e o tempo que vai sair pra desinstalar dele quando você desistir.</p>
+
+      <p>Não é argumento contra contratar SaaS — eles tornam o trabalho moderno possível. É argumento pra contratar com consciência: <strong>cada SaaS novo é uma dívida operacional que vai precisar ser paga em alguma moeda</strong>. Geralmente em tempo, raramente em dinheiro só.</p>
+
+      <p>A fatura do cartão é a ponta. O resto está abaixo da linha d'água.</p>
+
+      <h2>Referências e leituras</h2>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.6;">As fontes que embasam os números deste post:</p>
+      <ul style="font-size:14px;color:var(--ink-3);line-height:1.65;">
+        <li>Mark, G., Gudith, D., &amp; Klocke, U. (2008). <em>The cost of interrupted work: more speed and stress.</em> Proceedings of CHI '08, 107-110. <a href="https://doi.org/10.1145/1357054.1357072" rel="nofollow noopener" target="_blank">doi.org/10.1145/1357054.1357072</a> — base do número "23 min 15s".</li>
+        <li>Asana (2023). <em>Anatomy of Work Index 2023.</em> Asana Research. <a href="https://asana.com/resources/anatomy-of-work" rel="nofollow noopener" target="_blank">asana.com/resources/anatomy-of-work</a> — base dos dados de "10 apps/dia" e "5h/semana procurando informação".</li>
+        <li>Productiv (2023). <em>SaaS Management Index 2023.</em> Productiv Inc. — base do número de ~30% de desperdício em licenças de SaaS.</li>
+        <li>Leroy, S. (2009). <em>Why is it so hard to do my work? The challenge of attention residue when switching between work tasks.</em> Organizational Behavior and Human Decision Processes, 109(2), 168-181. <a href="https://doi.org/10.1016/j.obhdp.2009.04.002" rel="nofollow noopener" target="_blank">doi.org/10.1016/j.obhdp.2009.04.002</a> — sobre attention residue na troca de tarefas.</li>
+      </ul>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.6;margin-top:14px;">Os preços de SaaS usados nas tabelas refletem valores médios de mercado em 2026 pra planos pra equipes de até 5 usuários. Variam por ferramenta, descontos anuais e país de cobrança.</p>
+
+      <div class="ps-box">
+        <p><strong>P.S.</strong> — Esse blog é mantido pela <a href="/">Synkan</a>, que é uma das tentativas de juntar Kanban, chat, OKR, calendário, CRM e financeiro num só lugar — exatamente pra atacar o problema descrito acima. Mas o problema existe independente da gente: todo time pequeno que cresce em SaaS sente isso cedo ou tarde. Se quiser dar uma olhada na nossa abordagem, a <a href="/comecar">Faixa Branca é grátis pra sempre</a>. Se não for pra gente, ainda vale aplicar os 3 princípios acima — eles funcionam com qualquer combinação de ferramentas.</p>
+        <p style="margin-top:18px;font-size:14px;color:var(--ink-4);font-style:italic;">— Anderson, fundador. Esse blog sai uma vez por mês. Se quiser comentar ou complementar a conta, manda email pra <a href="mailto:contato@synkan.com.br">contato@synkan.com.br</a> — leio todos.</p>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="logo" style="display:inline-flex;text-decoration:none;">
+        <img class="logo-mark" src="/synkan-icon-512.png" alt="Synkan" style="width:24px;height:24px;" />
+        <span style="font-weight:600;font-size:14px;color:var(--ink);">Synkan</span>
+      </a>
+      <span style="margin-left:14px;color:var(--ink-4);">v9 · feito com calma</span>
+    </div>
+    <div class="footer-links">
+      <a href="/blog">Blog</a>
+      <a href="mailto:contato@synkan.com.br">Suporte</a>
+      <a href="/termos.html">Termos</a>
+      <a href="/privacidade.html">Privacidade</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var onScroll = function(){
+    if (window.scrollY > 8) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
