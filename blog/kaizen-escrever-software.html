@@ -177,7 +177,7 @@ footer .footer-links{display:flex;gap:18px;}
     <div class="container">
       <div class="art-meta">
         <span class="post-cat">Filosofia</span>
-        <span>Junho 2026</span>
+        <span>Julho 2026</span>
         <span>·</span>
         <span>10 min de leitura</span>
       </div>
@@ -189,24 +189,28 @@ footer .footer-links{display:flex;gap:18px;}
   <div class="art-body">
     <div class="container">
 
-      <p>Descobri kaizen (改善) faz uns três anos, num livro que não tinha nada a ver com tecnologia — <em>Lean Thinking</em>, do Womack e Jones. É um livro sobre a Toyota. Sobre como uma fábrica japonesa, no meio da escassez pós-guerra, inventou um jeito de produzir carros com menos defeito e menos desperdício que a General Motors.</p>
+      <p>Faz uns três anos que descobri kaizen (改善). E não foi por um livro de tecnologia — foi lendo <em>Lean Thinking</em>, do Womack e Jones. Um livro sobre a Toyota.</p>
 
-      <p>Esse jeito ficou conhecido como <em>Toyota Production System</em>, e mais tarde deu origem à filosofia que eles chamam de <span class="kanji-inline">改善</span> <strong>kaizen</strong>. O curioso é que, embora tenha nascido no chão de fábrica, kaizen é sobretudo <em>uma forma de olhar pra qualquer processo repetitivo</em>. E poucos processos são tão repetitivos, e tão suscetíveis a erro, quanto o de construir software.</p>
+      <p>Cara, é um dos livros que mais mudou como eu penso. Ele conta como uma fábrica japonesa, no meio da escassez pós-guerra, inventou um jeito de fazer carros com menos defeito e menos desperdício que a General Motors — a gigante americana da época. Um jeito que ficou conhecido como <em>Toyota Production System</em>, e mais tarde deu origem à filosofia que eles chamam de <span class="kanji-inline">改善</span> <strong>kaizen</strong>.</p>
 
-      <p>Esse post é uma tentativa de destilar o que kaizen ensina pra quem constrói produto digital. Nada aqui é invenção minha — os conceitos vêm da Toyota, dos livros do Ohno, do Imai, dos Poppendieck. Meu papel é traduzir o que já existe e mostrar como faz sentido pra software.</p>
+      <p>O que me pegou não foi o lado industrial. Foi a cabeça por trás. Kaizen nasceu no chão de fábrica, mas é sobretudo <em>um jeito de olhar pra qualquer processo repetitivo</em>. E poucos processos são tão repetitivos, tão viciados em ansiedade e tão suscetíveis a erro quanto o de construir software.</p>
+
+      <p>Escrevi esse post porque acho que essa filosofia merece chegar em mais gente que constrói produto digital. Nada aqui é invenção minha — os conceitos vêm da Toyota, dos livros do Ohno, do Imai, dos Poppendieck. Meu papel é só destilar, com o contexto de quem passou três anos pensando nisso enquanto construía uma empresa.</p>
 
       <h2>Kaizen não é "continuous improvement" de PowerPoint</h2>
 
-      <p>Existe uma versão do kaizen que virou coach empresarial. Aquela do slide corporativo, "vamos melhorar continuamente 1% ao dia, seremos 37x melhores em um ano". Não é sobre isso.</p>
+      <p>Existe uma versão do kaizen que virou coach empresarial. Aquela do slide corporativo — <em>"vamos melhorar continuamente 1% ao dia, seremos 37x melhores em um ano"</em>. Perdoa a franqueza: essa versão é o oposto do que a Toyota criou.</p>
 
-      <p>Kaizen (改善) literalmente significa <em>mudança pro melhor</em>. Kai (改) = mudança. Zen (善) = bom. Mas no contexto da Toyota, tem um sentido bem mais duro: <strong>o processo em si é o produto</strong>. O carro que sai da linha é resultado. O que interessa é como você chega no carro sem defeito, gastando o mínimo de material, com respeito por quem constrói.</p>
+      <p>Kaizen (改善) literalmente significa <em>mudança pro melhor</em>. Kai (改) = mudança. Zen (善) = bom. Simples assim, na etimologia. Mas no contexto da Toyota, tem um sentido bem mais duro que "melhoria contínua": <strong>o processo em si é o produto</strong>. O carro que sai da linha é resultado. O que interessa mesmo é como você chega no carro sem defeito, gastando o mínimo de material, com respeito por quem constrói.</p>
+
+      <p>Isso me pegou de jeito quando li. Porque é o contrário do que a maior parte da indústria de tecnologia ensina — a gente aprende a fazer software olhando pro produto, o processo vira ruído. Toyota inverte a lente. E, quando você olha bem, faz muito mais sentido.</p>
 
       <blockquote>
         No sistema Toyota, o operário na linha tem o direito de parar toda a produção puxando um cordão amarelo (o <em>andon</em>) se ele vê algo errado. Ninguém é punido. A pergunta que segue é: <em>por que isso aconteceu? O que no processo permitiu isso?</em>
         <cite>Taiichi Ohno, engenheiro-chefe do Toyota Production System</cite>
       </blockquote>
 
-      <p>Essa é a virada de chave. Quando algo quebra em produção, a pergunta deixa de ser "qual usuário fez essa coisa estranha?" ou "qual dev empurrou esse commit?" — e passa a ser <em>por que o processo permitiu que isso chegasse até aqui?</em>. O foco sai da pessoa e vai pro sistema. É uma cultura inteira condensada numa única pergunta.</p>
+      <p>Essa é a virada de chave. Quando algo quebra em produção, a pergunta deixa de ser "qual usuário fez essa coisa estranha?" ou "qual dev empurrou esse commit?" — e passa a ser <em>por que o processo permitiu que isso chegasse até aqui?</em>. O foco sai da pessoa e vai pro sistema. Uma cultura inteira condensada numa pergunta só. Bonito de doer.</p>
 
       <h2>Os 3 M — o que kaizen combate</h2>
 
@@ -214,109 +218,111 @@ footer .footer-links{display:flex;gap:18px;}
 
       <div class="principle-box">
         <span class="p-kanji">無理</span><span class="p-label">Muri · sobrecarga</span>
-        <p>Quando você força o sistema além do que ele aguenta. No mundo do software, é aquele sprint de 60 tickets pra terminar num prazo apertado. Time cansado, código quebrado, testes pulados. O produto sai, mas o custo aparece nos dois meses seguintes de bugs em produção.</p>
+        <p>Quando você força o sistema além do que ele aguenta. No mundo do software, é aquele sprint de 60 tickets pra fechar num prazo apertado. Time cansado, código quebrado, testes pulados. O produto até sai — mas o custo aparece nos dois meses seguintes de bug em produção, e ninguém liga um no outro.</p>
       </div>
 
       <div class="principle-box">
         <span class="p-kanji">斑</span><span class="p-label">Mura · variação/irregularidade</span>
-        <p>Quando o trabalho acontece em rajadas. Semana de nada, semana de tudo. No software, é aquele deploy de uma vez por mês com 200 commits juntos. Ninguém sabe qual dos 200 quebrou o que quebrou. A variação é onde o risco mora.</p>
+        <p>Quando o trabalho acontece em rajadas. Semana de nada, semana de tudo. No software, é aquele deploy de uma vez por mês com 200 commits juntos. Ninguém sabe qual dos 200 quebrou o que quebrou. A variação é onde o risco mora — e o risco quase sempre paga a conta na segunda de manhã.</p>
       </div>
 
       <div class="principle-box">
         <span class="p-kanji">無駄</span><span class="p-label">Muda · desperdício</span>
-        <p>O mais famoso. Tudo que não agrega valor pro cliente final. No software: reunião de 1h que devia ser 15 minutos. Feature que ninguém pediu. Refactor sem métrica. Configuração que ninguém entende. Retrabalho por bug de código antigo.</p>
+        <p>O mais famoso. Tudo que não agrega valor pro cliente final. No software: reunião de 1h que devia ser 15 minutos. Feature que ninguém pediu. Refactor sem métrica. Configuração que ninguém entende. Retrabalho por bug de código antigo. Tudo isso é muda — e a soma disso normalmente é mais que o produto.</p>
       </div>
 
-      <p>Quando você começa a olhar seu processo com essas três lentes, fica desconfortável. Boa parte do que se produz numa semana de trabalho não é o produto em si — é muri, mura, muda. É o custo do jeito que se escolheu construir. E, diferente do produto, esse custo raramente é medido.</p>
+      <p>Quando você começa a olhar seu processo com essas três lentes, fica desconfortável. No bom sentido. Descobre que boa parte do que se produz numa semana de trabalho não é o produto em si — é muri, mura, muda. É o custo do jeito que você escolheu construir. E, diferente do produto, esse custo raramente é medido. Ninguém coloca "reunião desnecessária" na planilha do CFO.</p>
 
       <h2>Os 4 princípios que se traduzem pra software</h2>
 
-      <p>Kaizen tem várias práticas concretas — muitas dependem de contexto industrial (linhas físicas, estoques, fluxo de material). Mas quatro delas se traduzem particularmente bem pra prática de construir software:</p>
+      <p>Kaizen tem várias práticas concretas. Muitas dependem de contexto industrial — linhas físicas, estoques, fluxo de material. Mas quatro delas atravessam a fronteira e caem redondas na prática de construir software:</p>
 
       <h3>1 · Small batches · deploys pequenos e frequentes</h3>
 
-      <p>O primeiro princípio, e o mais duro culturalmente: parar de juntar coisas pra "um release grande". Toyota descobriu que produzir muitos carros iguais de uma vez economiza aparentemente — mas o desperdício aparece quando o mercado muda e o estoque não presta mais. <strong>Quanto menor o lote, mais flexível o sistema.</strong></p>
+      <p>O primeiro princípio, e o mais duro culturalmente: parar de juntar coisas pra "um release grande". Toyota descobriu, contraintuitivamente, que produzir muitos carros iguais de uma vez economiza aparentemente — mas o desperdício aparece quando o mercado muda e o estoque não presta mais. <strong>Quanto menor o lote, mais flexível o sistema.</strong></p>
 
       <p>Traduzindo pra software: deploys pequenos e frequentes. Terminou uma coisa, testa localmente, sobe pra produção. Se algo quebra, é uma coisa só — reverter é fácil, e você sabe exatamente o que causou. Não vira o desespero de "qual das 40 mudanças que subiram sexta quebrou o login segunda de manhã?".</p>
 
-      <p>É mais difícil do que parece. Exige uma pipeline confiável de deploy. Exige disciplina pra resistir à tentação de "aproveitar" um deploy e empurrar mais uma coisa que "tá quase pronta". Mas quem aplica com rigor relata a mesma coisa: <strong>menos bugs em produção que com o modelo de release grande</strong>. Porque cada mudança entra sozinha, é testada em contexto real, e a próxima corrige logo se precisou.</p>
+      <p>É muito mais difícil do que parece. Mas não pela pipeline técnica — pela cultura. Exige disciplina pra resistir à tentação de "aproveitar" um deploy e empurrar mais uma coisinha que "tá quase pronta". Isso é a coisa mais humana do mundo. Todo mundo quer aproveitar. E é justamente aí que o kaizen sussurra: <em>não aproveita, deploya sozinho</em>.</p>
+
+      <p>Quem aplica com rigor relata sempre a mesma coisa: <strong>menos bug em produção que com o modelo de release grande</strong>. Não é milagre — é matemática. Cada mudança entra sozinha, é testada em contexto real, e a próxima corrige logo se precisou.</p>
 
       <h3>2 · <span class="kanji-inline">ポカヨケ</span> Poka-yoke · errar de propósito impossível</h3>
 
-      <p>Poka-yoke (ポカヨケ) significa "à prova de erro". A ideia é: se um erro é possível, é uma questão de tempo até acontecer. A solução não é treinar melhor. É <em>projetar de forma que o erro simplesmente não seja possível</em>.</p>
+      <p>Poka-yoke (ポカヨケ) significa "à prova de erro". A ideia é linda: se um erro é possível, é uma questão de tempo até acontecer. Solução — não treinar mais nem escrever mais documentação. <em>Projetar de forma que o erro simplesmente não seja possível.</em></p>
 
-      <p>Na fábrica: uma peça que pode ser montada em duas orientações? Nunca. A peça tem um encaixe assimétrico que só entra do jeito certo. O operário não precisa lembrar. O físico obriga.</p>
+      <p>Na fábrica é lindo de ver: uma peça que poderia ser montada em duas orientações? Nunca. A peça tem um encaixe assimétrico que só entra do jeito certo. O operário não precisa lembrar. O físico obriga. É um jiu-jitsu contra o próprio erro humano.</p>
 
       <p>Traduzindo pra software: o app não deixa o usuário fazer coisa errada. Tentou apagar um board que tem cards com deadline no futuro? Aviso e confirmação dupla. Tentou mover um card pra "Concluído" sem preencher um campo obrigatório? Pausa e destaca o campo. Tentou desligar o backup em nuvem? O sistema obriga um backup local antes.</p>
 
-      <p>Cada regra dessas é um bug resolvido <em>uma vez, no design</em>. Não precisa treinar usuário. Não precisa escrever documentação avisando. O sistema não permite a besteira.</p>
+      <p>Cada regra dessas é um bug resolvido <em>uma vez, no design</em>. Não precisa treinar usuário. Não precisa escrever documentação avisando. O sistema não permite a besteira. Ponto.</p>
 
-      <p>É caro no começo — leva mais tempo pra projetar. Mas é barato infinitamente em suporte depois. Cada poka-yoke que entra é um ticket que não vai chegar.</p>
+      <p>É caro no começo — leva mais tempo pra projetar. Mas é barato infinitamente em suporte depois. Cada poka-yoke que entra é um ticket que nunca vai chegar. E ticket que não chega é ouro pra qualquer time.</p>
 
       <h3>3 · <span class="kanji-inline">反省</span> Hansei · retrospectiva honesta, toda semana</h3>
 
-      <p>Hansei (反省) é a prática de reflexão crítica sobre o próprio trabalho. Não é retrospectiva de sprint com post-it colorido. É olhar pro que se fez essa semana e perguntar honestamente: <em>o que quebrou? Por que quebrou? O que muda semana que vem pra não quebrar de novo?</em></p>
+      <p>Hansei (反省) é a prática de reflexão crítica sobre o próprio trabalho. Não é retrospectiva ágil com post-it colorido e emoji de sol nascendo. É outra coisa. Mais duro. É olhar pro que se fez essa semana e perguntar honestamente: <em>o que quebrou? Por que quebrou? O que muda semana que vem pra não quebrar de novo?</em></p>
 
-      <p>Na prática, kaizen sugere reservar 30 minutos, uma vez por semana (típico: sexta à tarde), pra escrever:</p>
+      <p>Na prática, a literatura sugere reservar 30 minutos, uma vez por semana (típico: sexta à tarde), pra escrever:</p>
 
       <ul>
         <li><strong>O que foi entregue essa semana</strong> — versão honesta, sem inflar</li>
-        <li><strong>O que quebrou</strong> — bugs em produção, features que ninguém usou, decisões que voltaram atrás</li>
+        <li><strong>O que quebrou</strong> — bug em produção, feature que ninguém usou, decisão que voltou atrás</li>
         <li><strong>Por que quebrou</strong> — a causa raiz, não o culpado</li>
         <li><strong>O que muda na próxima semana</strong> — 1 coisa, no máximo 2</li>
       </ul>
 
-      <p>Não é longo. Toma 30 minutos. Mas é a hora em que kaizen acontece de verdade. Sem hansei, os mesmos erros se repetem meses a fio sem que ninguém perceba. Com hansei, o sistema fica ~1% melhor por semana. Isso compõe.</p>
+      <p>Não é longo. Toma 30 minutos. Mas é a hora em que kaizen acontece de verdade. Sem hansei, os mesmos erros se repetem meses a fio e ninguém percebe. Com hansei, o sistema fica ~1% melhor por semana. Isso compõe de um jeito absurdo com o tempo.</p>
 
-      <p>Um sinal ruim: se o hansei da última sexta parece igual ao de duas semanas atrás, o aprendizado parou. Ficou só o cansaço.</p>
+      <p>Um sinal ruim: se o hansei da última sexta parece igual ao de duas semanas atrás, o aprendizado parou. Ficou só o cansaço. E aí é hora de dar um passo pra trás e olhar mais alto.</p>
 
       <h3>4 · <span class="kanji-inline">現場</span> Genba · ir ver com o próprio olho</h3>
 
-      <p>Genba (現場) significa "o lugar real onde a coisa acontece". Na Toyota, isso é o chão de fábrica. Se um engenheiro quer entender um problema de produção, ele <em>não lê relatório</em>. Ele desce até a linha, fica lá, olha o operário trabalhar, entende como o problema se manifesta na prática.</p>
+      <p>Genba (現場) significa "o lugar real onde a coisa acontece". Na Toyota, isso é o chão de fábrica. Se um engenheiro quer entender um problema de produção, ele <em>não lê relatório</em>. Ele desce até a linha, fica lá, olha o operário trabalhar, entende como o problema se manifesta na prática. Genba, na minha leitura, é o princípio mais bonito de todos. E o que mais falta na maior parte dos produtos digitais que a gente usa hoje em dia.</p>
 
-      <p>Traduzindo pra software, genba tem duas caras:</p>
+      <p>Genba se traduz pra software em duas caras:</p>
 
       <p><strong>Dogfooding de verdade.</strong> Não é usar o app pra bater papo no Slack interno da empresa. É rodar o CRM comercial, o kanban de features, os OKRs trimestrais — tudo — dentro do próprio produto. Se algo é chato pra usar, você sente na pele antes do cliente. Se algo trava, você tem que consertar antes de conseguir trabalhar. É a única forma de honestidade de produto que não mente.</p>
 
-      <p><strong>Conversa com usuário real.</strong> Não entrevista de "qual sua feature preferida?". É "compartilha a tela e me mostra como você usa". Você vê pessoas fazendo coisas que nunca imaginou, e usando o produto de jeitos que quebram sua hipótese inicial. Isso é genba puro — sair do escritório, ir ver.</p>
+      <p><strong>Conversa com usuário real.</strong> Não entrevista de "qual sua feature preferida?", que ninguém responde de verdade. É "compartilha a tela e me mostra como você usa". Você vê pessoas fazendo coisas que nunca imaginou, e usando o produto de jeitos que quebram sua hipótese inicial. Isso é genba puro — sair do escritório mental, ir ver.</p>
 
       <div class="cta-box">
-        <h3>O Synkan é construído sob essa filosofia</h3>
-        <p>Kanban, chat, calendário e IA num só app — pensado com small batches, poka-yoke em cada interação, e genba de verdade. Faixa Branca grátis pra sempre, sem cartão.</p>
+        <h3>O Synkan foi construído sob essa filosofia</h3>
+        <p>Kanban, chat, calendário e IA num só app — pensado com small batches, poka-yoke em cada interação sensível, e genba de verdade. Faixa Branca grátis pra sempre, sem cartão.</p>
         <a href="/comecar" class="btn">Entrar no dojo →</a>
       </div>
 
       <h2>A armadilha do kaizen mal aplicado</h2>
 
-      <p>Um alerta que aparece em quase toda literatura séria sobre kaizen — e que raramente chega no discurso corporativo: <strong>kaizen mal aplicado vira burnout com boas intenções.</strong></p>
+      <p>Um alerta que aparece em quase toda literatura séria sobre kaizen — e que raramente chega no discurso corporativo happy path: <strong>kaizen mal aplicado vira burnout com boas intenções.</strong></p>
 
-      <p>Como todo aprendizado depende de reflexão sobre o próprio trabalho, é fácil deslizar de "o sistema tem que ficar melhor" pra "eu tenho que ficar melhor". O primeiro leva a mudanças de processo. O segundo leva ao esgotamento.</p>
+      <p>Como todo aprendizado depende de reflexão sobre o próprio trabalho, é fácil deslizar de "o sistema tem que ficar melhor" pra "eu tenho que ficar melhor". O primeiro leva a mudanças de processo. O segundo leva ao esgotamento. E é uma linha muito fina.</p>
 
-      <p>Toyota inventou kaizen num contexto muito específico: uma fábrica com centenas de pessoas, sindicatos, escala, regras. Kaizen ali é coletivo por natureza — a responsabilidade se dissolve no sistema. Kaizen aplicado a um dev solo, ou a um time de 3 pessoas, precisa de cuidado: sem essa dissolução coletiva, o peso da melhoria cai inteiro sobre indivíduos.</p>
+      <p>Toyota inventou kaizen num contexto muito específico: fábrica com centenas de pessoas, sindicatos, escala, regras. Kaizen ali é coletivo por natureza — a responsabilidade se dissolve no sistema. Kaizen aplicado a um dev solo, ou a um time de 3 pessoas, precisa de cuidado redobrado. Sem essa dissolução coletiva, o peso da melhoria cai inteiro sobre indivíduos. E aí a filosofia mais bonita vira uma dor nova.</p>
 
-      <p>Um antídoto que funciona: <strong>ligar hansei a métricas objetivas, não a sensação.</strong> Se o tempo de resposta a bug caiu, o sistema tá melhor. Se o volume de tickets de suporte por 100 usuários caiu, o sistema tá melhor. Se só a sensação melhorou, é auto-engano.</p>
-
-      <p>Kaizen é <em>mudança pro melhor</em> — e "melhor" precisa ter uma medida, mesmo que qualitativa.</p>
+      <p>Um antídoto que aparece na literatura, e que faz muito sentido pra mim: <strong>ligar hansei a métricas objetivas, não a sensação.</strong> Se o tempo de resposta a bug caiu, o sistema tá melhor. Se o volume de tickets de suporte por 100 usuários caiu, o sistema tá melhor. Se só a sensação melhorou, é auto-engano. Kaizen é <em>mudança pro melhor</em> — e "melhor" precisa ter uma medida, mesmo que qualitativa.</p>
 
       <h2>O que quem aplica bem relata</h2>
 
-      <p>Times e produtos que aplicam kaizen com disciplina — dos Poppendieck até o discurso mais recente de DevOps e continuous delivery — relatam três padrões em comum:</p>
+      <p>Times e produtos que aplicam kaizen com disciplina — dos Poppendieck aos livros mais recentes de DevOps e continuous delivery — relatam três padrões em comum. Não são promessa de vendedor de curso. São padrão observado, em setores diferentes, décadas seguidas:</p>
 
-      <p><strong>Deploys deixam de ser eventos.</strong> Deixam de ser aquela ansiedade programada, sexta à noite, dedo cruzado, torcida. Viram sussurro — múltiplas vezes ao dia, sem cerimônia, quase invisível. Se algo quebra, é uma coisa pequena, e a reversão é questão de minutos.</p>
+      <p><strong>Deploys deixam de ser eventos.</strong> Deixam de ser aquela ansiedade programada, sexta à noite, dedo cruzado, torcida. Viram sussurro — múltiplas vezes ao dia, sem cerimônia, quase invisível. Se algo quebra, é pequeno, e a reversão é questão de minutos. Não é milagre. É lote pequeno.</p>
 
-      <p><strong>Bugs em produção caem drasticamente.</strong> Não porque as pessoas viraram melhores programadoras da noite pro dia. Porque cada mudança que entra é pequena o suficiente pra ser testada de verdade — tanto no ambiente local quanto em produção logo em seguida. Muri, mura e muda caem juntos.</p>
+      <p><strong>Bug em produção cai drasticamente.</strong> Não porque as pessoas viraram melhores programadoras da noite pro dia. Porque cada mudança que entra é pequena o suficiente pra ser testada de verdade — tanto no ambiente local quanto em produção logo em seguida. Muri, mura e muda caem juntos, e o bug cai atrás.</p>
 
-      <p><strong>O time consegue dormir.</strong> Essa é a parte que ninguém acredita até experimentar. Quando o sistema é enxuto, ninguém carrega o peso do "e se algo quebrar essa noite?" pra dentro do sono. Foi feito o suficiente. Se algo quebrar, dá pra consertar amanhã. O sistema aguenta.</p>
+      <p><strong>O time consegue dormir.</strong> Essa é a parte que ninguém acredita até experimentar. Quando o sistema é enxuto, ninguém carrega o peso do "e se algo quebrar essa noite?" pra dentro do sono. Foi feito o suficiente. Se algo quebrar, dá pra consertar amanhã. O sistema aguenta. Isso não é pouco.</p>
 
       <div class="kanji-divider">道</div>
 
       <h2>O próximo movimento</h2>
 
-      <p>Se você constrói software — sozinho, num time pequeno, ou numa empresa grande — kaizen vale a leitura. Não como framework de startup. Como <em>filosofia de como se relaciona com o próprio trabalho.</em></p>
+      <p>Se você constrói software — sozinho, num time pequeno, ou numa empresa grande — kaizen vale a leitura. Te digo mais: vale a releitura, uns 6 meses depois. Porque a primeira leva é o wow filosófico. A segunda é quando você começa a ver de verdade onde encaixa no seu dia a dia.</p>
 
-      <p>O ponto de entrada mais fácil, e o que produz o resultado visível mais rápido, são os deploys pequenos. Se hoje sua equipe faz deploy 1x por semana, tenta 3x. Se hoje é 3x, tenta 1x por dia. Cada barreira que aparecer é muri, mura ou muda esperando pra ser vista.</p>
+      <p>Não é framework de startup. É filosofia de <em>como você se relaciona com o próprio trabalho.</em> Pra mim é isso que faz kaizen bonito: não vende curso, não vende ferramenta, não vende metodologia registrada. Vende uma forma de estar no ofício. E, sinceramente, esse tipo de coisa é raro em qualquer campo hoje.</p>
 
-      <p>E se você quer um produto construído sob essa filosofia — o Synkan foi pensado com kaizen em vista. Small batches na forma como o app é entregue. Poka-yoke em cada interação sensível. Genba de verdade — quem construiu usa o produto todo dia pra rodar o próprio negócio, e ajusta o que incomoda antes do cliente sentir.</p>
+      <p>Se você vai começar por algum lugar, começa pelos deploys pequenos. É o ponto de entrada mais fácil, e o que produz resultado visível mais rápido. Se hoje sua equipe faz deploy 1x por semana, tenta 3x. Se hoje é 3x, tenta 1x por dia. Cada barreira que aparecer é muri, mura ou muda esperando pra ser vista.</p>
+
+      <p>E se quiser um produto construído sob essa filosofia — o Synkan foi pensado com kaizen em vista desde o começo. Small batches no jeito como o app é entregue. Poka-yoke em cada interação sensível. Genba de verdade — quem construiu usa o produto todo dia pra rodar o próprio negócio, e ajusta o que incomoda antes do cliente sentir. É um produto pra quem valoriza esse tipo de rigor silencioso.</p>
 
       <div class="cta-box">
         <h3>Monta seu primeiro board em 60 segundos</h3>
@@ -325,16 +331,16 @@ footer .footer-links{display:flex;gap:18px;}
       </div>
 
       <h2 style="font-size:20px;margin-top:56px;">Referências e leituras</h2>
-      <p style="font-size:14px;color:var(--ink-3);line-height:1.6;">As 4 fontes que sustentam a base cognitiva desse post (em ordem cronológica):</p>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.6;">As 4 fontes que sustentam a base desse post (em ordem cronológica). Se ler só uma, sugiro o Womack — foi por onde eu entrei:</p>
       <ul style="font-size:14px;color:var(--ink-3);line-height:1.65;">
-        <li>Ohno, T. (1988). <em>Toyota Production System: Beyond Large-Scale Production.</em> Productivity Press. Livro fundador escrito pelo engenheiro-chefe que criou o TPS na Toyota nos anos 50-70.</li>
+        <li>Ohno, T. (1988). <em>Toyota Production System: Beyond Large-Scale Production.</em> Productivity Press. Livro fundador escrito pelo engenheiro-chefe que criou o TPS na Toyota nos anos 50-70. Cru e direto.</li>
         <li>Imai, M. (1986). <em>Kaizen: The Key to Japan's Competitive Success.</em> McGraw-Hill. A obra que apresentou o conceito de kaizen ao mundo ocidental de forma sistematizada.</li>
-        <li>Womack, J. P., &amp; Jones, D. T. (1996). <em>Lean Thinking: Banish Waste and Create Wealth in Your Corporation.</em> Simon &amp; Schuster. A leitura que traduz o TPS pra fora do chão de fábrica.</li>
+        <li>Womack, J. P., &amp; Jones, D. T. (1996). <em>Lean Thinking: Banish Waste and Create Wealth in Your Corporation.</em> Simon &amp; Schuster. A leitura que traduz o TPS pra fora do chão de fábrica. Foi a minha porta de entrada.</li>
         <li>Poppendieck, M., &amp; Poppendieck, T. (2003). <em>Lean Software Development: An Agile Toolkit.</em> Addison-Wesley. Ponte direta entre lean/kaizen e prática de desenvolvimento de software.</li>
       </ul>
       <p style="font-size:14px;color:var(--ink-3);line-height:1.6;margin-top:14px;">Os quatro princípios apresentados aqui (small batches, poka-yoke, hansei, genba) foram selecionados dessa literatura por serem os que melhor atravessam a fronteira do chão de fábrica pro mundo digital. A ordem, os exemplos e a leitura são recorte editorial — o conteúdo é dos autores acima.</p>
 
-      <p style="margin-top:32px;font-size:14px;color:var(--ink-4);font-style:italic;">— Anderson, fundador. Escreve esse blog uma vez por mês, no cruzamento entre filosofia japonesa e produto digital. Se ficou alguma dúvida, ou se você é fã de Ohno e quer trocar ideia sobre kaizen — manda email pra <a href="mailto:contato@synkan.com.br" style="color:var(--dojo-hinomaru);">contato@synkan.com.br</a>. Respondo a mão.</p>
+      <p style="margin-top:32px;font-size:14px;color:var(--ink-4);font-style:italic;">— Anderson, fundador do Synkan. Escreve esse blog uma vez por mês, no cruzamento entre filosofia japonesa e produto digital — dois mundos que não deveriam se encontrar, mas se encontram muito bem. Se ficou alguma dúvida, se você é fã de Ohno e quer trocar ideia sobre kaizen, ou se quer indicar uma leitura pra próxima — manda email pra <a href="mailto:contato@synkan.com.br" style="color:var(--dojo-hinomaru);">contato@synkan.com.br</a>. Respondo a mão, um por um.</p>
 
     </div>
   </div>
